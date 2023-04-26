@@ -33,6 +33,7 @@ min-height: 100vh;
   font-family: 'Inconsolata', Helvetica, sans-serif;
   font-size: 1.5rem;
   color: rgba(128, 255, 128, 0.8);
+  color:red;
   text-shadow:
       0 0 1ex rgba(51, 255, 51, 1),
       0 0 2px rgba(255, 255, 255, 0.8);
@@ -104,6 +105,7 @@ min-height: 100vh;
 
 .output {
   color: rgba(128, 255, 128, 0.8);
+  color:rgb(255, 0, 0);
   text-shadow:
       0 0 1px rgba(51, 255, 51, 0.4),
       0 0 2px rgba(255, 255, 255, 0.8);

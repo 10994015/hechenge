@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/Login.vue"
 import Dashboard from "../views/Dashboard.vue"
+import News from "../views/News.vue"
 import NotFound from "../views/NotFound.vue"
 import AppLayout from "../components/AppLayout.vue"
 import store from "../store"
@@ -17,7 +18,12 @@ const routes = [
                 path:'',
                 name:'app.dashboard',
                 component: Dashboard
-            }
+            },
+            {
+                path:'/news',
+                name:'app.news',
+                component: News
+            },
         ]
     },
     {

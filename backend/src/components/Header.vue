@@ -27,7 +27,7 @@ const logout = () => {
     <div class="left">
         <router-link to="/" class="logo">
             <img src="@/assets/images/logo-sm.svg" />
-            <CloseText textName="Carbon" v-model="sideBarOpen" />
+            <CloseText textName="赫成教育" v-model="sideBarOpen" />
         </router-link>
       <svg
         @click="emit('openSideBar')"
