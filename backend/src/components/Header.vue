@@ -107,7 +107,7 @@ const logout = () => {
             </MenuItem>
             <MenuItem v-slot="{ active }">
               <button
-                @click="logout"
+                @click="logout()"
                 :class="[
                   active ? 'bg-[#fff] text-[#111]' : 'text-[#111]',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-[#f1f1f1] hover:text-[#333]',

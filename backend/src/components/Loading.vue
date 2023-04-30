@@ -43,7 +43,7 @@
   width         : 180px;
   height        : 180px;
   padding       : 0;
-  box-shadow    : 0 0 30px 0 #0000ff inset;
+  box-shadow    : 0 0 30px 0 #1484c4 inset;
   
   .gooey-container {
     overflow      : hidden;
@@ -57,7 +57,7 @@
     height        : 300px;
     padding       : 0;
     margin        : 0;
-    box-shadow    : 0 0 0 22px #9900ff inset;
+    box-shadow    : 0 0 0 22px #1f0033 inset;
     animation     : black-hole-rotate 5s ease infinite;
     
     .bubble {

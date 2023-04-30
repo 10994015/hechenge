@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['auth:sanctum', 'admin'])->group(function(){
+    Route::get('/user', [AuthController::class, 'getUser']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    //article
+    Route::apiResource('articles', ArticleController::class);
+    Route::post('/isExistArticle', [ArticleController::class, 'isExistArticle']);
+    Route::post('/articleItems', [ArticleController::class, 'deleteItems']);
+    Route::get('/articleCategories', [ArticleController::class, 'getCategories']);
 });
+
+Route::post('/login', [AuthController::class, 'login']);

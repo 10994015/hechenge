@@ -6,13 +6,11 @@ import Sidebar from "./SideBar.vue";
 import Header from "./Header.vue";
 import Footer from "./Footer.vue";
 const sideBarOpen = ref(false);
-// onMounted(() => {
-//   store.dispatch("getUser");
-// });
-// const currentUser = computed(() => store.state.user.data);
-const currentUser = {
-    id:1
-}
+onMounted(() => {
+  store.dispatch("getUser");
+});
+const currentUser = computed(() => store.state.user.data);
+
 const toggleSideBar = () => {
   sideBarOpen.value = !sideBarOpen.value;
 };
@@ -46,11 +44,11 @@ const openSideBar = () => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #191e22;
+  background-color: #F4F5F8;
   width: 100%;
   height: 100vh;
   span {
-    color: #fff;
+    color: #333;
     margin-top: 20px;
     letter-spacing: 2.6px;
   }

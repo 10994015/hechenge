@@ -47,7 +47,7 @@ const openList = (name) => {
         </svg>
         <CloseText textName="首頁" v-model="sideBarOpen" />
       </router-link>
-      <router-link :to="{ name: 'app.news' }">
+      <router-link :to="{ name: 'app.articles' }">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

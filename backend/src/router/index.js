@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/Login.vue"
 import Dashboard from "../views/Dashboard.vue"
-import News from "../views/News.vue"
+import Articles from "../views/Articles.vue"
+import AddArticle from "../views/AddArticle.vue"
 import NotFound from "../views/NotFound.vue"
 import AppLayout from "../components/AppLayout.vue"
 import store from "../store"
@@ -20,9 +21,14 @@ const routes = [
                 component: Dashboard
             },
             {
-                path:'/news',
-                name:'app.news',
-                component: News
+                path:'/articles',
+                name:'app.articles',
+                component: Articles
+            },
+            {
+                path:'add-articles/:id',
+                name:'app.add-article',
+                component:AddArticle,
             },
         ]
     },

@@ -11,18 +11,18 @@ const user = {
   remember: false,
 };
 const login = () => {
-//   loading.value = true;
-//   store
-//     .dispatch("login", user)
-//     .then(() => {
-//       loading.value = false;
-//       router.push({ name: "app.dashboard" });
-//     })
-//     .catch(({ response }) => {
-//       loading.value = false;
-//       console.log(response);
-//       errorMsg.value = response.data.message;
-//     });
+  loading.value = true;
+  store
+    .dispatch("login", user)
+    .then(() => {
+      loading.value = false;
+      router.push({ name: "app.dashboard" });
+    })
+    .catch(({ response }) => {
+      loading.value = false;
+      console.log(response);
+      errorMsg.value = response.data.message;
+    });
 };
 </script>
 
