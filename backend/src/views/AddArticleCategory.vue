@@ -6,93 +6,31 @@ const route = useRoute();
 
 const router = useRouter();
 
-const DEFAULT_ARTICLE = {
-  id: "",
-  title: "",
-  image: "",
-  content: "",
-  category_id: 1,
-  hidden: false,
+const DEFAULT_CATEGORY = {
+  name: "",
 };
-const image_url = ref("");
-const categories = ref([]);
-const categoryLoading = ref(true)
 const randerLoading = ref(false);
 
 const loading = ref(false);
-const previewLoading = ref(false);
-const previewImg = ref(null);
-const isPreview = ref(false);
 const errorMsg = ref(null);
 const successMsg = ref(null);
-const article = ref({ ...DEFAULT_ARTICLE });
+const category = ref({ ...DEFAULT_CATEGORY });
 const isCreate = ref(false);
 onMounted(() => {
-  const articleId = route.params.id;
-
-  store.dispatch('getArticleCategories').then(res=>{
-    categories.value = store.state.articleCategories.data
-    categoryLoading.value = store.state.articleCategories.loading
-  })
-
-  if (articleId === "create") {
+  const categoryId = route.params.id;
+  if (categoryId === "create") {
     randerLoading.value = true;
-    article.value.id = articleId;
     isCreate.value = true;
     return;
   }
-  store
-    .dispatch("isExistArticle", articleId)
-    .then((res) => {
-      if (res.data) {
-        store
-          .dispatch("getArticle", articleId)
-          .then((res) => {
-            article.value = res.data;
-            image_url.value = res.data.image_url;
-            if (image_url.value) {
-              isPreview.value = true;
-            }
-            randerLoading.value = true;
-
-            article.value.title =
-              article.value.title == "null" ? "" : article.value.title;
-            article.value.content =
-              article.value.content == "null" ? "" : article.value.content;
-          })
-          .then(() => {
-            if (image_url.value != "") {
-              previewImg.value.src = image_url.value;
-            }
-          });
-      } else {
-        router.push({ path: "/notfound" });
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-
+  router.push({ path: "/notfound" });
 });
 
-const previewImage = (ev) => {
-  previewLoading.value = true;
-  if (ev.target.files && ev.target.files[0]) {
-    article.value.image = ev.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      previewImg.value.src = e.target.result;
-    };
-    reader.readAsDataURL(ev.target.files[0]);
-  }
-  previewLoading.value = false;
-  isPreview.value = true;
-};
 const onSubmit = () => {
   loading.value = true;
   if (isCreate.value) {
     store
-      .dispatch("createArticle", article.value)
+      .dispatch("createArticleCategory", category.value)
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           successMsg.value = "上傳成功！";
@@ -104,111 +42,21 @@ const onSubmit = () => {
         loading.value = false;
         errorMsg.value = err.response.data.errors;
       });
-  } else {
-    store
-      .dispatch("updateArticle", article.value)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          successMsg.value = "更新成功！";
-          errorMsg.value = null;
-        }
-        loading.value = false;
-      })
-      .catch((err) => {
-        loading.value = false;
-        errorMsg.value = err.response.data.errors;
-      });
-  }
+  } 
 };
 </script>
 
 <template>
   <div class="addArticle">
-    <h1 v-if="isCreate">新增文章</h1>
-    <h1 v-else>編輯文章</h1>
+    <h1>新增文章分類</h1>
     <div class="card">
       <div class="card-title">
         <h2>Basic Information</h2>
       </div>
       <form v-if="randerLoading" action="" @submit.prevent="onSubmit()">
         <div class="form-group">
-          <label for="">文章分類</label>
-          <div class="container">
-            <select v-if="categoryLoading" disabled>
-            <option value="">Loading...</option>
-            </select>
-            <select v-else v-model="article.category_id">
-              <option v-for="category in categories" :key="category.id"  :value="category.id" >{{category.name}}</option>
-            </select>
-            <router-link :to="{name:'app.article.add-category' , params: { id: 'create' }}">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </router-link>
-          </div>
-          
-        </div>
-        <div class="form-group">
-          <label for="">文章標題</label>
-          <input type="text" v-model="article.title" />
-        </div>
-        <div class="form-group">
-          <label for="">文章內容</label>
-          <!-- <CKEditor :content="article.content" @sendContent="getCkEditorContent" /> -->
-          <textarea id="editor1" name="editor1" v-model="article.content"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="">文章圖片</label>
-          <label for="imagefile" class="imagefileFor">
-            <svg
-              v-if="previewLoading"
-              class="animate-spin h-5 w-5 text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"
-              ></circle>
-              <path
-                class="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-            <div v-if="!isPreview">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-5 h-5 mb-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-                />
-              </svg>
-              <span>將文件拖放到此處或單擊以上傳。</span>
-            </div>
-            <div v-else class="isPreview">
-              <img src="" ref="previewImg" id="previewImg" />
-            </div>
-          </label>
-          <input type="file" id="imagefile" hidden @change="previewImage($event)" />
-        </div>
-        <div class="chkbox-group">
-          <div class="form-group">
-            <label for="">隱藏文章</label>
-            <input type="checkbox" v-model="article.hidden" />
-          </div>
+          <label for="">分類名稱</label>
+          <input type="text" v-model="category.name" />
         </div>
         <span v-if="successMsg" class="successMsg">{{ successMsg }}</span>
         <div class="form-group btn-group mt-10">
@@ -234,7 +82,7 @@ const onSubmit = () => {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            <span v-else>保存更改</span>
+            <span v-else>新增分類</span>
           </button>
           <button
             class="pre"

@@ -23,7 +23,11 @@ class Article extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
-    public function category(){
-        return $this->belongsTo(Category::class, 'category_id');
+  
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
+
+
 }

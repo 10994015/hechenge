@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import store from "../store";
-import { ARTICLES_PER_PAGE } from "../constants";
+import { ARTICLE_CATEGORIES_PER_PAGE } from "../constants";
 import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
-const perPage = ref(ARTICLES_PER_PAGE);
+const perPage = ref(ARTICLE_CATEGORIES_PER_PAGE);
 const search = ref("");
 const sortField = ref("updated_at");
 const sortDirection = ref("desc");
@@ -91,7 +91,7 @@ const deleteCheckedItems = () => {
 <template>
   <div class="articles">
     <pre></pre>
-    <h1>最新消息列表</h1>
+    <h1>文章分類列表</h1>
     <div class="card">
       <div class="card-header">
         <div class="left">
@@ -132,8 +132,8 @@ const deleteCheckedItems = () => {
           <div class="form-group">
             <router-link
               class="btn"
-              :to="{ name: 'app.add-article', params: { id: 'create' } }"
-              >+ 新增文章</router-link
+              :to="{ name: 'app.article.add-category', params: { id: 'create' } }"
+              >+ 新增文章分類</router-link
             >
           </div>
         </div>
@@ -190,92 +190,12 @@ const deleteCheckedItems = () => {
                 </div>
               </th>
               <th
-                @click="sortArticles('image')"
-                :class="['cursor-pointer', { active: sortField === 'image' }]"
+                @click="sortArticles('name')"
+                :class="['cursor-pointer', { active: sortField === 'name' }]"
               >
                 <div class="flex items-center">
-                  <div>圖片</div>
-                  <div class="ml-2" v-if="sortField === 'image'">
-                    <svg
-                      v-if="sortDirection === 'desc'"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-4 h-4"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                      />
-                    </svg>
-                    <svg
-                      v-if="sortDirection === 'asc'"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-4 h-4"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </th>
-              <th
-                @click="sortArticles('title')"
-                :class="['cursor-pointer', { active: sortField === 'title' }]"
-              >
-                <div class="flex items-center">
-                  <div>標題</div>
-                  <div class="ml-2" v-if="sortField === 'title'">
-                    <svg
-                      v-if="sortDirection === 'desc'"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-4 h-4"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                      />
-                    </svg>
-                    <svg
-                      v-if="sortDirection === 'asc'"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      class="w-4 h-4"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </th>
-              <th
-                @click="sortArticles('category_id')"
-                :class="['cursor-pointer', { active: sortField === 'category_id' }]"
-              >
-                <div class="flex items-center">
-                  <div>分類</div>
-                  <div class="ml-2" v-if="sortField === 'category_id'">
+                  <div>分類名稱</div>
+                  <div class="ml-2" v-if="sortField === 'name'">
                     <svg
                       v-if="sortDirection === 'desc'"
                       xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +234,7 @@ const deleteCheckedItems = () => {
                 :class="['cursor-pointer', { active: sortField === 'updated_at' }]"
               >
                 <div class="flex items-center">
-                  <div>最後更新時間</div>
+                  <div>新增時間</div>
                   <div class="ml-2" v-if="sortField === 'updated_at'">
                     <svg
                       v-if="sortDirection === 'desc'"
@@ -349,7 +269,6 @@ const deleteCheckedItems = () => {
                   </div>
                 </div>
               </th>
-              <th>是否顯示</th>
               <th>操作</th>
             </tr>
           </thead>
@@ -395,17 +314,8 @@ const deleteCheckedItems = () => {
                 />
               </td>
               <td class="w-[40px]">{{ article.id }}</td>
-              <td>
-                <img v-if="article.image_url" :src="article.image_url" />
-                <img v-else src="@/assets/news.jpg" />
-              </td>
               <td>{{ article.title }}</td>
-              <td >{{ categories[article.category_id] }}</td>
               <td>{{ article.updated_at }}</td>
-              <td>
-                <span v-if="article.hidden">隱藏</span
-                ><span v-else class="active">顯示</span>
-              </td>
               <td>
                 <button
                   class="edit ml-1"

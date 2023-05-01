@@ -50,7 +50,7 @@ const logout = () => {
       <div class="mt-2">
         <MenuButton class="flex items-center">
           <img src="@/assets/images/hea.jpg" class="rounded-full w-10 mr-2" />
-          <p class="text-sm">{{ userName }}Admin</p>
+          <p class="text-sm">{{ userName }}</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

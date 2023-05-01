@@ -6,9 +6,8 @@ const props = defineProps({
   modelValue: Boolean,
 });
 const emit = defineEmits(["openSideBar"]);
+const isArticle = ref(false);
 const isAbout = ref(false);
-const isAwards = ref(false);
-const isInfo = ref(false);
 const sideBarOpen = computed(() => props.modelValue);
 const closeItems = () => {
   isAbout.value = false;
@@ -22,9 +21,8 @@ watch(sideBarOpen, (val) => {
 });
 const openList = (name) => {
   emit("openSideBar");
+  if (name === "article") return (isArticle.value = !isArticle.value);
   if (name === "about") return (isAbout.value = !isAbout.value);
-  if (name === "awards") return (isAwards.value = !isAwards.value);
-  if (name === "info") return (isInfo.value = !isInfo.value);
 };
 </script>
 
@@ -47,7 +45,8 @@ const openList = (name) => {
         </svg>
         <CloseText textName="首頁" v-model="sideBarOpen" />
       </router-link>
-      <router-link :to="{ name: 'app.articles' }">
+
+      <a href="javascript:;" @click="openList('article')">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -59,11 +58,66 @@ const openList = (name) => {
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
+            d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"
           />
         </svg>
         <CloseText textName="最新消息" v-model="sideBarOpen" />
-      </router-link>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          :class="['w-3', 'h-3', 'ml-auto', { active: isArticle }]"
+          v-show="!sideBarOpen"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+          />
+        </svg>
+      </a>
+      <ol :class="{ open: isArticle }">
+        <router-link :to="{ name: 'app.articles' }">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-3 h-3"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+
+          <CloseText textName="文章列表" v-model="sideBarOpen" />
+        </router-link>
+        <router-link :to="{ name: 'app.article.categories' }">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-3 h-3"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+
+          <CloseText textName="文章分類" v-model="sideBarOpen" />
+        </router-link>
+      </ol>
+
+
       <router-link :to="{ name: 'app.dashboard' }">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +240,6 @@ const openList = (name) => {
         height: auto;
       }
       > a {
-        border-bottom: 1px #ddd solid;
         border-radius: 0;
         padding: 10px 15px;
       }

@@ -3,6 +3,8 @@ import Login from "../views/Login.vue"
 import Dashboard from "../views/Dashboard.vue"
 import Articles from "../views/Articles.vue"
 import AddArticle from "../views/AddArticle.vue"
+import ArticleCategories from "../views/ArticleCategories.vue"
+import AddArticleCategory from "../views/AddArticleCategory.vue"
 import NotFound from "../views/NotFound.vue"
 import AppLayout from "../components/AppLayout.vue"
 import store from "../store"
@@ -29,6 +31,16 @@ const routes = [
                 path:'add-articles/:id',
                 name:'app.add-article',
                 component:AddArticle,
+            },
+            {
+                path:'/article-categories',
+                name:'app.article.categories',
+                component: ArticleCategories
+            },
+            {
+                path:'add-article-category/:id',
+                name:'app.article.add-category',
+                component:AddArticleCategory,
             },
         ]
     },
