@@ -138,8 +138,6 @@ class ArticleController extends Controller
     }
     public function getCategories(Request $req)
     {
-
-        Log::info(Category::all());
         return Category::all();
     }
 }

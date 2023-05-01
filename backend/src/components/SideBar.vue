@@ -11,8 +11,7 @@ const isAbout = ref(false);
 const sideBarOpen = computed(() => props.modelValue);
 const closeItems = () => {
   isAbout.value = false;
-  isAwards.value = false;
-  isInfo.value = false;
+  isArticle.value = false;
 };
 watch(sideBarOpen, (val) => {
   if (val) {

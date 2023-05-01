@@ -9,29 +9,21 @@ const search = ref("");
 const sortField = ref("updated_at");
 const sortDirection = ref("desc");
 
-const articles = computed(() => store.state.articles);
-const categories = ref({})
+const categoires = computed(() => store.state.articleCategories);
 const checkedItems = ref([]);
 const isSelectAllChecked = ref(false);
 const checkItem = ref(null);
 onMounted(() => {
-  getArticles();
-  store.dispatch('getArticleCategories').then(res=>{
-    // categories.value = store.state.articleCategories.data
-    store.state.articleCategories.data.forEach(category=>{
-      categories.value[category.id] = category.name
-    })
-    console.log(categories.value);
-  })
+  getCategories();
 });
 const getForPage = (ev, link) => {
   if (!link.url || link.active) return;
 
-  getArticles(link.url);
+  getCategories(link.url);
 };
 
-const getArticles = (url = null) => {
-  store.dispatch("getArticles", {
+const getCategories = (url = null) => {
+  store.dispatch("getArticleCategories", {
     url,
     sort_field: sortField.value,
     sort_direction: sortDirection.value,
@@ -39,7 +31,7 @@ const getArticles = (url = null) => {
     perPage: perPage.value,
   });
 };
-const sortArticles = (field) => {
+const sortCategories = (field) => {
   sortField.value = field;
   if (sortField.value === field) {
     if (sortDirection.value === "asc") {
@@ -52,17 +44,17 @@ const sortArticles = (field) => {
     sortDirection.value = "asc";
   }
 
-  getArticles();
+  getCategories();
 };
-const deleteArticle = (article) => {
-  if (!confirm(`確定要刪除 ${article.title} 嗎？`)) return;
-  store.dispatch("deleteArticle", article.id).then((res) => {
+const deleteCategory = (category) => {
+  if (!confirm(`確定要刪除 ${category.name} 嗎？`)) return;
+  store.dispatch("deleteArticleCategory", category.id).then((res) => {
     alert("刪除成功！");
-    getArticles();
+    getCategories();
   });
 };
 const selectedCheckItem = () => {
-  if (checkedItems.value.length < articles.value.total) {
+  if (checkedItems.value.length < categoires.value.total) {
     isSelectAllChecked.value = false;
   }
 };
@@ -79,9 +71,9 @@ const selectAllCheckItems = () => {
 };
 const deleteCheckedItems = () => {
   if (confirm("確定刪除？")) {
-    store.dispatch("deleteArticleItems", checkedItems.value).then((res) => {
+    store.dispatch("deleteArticleCategoryItems", checkedItems.value).then((res) => {
       alert("刪除成功！");
-      getArticles();
+      getCategories();
       checkedItems.value = [];
     });
   }
@@ -89,7 +81,7 @@ const deleteCheckedItems = () => {
 </script>
 
 <template>
-  <div class="articles">
+  <div class="categoires">
     <pre></pre>
     <h1>文章分類列表</h1>
     <div class="card">
@@ -116,11 +108,11 @@ const deleteCheckedItems = () => {
               type="text"
               placeholder="搜尋..."
               v-model="search"
-              @change="getArticles()"
+              @change="getCategories()"
             />
           </div>
           <div class="form-group">
-            <select v-model="perPage" @change="getArticles()">
+            <select v-model="perPage" @change="getCategories()">
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="50">50</option>
@@ -150,7 +142,7 @@ const deleteCheckedItems = () => {
                 />
               </th>
               <th
-                @click="sortArticles('id')"
+                @click="sortCategories('id')"
                 :class="['w-[40px]', 'cursor-pointer', { active: sortField === 'id' }]"
               >
                 <div class="flex items-center">
@@ -190,7 +182,7 @@ const deleteCheckedItems = () => {
                 </div>
               </th>
               <th
-                @click="sortArticles('name')"
+                @click="sortCategories('name')"
                 :class="['cursor-pointer', { active: sortField === 'name' }]"
               >
                 <div class="flex items-center">
@@ -230,7 +222,7 @@ const deleteCheckedItems = () => {
                 </div>
               </th>
               <th
-                @click="sortArticles('updated_at')"
+                @click="sortCategories('updated_at')"
                 :class="['cursor-pointer', { active: sortField === 'updated_at' }]"
               >
                 <div class="flex items-center">
@@ -272,11 +264,11 @@ const deleteCheckedItems = () => {
               <th>操作</th>
             </tr>
           </thead>
-          <tbody v-if="articles.loading" class="loadingTable">
+          <tbody v-if="categoires.loading" class="loadingTable">
             <tr>
               <td colspan="7" class="w-full" style="text-align: center">
                 <svg
-                  class="animate-spin h-5 w-5 text-black"
+                  class="animate-spin h-5 w-5 text-gray-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -300,8 +292,8 @@ const deleteCheckedItems = () => {
           </tbody>
           <tbody v-else>
             <tr
-              v-for="(article, idx) of articles.data"
-              :key="article.id"
+              v-for="(category, idx) of categoires.data"
+              :key="category.id"
               class="animate-fade-in-down"
             >
               <td class="w-[20px]">
@@ -310,35 +302,14 @@ const deleteCheckedItems = () => {
                   v-model="checkedItems"
                   @change="selectedCheckItem()"
                   ref="checkItem"
-                  :value="article.id"
+                  :value="category.id"
                 />
               </td>
-              <td class="w-[40px]">{{ article.id }}</td>
-              <td>{{ article.title }}</td>
-              <td>{{ article.updated_at }}</td>
+              <td class="w-[40px]">{{ category.id }}</td>
+              <td>{{ category.name }}</td>
+              <td>{{ category.updated_at }}</td>
               <td>
-                <button
-                  class="edit ml-1"
-                  @click="
-                    router.push({ name: 'app.add-article', params: { id: article.id } })
-                  "
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-5 h-5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
-                    />
-                  </svg>
-                </button>
-                <button class="delete ml-5" @click="deleteArticle(article)">
+                <button class="delete" @click="deleteCategory(category)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -357,7 +328,7 @@ const deleteCheckedItems = () => {
               </td>
             </tr>
 
-            <tr v-if="articles.data.length > 0">
+            <tr v-if="categoires.data.length > 0">
               <td colspan="7">
                 <div class="flex items-center">
                   <svg
@@ -366,7 +337,7 @@ const deleteCheckedItems = () => {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-4 h-4 text-white"
+                    class="w-4 h-4 text-gray-500"
                   >
                     <path
                       stroke-linecap="round"
@@ -395,13 +366,13 @@ const deleteCheckedItems = () => {
           </tbody>
         </table>
       </div>
-      <div class="paging" v-if="articles.total > articles.limit">
-        <div class="pageInfo">Showing from {{ articles.from }} to {{ articles.to }}</div>
+      <div class="paging" v-if="categoires.total > categoires.limit">
+        <div class="pageInfo">Showing from {{ categoires.from }} to {{ categoires.to }}</div>
         <div class="pageBtn">
           <nav>
             <a
               href="#"
-              v-for="(link, i) of articles.links"
+              v-for="(link, i) of categoires.links"
               :key="i"
               @click.prevent="getForPage($event, link)"
               :disabled="!link.url"
@@ -416,7 +387,7 @@ const deleteCheckedItems = () => {
 </template>
 
 <style lang="scss" scoped>
-.articles {
+.categoires {
   display: flex;
   flex-direction: column;
   > h1 {

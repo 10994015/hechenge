@@ -30,7 +30,15 @@ const isCreate = ref(false);
 onMounted(() => {
   const articleId = route.params.id;
 
-  store.dispatch('getArticleCategories').then(res=>{
+  store.dispatch('getArticleCategories',
+  {
+      url:null,
+      sort_field: '',
+      sort_direction: '',
+      search: '',
+      perPage: '',
+    }
+  ).then(res=>{
     categories.value = store.state.articleCategories.data
     categoryLoading.value = store.state.articleCategories.loading
   })
@@ -162,7 +170,7 @@ const onSubmit = () => {
           <label for="imagefile" class="imagefileFor">
             <svg
               v-if="previewLoading"
-              class="animate-spin h-5 w-5 text-white"
+              class="animate-spin h-5 w-5 text-gray-500"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -247,7 +255,7 @@ const onSubmit = () => {
       </form>
       <div v-else class="flex items-center justify-center py-10">
         <svg
-          class="animate-spin h-5 w-5 text-white"
+          class="animate-spin h-5 w-5 text-gray-500"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"

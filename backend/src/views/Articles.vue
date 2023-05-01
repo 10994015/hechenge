@@ -16,12 +16,19 @@ const isSelectAllChecked = ref(false);
 const checkItem = ref(null);
 onMounted(() => {
   getArticles();
-  store.dispatch('getArticleCategories').then(res=>{
+  store.dispatch('getArticleCategories',
+    {
+      url:null,
+      sort_field: '',
+      sort_direction: '',
+      search: '',
+      perPage: '',
+    }
+  ).then(res=>{
     // categories.value = store.state.articleCategories.data
     store.state.articleCategories.data.forEach(category=>{
       categories.value[category.id] = category.name
     })
-    console.log(categories.value);
   })
 });
 const getForPage = (ev, link) => {
@@ -357,7 +364,7 @@ const deleteCheckedItems = () => {
             <tr>
               <td colspan="7" class="w-full" style="text-align: center">
                 <svg
-                  class="animate-spin h-5 w-5 text-black"
+                  class="animate-spin h-5 w-5 text-gray-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -400,7 +407,8 @@ const deleteCheckedItems = () => {
                 <img v-else src="@/assets/news.jpg" />
               </td>
               <td>{{ article.title }}</td>
-              <td >{{ categories[article.category_id] }}</td>
+              <td v-if="categories[article.category_id]!=null">{{ categories[article.category_id] }}</td>
+              <td v-else class="text-gray-400">尚無分類</td>
               <td>{{ article.updated_at }}</td>
               <td>
                 <span v-if="article.hidden">隱藏</span

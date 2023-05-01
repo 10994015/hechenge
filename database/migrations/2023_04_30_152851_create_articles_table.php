@@ -23,7 +23,7 @@ class CreateArticlesTable extends Migration
             $table->string('image_mime')->nullable();
             $table->integer('image_size')->nullable();
             $table->longText('content')->nullable();
-            $table->foreignIdFor(Category::class, 'category_id')->nullable();
+            $table->foreignIdFor(Category::class, 'category_id')->nullable()->onDelete('set null');
             $table->boolean('hidden')->default(false);
             $table->foreignIdFor(User::class, 'created_by')->nullable();
             $table->foreignIdFor(User::class, 'updated_by')->nullable();

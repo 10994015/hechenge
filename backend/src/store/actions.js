@@ -22,14 +22,25 @@ export function getUser({commit}){
 }
 //article category
 
-export function getArticleCategories({commit}){
+export function getArticleCategories({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction}){
     commit('setArticleCategories', [true]);
-    return axiosClient.get('/articleCategories').then(res=>{
+    url = url || '/articleCategories';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction}}).then(res=>{
         console.log(res.data);
-        commit('setArticleCategories', [false, res]);
+        commit('setArticleCategories', [false, res.data]);
+    }).catch(err=>{
+        commit('setArticleCategories', [false]);
     })
 }
-
+export function createArticleCategory({commit}, category){
+    return axiosClient.post('/articleCategory', category);
+}
+export function deleteArticleCategory({commit}, id){
+    return axiosClient.delete(`/articleCategory/${id}`);
+}
+export function deleteArticleCategoryItems({commit}, ids){
+    return axiosClient.post(`/articleCategoryItems`, {'ids':ids});
+}
 //article
 export function getArticles({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction}){
     commit('setArticles', [true]);

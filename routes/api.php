@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -24,7 +25,12 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function(){
     Route::apiResource('articles', ArticleController::class);
     Route::post('/isExistArticle', [ArticleController::class, 'isExistArticle']);
     Route::post('/articleItems', [ArticleController::class, 'deleteItems']);
-    Route::get('/articleCategories', [ArticleController::class, 'getCategories']);
+    //article categoires
+    Route::get('/articleCategories', [ArticleCategoryController::class, 'index']);
+    Route::post('/articleCategory', [ArticleCategoryController::class, 'store']);
+    Route::delete('/articleCategory/{id}', [ArticleCategoryController::class, 'destroy']);
+    Route::post('/articleCategoryItems', [ArticleCategoryController::class, 'deleteItems']);
+
 });
 
 Route::post('/login', [AuthController::class, 'login']);

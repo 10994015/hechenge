@@ -87,7 +87,7 @@ const onSubmit = () => {
           <button
             class="pre"
             type="button"
-            @click="router.push({ name: 'app.articles' })"
+            @click="router.push({ name: 'app.article.categories' })"
           >
             回列表
           </button>
@@ -95,7 +95,7 @@ const onSubmit = () => {
       </form>
       <div v-else class="flex items-center justify-center py-10">
         <svg
-          class="animate-spin h-5 w-5 text-white"
+          class="animate-spin h-5 w-5 text-gray-500"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"

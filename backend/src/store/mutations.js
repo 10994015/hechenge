@@ -28,7 +28,15 @@ export function setArticles(state, [loading, res=null]){
 
 export function setArticleCategories(state, [loading, res=null]){
     if(res){
-        state.articleCategories.data = res.data
+        state.articleCategories  = {
+            data: res.data,
+            links: res.meta.links,
+            total: res.meta.total,
+            limit: res.meta.per_page,
+            from: res.meta.from,
+            to: res.meta.to,
+            page: res.meta.current_page,
+        }
     }
     state.articleCategories.loading = loading;
 }
