@@ -87,9 +87,9 @@ const onSubmit = () => {
           <button
             class="pre"
             type="button"
-            @click="router.push({ name: 'app.article.categories' })"
+            @click="router.go(-1)"
           >
-            回列表
+            回前頁
           </button>
         </div>
       </form>
