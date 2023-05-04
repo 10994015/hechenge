@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -47,5 +48,9 @@ class AuthController extends Controller
     }
     public function getUser(Request $req){
         return new UserResource($req->user());
+    }
+
+    public function uploadImage(){
+        Log::info('123');
     }
 }

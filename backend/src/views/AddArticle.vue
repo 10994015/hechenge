@@ -3,9 +3,7 @@ import { ref, onMounted, watch } from "vue";
 import store from "../store";
 import { useRouter, useRoute } from "vue-router";
 const route = useRoute();
-
 const router = useRouter();
-
 const DEFAULT_ARTICLE = {
   id: "",
   title: "",
@@ -28,6 +26,7 @@ const successMsg = ref(null);
 const article = ref({ ...DEFAULT_ARTICLE });
 const isCreate = ref(false);
 onMounted(() => {
+  
   const articleId = route.params.id;
 
   store.dispatch('getArticleCategories',
@@ -81,6 +80,9 @@ onMounted(() => {
       console.error(err);
     });
 
+
+
+  
 });
 
 const previewImage = (ev) => {
@@ -128,6 +130,7 @@ const onSubmit = () => {
       });
   }
 };
+
 </script>
 
 <template>
@@ -162,7 +165,6 @@ const onSubmit = () => {
         </div>
         <div class="form-group">
           <label for="">文章內容</label>
-          <!-- <CKEditor :content="article.content" @sendContent="getCkEditorContent" /> -->
           <textarea id="editor1" name="editor1" v-model="article.content"></textarea>
         </div>
         <div class="form-group">

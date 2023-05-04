@@ -21,6 +21,9 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function(){
     Route::get('/user', [AuthController::class, 'getUser']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
+    //upload image
+    Route::get('/upload-images', [AuthController::class, 'uploadImage']);
+
     //article
     Route::apiResource('articles', ArticleController::class);
     Route::post('/isExistArticle', [ArticleController::class, 'isExistArticle']);
