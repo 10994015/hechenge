@@ -170,7 +170,7 @@ header {
         &:hover {
             color: #bbb;
         }
-        }
+      }
   }
     > svg {
       color: #fff;
