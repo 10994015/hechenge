@@ -2,6 +2,8 @@
 import { ref, onMounted, watch } from "vue";
 import store from "../store";
 import { useRouter, useRoute } from "vue-router";
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+
 const route = useRoute();
 const router = useRouter();
 const DEFAULT_ARTICLE = {
@@ -131,6 +133,11 @@ const onSubmit = () => {
   }
 };
 
+const editor = ref(ClassicEditor);
+
+
+
+
 </script>
 
 <template>
@@ -165,7 +172,17 @@ const onSubmit = () => {
         </div>
         <div class="form-group">
           <label for="">文章內容</label>
-          <textarea id="editor1" name="editor1" v-model="article.content"></textarea>
+          <ckeditor
+            :editor="editor"
+            id="editor"
+            v-model="article.content"
+            :config="{
+              ckfinder: {
+                uploadUrl: 'http://localhost:8000/api/upload-images'
+              },
+            }"
+          ></ckeditor>
+          <!-- <textarea id="editor" name="editor" v-model="article.content"></textarea> -->
         </div>
         <div class="form-group">
           <label for="">文章圖片</label>

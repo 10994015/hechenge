@@ -6,7 +6,10 @@ use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
 class AuthController extends Controller
 {
     public function login(Request $req){
@@ -50,7 +53,26 @@ class AuthController extends Controller
         return new UserResource($req->user());
     }
 
-    public function uploadImage(){
-        Log::info('123');
+    public function uploadImage(Request $req){
+        $image = $req->file('upload');
+        if($image){
+            $relatevePath = $this->saveImage($image);
+            // $data['image'] = URL::to(Storage::url($relatevePath));
+            $image = URL::to('/storage/public/'.$relatevePath);
+            log::info(URL::to('/storage/public/'.$relatevePath));
+            log::info($relatevePath);
+        }
+    }
+
+    public function saveImage(UploadedFile $image){
+        $path = 'images/' . Str::random();
+        if(!Storage::exists($path)){
+            Storage::makeDirectory($path, 0755, true);
+        }
+        if(!Storage::putFileAs('public/' . $path, $image, $image->getClientOriginalName())){
+            throw new \Exception("Unable to save file \"{$image->getClientOriginalName()}\"");
+        }
+
+        return $path . '/' .$image->getClientOriginalName();
     }
 }

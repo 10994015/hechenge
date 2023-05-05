@@ -46,6 +46,7 @@ class ArticleController extends Controller
 
         
         $image = $data['image'] ?? NULL;
+        log::info($image);
 
         if($image){
             $relatevePath = $this->saveImage($image);
@@ -84,7 +85,6 @@ class ArticleController extends Controller
         $data['updated_by'] = $request->user()->id;
 
         $image = $data['image'] ?? null;
-        
         if($image){
             $relativePath = $this->saveImage($image);
             // $data['image'] = URL::to(Storage::url($relativePath));
