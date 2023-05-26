@@ -26,7 +26,6 @@ export function getArticleCategories({commit}, {url = null, search = '', perPage
     commit('setArticleCategories', [true]);
     url = url || '/articleCategories';
     return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction}}).then(res=>{
-        console.log(res.data);
         commit('setArticleCategories', [false, res.data]);
     }).catch(err=>{
         commit('setArticleCategories', [false]);

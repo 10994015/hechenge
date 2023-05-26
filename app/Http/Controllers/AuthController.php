@@ -58,18 +58,20 @@ class AuthController extends Controller
         if($image){
             $relatevePath = $this->saveImage($image);
             // $data['image'] = URL::to(Storage::url($relatevePath));
-            $image = URL::to('/storage/public/'.$relatevePath);
+            $image = URL::to('/storage/images/'.$relatevePath);
             log::info(URL::to('/storage/public/'.$relatevePath));
             log::info($relatevePath);
         }
+
+        return response()->json(['fileName'=>$relatevePath, 'uploaded'=>1, 'url'=>$image]);
     }
 
     public function saveImage(UploadedFile $image){
-        $path = 'images/' . Str::random();
+        $path = Str::random();
         if(!Storage::exists($path)){
             Storage::makeDirectory($path, 0755, true);
         }
-        if(!Storage::putFileAs('public/' . $path, $image, $image->getClientOriginalName())){
+        if(!Storage::putFileAs('images/' .  $path, $image, $image->getClientOriginalName())){
             throw new \Exception("Unable to save file \"{$image->getClientOriginalName()}\"");
         }
 

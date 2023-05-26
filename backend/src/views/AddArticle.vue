@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, } from "vue";
 import store from "../store";
 import { useRouter, useRoute } from "vue-router";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
@@ -42,12 +42,14 @@ onMounted(() => {
   ).then(res=>{
     categories.value = store.state.articleCategories.data
     categoryLoading.value = store.state.articleCategories.loading
+    article.value.category_id = categories.value[0].id
   })
 
   if (articleId === "create") {
     randerLoading.value = true;
     article.value.id = articleId;
     isCreate.value = true;
+    
     return;
   }
   store
@@ -135,9 +137,6 @@ const onSubmit = () => {
 
 const editor = ref(ClassicEditor);
 
-
-
-
 </script>
 
 <template>
@@ -156,7 +155,7 @@ const editor = ref(ClassicEditor);
             <option value="">Loading...</option>
             </select>
             <select v-else v-model="article.category_id">
-              <option v-for="category in categories" :key="category.id"  :value="category.id" >{{category.name}}</option>
+              <option v-for="category in categories" :key="category.id"  :value="category.id">{{category.name}}</option>
             </select>
             <router-link :to="{name:'app.article.add-category' , params: { id: 'create' }}">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
