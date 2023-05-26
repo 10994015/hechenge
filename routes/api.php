@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleCategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function(){
 
     //upload image
 
-    //article
+    //articles
     Route::apiResource('articles', ArticleController::class);
     Route::post('/isExistArticle', [ArticleController::class, 'isExistArticle']);
     Route::post('/articleItems', [ArticleController::class, 'deleteItems']);
@@ -33,6 +34,10 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function(){
     Route::post('/articleCategory', [ArticleCategoryController::class, 'store']);
     Route::delete('/articleCategory/{id}', [ArticleCategoryController::class, 'destroy']);
     Route::post('/articleCategoryItems', [ArticleCategoryController::class, 'deleteItems']);
+    //banners
+    Route::apiResource('banners', BannerController::class);
+    Route::post('/isExistBanner', [BannerController::class, 'isExistBanner']);
+    Route::post('/bannerItems', [BannerController::class, 'deleteItems']);
 
 });
 

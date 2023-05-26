@@ -5,6 +5,8 @@ import Articles from "../views/Articles.vue"
 import AddArticle from "../views/AddArticle.vue"
 import ArticleCategories from "../views/ArticleCategories.vue"
 import AddArticleCategory from "../views/AddArticleCategory.vue"
+import Banners from "../views/Banners.vue"
+import AddBanner from "../views/AddBanner.vue"
 import NotFound from "../views/NotFound.vue"
 import AppLayout from "../components/AppLayout.vue"
 import store from "../store"
@@ -23,7 +25,7 @@ const routes = [
                 component: Dashboard
             },
             {
-                path:'/articles',
+                path:'articles',
                 name:'app.articles',
                 component: Articles
             },
@@ -41,6 +43,16 @@ const routes = [
                 path:'add-article-category/:id',
                 name:'app.article.add-category',
                 component:AddArticleCategory,
+            },
+            {
+                path:'banners',
+                name:'app.banners',
+                component:Banners,
+            },
+            {
+                path:'add-banner/:id',
+                name:'app.add-banner',
+                component:AddBanner,
             },
         ]
     },

@@ -96,3 +96,58 @@ export function deleteArticle({commit}, id){
 export function deleteArticleItems({commit}, ids){
     return axiosClient.post(`/articleItems`, {'ids':ids});
 }
+
+//banners
+export function getBanners({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction}){
+    commit('setBanners', [true]);
+    url = url || '/banners';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction}}).then(res=>{
+        commit('setBanners', [false, res.data]);
+    }).catch(err=>{
+        commit('setBanners', [false]);
+    })
+}
+export function getBanner({commit}, id){
+    return axiosClient.get(`/banners/${id}`);
+}
+export function createBanner({commit}, banner){
+    const hidden = (banner.hidden) ? 1 :0;
+    if(banner.image instanceof File){
+        const form = new FormData();
+        form.append('title', banner.title);
+        form.append('image', banner.image);
+        form.append('url', banner.url);
+        form.append('hidden', hidden);
+        banner = form;
+    }
+    return axiosClient.post('/banners', banner);
+}
+export function isExistBanner({commit}, id){
+    return axiosClient.post(`/isExistBanner`, {id: id}).then(res=>{
+        return res;
+    });
+}
+export function updateBanner({commit}, banner){
+    const id = banner.id;
+    const hidden = (banner.hidden) ? 1 :0;
+    if(banner.image instanceof File){
+        const form = new FormData();
+        form.append('id', banner.id);
+        form.append('title', banner.title);
+        form.append('image', banner.image);
+        form.append('url', banner.url);
+        form.append('hidden', hidden);
+        form.append('_method', 'PUT');
+        banner = form;
+    }else{
+        banner._method = 'PUT'
+    }
+    return axiosClient.post(`/banners/${id}`, banner);
+}
+
+export function deleteBanner({commit}, id){
+    return axiosClient.delete(`/banners/${id}`);
+}
+export function deleteBannerItems({commit}, ids){
+    return axiosClient.post(`/bannerItems`, {'ids':ids});
+}

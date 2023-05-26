@@ -59,8 +59,6 @@ class AuthController extends Controller
             $relatevePath = $this->saveImage($image);
             // $data['image'] = URL::to(Storage::url($relatevePath));
             $image = URL::to('/storage/images/'.$relatevePath);
-            log::info(URL::to('/storage/public/'.$relatevePath));
-            log::info($relatevePath);
         }
 
         return response()->json(['fileName'=>$relatevePath, 'uploaded'=>1, 'url'=>$image]);

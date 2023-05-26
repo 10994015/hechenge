@@ -40,3 +40,18 @@ export function setArticleCategories(state, [loading, res=null]){
     }
     state.articleCategories.loading = loading;
 }
+
+export function setBanners(state, [loading, res=null]){
+    if(res){
+        state.banners = {
+            data: res.data,
+            links: res.meta.links,
+            total: res.meta.total,
+            limit: res.meta.per_page,
+            from: res.meta.from,
+            to: res.meta.to,
+            page: res.meta.current_page,
+        }
+    }
+    state.banners.loading = loading;
+}
