@@ -20,6 +20,20 @@ export function getUser({commit}){
         return res;
     })
 }
+export function updateUser({commit}, profile){
+    const id = profile.id;
+    if(profile.image instanceof File){
+        const form = new FormData();
+        form.append('id', profile.id);
+        form.append('name', profile.name);
+        form.append('image', profile.image);
+        form.append('_method', 'PUT');
+        profile = form;
+    }else{
+        profile._method = 'PUT'
+    }
+    return axiosClient.post(`/updateUser`, profile);
+}
 //article category
 
 export function getArticleCategories({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction}){

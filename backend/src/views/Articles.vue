@@ -517,6 +517,8 @@ const deleteCheckedItems = () => {
 .articles {
   display: flex;
   flex-direction: column;
+  padding: 20px 25px;
+
   > h1 {
     font-weight: 900;
     color: #333;

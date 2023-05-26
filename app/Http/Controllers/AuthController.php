@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +16,7 @@ class AuthController extends Controller
 {
     public function login(Request $req){
         $createdentials = $req->validate([
-            'email'=>['required', 'email'],
+            'username'=>['required'],
             'password'=>['required'],
             'remember'=>'boolean',
         ]);
@@ -52,7 +54,27 @@ class AuthController extends Controller
     public function getUser(Request $req){
         return new UserResource($req->user());
     }
+    public function updateUser(Request $request){
+        $id = Auth::id();
+        log::info($request);
+        $data = $request->validate([
+            'name'=> ['required', 'max:2000'],
+            'image'=> ['nullable', 'image'],
+        ]);
+        $user = User::find($id);
+        
+        $image = $data['image'] ?? null;
+        if($image){
+            $relativePath = $this->saveImage($image);
+            $data['image'] = URL::to('/storage/images/'.$relativePath);
 
+            if($user->image){
+                Storage::deleteDirectory('/images/' . dirname($user->image));
+            }
+        }
+        $user->update($data);
+        return new UserResource($user);
+    }
     public function uploadImage(Request $req){
         $image = $req->file('upload');
         if($image){

@@ -22,6 +22,7 @@ Route::post('/upload-images', [AuthController::class, 'uploadImage']);
 Route::middleware(['auth:sanctum', 'admin'])->group(function(){
     Route::get('/user', [AuthController::class, 'getUser']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::put('/updateUser', [AuthController::class, 'updateUser']);
 
     //upload image
 

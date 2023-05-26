@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/Login.vue"
 import Dashboard from "../views/Dashboard.vue"
+import Profile from "../views/Profile.vue"
 import Articles from "../views/Articles.vue"
 import AddArticle from "../views/AddArticle.vue"
 import ArticleCategories from "../views/ArticleCategories.vue"
@@ -23,6 +24,11 @@ const routes = [
                 path:'',
                 name:'app.dashboard',
                 component: Dashboard
+            },
+            {
+                path:'profile',
+                name:'app.profile',
+                component: Profile
             },
             {
                 path:'articles',

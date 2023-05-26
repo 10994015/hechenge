@@ -6,7 +6,7 @@ const router = useRouter();
 const loading = ref(false);
 const errorMsg = ref("");
 const user = {
-  email: "",
+  username: "",
   password: "",
   remember: false,
 };
@@ -49,7 +49,7 @@ const login = () => {
               />
             </svg>
           </div>
-          <input type="email" name="email" placeholder="Email" v-model="user.email" />
+          <input type="text" name="username" placeholder="Username" v-model="user.username" />
         </div>
         <div class="form-group">
           <div class="icon">
@@ -174,6 +174,7 @@ const login = () => {
           margin-right: 0;
         }
         input[type="email"],
+        input[type="text"],
         input[type="password"] {
           background-color: hsla(0, 0%, 100%, 0.1);
           width: 274px;

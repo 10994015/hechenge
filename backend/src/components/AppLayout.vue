@@ -70,7 +70,6 @@ const openSideBar = () => {
       height: auto;
       width: 100%;
       >.router-view{
-        padding: 20px 25px;
         height: auto;
         min-height: calc(100vh - 151px);
       }
