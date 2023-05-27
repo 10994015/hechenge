@@ -590,6 +590,7 @@ const deleteCheckedItems = () => {
             padding: 0 7px;
             outline: none;
             margin-left: 15px;
+            font-size: 15px;
           }
         }
       }

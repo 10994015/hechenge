@@ -1,29 +1,43 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import store from "../store";
-import { ARTICLE_CATEGORIES_PER_PAGE } from "../constants";
+import { COURSES_PER_PAGE } from "../constants";
 import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
-const perPage = ref(ARTICLE_CATEGORIES_PER_PAGE);
+const perPage = ref(COURSES_PER_PAGE);
 const search = ref("");
 const sortField = ref("updated_at");
 const sortDirection = ref("desc");
 
-const categoires = computed(() => store.state.articleCategories);
+const courses = computed(() => store.state.courses);
+const categories = ref({})
 const checkedItems = ref([]);
 const isSelectAllChecked = ref(false);
 const checkItem = ref(null);
 onMounted(() => {
-  getCategories();
+  getCourses();
+  store.dispatch('getCourseCategories',
+    {
+      url:null,
+      sort_field: '',
+      sort_direction: '',
+      search: '',
+      perPage: '',
+    }
+  ).then(res=>{
+    store.state.courseCategories.data.forEach(category=>{
+      categories.value[category.id] = category.name
+    })
+  })
 });
 const getForPage = (ev, link) => {
   if (!link.url || link.active) return;
 
-  getCategories(link.url);
+  getCourses(link.url);
 };
 
-const getCategories = (url = null) => {
-  store.dispatch("getArticleCategories", {
+const getCourses = (url = null) => {
+  store.dispatch("getCourses", {
     url,
     sort_field: sortField.value,
     sort_direction: sortDirection.value,
@@ -31,7 +45,7 @@ const getCategories = (url = null) => {
     perPage: perPage.value,
   });
 };
-const sortCategories = (field) => {
+const sortCourses = (field) => {
   sortField.value = field;
   if (sortField.value === field) {
     if (sortDirection.value === "asc") {
@@ -44,17 +58,17 @@ const sortCategories = (field) => {
     sortDirection.value = "asc";
   }
 
-  getCategories();
+  getCourses();
 };
-const deleteCategory = (category) => {
-  if (!confirm(`確定要刪除 ${category.name} 嗎？`)) return;
-  store.dispatch("deleteArticleCategory", category.id).then((res) => {
+const deleteCourse = (course) => {
+  if (!confirm(`確定要刪除 ${course.title} 嗎？`)) return;
+  store.dispatch("deleteCourse", course.id).then((res) => {
     alert("刪除成功！");
-    getCategories();
+    getCourses();
   });
 };
 const selectedCheckItem = () => {
-  if (checkedItems.value.length < categoires.value.total) {
+  if (checkedItems.value.length < courses.value.total) {
     isSelectAllChecked.value = false;
   }
 };
@@ -71,9 +85,9 @@ const selectAllCheckItems = () => {
 };
 const deleteCheckedItems = () => {
   if (confirm("確定刪除？")) {
-    store.dispatch("deleteArticleCategoryItems", checkedItems.value).then((res) => {
+    store.dispatch("deleteCourseItems", checkedItems.value).then((res) => {
       alert("刪除成功！");
-      getCategories();
+      getCourses();
       checkedItems.value = [];
     });
   }
@@ -81,9 +95,9 @@ const deleteCheckedItems = () => {
 </script>
 
 <template>
-  <div class="categoires">
+  <div class="courses">
     <pre></pre>
-    <h1>文章分類列表</h1>
+    <h1>課程列表</h1>
     <div class="card">
       <div class="card-header">
         <div class="left">
@@ -108,11 +122,11 @@ const deleteCheckedItems = () => {
               type="text"
               placeholder="搜尋..."
               v-model="search"
-              @change="getCategories()"
+              @change="getCourses()"
             />
           </div>
           <div class="form-group">
-            <select v-model="perPage" @change="getCategories()">
+            <select v-model="perPage" @change="getCourses()">
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="50">50</option>
@@ -124,8 +138,8 @@ const deleteCheckedItems = () => {
           <div class="form-group">
             <router-link
               class="btn"
-              :to="{ name: 'app.article.add-category', params: { id: 'create' } }"
-              >+ 新增文章分類</router-link
+              :to="{ name: 'app.add-course', params: { id: 'create' } }"
+              >+ 新增課程</router-link
             >
           </div>
         </div>
@@ -142,7 +156,7 @@ const deleteCheckedItems = () => {
                 />
               </th>
               <th
-                @click="sortCategories('id')"
+                @click="sortCourses('id')"
                 :class="['w-[40px]', 'cursor-pointer', { active: sortField === 'id' }]"
               >
                 <div class="flex items-center">
@@ -182,12 +196,12 @@ const deleteCheckedItems = () => {
                 </div>
               </th>
               <th
-                @click="sortCategories('name')"
-                :class="['cursor-pointer', { active: sortField === 'name' }]"
+                @click="sortCourses('image')"
+                :class="['cursor-pointer', { active: sortField === 'image' }]"
               >
                 <div class="flex items-center">
-                  <div>分類名稱</div>
-                  <div class="ml-2" v-if="sortField === 'name'">
+                  <div>圖片</div>
+                  <div class="ml-2" v-if="sortField === 'image'">
                     <svg
                       v-if="sortDirection === 'desc'"
                       xmlns="http://www.w3.org/2000/svg"
@@ -222,11 +236,91 @@ const deleteCheckedItems = () => {
                 </div>
               </th>
               <th
-                @click="sortCategories('updated_at')"
+                @click="sortCourses('title')"
+                :class="['cursor-pointer', { active: sortField === 'title' }]"
+              >
+                <div class="flex items-center">
+                  <div>標題</div>
+                  <div class="ml-2" v-if="sortField === 'title'">
+                    <svg
+                      v-if="sortDirection === 'desc'"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
+                      />
+                    </svg>
+                    <svg
+                      v-if="sortDirection === 'asc'"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </th>
+              <th
+                @click="sortCourses('category_id')"
+                :class="['cursor-pointer', { active: sortField === 'category_id' }]"
+              >
+                <div class="flex items-center">
+                  <div>分類</div>
+                  <div class="ml-2" v-if="sortField === 'category_id'">
+                    <svg
+                      v-if="sortDirection === 'desc'"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
+                      />
+                    </svg>
+                    <svg
+                      v-if="sortDirection === 'asc'"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </th>
+              <th
+                @click="sortCourses('updated_at')"
                 :class="['cursor-pointer', { active: sortField === 'updated_at' }]"
               >
                 <div class="flex items-center">
-                  <div>新增時間</div>
+                  <div>最後更新時間</div>
                   <div class="ml-2" v-if="sortField === 'updated_at'">
                     <svg
                       v-if="sortDirection === 'desc'"
@@ -261,10 +355,11 @@ const deleteCheckedItems = () => {
                   </div>
                 </div>
               </th>
+              <th>是否顯示</th>
               <th>操作</th>
             </tr>
           </thead>
-          <tbody v-if="categoires.loading" class="loadingTable">
+          <tbody v-if="courses.loading" class="loadingTable">
             <tr>
               <td colspan="7" class="w-full" style="text-align: center">
                 <svg
@@ -292,8 +387,8 @@ const deleteCheckedItems = () => {
           </tbody>
           <tbody v-else>
             <tr
-              v-for="(category, idx) of categoires.data"
-              :key="category.id"
+              v-for="(course, idx) of courses.data"
+              :key="course.id"
               class="animate-fade-in-down"
             >
               <td class="w-[20px]">
@@ -302,14 +397,45 @@ const deleteCheckedItems = () => {
                   v-model="checkedItems"
                   @change="selectedCheckItem()"
                   ref="checkItem"
-                  :value="category.id"
+                  :value="course.id"
                 />
               </td>
-              <td class="w-[40px]">{{ category.id }}</td>
-              <td>{{ category.name }}</td>
-              <td>{{ category.updated_at }}</td>
+              <td class="w-[40px]">{{ course.id }}</td>
               <td>
-                <button class="delete" @click="deleteCategory(category)">
+                <img v-if="course.image_url" :src="course.image_url" />
+                <img v-else src="@/assets/news.jpg" />
+              </td>
+              <td>{{ course.title }}</td>
+              <td v-if="categories[course.category_id]!=null">{{ categories[course.category_id] }}</td>
+              <td v-else class="text-gray-400">尚無分類</td>
+              <td>{{ course.updated_at }}</td>
+              <td>
+                <span v-if="course.hidden">隱藏</span
+                ><span v-else class="active">顯示</span>
+              </td>
+              <td>
+                <button
+                  class="edit ml-1"
+                  @click="
+                    router.push({ name: 'app.add-course', params: { id: course.id } })
+                  "
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-5 h-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                    />
+                  </svg>
+                </button>
+                <button class="delete ml-5" @click="deleteCourse(course)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -328,7 +454,7 @@ const deleteCheckedItems = () => {
               </td>
             </tr>
 
-            <tr v-if="categoires.data.length > 0">
+            <tr v-if="courses.data.length > 0">
               <td colspan="7">
                 <div class="flex items-center">
                   <svg
@@ -337,7 +463,7 @@ const deleteCheckedItems = () => {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-4 h-4 text-gray-500"
+                    class="w-4 h-4 text-gray-900"
                   >
                     <path
                       stroke-linecap="round"
@@ -366,13 +492,13 @@ const deleteCheckedItems = () => {
           </tbody>
         </table>
       </div>
-      <div class="paging" v-if="categoires.total > categoires.limit">
-        <div class="pageInfo">Showing from {{ categoires.from }} to {{ categoires.to }}</div>
+      <div class="paging" v-if="courses.total > courses.limit">
+        <div class="pageInfo">Showing from {{ courses.from }} to {{ courses.to }}</div>
         <div class="pageBtn">
           <nav>
             <a
               href="#"
-              v-for="(link, i) of categoires.links"
+              v-for="(link, i) of courses.links"
               :key="i"
               @click.prevent="getForPage($event, link)"
               :disabled="!link.url"
@@ -387,10 +513,11 @@ const deleteCheckedItems = () => {
 </template>
 
 <style lang="scss" scoped>
-.categoires {
+.courses {
   display: flex;
   flex-direction: column;
   padding: 20px 25px;
+
   > h1 {
     font-weight: 900;
     color: #333;

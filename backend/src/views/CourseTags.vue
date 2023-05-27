@@ -1,29 +1,29 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import store from "../store";
-import { ARTICLE_CATEGORIES_PER_PAGE } from "../constants";
+import { COURSE_TAGS_PER_PAGE } from "../constants";
 import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
-const perPage = ref(ARTICLE_CATEGORIES_PER_PAGE);
+const perPage = ref(COURSE_TAGS_PER_PAGE);
 const search = ref("");
 const sortField = ref("updated_at");
 const sortDirection = ref("desc");
 
-const categoires = computed(() => store.state.articleCategories);
+const categoires = computed(() => store.state.courseTags);
 const checkedItems = ref([]);
 const isSelectAllChecked = ref(false);
 const checkItem = ref(null);
 onMounted(() => {
-  getCategories();
+  getTags();
 });
 const getForPage = (ev, link) => {
   if (!link.url || link.active) return;
 
-  getCategories(link.url);
+  getTags(link.url);
 };
 
-const getCategories = (url = null) => {
-  store.dispatch("getArticleCategories", {
+const getTags = (url = null) => {
+  store.dispatch("getCourseTags", {
     url,
     sort_field: sortField.value,
     sort_direction: sortDirection.value,
@@ -31,7 +31,7 @@ const getCategories = (url = null) => {
     perPage: perPage.value,
   });
 };
-const sortCategories = (field) => {
+const sortTags = (field) => {
   sortField.value = field;
   if (sortField.value === field) {
     if (sortDirection.value === "asc") {
@@ -44,13 +44,13 @@ const sortCategories = (field) => {
     sortDirection.value = "asc";
   }
 
-  getCategories();
+  getTags();
 };
-const deleteCategory = (category) => {
-  if (!confirm(`確定要刪除 ${category.name} 嗎？`)) return;
-  store.dispatch("deleteArticleCategory", category.id).then((res) => {
+const deleteTag = (tag) => {
+  if (!confirm(`確定要刪除 ${tag.name} 嗎？`)) return;
+  store.dispatch("deleteCourseTag", tag.id).then((res) => {
     alert("刪除成功！");
-    getCategories();
+    getTags();
   });
 };
 const selectedCheckItem = () => {
@@ -71,9 +71,9 @@ const selectAllCheckItems = () => {
 };
 const deleteCheckedItems = () => {
   if (confirm("確定刪除？")) {
-    store.dispatch("deleteArticleCategoryItems", checkedItems.value).then((res) => {
+    store.dispatch("deleteCourseTagItems", checkedItems.value).then((res) => {
       alert("刪除成功！");
-      getCategories();
+      getTags();
       checkedItems.value = [];
     });
   }
@@ -83,7 +83,7 @@ const deleteCheckedItems = () => {
 <template>
   <div class="categoires">
     <pre></pre>
-    <h1>文章分類列表</h1>
+    <h1>課程標籤列表</h1>
     <div class="card">
       <div class="card-header">
         <div class="left">
@@ -108,11 +108,11 @@ const deleteCheckedItems = () => {
               type="text"
               placeholder="搜尋..."
               v-model="search"
-              @change="getCategories()"
+              @change="getTags()"
             />
           </div>
           <div class="form-group">
-            <select v-model="perPage" @change="getCategories()">
+            <select v-model="perPage" @change="getTags()">
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="50">50</option>
@@ -124,8 +124,8 @@ const deleteCheckedItems = () => {
           <div class="form-group">
             <router-link
               class="btn"
-              :to="{ name: 'app.article.add-category', params: { id: 'create' } }"
-              >+ 新增文章分類</router-link
+              :to="{ name: 'app.course.add-tag', params: { id: 'create' } }"
+              >+ 新增課程標籤</router-link
             >
           </div>
         </div>
@@ -142,7 +142,7 @@ const deleteCheckedItems = () => {
                 />
               </th>
               <th
-                @click="sortCategories('id')"
+                @click="sortTags('id')"
                 :class="['w-[40px]', 'cursor-pointer', { active: sortField === 'id' }]"
               >
                 <div class="flex items-center">
@@ -182,11 +182,11 @@ const deleteCheckedItems = () => {
                 </div>
               </th>
               <th
-                @click="sortCategories('name')"
+                @click="sortTags('name')"
                 :class="['cursor-pointer', { active: sortField === 'name' }]"
               >
                 <div class="flex items-center">
-                  <div>分類名稱</div>
+                  <div>標籤名稱</div>
                   <div class="ml-2" v-if="sortField === 'name'">
                     <svg
                       v-if="sortDirection === 'desc'"
@@ -222,7 +222,7 @@ const deleteCheckedItems = () => {
                 </div>
               </th>
               <th
-                @click="sortCategories('updated_at')"
+                @click="sortTags('updated_at')"
                 :class="['cursor-pointer', { active: sortField === 'updated_at' }]"
               >
                 <div class="flex items-center">
@@ -292,8 +292,8 @@ const deleteCheckedItems = () => {
           </tbody>
           <tbody v-else>
             <tr
-              v-for="(category, idx) of categoires.data"
-              :key="category.id"
+              v-for="(tag, idx) of categoires.data"
+              :key="tag.id"
               class="animate-fade-in-down"
             >
               <td class="w-[20px]">
@@ -302,14 +302,14 @@ const deleteCheckedItems = () => {
                   v-model="checkedItems"
                   @change="selectedCheckItem()"
                   ref="checkItem"
-                  :value="category.id"
+                  :value="tag.id"
                 />
               </td>
-              <td class="w-[40px]">{{ category.id }}</td>
-              <td>{{ category.name }}</td>
-              <td>{{ category.updated_at }}</td>
+              <td class="w-[40px]">{{ tag.id }}</td>
+              <td>{{ tag.name }}</td>
+              <td>{{ tag.updated_at }}</td>
               <td>
-                <button class="delete" @click="deleteCategory(category)">
+                <button class="delete" @click="deleteTag(tag)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

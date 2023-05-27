@@ -7,10 +7,10 @@ const props = defineProps({
 });
 const emit = defineEmits(["openSideBar"]);
 const isArticle = ref(false);
-const isAbout = ref(false);
+const isCourse = ref(false);
 const sideBarOpen = computed(() => props.modelValue);
 const closeItems = () => {
-  isAbout.value = false;
+  isCourse.value = false;
   isArticle.value = false;
 };
 watch(sideBarOpen, (val) => {
@@ -18,10 +18,36 @@ watch(sideBarOpen, (val) => {
     closeItems();
   }
 });
+const olObj = ref({
+  article:[
+    {
+      link:'app.articles',
+      textname:'文章列表',
+    },
+    {
+      link:'app.article.categories',
+      textname:'文章分類',
+    },
+  ],
+  course:[
+    {
+      link:'app.courses',
+      textname:'國高中課程'
+    },
+    {
+      link:'app.course.tags',
+      textname:'課程標籤'
+    },
+    {
+      link:'app.course.categories',
+      textname:'課程類別'
+    },
+  ]
+})
 const openList = (name) => {
   emit("openSideBar");
   if (name === "article") return (isArticle.value = !isArticle.value);
-  if (name === "about") return (isAbout.value = !isAbout.value);
+  if (name === "course") return (isCourse.value = !isCourse.value);
 };
 </script>
 
@@ -67,8 +93,8 @@ const openList = (name) => {
           />
         </svg>
       </a>
-      <ol :class="{ open: isArticle }">
-        <router-link :to="{ name: 'app.articles' }">
+      <ol :style="{height: isArticle ? olObj.article.length * 48.5 + 'px' : 0 }">
+        <router-link  v-for="ol in olObj.article" :key="ol.textname"  :to="{ name: ol.link }">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -84,25 +110,7 @@ const openList = (name) => {
             />
           </svg>
 
-          <CloseText textName="文章列表" v-model="sideBarOpen" />
-        </router-link>
-        <router-link :to="{ name: 'app.article.categories' }">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-3 h-3"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
-
-          <CloseText textName="文章分類" v-model="sideBarOpen" />
+          <CloseText :textName="ol.textname" v-model="sideBarOpen" />
         </router-link>
       </ol>
 
@@ -125,29 +133,18 @@ const openList = (name) => {
 
         <CloseText textName="首頁輪播圖" v-model="sideBarOpen" />
       </router-link>
-      <a href="javascript:;" @click="openList('about')">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-5 h-5"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"
-          />
+      <a href="javascript:;" @click="openList('course')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
         </svg>
-        <CloseText textName="關於學會" v-model="sideBarOpen" />
+        <CloseText textName="課程介紹" v-model="sideBarOpen" />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          :class="['w-3', 'h-3', 'ml-auto', { active: isAbout }]"
+          :class="['w-3', 'h-3', 'ml-auto', { active: isCourse }]"
           v-show="!sideBarOpen"
         >
           <path
@@ -157,8 +154,8 @@ const openList = (name) => {
           />
         </svg>
       </a>
-      <ol :class="{ open: isAbout }">
-        <router-link :to="{ name: 'app.dashboard' }">
+      <ol :style="{height: isCourse ? olObj.course.length * 48.5 + 'px' : 0 }">
+        <router-link v-for="ol in olObj.course" :key="ol.textname" :to="{ name: ol.link }">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -174,10 +171,15 @@ const openList = (name) => {
             />
           </svg>
 
-          <CloseText textName="理事長的話" v-model="sideBarOpen" />
+          <CloseText :textName="ol.textname" v-model="sideBarOpen" />
         </router-link>
       </ol>
-     
+      <router-link :to="{ name: 'app.dashboard' }">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+        </svg>
+        <CloseText textName="常見問答" v-model="sideBarOpen" />
+      </router-link>
     </ul>
   </div>
 </template>
@@ -225,6 +227,7 @@ const openList = (name) => {
       margin-left: 10px;
       height: 0;
       overflow: hidden;
+      transition: .3s;
       &.open {
         height: auto;
       }
