@@ -16,7 +16,6 @@ const errorMsg = ref(null);
 const successMsg = ref(null);
 const category = ref({ ...DEFAULT_CATEGORY });
 const isCreate = ref(false);
-
 const successMsgSetNull = ()=>{
   successMsg.value = null;
 }
@@ -34,7 +33,7 @@ const onSubmit = () => {
   loading.value = true;
   if (isCreate.value) {
     store
-      .dispatch("createArticleCategory", category.value)
+      .dispatch("createTeacherCategory", category.value)
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
           successMsg.value = "上傳成功！";
@@ -51,15 +50,15 @@ const onSubmit = () => {
 </script>
 
 <template>
-  <div class="addArticle">
-    <h1>新增文章分類</h1>
+  <div class="addTeacher">
+    <h1>新增師資科目</h1>
     <div class="card">
       <div class="card-title">
         <h2>Basic Information</h2>
       </div>
       <form v-if="randerLoading" action="" @submit.prevent="onSubmit()">
         <div class="form-group">
-          <label for="">分類名稱</label>
+          <label for="">科目名稱</label>
           <input type="text" v-model="category.name" @keyup="successMsgSetNull()" />
         </div>
         <span v-if="successMsg" class="successMsg">{{ successMsg }}</span>
@@ -86,7 +85,7 @@ const onSubmit = () => {
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               ></path>
             </svg>
-            <span v-else>新增分類</span>
+            <span v-else>新增科目</span>
           </button>
           <button
             class="pre"
@@ -127,7 +126,7 @@ const onSubmit = () => {
 </template>
 
 <style lang="scss" scoped>
-.addArticle {
+.addTeacher {
   display: flex;
   flex-direction: column;
   padding: 20px 25px;

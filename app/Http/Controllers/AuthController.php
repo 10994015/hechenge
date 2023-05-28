@@ -71,6 +71,8 @@ class AuthController extends Controller
             if($user->image){
                 Storage::deleteDirectory('/images/' . dirname($user->image));
             }
+        }else{
+            $data['image'] = Auth::user()->image;
         }
         $user->update($data);
         return new UserResource($user);

@@ -7,6 +7,8 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseTagController;
+use App\Http\Controllers\TeacherCategoryController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -56,7 +58,15 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function(){
       Route::post('/courseTag', [CourseTagController::class, 'store']);
       Route::delete('/courseTag/{id}', [CourseTagController::class, 'destroy']);
       Route::post('/courseTagItems', [CourseTagController::class, 'deleteItems']);
-
+      //teacher categoires
+     Route::get('/teacherCategories', [TeacherCategoryController::class, 'index']);
+     Route::post('/teacherCategory', [TeacherCategoryController::class, 'store']);
+     Route::delete('/teacherCategory/{id}', [TeacherCategoryController::class, 'destroy']);
+     Route::post('/teacherCategoryItems', [TeacherCategoryController::class, 'deleteItems']);
+    //teachers
+    Route::apiResource('teachers', TeacherController::class);
+    Route::post('/isExistTeacher', [TeacherController::class, 'isExistTeacher']);
+    Route::post('/teacherItems', [TeacherController::class, 'deleteItems']);
 });
 
 Route::post('/login', [AuthController::class, 'login']);

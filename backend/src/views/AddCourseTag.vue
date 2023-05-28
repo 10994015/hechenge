@@ -16,6 +16,9 @@ const errorMsg = ref(null);
 const successMsg = ref(null);
 const tag = ref({ ...DEFAULT_TAG });
 const isCreate = ref(false);
+const successMsgSetNull = ()=>{
+  successMsg.value = null;
+}
 onMounted(() => {
   const tagId = route.params.id;
   if (tagId === "create") {
@@ -56,7 +59,7 @@ const onSubmit = () => {
       <form v-if="randerLoading" action="" @submit.prevent="onSubmit()">
         <div class="form-group">
           <label for="">標籤名稱</label>
-          <input type="text" v-model="tag.name" />
+          <input type="text" v-model="tag.name" @keyup="successMsgSetNull()" />
         </div>
         <span v-if="successMsg" class="successMsg">{{ successMsg }}</span>
         <div class="form-group btn-group mt-10">

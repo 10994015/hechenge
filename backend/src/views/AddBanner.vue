@@ -24,6 +24,9 @@ const errorMsg = ref(null);
 const successMsg = ref(null);
 const banner = ref({ ...DEFAULT_BANNER });
 const isCreate = ref(false);
+const successMsgSetNull = ()=>{
+  successMsg.value = null;
+}
 onMounted(() => {
   
   const bannerId = route.params.id;
@@ -74,6 +77,7 @@ onMounted(() => {
 
 const previewImage = (ev) => {
   previewLoading.value = true;
+  successMsgSetNull()
   if (ev.target.files && ev.target.files[0]) {
     banner.value.image = ev.target.files[0];
     const reader = new FileReader();
@@ -130,7 +134,7 @@ const onSubmit = () => {
       <form v-if="randerLoading" action="" @submit.prevent="onSubmit()">
         <div class="form-group">
           <label for="">圖片標題(加強SEO用途)</label>
-          <input type="text" v-model="banner.title" />
+          <input type="text" v-model="banner.title" @keyup="successMsgSetNull()" />
         </div>
         <div class="form-group">
           <label for=""><span class="text-danger">*</span>文章圖片</label>

@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class CourseCategory extends Model
+class TeacherCategory extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
-    protected $fillable = ['name', 'grade', 'created_by', 'updated_by'];
-
-
-    public function courses()
+    protected $fillable = ['name', 'created_by', 'updated_by'];
+    public function teachers()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Teacher::class);
     }
 }

@@ -32,7 +32,9 @@ const errorMsg = ref(null);
 const successMsg = ref(null);
 const course = ref({ ...DEFAULT_COURSE });
 const isCreate = ref(false);
-
+const successMsgSetNull = ()=>{
+  successMsg.value = null;
+}
 onMounted(() => {
   const courseId = route.params.id;
   getTags();
@@ -83,6 +85,7 @@ onMounted(() => {
 });
 const getCategories = (grade=0)=>{
     categoryLoading.value =true
+    successMsgSetNull()
     store.dispatch('getCourseCategories',
     {
         url:null,
@@ -109,6 +112,7 @@ const getTags = ()=>{
 }
 const previewImage = (ev) => {
   previewLoading.value = true;
+  successMsgSetNull()
   if (ev.target.files && ev.target.files[0]) {
     course.value.image = ev.target.files[0];
     const reader = new FileReader();
@@ -182,7 +186,7 @@ const editor = ref(ClassicEditor);
             <select v-if="categoryLoading" disabled class="categories">
             <option value="">Loading...</option>
             </select>
-            <select v-else v-model="course.category_id">
+            <select v-else v-model="course.category_id" @change="successMsgSetNull()">
               <option v-for="category in categories" :key="category.id"  :value="category.id">{{category.name}}</option>
             </select>
             <router-link :to="{name:'app.course.add-category' , params: { id: 'create' }}">
@@ -194,7 +198,7 @@ const editor = ref(ClassicEditor);
         </div>
         <div class="form-group">
           <label for=""><span class="text-red-800">*</span>課程標題</label>
-          <input type="text" v-model="course.title" />
+          <input type="text" v-model="course.title" @keyup="successMsgSetNull()" />
         </div>
         <div class="form-group">
           <label for=""><span class="text-red-800">*</span>課程內容</label>
@@ -259,16 +263,16 @@ const editor = ref(ClassicEditor);
         </div>
         <div class="form-group">
           <label for=""><span class="text-red-800"></span>初始點擊人數</label>
-          <input type="number" v-model="course.watched" />
+          <input type="number" v-model="course.watched" @keyup="successMsgSetNull()" />
         </div>
         <div class="chkbox-group">
           <div class="form-group">
             <label for="">隱藏課程</label>
-            <input type="checkbox" class="slide" v-model="course.hidden" />
+            <input type="checkbox" class="slide" v-model="course.hidden" @change="successMsgSetNull()" />
           </div>
           <div class="form-group ml-10">
             <label for="">焦點課程</label>
-            <input type="checkbox" class="slide" v-model="course.focus" />
+            <input type="checkbox" class="slide" v-model="course.focus" @change="successMsgSetNull()" />
           </div>
         </div>
         <div class="form-group">
@@ -297,7 +301,7 @@ const editor = ref(ClassicEditor);
             </div>
             <div class="chkbox-group mt-3" v-else>
                 <div class="group" v-for="tag in tags" :key="tag.id">
-                    <input type="checkbox" :id="'tag' + tag.id" :value="tag.id" v-model="course.tags">
+                    <input type="checkbox" :id="'tag' + tag.id" :value="tag.id" v-model="course.tags" @change="successMsgSetNull()">
                     <label :for="'tag' + tag.id">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />

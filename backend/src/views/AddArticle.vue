@@ -26,6 +26,9 @@ const errorMsg = ref(null);
 const successMsg = ref(null);
 const article = ref({ ...DEFAULT_ARTICLE });
 const isCreate = ref(false);
+const successMsgSetNull = ()=>{
+  successMsg.value = null;
+}
 onMounted(() => {
   
   const articleId = route.params.id;
@@ -90,6 +93,7 @@ onMounted(() => {
 
 const previewImage = (ev) => {
   previewLoading.value = true;
+  successMsgSetNull()
   if (ev.target.files && ev.target.files[0]) {
     article.value.image = ev.target.files[0];
     const reader = new FileReader();
@@ -153,7 +157,7 @@ const editor = ref(ClassicEditor);
             <select v-if="categoryLoading" disabled>
             <option value="">Loading...</option>
             </select>
-            <select v-else v-model="article.category_id">
+            <select v-else v-model="article.category_id" @change="successMsgSetNull()">
               <option v-for="category in categories" :key="category.id"  :value="category.id">{{category.name}}</option>
             </select>
             <router-link :to="{name:'app.article.add-category' , params: { id: 'create' }}">
@@ -166,7 +170,7 @@ const editor = ref(ClassicEditor);
         </div>
         <div class="form-group">
           <label for=""><span class="text-red-800">*</span>文章標題</label>
-          <input type="text" v-model="article.title" />
+          <input type="text" v-model="article.title" @keyup="successMsgSetNull()" />
         </div>
         <div class="form-group">
           <label for=""><span class="text-red-800">*</span>文章內容</label>
@@ -232,7 +236,7 @@ const editor = ref(ClassicEditor);
         <div class="chkbox-group">
           <div class="form-group">
             <label for="">隱藏文章</label>
-            <input type="checkbox" v-model="article.hidden" />
+            <input type="checkbox" v-model="article.hidden" @keyup="successMsgSetNull()" />
           </div>
         </div>
         <span v-if="successMsg" class="successMsg">{{ successMsg }}</span>

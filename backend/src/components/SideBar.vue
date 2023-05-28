@@ -8,10 +8,12 @@ const props = defineProps({
 const emit = defineEmits(["openSideBar"]);
 const isArticle = ref(false);
 const isCourse = ref(false);
+const isTeacher = ref(false);
 const sideBarOpen = computed(() => props.modelValue);
 const closeItems = () => {
   isCourse.value = false;
   isArticle.value = false;
+  isTeacher.value = false;
 };
 watch(sideBarOpen, (val) => {
   if (val) {
@@ -42,12 +44,23 @@ const olObj = ref({
       link:'app.course.categories',
       textname:'課程類別'
     },
+  ],
+  teacher:[
+    {
+      link:'app.teachers',
+      textname:'師資列表'
+    },
+    {
+      link:'app.teacher.categories',
+      textname:'師資科目'
+    }
   ]
 })
 const openList = (name) => {
   emit("openSideBar");
   if (name === "article") return (isArticle.value = !isArticle.value);
   if (name === "course") return (isCourse.value = !isCourse.value);
+  if (name === "teacher") return (isTeacher.value = !isTeacher.value);
 };
 </script>
 
@@ -156,6 +169,47 @@ const openList = (name) => {
       </a>
       <ol :style="{height: isCourse ? olObj.course.length * 48.5 + 'px' : 0 }">
         <router-link v-for="ol in olObj.course" :key="ol.textname" :to="{ name: ol.link }">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-3 h-3"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+
+          <CloseText :textName="ol.textname" v-model="sideBarOpen" />
+        </router-link>
+      </ol>
+      <a href="javascript:;" @click="openList('teacher')">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+        </svg>
+        <CloseText textName="師資介紹" v-model="sideBarOpen" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          :class="['w-3', 'h-3', 'ml-auto', { active: isCourse }]"
+          v-show="!sideBarOpen"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+          />
+        </svg>
+      </a>
+      <ol :style="{height: isTeacher ? olObj.teacher.length * 48.5 + 'px' : 0 }">
+        <router-link v-for="ol in olObj.teacher" :key="ol.textname" :to="{ name: ol.link }">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

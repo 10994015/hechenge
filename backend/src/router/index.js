@@ -14,6 +14,10 @@ import Banners from "../views/Banners.vue"
 import AddBanner from "../views/AddBanner.vue"
 import Courses from "../views/Courses.vue"
 import AddCourse from "../views/AddCourse.vue"
+import Teachers from "../views/Teachers.vue"
+import AddTeacher from "../views/AddTeacher.vue"
+import TeacherCategories from "../views/TeacherCategories.vue"
+import AddTeacherCategory from "../views/AddTeacherCategory.vue"
 import NotFound from "../views/NotFound.vue"
 import AppLayout from "../components/AppLayout.vue"
 import store from "../store"
@@ -95,6 +99,26 @@ const routes = [
                 path:'add-course-tag/:id',
                 name:'app.course.add-tag',
                 component:AddCourseTag,
+            },
+            {
+                path:'/teachers',
+                name:'app.teachers',
+                component: Teachers
+            },
+            {
+                path:'add-teacher/:id',
+                name:'app.add-teacher',
+                component:AddTeacher,
+            },
+            {
+                path:'/teacher-categories',
+                name:'app.teacher.categories',
+                component: TeacherCategories
+            },
+            {
+                path:'add-teacher-category/:id',
+                name:'app.teacher.add-category',
+                component:AddTeacherCategory,
             },
         ]
     },

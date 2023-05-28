@@ -98,4 +98,31 @@ export function setCourseTags(state, [loading, res=null]){
     }
     state.courseTags.loading = loading;
 }
-
+export function setTeachers(state, [loading, res=null]){
+    if(res){
+        state.teachers  = {
+            data: res.data,
+            links: res.meta.links,
+            total: res.meta.total,
+            limit: res.meta.per_page,
+            from: res.meta.from,
+            to: res.meta.to,
+            page: res.meta.current_page,
+        }
+    }
+    state.teachers.loading = loading;
+}
+export function setTeacherCategories(state, [loading, res=null]){
+    if(res){
+        state.teacherCategories  = {
+            data: res.data,
+            links: res.meta.links,
+            total: res.meta.total,
+            limit: res.meta.per_page,
+            from: res.meta.from,
+            to: res.meta.to,
+            page: res.meta.current_page,
+        }
+    }
+    state.teacherCategories.loading = loading;
+}

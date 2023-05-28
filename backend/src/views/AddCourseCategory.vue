@@ -17,6 +17,9 @@ const errorMsg = ref(null);
 const successMsg = ref(null);
 const category = ref({ ...DEFAULT_CATEGORY });
 const isCreate = ref(false);
+const successMsgSetNull = ()=>{
+  successMsg.value = null;
+}
 onMounted(() => {
   const categoryId = route.params.id;
   if (categoryId === "create") {
@@ -57,7 +60,7 @@ const onSubmit = () => {
       <form v-if="randerLoading" action="" @submit.prevent="onSubmit()">
         <div class="form-group">
           <label for="">年級</label>
-          <select v-model="category.grade">
+          <select v-model="category.grade" @change="successMsgSetNull()">
                 <option value="0">國中</option>
                 <option value="1">高中</option>
                 <option value="2">其他</option>
@@ -65,7 +68,7 @@ const onSubmit = () => {
         </div>
         <div class="form-group">
           <label for="">分類名稱</label>
-          <input type="text" v-model="category.name" />
+          <input type="text" v-model="category.name" @keyup="successMsgSetNull()" />
         </div>
         <span v-if="successMsg" class="successMsg">{{ successMsg }}</span>
         <div class="form-group btn-group mt-10">

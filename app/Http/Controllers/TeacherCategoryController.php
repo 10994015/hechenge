@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Http\Requests\ArticleCategoryRequest;
-use App\Http\Resources\ArticleCategoryResource;
+use App\Models\TeacherCategory;
+use App\Http\Requests\TeacherCategoryRequest;
+use App\Http\Resources\TeacherCategoryResource;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\URL;
-class ArticleCategoryController extends Controller
+
+class TeacherCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,33 +20,33 @@ class ArticleCategoryController extends Controller
         $perPage = request('per_page', 10);
         $sortField = request('sort_field', 'updated_at');
         $sortDirection = request('sort_direction', 'desc');
-        return ArticleCategoryResource::collection(Category::where('name', 'like', "%$search%")->orderBy($sortField, $sortDirection)->paginate($perPage));
+        return TeacherCategoryResource::collection(TeacherCategory::where('name', 'like', "%$search%")->orderBy($sortField, $sortDirection)->paginate($perPage));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\ArticleCategoryRequest  $request
+     * @param  \App\Http\Requests\TeacherCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleCategoryRequest $request)
+    public function store(TeacherCategoryRequest $request)
     {
         $data = $request->validated();
         $data['created_by'] = $request->user()->id;
         $data['updated_by'] = $request->user()->id;
 
-        $category = Category::create($data);
+        $category = TeacherCategory::create($data);
 
-        return new ArticleCategoryResource($category);
+        return new TeacherCategoryResource($category);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\TeacherCategory  $teacherCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(TeacherCategory $teacherCategory)
     {
         //
     }
@@ -55,11 +54,11 @@ class ArticleCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\ArticleCategoryRequest  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Http\Requests\TeacherCategoryRequest  $request
+     * @param  \App\Models\TeacherCategory  $teacherCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(ArticleCategoryRequest $request, Category $category)
+    public function update(TeacherCategoryRequest $request, TeacherCategory $teacherCategory)
     {
         //
     }
@@ -67,16 +66,16 @@ class ArticleCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\TeacherCategory  $teacherCategory
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $category = Category::find($id)->delete();
+        $category = TeacherCategory::find($id)->delete();
 
         return response()->noContent(); //回應204
     }
-    public function deleteItems(Category $category, Request $req){
+    public function deleteItems(TeacherCategory $category, Request $req){
         $ids = $req->ids;
         $category->whereIn('id', $ids)->delete();
 

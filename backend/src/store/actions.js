@@ -270,3 +270,100 @@ export function deleteCourse({commit}, id){
 export function deleteCourseItems({commit}, ids){
     return axiosClient.post(`/courseItems`, {'ids':ids});
 }
+
+//teacher category
+export function getTeacherCategories({commit}, {url = null, search = '', grade = '', perPage = 10, sort_field, sort_direction}){
+    commit('setTeacherCategories', [true]);
+    url = url || '/teacherCategories';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction, grade}}).then(res=>{
+        commit('setTeacherCategories', [false, res.data]);
+    }).catch(err=>{
+        commit('setTeacherCategories', [false]);
+    })
+}
+export function createTeacherCategory({commit}, category){
+    return axiosClient.post('/teacherCategory', category);
+}
+export function deleteTeacherCategory({commit}, id){
+    return axiosClient.delete(`/TeacherCategory/${id}`);
+}
+export function deleteTeacherCategoryItems({commit}, ids){
+    return axiosClient.post(`/teacherCategoryItems`, {'ids':ids});
+}
+
+//teacher
+export function getTeachers({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction, category}){
+    commit('setTeachers', [true]);
+    url = url || '/teachers';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction, category}}).then(res=>{
+        commit('setTeachers', [false, res.data]);
+    }).catch(err=>{
+        commit('setTeachers', [false]);
+    })
+}
+export function getTeacher({commit}, id){
+    return axiosClient.get(`/teachers/${id}`);
+}
+export function createTeacher({commit}, teacher){
+    const hidden = (teacher.hidden) ? 1 :0;
+    if(teacher.image instanceof File){
+        const form = new FormData();
+        form.append('name', teacher.name);
+        form.append('subname', teacher.subname);
+        form.append('image', teacher.image);
+        form.append('title1', teacher.title1);
+        form.append('content1', teacher.content1);
+        form.append('title2', teacher.title2);
+        form.append('content2', teacher.content2);
+        form.append('title3', teacher.title3);
+        form.append('content3', teacher.content3);
+        form.append('title4', teacher.title4);
+        form.append('content4', teacher.content4);
+        form.append('title5', teacher.title5);
+        form.append('content5', teacher.content5);
+        form.append('category_id', teacher.category_id);
+        form.append('hidden', hidden);
+        teacher = form;
+    }
+    return axiosClient.post('/teachers', teacher);
+}
+export function isExistTeacher({commit}, id){
+    return axiosClient.post(`/isExistTeacher`, {id: id}).then(res=>{
+        return res;
+    });
+}
+export function updateTeacher({commit}, teacher){
+    const id = teacher.id;
+    const hidden = (teacher.hidden) ? 1 :0;
+    if(teacher.image instanceof File){
+        const form = new FormData();
+        form.append('id', teacher.id);
+        form.append('name', teacher.name);
+        form.append('subname', teacher.subname);
+        form.append('image', teacher.image);
+        form.append('title1', teacher.title1);
+        form.append('content1', teacher.content1);
+        form.append('title2', teacher.title2);
+        form.append('content2', teacher.content2);
+        form.append('title3', teacher.title3);
+        form.append('content3', teacher.content3);
+        form.append('title4', teacher.title4);
+        form.append('content4', teacher.content4);
+        form.append('title5', teacher.title5);
+        form.append('content5', teacher.content5);
+        form.append('category_id', teacher.category_id);
+        form.append('hidden', hidden);
+        form.append('_method', 'PUT');
+        teacher = form;
+    }else{
+        teacher._method = 'PUT'
+    }
+    return axiosClient.post(`/teachers/${id}`, teacher);
+}
+
+export function deleteTeacher({commit}, id){
+    return axiosClient.delete(`/teachers/${id}`);
+}
+export function deleteTeacherItems({commit}, ids){
+    return axiosClient.post(`/teacherItems`, {'ids':ids});
+}
