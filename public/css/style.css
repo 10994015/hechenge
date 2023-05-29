@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+header .toolbar {
+  background-color: #111;
+  width: 100%;
+  color: #ccc;
+  padding: 10px;
+  font-size: 12px;
+  padding: 8px 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .toolbar .left {
+  display: flex;
+  align-items: center;
+}
+header .toolbar .left > span {
+  display: flex;
+  align-items: center;
+}
+header .toolbar .right {
+  display: flex;
+  align-items: center;
+}
+header .toolbar .right a, header .toolbar .right span {
+  color: #ccc;
+  display: flex;
+  align-items: center;
+}
+header .toolbar .right a:hover {
+  color: #fff;
+}
+header .header {
+  width: 100%;
+  padding: 20px 300px;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.1s;
+  color: #fff;
+}
+header .header.active {
+  color: #000;
+  background-color: #fff;
+  transition: 0.1s;
+}
+header .header > a.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+header .header > a.logo img {
+  width: 100px;
+}
+header .header > .nav-bar {
+  display: flex;
+  flex-direction: column;
+}
+header .header > .nav-bar > nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+header .header > .nav-bar > nav > li {
+  font-size: 16px;
+  font-weight: 500;
+  list-style: none;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+header .header > .nav-bar > nav > li:hover {
+  color: #FFB606;
+  border-bottom: 1.5px #FFB606 solid;
+  transition: 0.1s;
+}
+header .header > .nav-bar > nav > li:hover > ul {
+  display: flex;
+}
+header .header > .nav-bar > nav > li > ul {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  min-width: 150px;
+  width: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: none;
+  line-height: 2.4;
+  animation: open 0.3s linear;
+}
+@keyframes open {
+  0% {
+    opacity: 0;
+  }
+}
+header .header > .nav-bar > nav > li > ul > a {
+  color: #222;
+  display: block;
+  font-weight: 500;
+  font-size: 15px;
+  transition: 0.3s;
+}
+header .header > .nav-bar > nav > li > ul > a:hover {
+  color: #FFB606;
+}
+header .header > .nav-bar > .search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+header .header > .nav-bar > .search-bar > div i {
+  cursor: pointer;
+  font-size: 20px;
+}
+header .header > .nav-bar > .search-bar > div i:hover {
+  color: #FFB606;
+}
+header .header > .nav-bar > .search-bar > div img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#home-component .banner {
+  position: relative;
+}
+#home-component .banner .list {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#home-component .banner .list > .item {
+  width: 380px;
+  height: 134px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px 40px;
+  transition: 0.3s;
+}
+#home-component .banner .list > .item:hover {
+  background-color: #000;
+}
+#home-component .banner .list > .item > img {
+  width: 80px;
+  height: 80px;
+  margin-right: 25px;
+}
+#home-component .banner .list > .item > .text {
+  display: flex;
+  flex-direction: column;
+}
+#home-component .banner .list > .item > .text > h4 {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+#home-component .banner .list > .item > .text a {
+  color: #FFB606;
+  font-size: 14px;
+  border-bottom: 1px transparent solid;
+  transition: 0.3s;
+}
+#home-component .banner .list > .item > .text a:hover {
+  border-color: #FFB606;
+}
+#home-component .banner .list > .item > .text a > i {
+  font-size: 13px;
+  margin-left: 5px;
+}
+#home-component .banner .slick {
+  width: 100%;
+}
+#home-component .banner .slick div {
+  width: 100%;
+  height: 100vh;
+}
+#home-component .banner .slick div img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#home-component section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+#home-component section > h2.title {
+  color: #111;
+  font-size: 24px;
+  font-weight: 500;
+  position: relative;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+}
+#home-component section > h2.title img {
+  width: 30px;
+  margin-right: 5px;
+}
+#home-component section > h2.title::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 15px;
+  width: 200px;
+  height: 2px;
+  background-color: #FFB606;
+}
+#home-component section.course > .btns {
+  display: flex;
+  float: right;
+  padding: 0 15px;
+}
+#home-component section.course > .btns button {
+  width: 28px;
+  height: 28px;
+  border: 1px #111 solid;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0s;
+}
+#home-component section.course > .btns button:hover {
+  color: #FFB606;
+  border: 1px #FFB606 solid;
+}
+#home-component section.course > .courses {
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 80px;
+}
+#home-component section.course > .courses > .card {
+  padding: 0 15px;
+  min-width: 300px;
+  width: 25%;
+  transition: 0.3s;
+}
+#home-component section.course > .courses > .card > .course {
+  width: 100%;
+  border: 1px #d9d9d9 solid;
+  overflow: hidden;
+}
+#home-component section.course > .courses > .card > .course > a.imgbox {
+  width: 100%;
+  overflow: hidden;
+}
+#home-component section.course > .courses > .card > .course > a.imgbox:hover > img {
+  transform: scale(1.05);
+}
+#home-component section.course > .courses > .card > .course > a.imgbox > img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.3s;
+}
+#home-component section.course > .courses > .card > .course > .content {
+  padding: 25px 20px;
+  position: relative;
+}
+#home-component section.course > .courses > .card > .course > .content::before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ccc;
+  width: 200px;
+  height: 1px;
+}
+#home-component section.course > .courses > .card > .course > .content > a {
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+#home-component section.course > .courses > .card > .course > .content > a:hover {
+  color: #FFB606;
+}
+#home-component section.course > .courses > .card > .course > .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+#home-component section.course > .courses > .card > .course > .footer > .watched {
+  display: flex;
+  align-items: center;
+  color: #999;
+  transition: 0.3s;
+}
+#home-component section.course > .courses > .card > .course > .footer > .watched:hover {
+  color: #111;
+}
+#home-component section.course > .courses > .card > .course > .footer > .status {
+  font-weight: 700;
+}
