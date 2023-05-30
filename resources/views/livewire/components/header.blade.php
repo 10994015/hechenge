@@ -40,6 +40,7 @@
                 <li class="mr-8">首頁</li>
                 <li class="mr-8">
                     國中課程
+                    <i class="fa-solid fa-chevron-down"></i>
                     <ul>
                         <a href="">八年級</a>
                         <a href="">九年級</a>
@@ -47,6 +48,7 @@
                 </li>
                 <li class="mr-8">
                     高中課程
+                    <i class="fa-solid fa-chevron-down"></i>
                     <ul>
                         <a href="">一年級</a>
                         <a href="">二年級</a>

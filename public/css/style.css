@@ -54,9 +54,10 @@ header .header {
   color: #fff;
 }
 header .header.active {
-  color: #000;
+  color: #002347;
   background-color: #fff;
   transition: 0.1s;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
 }
 header .header > a.logo {
   font-size: 24px;
@@ -76,28 +77,33 @@ header .header > .nav-bar > nav {
 }
 header .header > .nav-bar > nav > li {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   list-style: none;
   position: relative;
   height: 50px;
   line-height: 50px;
   cursor: pointer;
   transition: 0.1s;
+  display: flex;
+  align-items: center;
 }
 header .header > .nav-bar > nav > li:hover {
-  color: #FFB606;
-  border-bottom: 1.5px #FFB606 solid;
+  color: #FDC632;
+  border-bottom: 1.5px #FDC632 solid;
   transition: 0.1s;
 }
 header .header > .nav-bar > nav > li:hover > ul {
   display: flex;
+}
+header .header > .nav-bar > nav > li > i {
+  font-size: 12px;
+  margin-left: 5px;
 }
 header .header > .nav-bar > nav > li > ul {
   position: absolute;
   top: 50px;
   left: 0;
   background-color: #fff;
-  padding: 15px 30px;
   display: flex;
   min-width: 150px;
   width: auto;
@@ -107,6 +113,7 @@ header .header > .nav-bar > nav > li > ul {
   display: none;
   line-height: 2.4;
   animation: open 0.3s linear;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
 }
 @keyframes open {
   0% {
@@ -117,24 +124,26 @@ header .header > .nav-bar > nav > li > ul > a {
   color: #222;
   display: block;
   font-weight: 500;
+  width: 100%;
   font-size: 15px;
   transition: 0.3s;
+  padding: 7px 30px;
 }
 header .header > .nav-bar > nav > li > ul > a:hover {
-  color: #FFB606;
+  color: #FDC632;
 }
 header .header > .nav-bar > .search-bar {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 header .header > .nav-bar > .search-bar > div i {
   cursor: pointer;
   font-size: 20px;
 }
 header .header > .nav-bar > .search-bar > div i:hover {
-  color: #FFB606;
+  color: #FDC632;
 }
 header .header > .nav-bar > .search-bar > div img {
   width: 20px;
@@ -184,13 +193,13 @@ header .header > .nav-bar > .search-bar > div img {
   margin-bottom: 12px;
 }
 #home-component .banner .list > .item > .text a {
-  color: #FFB606;
+  color: #FDC632;
   font-size: 14px;
   border-bottom: 1px transparent solid;
   transition: 0.3s;
 }
 #home-component .banner .list > .item > .text a:hover {
-  border-color: #FFB606;
+  border-color: #FDC632;
 }
 #home-component .banner .list > .item > .text a > i {
   font-size: 13px;
@@ -235,7 +244,7 @@ header .header > .nav-bar > .search-bar > div img {
   left: 15px;
   width: 200px;
   height: 2px;
-  background-color: #FFB606;
+  background-color: #FDC632;
 }
 #home-component section.course > .btns {
   display: flex;
@@ -254,8 +263,8 @@ header .header > .nav-bar > .search-bar > div img {
   transition: 0s;
 }
 #home-component section.course > .btns button:hover {
-  color: #FFB606;
-  border: 1px #FFB606 solid;
+  color: #FDC632;
+  border: 1px #FDC632 solid;
 }
 #home-component section.course > .courses {
   overflow: hidden;
@@ -309,7 +318,7 @@ header .header > .nav-bar > .search-bar > div img {
   transition: 0.3s;
 }
 #home-component section.course > .courses > .card > .course > .content > a:hover {
-  color: #FFB606;
+  color: #FDC632;
 }
 #home-component section.course > .courses > .card > .course > .footer {
   display: flex;

@@ -2,9 +2,9 @@
     
     <div class="banner">
         <div class="slick">
-            <div class="cursor-pointer"><img src="/images/banner.jpg" alt="赫成教育" /></div>
-            <div class="cursor-grab"><img src="/images/banner.jpg" alt="赫成教育" /></div>
-            <div class="cursor-grab"><img src="/images/banner.jpg" alt="赫成教育" /></div>
+            <div class="cursor-pointer"> <img src="/images/banner.jpg" alt="赫成教育" /></div>
+            <div class="cursor-grab"> <img src="/images/banner2.jpg" alt="赫成教育" /></div>
+            <div class="cursor-grab"> <img src="/images/banner.jpg" alt="赫成教育" /></div>
         </div>
         <div class="list">
             <div class="item">
