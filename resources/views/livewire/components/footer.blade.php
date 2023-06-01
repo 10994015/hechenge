@@ -36,17 +36,21 @@
         </div>
         <div class="course">
             <h5>探索課程</h5>
-            <div class="item"><a href="">國中課程</a></div>
-            <div class="item"><a href="">高中課程</a></div>
-            <div class="item"><a href="">常見問答</a></div>
-            <div class="item"><a href="">聯絡我們</a></div>
+            <div class="item"><a href="">國中八年級</a></div>
+            <div class="item"><a href="">國中九年級</a></div>
+            <div class="item"><a href="">高中一年級</a></div>
+            <div class="item"><a href="">高中二年級</a></div>
+            <div class="item"><a href="">高中學測班</a></div>
         </div>
         <div class="link">
             <h5>關注我們</h5>
             <div class="item">
-                <a href=""><i class="fa-brands fa-line"></i></a>
-                <a href=""><i class="fa-brands fa-instagram"></i></a>
-                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><img width="40" src="/images/line-icon.png" class="mr-2"></a>
+                <a href=""><img width="40" src="/images/ig-icon.png" class="mr-2"></a>
+                <a href=""><img width="40" src="/images/fb-icon.png" ></a>
+            </div>
+            <div class="item mt-4">
+                <img src="/images/qrcode.png" width="140" alt="" />
             </div>
         </div>
     </div>

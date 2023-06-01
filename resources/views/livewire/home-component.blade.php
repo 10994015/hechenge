@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <section class="about">
+    <section class="about" id="home-about">
         <div class="icon-list">
             <div class="icons">
                 <div class="item">
@@ -76,8 +76,8 @@
             <a href="/">關於赫成</a>
         </div>
     </section>
-    <div class="course-div">
-        <section class="course" x-data="{
+    <div class="course-div" id="home-courses" >
+        <section class="course"  x-data="{
             length:{{$popularCourseLength}},
             idx:0,
             pagePer:4,
@@ -132,8 +132,8 @@
     
         </section>
     </div>
-    <div class="featured">
-        <section class="featured-content">
+    <div class="featured" >
+        <section class="featured-content" id="home-featured">
             <h2 class="title"><img src="/images/feature.png" /> 最近主打</h2>
             <div class="content">
                 @for($i=0;$i<2;$i++)
@@ -172,7 +172,7 @@
             </div>
         </section>
     </div>
-    <section class="news">
+    <section class="news" id="home-news" >
         <h2 class="title"><img src="/images/news.png" />最新消息</h2>
         <div class="readmore">
             <a href="">瀏覽更多</a>
@@ -196,6 +196,11 @@
             @endfor
         </div>
     </section>
+    <div class="icon-links">
+        <a href="" class="mb-3"><img src="/images/line.png" alt=""></a>
+        <a href="" class="mb-3"><img src="/images/ig.png" alt=""></a>
+        <a href=""><img src="/images/fb.png" alt=""></a>
+    </div>
 </div>
 
 
