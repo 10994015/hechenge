@@ -1134,6 +1134,9 @@ select {
 .mt-8 {
   margin-top: 2rem;
 }
+.mr-12 {
+  margin-right: 3rem;
+}
 .block {
   display: block;
 }

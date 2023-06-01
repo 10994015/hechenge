@@ -58,15 +58,23 @@
                 <li class="mr-8">師資介紹</li>
                 <li>聯絡我們</li>
             </nav>
-            <div class="search-bar">
-                <div class="mr-8"><img src="/images/taiwan.png" alt="" /></div>
-                <div class="mr-8"><img src="/images/usa.png" alt="" /></div>
-                <div>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+        </div>
+        <div class="search-bar">
+            <div class="mr-5"><img src="/images/taiwan.png" alt="" /></div>
+            <div class="mr-5"><img src="/images/usa.png" alt="" /></div>
+            <div>
+                <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
             </div>
         </div>
     </div>
 </header>
+<div class="search-full" id="search-full">
+    <div class="back" ></div>
+    <div class="content">
+        <input type="text" placeholder="搜尋課程...">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+</div>
+
 
 

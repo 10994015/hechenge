@@ -19,7 +19,7 @@
 <body>
     @include('livewire.components.header')
     <main>{{ $slot }}</main>
-
+    @include('livewire.components.footer')
     @livewireScripts
     <script src='/js/app.js'></script>
     <script src="/js/header.js"></script>
