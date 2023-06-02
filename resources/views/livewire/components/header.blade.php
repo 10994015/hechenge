@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="header" id="header-nav">
-        <a href="" class="logo">
+        <a href="/" class="logo">
             <img src="/images/logo.png" alt="赫成教育" />
         </a>
         <div class="nav-bar">
@@ -56,7 +56,7 @@
                     </ul>
                 </li>
                 <li class="mr-8">師資介紹</li>
-                <li>聯絡我們</li>
+                <li onclick="window.location.href='/contact'">聯絡我們</li>
             </nav>
         </div>
         <div class="search-bar">

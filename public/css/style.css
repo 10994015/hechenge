@@ -818,3 +818,154 @@ footer > .copyright > p > a {
   transition: 0.3s;
   width: 100%;
 }
+
+#contact-component .banner {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-image: url("/images/contact.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#contact-component .banner > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#contact-component .banner > .text {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+}
+#contact-component .banner > .text > h2 {
+  font-weight: 600;
+  font-size: 36px;
+}
+#contact-component .banner > .text > p {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FDC632;
+}
+#contact-component > .information {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0;
+}
+#contact-component > .information > .item {
+  width: 350px;
+  height: 290px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 0px 0px 4px 0px;
+  border-color: rgba(3, 82, 230, 0);
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.5);
+  margin: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+#contact-component > .information > .item.item1:hover {
+  border-bottom: 4px #002347 solid;
+}
+#contact-component > .information > .item.item2:hover {
+  border-bottom: 4px #20C997 solid;
+}
+#contact-component > .information > .item.item3:hover {
+  border-bottom: 4px #FFB606 solid;
+}
+#contact-component > .information > .item > img {
+  height: 60px;
+}
+#contact-component > .information > .item > h3 {
+  font-size: 19px;
+  color: #111;
+  font-weight: 600;
+  margin-top: 10px;
+}
+#contact-component > .information > .item > p {
+  font-size: 15px;
+  color: #555;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  line-height: 1.8;
+}
+#contact-component > .information > .item > p > span {
+  display: flex;
+  align-items: center;
+}
+#contact-component form {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 100px 0;
+}
+#contact-component form > h3 {
+  color: #111;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 100px 0;
+}
+#contact-component form > label {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 690px;
+}
+#contact-component form > label input, #contact-component form > label textarea {
+  width: 100%;
+  border: 1px solid #eee;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 6px 6px 6px 6px;
+  background: #F8F8F8;
+  transition: 0.3s;
+  font-size: 14px;
+}
+#contact-component form > label input:focus, #contact-component form > label textarea:focus {
+  box-shadow: none;
+  outline: none;
+  border: 1px #FDC632 solid;
+}
+#contact-component form > label textarea {
+  height: 150px;
+}
+#contact-component form > label > button {
+  background: #FDC632;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  display: block;
+  font-size: 15px;
+  height: 50px;
+  letter-spacing: 2px;
+  line-height: 50px;
+  margin: 0 auto;
+  outline: none;
+  position: relative;
+  width: 252px;
+}
+#contact-component > iframe {
+  width: 100%;
+  height: 400px;
+}
