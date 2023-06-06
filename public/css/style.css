@@ -917,7 +917,7 @@ footer > .copyright > p > a {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 0 100px 0;
+  padding: 0 0 0 0;
 }
 #contact-component form > h3 {
   color: #111;
@@ -965,7 +965,31 @@ footer > .copyright > p > a {
   position: relative;
   width: 252px;
 }
+#contact-component form > label span.chaptcha {
+  display: flex;
+  align-items: center;
+}
+#contact-component form > label span.chaptcha > button {
+  color: #fff;
+  background-color: rgb(255, 79, 79);
+  border-radius: 6px;
+  width: 35px;
+  height: 35px;
+  margin-left: 6px;
+}
 #contact-component > iframe {
   width: 100%;
   height: 400px;
+  margin-top: 100px;
+}
+#contact-component > .errorDiv {
+  margin: 0 auto;
+  max-width: 690px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: rgb(247, 118, 118);
+}
+#contact-component > .errorDiv span {
+  font-size: 14px;
 }

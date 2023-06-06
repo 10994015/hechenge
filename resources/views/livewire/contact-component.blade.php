@@ -34,24 +34,35 @@
             <p>週一至週五 PM 14:00 - PM 22:00<br>六日 PM 14:00 - PM 22:00</p>
         </div>
     </div>
-    <form>
+    <form wire:submit.prevent='onSubmit' wire:ignore>
         <h3>立即填寫下方表單了解<br>也歡迎於官方臉書專頁、Instagram及line@訊息詢問更多優惠課程及相關資訊內容喔！</h3>
         <label for="">
-            <input type="text" placeholder="姓名 *" />
+            <input type="text" placeholder="姓名 *" wire:model='name' />
         </label>
         <label for="">
-            <input type="text" placeholder="電子郵件 *" />
+            <input type="text" placeholder="電子郵件 *" wire:model='email' />
         </label>
         <label for="">
-            <input type="text" placeholder="主旨 *" />
+            <input type="text" placeholder="主旨 *" wire:model='subject' />
         </label>
         <label for="">
-            <textarea  placeholder="詢問內容 *"></textarea>
+            <textarea  placeholder="詢問內容 *" wire:model='content'></textarea>
         </label>
         <label for="">
-            <button>確認送出</button>
+            <span class="chaptcha">{!! captcha_img() !!} <button type="button" class="reload" wire:click='reload'>&#x21bb;</button></span>
+            <input type="text" placeholder="請輸入上方驗證碼 *" class="mt-2" wire:model='captcha' />
+        </label>
+        <label for="">
+            <button type="submit">確認送出</button>
         </label>
     </form>
+    <div class="errorDiv">
+        @error('name') <span class="text-danger">{{$message}}</span> @enderror
+        @error('email') <span class="text-danger">{{$message}}</span> @enderror
+        @error('subject') <span class="text-danger">{{$message}}</span> @enderror
+        @error('content') <span class="text-danger">{{$message}}</span> @enderror
+        @error('captcha') <span class="text-danger">{{$message}}</span> @enderror
+    </div>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.2974069456636!2d121.22355707577283!3d24.9559940414274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468224830092223%3A0x35ce2c0b437a7dc1!2zMzIw5qGD5ZyS5biC5Lit5aOi5Y2A5Lit5aSu5p2x6LevODjomZ8xNeaokw!5e0!3m2!1szh-TW!2stw!4v1685712033996!5m2!1szh-TW!2stw"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 </div>
