@@ -975,7 +975,6 @@ footer{
                 border-radius: 6px;
                 border: none;
                 color: #fff;
-                display: block;
                 font-size: 15px;
                 height: 50px;
                 letter-spacing: 2px;
@@ -984,6 +983,10 @@ footer{
                 outline: none;
                 position: relative;
                 width: 252px;
+                &.loading{
+                    cursor: default;
+                    background-color: #ccc;
+                }
             }
             span.chaptcha {
                 display: flex;
@@ -1004,7 +1007,7 @@ footer{
         height: 400px;
         margin-top: 100px;
     }
-    >.errorDiv{
+    >.errorDiv, .successDiv{
         margin:0 auto;
         max-width: 690px;
         width: 100%;

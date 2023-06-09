@@ -34,28 +34,41 @@
             <p>週一至週五 PM 14:00 - PM 22:00<br>六日 PM 14:00 - PM 22:00</p>
         </div>
     </div>
-    <form wire:submit.prevent='onSubmit' wire:ignore>
+    <form wire:submit.prevent='onSubmit' >
         <h3>立即填寫下方表單了解<br>也歡迎於官方臉書專頁、Instagram及line@訊息詢問更多優惠課程及相關資訊內容喔！</h3>
-        <label for="">
+        <label for=""> 
             <input type="text" placeholder="姓名 *" wire:model='name' />
         </label>
-        <label for="">
+        <label for=""> 
             <input type="text" placeholder="電子郵件 *" wire:model='email' />
         </label>
         <label for="">
             <input type="text" placeholder="主旨 *" wire:model='subject' />
         </label>
-        <label for="">
+        <label for=""> 
             <textarea  placeholder="詢問內容 *" wire:model='content'></textarea>
         </label>
-        <label for="">
-            <span class="chaptcha">{!! captcha_img() !!} <button type="button" class="reload" wire:click='reload'>&#x21bb;</button></span>
+        {{-- <label for="" >
+            <span class="chaptcha" wire:ignore>{!! captcha_img() !!} <button type="button" class="reload" wire:click='reload'>&#x21bb;</button></span>
             <input type="text" placeholder="請輸入上方驗證碼 *" class="mt-2" wire:model='captcha' />
-        </label>
+        </label> --}}
         <label for="">
-            <button type="submit">確認送出</button>
+            <button type="submit" wire:loading.remove wire:target='onSubmit'>
+                確認送出
+            </button>
+            <button type="button"  class="loading" wire:loading wire:target='onSubmit'>
+                發送中...
+            </button>
         </label>
     </form>
+    @if (session('success'))
+        <div class='successDiv'>
+            <div class="mb-4 font-medium text-sm text-green-600 ">
+                {{ session('success') }}
+            </div>
+        </div>
+            
+        @endif
     <div class="errorDiv">
         @error('name') <span class="text-danger">{{$message}}</span> @enderror
         @error('email') <span class="text-danger">{{$message}}</span> @enderror

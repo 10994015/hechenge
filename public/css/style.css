@@ -955,7 +955,6 @@ footer > .copyright > p > a {
   border-radius: 6px;
   border: none;
   color: #fff;
-  display: block;
   font-size: 15px;
   height: 50px;
   letter-spacing: 2px;
@@ -964,6 +963,10 @@ footer > .copyright > p > a {
   outline: none;
   position: relative;
   width: 252px;
+}
+#contact-component form > label > button.loading {
+  cursor: default;
+  background-color: #ccc;
 }
 #contact-component form > label span.chaptcha {
   display: flex;
@@ -982,7 +985,7 @@ footer > .copyright > p > a {
   height: 400px;
   margin-top: 100px;
 }
-#contact-component > .errorDiv {
+#contact-component > .errorDiv, #contact-component .successDiv {
   margin: 0 auto;
   max-width: 690px;
   width: 100%;
@@ -990,6 +993,6 @@ footer > .copyright > p > a {
   flex-direction: column;
   color: rgb(247, 118, 118);
 }
-#contact-component > .errorDiv span {
+#contact-component > .errorDiv span, #contact-component .successDiv span {
   font-size: 14px;
 }

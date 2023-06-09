@@ -38,6 +38,7 @@
         <div class="nav-bar">
             <nav>
                 <li class="mr-8">首頁</li>
+                <li class="mr-8">最新消息</li>
                 <li class="mr-8">
                     國中課程
                     <i class="fa-solid fa-chevron-down"></i>
