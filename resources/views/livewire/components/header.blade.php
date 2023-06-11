@@ -37,14 +37,14 @@
         </a>
         <div class="nav-bar">
             <nav>
-                <li class="mr-8">首頁</li>
-                <li class="mr-8">最新消息</li>
+                <li class="mr-8" onclick="window.location.href='/'">首頁</li>
+                <li class="mr-8" onclick="window.location.href='/news'">最新消息</li>
                 <li class="mr-8">
                     國中課程
                     <i class="fa-solid fa-chevron-down"></i>
                     <ul>
-                        <a href="">八年級</a>
-                        <a href="">九年級</a>
+                        <a href="/courses">八年級</a>
+                        <a href="/courses">九年級</a>
                     </ul>
                 </li>
                 <li class="mr-8">

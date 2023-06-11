@@ -6,7 +6,7 @@ use Livewire\Component;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class ContactComponent extends Component
+class CourseDetailComponent extends Component
 {
     public $name;
     public $email;
@@ -14,7 +14,7 @@ class ContactComponent extends Component
     public $content;
     public $captcha;
     public $loading;
-    public $course=  "英文課";
+    public $course = "英文課";
     public function clearVar(){
         $this->name = "";
         $this->email = "";
@@ -24,7 +24,6 @@ class ContactComponent extends Component
         $this->loading = "";
         $this->course = "";
     }
-    
     public function onSubmit(){
         $this->validate([
             'name' => 'required',
@@ -53,14 +52,16 @@ class ContactComponent extends Component
   
             $mail->setFrom('cy9577@gmail.com');
   
-            $mail->addAddress('a0938599191@gmail.com');
+            $mail->addAddress('happiness000312@gmail.com');
   
             $mail->isHTML(true);
+  
             $mail->Subject = $this->subject;
             $mail->Body = '寄信人信箱:' . $this->email .'<br />';
             $mail->Body .= '寄信人姓名:' . $this->name .'<br />';
             $mail->Body .= '詢問課程:' . $this->course .'<br />';
             $mail->Body .= '內容:' . $this->content;
+  
             $mail->send();
 
             session()->flash('success', "發送成功！");
@@ -74,6 +75,6 @@ class ContactComponent extends Component
     }
     public function render()
     {
-        return view('livewire.contact-component')->layout('layouts.base');
+        return view('livewire.course-detail-component')->layout('layouts.base');
     }
 }

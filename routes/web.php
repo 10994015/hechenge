@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\CaptchaController;
 use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\CourseComponent;
+use App\Http\Livewire\CourseDetailComponent;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\NewsComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +21,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeComponent::class);
 Route::get('/contact', ContactComponent::class);
+Route::get('/news', NewsComponent::class);
+Route::get('/courses', CourseComponent::class);
+Route::get('/course-detail', CourseDetailComponent::class);
 
+
+
+Route::get('/reload-captcha', [CaptchaController::class, 'reloadCaptcha'] );
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

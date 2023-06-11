@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -479,15 +480,17 @@ footer > .copyright > p > a {
 }
 #home-component .course > .courses > .card > .course {
   width: 100%;
-  border: 1px #d9d9d9 solid;
+  border: 1px #eee solid;
   overflow: hidden;
 }
 #home-component .course > .courses > .card > .course > a.imgbox {
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 #home-component .course > .courses > .card > .course > a.imgbox:hover > img {
   transform: scale(1.05);
+  -webkit-filter: brightness(0.5);
 }
 #home-component .course > .courses > .card > .course > a.imgbox > img {
   width: 100%;
@@ -496,27 +499,60 @@ footer > .copyright > p > a {
      object-fit: cover;
   transition: 0.3s;
 }
+#home-component .course > .courses > .card > .course > a.imgbox:hover > .view {
+  animation: viewcourse 0.2s linear;
+  opacity: 1;
+}
+#home-component .course > .courses > .card > .course > a.imgbox > .view {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(0.9) translate(-50%, -50%);
+  width: 144px;
+  height: 48px;
+  background-color: #FDC632;
+  color: #333;
+  text-align: center;
+  line-height: 48px;
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0;
+}
+@keyframes viewcourse {
+  0% {
+    opacity: 0;
+    transform: scale(1) translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.9) translate(-50%, -50%);
+  }
+}
 #home-component .course > .courses > .card > .course > .content {
   padding: 25px 20px;
   position: relative;
-}
-#home-component .course > .courses > .card > .course > .content::before {
-  content: "";
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #ccc;
-  width: 200px;
-  height: 1px;
+  border-bottom: 1px #dedede solid;
 }
 #home-component .course > .courses > .card > .course > .content > a {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   transition: 0.3s;
+  color: #666;
+  padding: 0 20px;
+  display: block;
 }
 #home-component .course > .courses > .card > .course > .content > a:hover {
   color: #FDC632;
+}
+#home-component .course > .courses > .card > .course > .content > a::before {
+  content: "";
+  bottom: -1.5px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #FDC632;
 }
 #home-component .course > .courses > .card > .course > .footer {
   display: flex;
@@ -529,9 +565,10 @@ footer > .copyright > p > a {
   align-items: center;
   color: #999;
   transition: 0.3s;
+  font-size: 14px;
 }
 #home-component .course > .courses > .card > .course > .footer > .watched:hover {
-  color: #111;
+  color: #666;
 }
 #home-component .course > .courses > .card > .course > .footer > .status {
   font-weight: 700;
@@ -761,7 +798,7 @@ footer > .copyright > p > a {
 }
 #home-component .news > .content > .new-item {
   border-top: 1px #ddd solid;
-  padding: 20px 0;
+  padding: 60px 0;
   display: flex;
   align-items: center;
   width: 100%;
@@ -819,6 +856,601 @@ footer > .copyright > p > a {
   width: 100%;
 }
 
+#news-component .banner {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-image: url("/images/contact.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#news-component .banner > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#news-component .banner > .text {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+}
+#news-component .banner > .text > h2 {
+  font-weight: 600;
+  font-size: 36px;
+}
+#news-component .banner > .text > p {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FDC632;
+}
+#news-component .news {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+}
+#news-component .news.fade-out {
+  animation: fade-out 0.3s linear;
+  opacity: 1;
+}
+#news-component .news > .searchBar {
+  margin-top: 75px;
+  display: flex;
+  justify-content: flex-end;
+}
+#news-component .news > .searchBar .search-container {
+  position: relative;
+  display: inline-block;
+}
+#news-component .news > .searchBar .search-container input[type=text] {
+  padding-right: 80px; /* 根据按钮的宽度调整此值 */
+  height: 35px;
+  border: 1px #ccc solid;
+  font-size: 14px;
+  transition: 0.3s;
+  outline: none;
+  color: #333;
+}
+#news-component .news > .searchBar .search-container input[type=text]:focus {
+  border-color: #FDC632;
+  box-shadow: none;
+}
+#news-component .news > .searchBar .search-container input[type=text]:focus-visible {
+  box-shadow: none;
+}
+#news-component .news > .searchBar .search-container button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#news-component .news > .nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px #ddd solid;
+}
+#news-component .news > .nav > button {
+  width: 165px;
+  height: 75px;
+  font-size: 14px;
+  color: #999;
+  padding: 15px 25px;
+  margin: 0 15px;
+}
+#news-component .news > .nav > button.active {
+  color: #111;
+  border-bottom: 1px #FDC632 solid;
+}
+#news-component .news > .content {
+  display: flex;
+  flex-direction: column;
+}
+#news-component .news > .content > .new-item {
+  border-top: 1px #ddd solid;
+  padding: 60px 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#news-component .news > .content > .new-item:first-child {
+  border-top: none;
+}
+#news-component .news > .content > .new-item .time-from {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#news-component .news > .content > .new-item .time-from > span {
+  color: #FDC632;
+  font-size: 40px;
+}
+#news-component .news > .content > .new-item > .text {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  border-left: 1px #ddd solid;
+  width: 60%;
+}
+#news-component .news > .content > .new-item > .text > a.new-title {
+  font-size: 21px;
+  color: #002347;
+  margin-bottom: 5px;
+  transition: 0.3s;
+}
+#news-component .news > .content > .new-item > .text > a.new-title:hover {
+  color: #FDC632;
+}
+#news-component .news > .content > .new-item > .text > span.category {
+  color: #999;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+#news-component .news > .content > .new-item > .text > article {
+  font-size: 14px;
+  color: #333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+#news-component .news > .content > .new-item > a.imgbox {
+  width: 20%;
+  overflow: hidden;
+}
+#news-component .news > .content > .new-item > a.imgbox:hover > img {
+  transform: scale(1.05);
+}
+#news-component .news > .content > .new-item > a.imgbox > img {
+  transition: 0.3s;
+  width: 100%;
+}
+
+#course-component .banner {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-image: url("/images/contact.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#course-component .banner > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#course-component .banner > .text {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+}
+#course-component .banner > .text > h2 {
+  font-weight: 600;
+  font-size: 36px;
+}
+#course-component .banner > .text > p {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FDC632;
+}
+#course-component > .courses {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#course-component > .courses > .nav {
+  width: 100%;
+  background-color: #F5F5F5;
+  padding: 10px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 75px;
+}
+#course-component > .courses > .nav > span {
+  color: #999;
+  font-size: 14px;
+}
+#course-component > .courses > .nav label {
+  margin: 0 8px;
+}
+#course-component > .courses > .nav label select {
+  height: 35px;
+  border: 1px #ccc solid;
+  font-size: 14px;
+  transition: 0.3s;
+  outline: none;
+  color: #999;
+  padding: 0;
+  width: 150px;
+  padding: 0 10px;
+}
+#course-component > .courses > .nav label select:focus {
+  border-color: #FDC632;
+  box-shadow: none;
+}
+#course-component > .courses > .nav label select:focus-visible {
+  box-shadow: none;
+}
+#course-component > .courses > .nav label.search-container {
+  position: relative;
+  display: inline-block;
+}
+#course-component > .courses > .nav label.search-container input[type=text] {
+  padding-right: 80px; /* 根据按钮的宽度调整此值 */
+  height: 35px;
+  border: 1px #ccc solid;
+  font-size: 14px;
+  transition: 0.3s;
+  outline: none;
+  color: #999;
+}
+#course-component > .courses > .nav label.search-container input[type=text]:focus {
+  border-color: #FDC632;
+  box-shadow: none;
+}
+#course-component > .courses > .nav label.search-container input[type=text]:focus-visible {
+  box-shadow: none;
+}
+#course-component > .courses > .nav label.search-container button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#course-component > .courses > .course-list {
+  display: grid;
+  grid-template-columns: repeat(3, calc(33% - 10px));
+  grid-column-gap: 20px;
+  grid-row-gap: 5em;
+  padding: 100px 0;
+}
+#course-component > .courses > .course-list > .course-item {
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+#course-component > .courses > .course-list > .course-item .imgbox {
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+#course-component > .courses > .course-list > .course-item .imgbox:hover > img {
+  -webkit-filter: brightness(0.5);
+  transform: scale(1.05);
+}
+#course-component > .courses > .course-list > .course-item .imgbox:hover > .view {
+  animation: viewcourse 0.2s linear;
+  opacity: 1;
+}
+#course-component > .courses > .course-list > .course-item .imgbox > .view {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(0.9) translate(-50%, -50%);
+  width: 144px;
+  height: 48px;
+  background-color: #FDC632;
+  color: #333;
+  text-align: center;
+  line-height: 48px;
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0;
+}
+@keyframes viewcourse {
+  0% {
+    opacity: 0;
+    transform: scale(1) translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.9) translate(-50%, -50%);
+  }
+}
+#course-component > .courses > .course-list > .course-item .imgbox img {
+  width: 100%;
+  transition: 0.3s;
+}
+#course-component > .courses > .course-list > .course-item > .content {
+  padding: 20px;
+}
+#course-component > .courses > .course-list > .course-item > .content a {
+  display: block;
+  color: #666;
+  font-weight: 600;
+  padding: 15px 0;
+  border-bottom: 1px #dedede solid;
+  letter-spacing: 1.5px;
+  line-height: 1.5;
+  position: relative;
+}
+#course-component > .courses > .course-list > .course-item > .content a::before {
+  content: "";
+  bottom: -1.5px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: #FDC632;
+}
+#course-component > .courses > .course-list > .course-item > .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 20px;
+}
+#course-component > .courses > .course-list > .course-item > .footer > .watched {
+  display: flex;
+  align-items: center;
+  color: #999;
+  transition: 0.3s;
+  font-size: 14px;
+}
+#course-component > .courses > .course-list > .course-item > .footer > .watched:hover {
+  color: #666;
+}
+#course-component > .courses > .course-list > .course-item > .footer > .status {
+  font-weight: 700;
+}
+
+#course-detail-component .banner {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-image: url("/images/contact.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#course-detail-component .banner > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#course-detail-component .banner > .text {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+}
+#course-detail-component .banner > .text > h2 {
+  font-weight: 600;
+  font-size: 36px;
+}
+#course-detail-component .banner > .text > p {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FDC632;
+}
+#course-detail-component > .content {
+  display: flex;
+  width: 100%;
+  max-width: 1250px;
+  margin: auto;
+  padding: 75px 0;
+}
+#course-detail-component > .content > .detail {
+  width: 70%;
+  padding-right: 50px;
+}
+#course-detail-component > .content > .detail > h1 {
+  color: #333;
+  font-size: 22px;
+  font-weight: 600;
+}
+#course-detail-component > .content > .detail > a.category {
+  font-size: 14px;
+  color: #999;
+  transition: 0.3s;
+}
+#course-detail-component > .content > .detail > a.category:hover {
+  color: #333;
+}
+#course-detail-component > .content > .detail > .tags {
+  color: #002347;
+  font-style: italic;
+  font-size: 15px;
+  margin-top: 12px;
+}
+#course-detail-component > .content > .detail > img.cover-img {
+  width: 100%;
+  margin-top: 20px;
+}
+#course-detail-component > .content > .detail article {
+  margin-top: 20px;
+  color: #333;
+  line-height: 1.5;
+}
+#course-detail-component > .content > .detail > form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 0;
+}
+#course-detail-component > .content > .detail > form > h3 {
+  color: #555;
+  font-size: 18px;
+  text-align: center;
+  border: 1px #FDC632 solid;
+  border-radius: 40px;
+  padding: 15px 0;
+}
+#course-detail-component > .content > .detail > form > label {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 100%;
+}
+#course-detail-component > .content > .detail > form > label span {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+#course-detail-component > .content > .detail > form > label input, #course-detail-component > .content > .detail > form > label textarea {
+  width: 100%;
+  border: 1px solid #eee;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 6px 6px 6px 6px;
+  background: #F8F8F8;
+  transition: 0.3s;
+  font-size: 14px;
+}
+#course-detail-component > .content > .detail > form > label input:focus, #course-detail-component > .content > .detail > form > label textarea:focus {
+  box-shadow: none;
+  outline: none;
+  border: 1px #FDC632 solid;
+}
+#course-detail-component > .content > .detail > form > label textarea {
+  height: 150px;
+}
+#course-detail-component > .content > .detail > form > label > button {
+  background: #FDC632;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  height: 50px;
+  letter-spacing: 2px;
+  line-height: 50px;
+  margin: 0 auto;
+  outline: none;
+  position: relative;
+  width: 252px;
+}
+#course-detail-component > .content > .detail > form > label > button.loading {
+  cursor: default;
+  background-color: #ccc;
+}
+#course-detail-component > .content > .detail > form > label div.chaptcha {
+  display: flex;
+  align-items: center;
+}
+#course-detail-component > .content > .detail > form > label div.chaptcha > button {
+  color: #fff;
+  background-color: rgb(255, 79, 79);
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  margin-left: 6px;
+}
+#course-detail-component > .content > .sildebar {
+  width: 30%;
+}
+#course-detail-component > .content > .sildebar .title {
+  border-left: 3px #FDC632 solid;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 19px;
+}
+#course-detail-component > .content > .sildebar > .all-course {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px #eee solid;
+}
+#course-detail-component > .content > .sildebar > .all-course ul {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+#course-detail-component > .content > .sildebar > .all-course ul a {
+  margin: 4px 0;
+  font-size: 15px;
+  color: #555;
+  transition: 0.3s;
+}
+#course-detail-component > .content > .sildebar > .all-course ul a:hover {
+  color: #111;
+}
+#course-detail-component > .content > .sildebar > .hot-course ul, #course-detail-component > .content > .sildebar .like-course ul {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+#course-detail-component > .content > .sildebar > .hot-course ul a, #course-detail-component > .content > .sildebar .like-course ul a {
+  display: flex;
+  margin: 10px 0;
+  font-size: 15px;
+  color: #555;
+}
+#course-detail-component > .content > .sildebar > .hot-course ul a > img, #course-detail-component > .content > .sildebar .like-course ul a > img {
+  width: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 5px;
+}
+#course-detail-component > .content > .sildebar > .hot-course ul a > .content, #course-detail-component > .content > .sildebar .like-course ul a > .content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+#course-detail-component > .content > .sildebar > .hot-course ul a > .content h4, #course-detail-component > .content > .sildebar .like-course ul a > .content h4 {
+  font-size: 17px;
+  font-weight: 600;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+#course-detail-component > .content > .sildebar > .hot-course ul a > .content > ol, #course-detail-component > .content > .sildebar .like-course ul a > .content > ol {
+  display: flex;
+  align-items: center;
+  color: #666;
+  margin-top: 10px;
+}
+#course-detail-component > .content > .sildebar > .advertise {
+  width: 100%;
+  margin-top: 20px;
+}
+#course-detail-component > .content > .sildebar > .advertise img {
+  width: 100%;
+}
+
 #contact-component .banner {
   width: 100%;
   height: 400px;
@@ -870,7 +1502,7 @@ footer > .copyright > p > a {
   border-style: solid;
   border-width: 0px 0px 4px 0px;
   border-color: rgba(3, 82, 230, 0);
-  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px -5px rgba(37, 93, 197, 0.5);
   margin: 0 30px;
   display: flex;
   flex-direction: column;
@@ -879,7 +1511,7 @@ footer > .copyright > p > a {
   transition: 0.3s;
 }
 #contact-component > .information > .item.item1:hover {
-  border-bottom: 4px #002347 solid;
+  border-bottom: 4px #518bf7 solid;
 }
 #contact-component > .information > .item.item2:hover {
   border-bottom: 4px #20C997 solid;
@@ -924,7 +1556,7 @@ footer > .copyright > p > a {
   font-size: 18px;
   font-weight: 600;
   text-align: center;
-  padding: 100px 0;
+  padding: 0 0 40px;
 }
 #contact-component form > label {
   margin: 0 auto;
@@ -932,7 +1564,13 @@ footer > .copyright > p > a {
   width: 100%;
   max-width: 690px;
 }
-#contact-component form > label input, #contact-component form > label textarea {
+#contact-component form > label span {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+#contact-component form > label input, #contact-component form > label textarea, #contact-component form > label select {
   width: 100%;
   border: 1px solid #eee;
   border-style: solid;
@@ -941,8 +1579,9 @@ footer > .copyright > p > a {
   background: #F8F8F8;
   transition: 0.3s;
   font-size: 14px;
+  color: #555;
 }
-#contact-component form > label input:focus, #contact-component form > label textarea:focus {
+#contact-component form > label input:focus, #contact-component form > label textarea:focus, #contact-component form > label select:focus {
   box-shadow: none;
   outline: none;
   border: 1px #FDC632 solid;
@@ -968,16 +1607,16 @@ footer > .copyright > p > a {
   cursor: default;
   background-color: #ccc;
 }
-#contact-component form > label span.chaptcha {
+#contact-component form > label div.chaptcha {
   display: flex;
   align-items: center;
 }
-#contact-component form > label span.chaptcha > button {
+#contact-component form > label div.chaptcha > button {
   color: #fff;
   background-color: rgb(255, 79, 79);
   border-radius: 6px;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   margin-left: 6px;
 }
 #contact-component > iframe {

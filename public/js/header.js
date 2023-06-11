@@ -15,8 +15,8 @@ var homeNews = document.getElementById('home-news');
 if (window.scrollY > 0) {
   headerNav.classList.add('active');
 }
-window.addEventListener('scroll', handleScrollEvent);
 window.addEventListener("wheel", handleWheelEvent);
+window.addEventListener('scroll', handleScrollEvent);
 function handleScrollEvent(event) {
   console.log(this.scrollY);
   if (this.scrollY > 0) {
