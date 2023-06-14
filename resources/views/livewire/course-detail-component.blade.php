@@ -2,27 +2,28 @@
     <div class="banner">
         <div class="overlay"></div>
         <div class="text">
-            <p>八年級</p>
+            <p>{{$course->title}}</p>
         </div>
     </div>
     <div class="content">
         <div class="detail" id="scrollDetail">
-            <h1>超級無敵好玩英文課</h1>
-            <a href="/courses" class="category">八年級</a>
-            <img src="/images/e2.jpg" class="cover-img" alt="" />
+            <h1>{{$course->title}}</h1>
+            <a href="/courses" class="category">{{$course->category->name}}</a>
+            <img src="{{$course->image}}" class="cover-img" alt="{{$course->title}}" />
             <div class="tags">
-                <a href="">#英文</a>
-                <a href="">#國中</a>
+                @foreach($tags as $tag)
+                <span>#{{DB::table('course_tags')->where('id', $tag)->first()->name}}</span> 
+                @endforeach
             </div>
             <article>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias quo dolorum est voluptas aliquam nihil nemo ratione voluptates veniam iure, libero provident voluptatibus voluptatem beatae, consectetur inventore ducimus officia quisquam!
+                @php echo nl2br($course->content) @endphp
             </article>
             <hr class="mt-[100px] mb-[50px]">
             <form wire:submit.prevent='onSubmit' wire:ignore>
                 <h3>立即報名</h3>
                 <label for=""> 
                     <span>詢問課程*</span>
-                    <input type="text" placeholder="詢問課程"  disabled  wire:model="course" class="cursor-not-allowed text-gray-400" />
+                    <input type="text" placeholder="詢問課程"  disabled  wire:model="courseName" class="cursor-not-allowed text-gray-400" />
                 </label>
                 <label for=""> 
                     <span>您的姓名*</span>
@@ -79,62 +80,58 @@
             <div class="all-course">
                 <h3 class="title">所有課程</h3>
                 <ul>
-                    <a href="">國中課程</a>
-                    <a href="">高中課程</a>
-                    <a href="">國中英文課</a>
-                    <a href="">國中數學課</a>
-                    <a href="">國中課程</a>
-                    <a href="">高中課程</a>
-                    <a href="">國中英文課</a>
-                    <a href="">國中數學課</a>
+                    @foreach($courses as $c)
+                    <a href="/course-detail/{{$c->slug}}">{{$c->title}}</a>
+                    @endforeach
+                   
                 </ul>
             </div>
             <div class="hot-course mt-10">
                 <h3 class="title">熱門課程</h3>
                 <ul>
-                    @for($i=0;$i<3;$i++)
+                    @foreach($hot_courses as $hot)
                     <a href="">
-                        <img src="/images/c1.jpg" alt="" />
+                        <img src="{{$hot->image}}" alt="{{$hot->title}}" />
                         <div class="content">
-                            <h4>熱門課程熱門課程熱門課程熱門課程...</h4>
+                            <h4>{{$hot->title}}</h4>
                             <ol>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
                                 </svg>
-                                100
+                                {{$hot->visitor}}
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1 ml-2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                50
+                                {{$hot->watched}}
                             </ol>
                         </div>
                     </a>
-                    @endfor
+                    @endforeach
                 </ul>
             </div>
             <div class="like-course mt-10">
-                <h3 class="title">您可能有興趣</h3>
+                <h3 class="title">您可能會喜歡</h3>
                 <ul>
-                    @for($i=0;$i<3;$i++)
+                    @foreach($likeCourses as $like)
                     <a href="">
-                        <img src="/images/c1.jpg" alt="" />
+                        <img src="{{$like->image}}" alt="{{$like->title}}" />
                         <div class="content">
-                            <h4>熱門課程熱門課程熱門課程熱門課程...</h4>
+                            <h4>{{$like->title}}</h4>
                             <ol>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
                                 </svg>
-                                100
+                                {{$like->visitor}}
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1 ml-2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
-                                50
+                                {{$like->watched}}
                             </ol>
                         </div>
                     </a>
-                    @endfor
+                    @endforeach
                 </ul>
             </div>
             <div class="advertise">

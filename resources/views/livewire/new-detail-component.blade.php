@@ -2,17 +2,16 @@
     <div class="banner">
         <div class="overlay"></div>
         <div class="text">
-            <h2>最新消息</h2>
-            <p>Latest New</p>
+            <h2>{{$article->title}}</h2>
         </div>
     </div>
     <div class="content">
         <div class="detail">
-            <h1>超級無敵好玩英文課</h1>
-            <a href="/courses" class="category">八年級</a>
-            <img src="/images/e2.jpg" class="cover-img" alt="" />
+            <h1>{{$article->title}}</h1>
+            <a href="/courses" class="category">{{$article->category->name}}</a>
+            <img src="{{$article->image}}" class="cover-img" alt="{{$article->title}}" />
             <article>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias quo dolorum est voluptas aliquam nihil nemo ratione voluptates veniam iure, libero provident voluptatibus voluptatem beatae, consectetur inventore ducimus officia quisquam!
+                @php echo nl2br($article->content) @endphp
             </article>
         </div>
     </div>

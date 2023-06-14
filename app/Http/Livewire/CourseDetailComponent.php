@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Course;
 use Livewire\Component;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -15,7 +16,11 @@ class CourseDetailComponent extends Component
     public $content;
     public $captcha;
     public $loading;
-    public $course = "英文課";
+    public $courseName = "英文課";
+    public $slug;
+    public function mount($slug){
+        $this->slug = $slug;
+    }
     public function clearVar(){
         $this->name = "";
         $this->phone = "";
@@ -24,7 +29,7 @@ class CourseDetailComponent extends Component
         $this->content = "";
         $this->captcha = "";
         $this->loading = "";
-        $this->course = "";
+        $this->courseName = "";
     }
     public function onSubmit(){
         $this->validate([
@@ -65,7 +70,7 @@ class CourseDetailComponent extends Component
             $mail->Body .= '寄信人姓名:' . $this->name .'<br />';
             $mail->Body .= '寄信人年級:' . $this->grade .'<br />';
             $mail->Body .= '寄信人就讀學校:' . $this->school .'<br />';
-            $mail->Body .= '詢問課程:' . $this->course .'<br />';
+            $mail->Body .= '詢問課程:' . $this->courseName .'<br />';
             $mail->Body .= '內容:' . $this->content;
             $mail->send();
   
@@ -82,6 +87,12 @@ class CourseDetailComponent extends Component
     }
     public function render()
     {
-        return view('livewire.course-detail-component')->layout('layouts.base');
+        $course = Course::where('slug', $this->slug)->first();
+        $tags = json_decode($course->tags, true);
+        $this->courseName = $course->title;
+        $courses = Course::where('hidden', false)->orderby('updated_at', 'desc')->get();
+        $hot_courses = Course::where('hidden', false)->orderby('visitor', 'desc')->get()->take(3);
+        $likeCourses = Course::where([['hidden', false], ['category_id', $course->category_id]])->get()->take(3);
+        return view('livewire.course-detail-component', ['course'=>$course, 'tags'=>$tags, 'courses'=>$courses, 'hot_courses'=>$hot_courses, 'likeCourses'=>$likeCourses])->layout('layouts.base');
     }
 }

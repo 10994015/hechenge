@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Course;
 use Livewire\Component;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -80,6 +81,7 @@ class ContactComponent extends Component
     }
     public function render()
     {
-        return view('livewire.contact-component')->layout('layouts.base');
+        $courses = Course::where('hidden', false)->get();
+        return view('livewire.contact-component', ['courses'=>$courses])->layout('layouts.base');
     }
 }

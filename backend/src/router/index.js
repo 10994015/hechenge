@@ -18,6 +18,10 @@ import Teachers from "../views/Teachers.vue"
 import AddTeacher from "../views/AddTeacher.vue"
 import TeacherCategories from "../views/TeacherCategories.vue"
 import AddTeacherCategory from "../views/AddTeacherCategory.vue"
+import Students from "../views/Students.vue"
+import AddStudent from "../views/AddStudent.vue"
+import Faqs from "../views/Faqs.vue"
+import AddFaq from "../views/AddFaq.vue"
 import NotFound from "../views/NotFound.vue"
 import AppLayout from "../components/AppLayout.vue"
 import store from "../store"
@@ -119,6 +123,26 @@ const routes = [
                 path:'add-teacher-category/:id',
                 name:'app.teacher.add-category',
                 component:AddTeacherCategory,
+            },
+            {
+                path:'/students',
+                name:'app.students',
+                component: Students
+            },
+            {
+                path:'add-student/:id',
+                name:'app.add-student',
+                component:AddStudent,
+            },
+            {
+                path:'/faqs',
+                name:'app.faqs',
+                component: Faqs
+            },
+            {
+                path:'add-faq/:id',
+                name:'app.add-faq',
+                component:AddFaq,
             },
         ]
     },

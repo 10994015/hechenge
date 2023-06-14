@@ -1,4 +1,5 @@
 <div id="home-component" x-data>
+    @php use Carbon\Carbon; @endphp
     <div class="banner">
         <div class="slick">
             @foreach($banners as $banner)
@@ -141,39 +142,39 @@
         <section class="featured-content" id="home-featured">
             <h2 class="title"><img src="/images/feature.png" /> 最近主打</h2>
             <div class="content">
-                @for($i=0;$i<2;$i++)
+                @foreach($focusCourses as $course)
                 <div class="feature">
-                    <img src="/images/e2.jpg" alt="" />
+                    <img src="{{$course->image}}" alt="{{$course->title}}" />
                     <div class="text">
                         <div class="info">
                             <div class="date">
-                                <span>15</span>
-                                Jun
+                                <span>{{ Carbon::createFromFormat('Y-m-d H:i:s', $course->updated_at)->format('d') }}</span>
+                                {{Carbon::createFromFormat('Y-m-d H:i:s', $course->updated_at)->formatLocalized('%B')}}
                             </div>
                             <div class="tiem-loaction">
-                                <span>
+                                {{-- <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                     12:00 AM - 12:30 AM
-                                </span>
+                                </span> --}}
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                                     </svg>
-                                    Hilton Quebec
+                                    320桃園市中壢區中央東路88號15樓
                                 </span>
                             </div>
                         </div>
-                        <h3 class="feature-title">最近主打課程標題...</h3>
-                        <p class="description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio consequuntur, minus non itaque ea quisquam repellat sed quis sit debitis, perspiciatis temporibus facilis inventore nulla doloremque saepe id, quos deserunt!
-                        </p>
+                        <h3 class="feature-title">{{$course->title}}</h3>
+                        <article class="description">
+                            @php echo $course->content @endphp 
+                        </article>
                         <a href="" class="view-more">瀏覽更多</a>
                     </div>
                 </div>
-                @endfor
+                @endforeach
             </div>
         </section>
     </div>
@@ -186,8 +187,8 @@
             @foreach($articles as $article)
             <div class="new-item">
                 <div class="time-from">
-                    <span>15</span>
-                    octubre
+                    <span>{{ Carbon::createFromFormat('Y-m-d H:i:s', $article->updated_at)->format('d') }}</span>
+                    {{Carbon::createFromFormat('Y-m-d H:i:s', $article->updated_at)->formatLocalized('%B')}}
                 </div>
                 <div class="text">
                     <a href="" class="new-title">{{$article->title}}</a>

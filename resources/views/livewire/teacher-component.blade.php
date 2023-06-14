@@ -7,28 +7,38 @@
         </div>
     </div>
     <div class="teachers">
-        @for($i=0;$i<10;$i++)
+        @foreach($teachers as $teacher)
         <div class="teacher">
             <div class="text">
-                <h3>教學理念</h3>
-                <p>秉持「效率就是勝率」的教學原則，給予學生最為準確的學習重點。注重由點至線而面的擴散式學習方式，以小見大貫通國語文考科的觀 念重點。典故出處，現代應用一次掌握。更具國高中國文課本與試題 編撰實務經驗，使教學能夠更加符合考試需求，讓學生不再面臨學習 與應試分離的情況。</p>
-                <h3>教學理念</h3>
-                <p>秉持「效率就是勝率」的教學原則，給予學生最為準確的學習重點。注重由點至線而面的擴散式學習方式，以小見大貫通國語文考科的觀 念重點。典故出處，現代應用一次掌握。更具國高中國文課本與試題 編撰實務經驗，使教學能夠更加符合考試需求，讓學生不再面臨學習 與應試分離的情況。</p>
-                <h3>教學理念</h3>
-                <p>秉持「效率就是勝率」的教學原則，給予學生最為準確的學習重點。注重由點至線而面的擴散式學習方式，以小見大貫通國語文考科的觀 念重點。典故出處，現代應用一次掌握。更具國高中國文課本與試題 編撰實務經驗，使教學能夠更加符合考試需求，讓學生不再面臨學習 與應試分離的情況。</p>
-                <h3>教學理念</h3>
-                <p>秉持「效率就是勝率」的教學原則，給予學生最為準確的學習重點。注重由點至線而面的擴散式學習方式，以小見大貫通國語文考科的觀 念重點。典故出處，現代應用一次掌握。更具國高中國文課本與試題 編撰實務經驗，使教學能夠更加符合考試需求，讓學生不再面臨學習 與應試分離的情況。</p>
-                <h3>教學理念</h3>
-                <p>秉持「效率就是勝率」的教學原則，給予學生最為準確的學習重點。注重由點至線而面的擴散式學習方式，以小見大貫通國語文考科的觀 念重點。典故出處，現代應用一次掌握。更具國高中國文課本與試題 編撰實務經驗，使教學能夠更加符合考試需求，讓學生不再面臨學習 與應試分離的情況。</p>
+                @if($teacher->title1)
+                    <h3>{{$teacher->title1}}</h3>
+                    <p>{{$teacher->content1}}</p>
+                @endif
+                @if($teacher->title2)
+                    <h3>{{$teacher->title2}}</h3>
+                    <p>{{$teacher->content2}}</p>
+                @endif
+                @if($teacher->title3)
+                    <h3>{{$teacher->title3}}</h3>
+                    <p>{{$teacher->content3}}</p>
+                @endif
+                @if($teacher->title4)
+                    <h3>{{$teacher->title4}}</h3>
+                    <p>{{$teacher->content4}}</p>
+                @endif
+                @if($teacher->title5)
+                    <h3>{{$teacher->title5}}</h3>
+                    <p>{{$teacher->content5}}</p>
+                @endif
             </div>
             <div class="imgbox">
-                <img src="/images/teacher.jpg" alt="" />
+                <img src="{{$teacher->image}}" alt="{{$teacher->name}}" />
             </div>
             <div class="content">
-                <h2>章勳凱</h2>
-                <p>國立政治大學中文研究所碩士</p>
+                <h2>{{$teacher->name}}</h2>
+                <p>{{$teacher->subname}}</p>
             </div>
         </div>
-        @endfor
+        @endforeach
     </div>
 </div>

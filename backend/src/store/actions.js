@@ -220,6 +220,7 @@ export function getCourse({commit}, id){
 export function createCourse({commit}, course){
     const hidden = (course.hidden) ? 1 :0;
     const focus = (course.focus) ? 1 :0;
+    const is_full = (course.is_full) ? 1 :0;
     if(course.image instanceof File){
         const form = new FormData();
         form.append('title', course.title);
@@ -230,7 +231,7 @@ export function createCourse({commit}, course){
         form.append('grade', course.grade);
         form.append('watched', course.watched);
         form.append('visitor', course.visitor);
-        form.append('is_full', course.is_full);
+        form.append('is_full', is_full);
         form.append('hidden', hidden);
         form.append('focus', focus);
         course = form;
@@ -246,6 +247,7 @@ export function updateCourse({commit}, course){
     const id = course.id;
     const hidden = (course.hidden) ? 1 :0;
     const focus = (course.focus) ? 1 :0;
+    const is_full = (course.is_full) ? 1 :0;
     if(course.image instanceof File){
         const form = new FormData();
         form.append('id', course.id);
@@ -257,7 +259,7 @@ export function updateCourse({commit}, course){
         form.append('grade', course.grade);
         form.append('watched', course.watched);
         form.append('visitor', course.visitor);
-        form.append('is_full', course.is_full);
+        form.append('is_full', is_full);
         form.append('hidden', hidden);
         form.append('focus', focus);
         form.append('_method', 'PUT');

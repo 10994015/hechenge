@@ -23,7 +23,7 @@
                 常見問答
             </a>
             <span class="mr-5">|</span>
-            <a href="">
+            <a href="/contact">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                 </svg>
@@ -43,17 +43,18 @@
                     國中課程
                     <i class="fa-solid fa-chevron-down"></i>
                     <ul>
-                        <a href="/courses">八年級</a>
-                        <a href="/courses">九年級</a>
+                        @foreach(DB::table('course_categories')->where([['grade', 0], ['deleted_at', null]])->get() as $category)
+                        <a href="/courses/{{$category->id}}">{{$category->name}}</a>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="mr-8">
                     高中課程
                     <i class="fa-solid fa-chevron-down"></i>
                     <ul>
-                        <a href="">一年級</a>
-                        <a href="">二年級</a>
-                        <a href="">學測衝刺班</a>
+                        @foreach(DB::table('course_categories')->where([['grade', 1], ['deleted_at', null]])->get() as $category)
+                        <a href="/courses/{{$category->id}}">{{$category->name}}</a>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="mr-8" onclick="window.location.href='/teachers'">師資介紹</li>
@@ -70,13 +71,20 @@
         </div>
     </div>
 </header>
-<div class="search-full" id="search-full">
+<div class="search-full" id="search-full" x-data="{
+    searchValue:'',
+    searchFn(){
+        window.location.href='/course-search/' + this.searchValue
+    }
+}">
     <div class="back" ></div>
     <div class="content">
-        <input type="text" placeholder="搜尋課程...">
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="text" placeholder="搜尋課程..." x-model="searchValue" />
+        <button x-on:click='searchFn'><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
 </div>
+
+
 
 
 

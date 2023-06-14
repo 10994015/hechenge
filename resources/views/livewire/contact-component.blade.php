@@ -31,7 +31,7 @@
         <div class="item item3">
             <img src="/images/clock.png" alt="" />
             <h3>營業時間</h3>
-            <p>週一至週五 PM 14:00 - PM 22:00<br>六日 PM 14:00 - PM 22:00</p>
+            <p>週一至週五 PM 14:00 - PM 22:00<br>六日 PM 09:00 - PM 22:00</p>
         </div>
     </div>
     <form wire:submit.prevent='onSubmit' wire:ignore >
@@ -39,7 +39,9 @@
         <label for=""> 
             <span>詢問課程*</span>
             <select wire:model="course">
-                <option value="">國中英文課</option>
+                @foreach($courses as $course)
+                <option value="{{$course->tilte}}">{{$course->title}}</option>
+                @endforeach
             </select>
         </label>
         <label for=""> 

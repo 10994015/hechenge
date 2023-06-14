@@ -36,11 +36,9 @@
         </div>
         <div class="course">
             <h5>探索課程</h5>
-            <div class="item"><a href="">高中一年級</a></div>
-            <div class="item"><a href="">高中二年級</a></div>
-            <div class="item"><a href="">高中學測班</a></div>
-            <div class="item"><a href="">國中八年級</a></div>
-            <div class="item"><a href="">國中九年級</a></div>
+            @foreach(DB::table('course_categories')->where('deleted_at', null)->get() as $c)
+            <div class="item"><a href="/courses/{{$c->id}}">{{$c->name}}</a></div>
+            @endforeach
         </div>
         <div class="link">
             <h5>關注我們</h5>
