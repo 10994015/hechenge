@@ -138,6 +138,7 @@
     
         </section>
     </div>
+    @if($focusCourses)
     <div class="featured" >
         <section class="featured-content" id="home-featured">
             <h2 class="title"><img src="/images/feature.png" /> 最近主打</h2>
@@ -178,6 +179,7 @@
             </div>
         </section>
     </div>
+    @endif
     <section class="news" id="home-news" >
         <h2 class="title"><img src="/images/news.png" />最新消息</h2>
         <div class="readmore">
