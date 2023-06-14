@@ -29,11 +29,11 @@
                     octubre
                 </div>
                 <div class="text">
-                    <a href="" class="new-title">Aplicación de las leyes naturales a la tecnología y la sociedad</a>
+                    <a href="/new-detail" class="new-title">Aplicación de las leyes naturales a la tecnología y la sociedad</a>
                     <span class="category">類別</span>
                     <article>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuatMorbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuatMorbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuatMorbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuatMorbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuatMorbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuatMorbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris itae erat conuat</article>
                 </div>
-                <a href="" class="imgbox">
+                <a href="/new-detail" class="imgbox">
                     <img src="/images/c1.jpg" alt="" />
                 </a>
             </div>

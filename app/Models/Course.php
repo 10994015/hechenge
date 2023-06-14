@@ -13,7 +13,7 @@ class Course extends Model
     use HasSlug;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'content', 'grade', 'image', 'image_mime', 'image_size', 'hidden', 'focus', 'category_id', 'tags', 'watched',  'created_by', 'updated_by'];
+    protected $fillable = ['title', 'content', 'grade', 'image', 'image_mime', 'image_size', 'hidden', 'focus', 'is_full', 'category_id', 'tags', 'watched', 'visitor', 'created_by', 'updated_by'];
 
     public function getSlugOptions() : SlugOptions
     {

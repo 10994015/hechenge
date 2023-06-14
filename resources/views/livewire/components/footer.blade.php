@@ -31,16 +31,16 @@
                 週一至週五 PM 14:00 - PM 22:00
             </div>
             <div class="item">
-                六日 PM 14:00 - PM 22:00
+                六日 PM 09:00 - PM 22:00
             </div>
         </div>
         <div class="course">
             <h5>探索課程</h5>
-            <div class="item"><a href="">國中八年級</a></div>
-            <div class="item"><a href="">國中九年級</a></div>
             <div class="item"><a href="">高中一年級</a></div>
             <div class="item"><a href="">高中二年級</a></div>
             <div class="item"><a href="">高中學測班</a></div>
+            <div class="item"><a href="">國中八年級</a></div>
+            <div class="item"><a href="">國中九年級</a></div>
         </div>
         <div class="link">
             <h5>關注我們</h5>

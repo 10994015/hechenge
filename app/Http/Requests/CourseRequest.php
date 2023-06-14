@@ -31,6 +31,8 @@ class CourseRequest extends FormRequest
             'focus'=>['boolean'],
             'grade'=>['integer', 'required'],
             'watched'=>['nullable'],
+            'visitor'=>['nullable'],
+            'is_full'=>['boolean'],
             'tags'=>['nullable'],
             'category_id'=>['nullable']
         ];

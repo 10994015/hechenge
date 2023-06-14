@@ -229,6 +229,8 @@ export function createCourse({commit}, course){
         form.append('tags', course.tags);
         form.append('grade', course.grade);
         form.append('watched', course.watched);
+        form.append('visitor', course.visitor);
+        form.append('is_full', course.is_full);
         form.append('hidden', hidden);
         form.append('focus', focus);
         course = form;
@@ -254,6 +256,8 @@ export function updateCourse({commit}, course){
         form.append('tags', course.tags);
         form.append('grade', course.grade);
         form.append('watched', course.watched);
+        form.append('visitor', course.visitor);
+        form.append('is_full', course.is_full);
         form.append('hidden', hidden);
         form.append('focus', focus);
         form.append('_method', 'PUT');

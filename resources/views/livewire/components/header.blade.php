@@ -56,7 +56,8 @@
                         <a href="">學測衝刺班</a>
                     </ul>
                 </li>
-                <li class="mr-8">師資介紹</li>
+                <li class="mr-8" onclick="window.location.href='/teachers'">師資介紹</li>
+                <li class="mr-8" onclick="window.location.href='/students'">學生回饋</li>
                 <li onclick="window.location.href='/contact'">聯絡我們</li>
             </nav>
         </div>

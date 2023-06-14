@@ -29,12 +29,23 @@
                     <input type="text" placeholder="姓名 *" wire:model='name' />
                 </label>
                 <label for=""> 
-                    <span>電子郵件*</span>
-                    <input type="text" placeholder="電子郵件 *" wire:model='email' />
+                    <span>聯絡電話</span>
+                    <input type="text" placeholder="聯絡電話 *" wire:model='phone' />
+                </label>
+                <label for=""> 
+                    <span>就讀學校 *</span>
+                    <input type="text" placeholder="就讀學校 *" wire:model='school' />
                 </label>
                 <label for="">
-                    <span>主旨*</span>
-                    <input type="text" placeholder="主旨 *" wire:model='subject' />
+                    <span>就讀年級</span>
+                    <select wore:model="grade" >
+                        <option value="高中一年級">高中一年級</option>
+                        <option value="高中二年級">高中二年級</option>
+                        <option value="高中三年級">高中三年級</option>
+                        <option value="國中八年級">國中八年級</option>
+                        <option value="國中八年級">國中八年級</option>
+                        <option value="其他">其他</option>
+                    </select>
                 </label>
                 <label for=""> 
                     <span>詢問內容*</span>

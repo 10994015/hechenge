@@ -47,12 +47,23 @@
             <input type="text" placeholder="姓名 *" wire:model='name' />
         </label>
         <label for=""> 
-            <span>電子郵件*</span>
-            <input type="text" placeholder="電子郵件 *" wire:model='email' />
+            <span>聯絡電話 *</span>
+            <input type="text" placeholder="聯絡電話 *" wire:model='phone' />
+        </label>
+        <label for=""> 
+            <span>就讀學校 *</span>
+            <input type="text" placeholder="就讀學校 *" wire:model='school' />
         </label>
         <label for="">
-            <span>主旨*</span>
-            <input type="text" placeholder="主旨 *" wire:model='subject' />
+            <span>就讀年級 *</span>
+            <select wore:model="grade" >
+                <option value="高中一年級">高中一年級</option>
+                <option value="高中二年級">高中二年級</option>
+                <option value="高中三年級">高中三年級</option>
+                <option value="國中八年級">國中八年級</option>
+                <option value="國中八年級">國中八年級</option>
+                <option value="其他">其他</option>
+            </select>
         </label>
         <label for=""> 
             <span>詢問內容*</span>
@@ -74,22 +85,22 @@
         </label>
     </form>
     @if (session('success'))
-        <div class='successDiv'>
-            <div class="mb-4 font-medium text-sm text-green-600 ">
-                {{ session('success') }}
-            </div>
+    <div class='successDiv'>
+        <div class="mb-4 font-medium text-sm text-green-600 ">
+            {{ session('success') }}
         </div>
-            
-        @endif
+    </div>
+        
+    @endif
     <div class="errorDiv">
+        @if(session('error')) {{session('error')}} @endif
         @error('name') <span class="text-danger">{{$message}}</span> @enderror
         @error('email') <span class="text-danger">{{$message}}</span> @enderror
         @error('subject') <span class="text-danger">{{$message}}</span> @enderror
         @error('content') <span class="text-danger">{{$message}}</span> @enderror
         @error('captcha') <span class="text-danger">{{$message}}</span> @enderror
     </div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.2974069456636!2d121.22355707577283!3d24.9559940414274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468224830092223%3A0x35ce2c0b437a7dc1!2zMzIw5qGD5ZyS5biC5Lit5aOi5Y2A5Lit5aSu5p2x6LevODjomZ8xNeaokw!5e0!3m2!1szh-TW!2stw!4v1685712033996!5m2!1szh-TW!2stw"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14469.190196761454!2d121.226132!3d24.9559892!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468230785a8a207%3A0xc791ba62530edfbc!2z6LWr5oiQ5pWZ6IKyIOKApyDljYflpKflrbjkuK3lv4M!5e0!3m2!1szh-TW!2stw!4v1686664682819!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 @push('scripts')

@@ -137,6 +137,10 @@ const onSubmit = () => {
           <input type="text" v-model="banner.title" @keyup="successMsgSetNull()" />
         </div>
         <div class="form-group">
+          <label for="">圖片連結</label>
+          <input type="text" placeholder="請輸入網址" v-model="banner.url" @keyup="successMsgSetNull()" />
+        </div>
+        <div class="form-group">
           <label for=""><span class="text-danger">*</span>文章圖片</label>
           <label for="imagefile" class="imagefileFor">
             <svg

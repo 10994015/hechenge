@@ -15,6 +15,8 @@ const DEFAULT_COURSE = {
   hidden: false,
   focus: false,
   watched:0,
+  visitor:0,
+  is_full:false,
   tags:[],
 };
 const image_url = ref("");
@@ -262,6 +264,10 @@ const editor = ref(ClassicEditor);
           <input type="file" id="imagefile" hidden @change="previewImage($event)" />
         </div>
         <div class="form-group">
+          <label for=""><span class="text-red-800"></span>初始訪客人數</label>
+          <input type="number" v-model="course.visitor" @keyup="successMsgSetNull()" />
+        </div>
+        <div class="form-group">
           <label for=""><span class="text-red-800"></span>初始點擊人數</label>
           <input type="number" v-model="course.watched" @keyup="successMsgSetNull()" />
         </div>
@@ -273,6 +279,10 @@ const editor = ref(ClassicEditor);
           <div class="form-group ml-10">
             <label for="">焦點課程</label>
             <input type="checkbox" class="slide" v-model="course.focus" @change="successMsgSetNull()" />
+          </div>
+          <div class="form-group ml-10">
+            <label for="">是否額滿</label>
+            <input type="checkbox" class="slide" v-model="course.is_full" @change="successMsgSetNull()" />
           </div>
         </div>
         <div class="form-group">

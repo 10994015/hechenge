@@ -844,6 +844,9 @@ footer > .copyright > p > a {
   -webkit-line-clamp: 5;
   overflow: hidden;
 }
+#home-component .news > .content > .new-item > .text > article img {
+  display: none;
+}
 #home-component .news > .content > .new-item > a.imgbox {
   width: 20%;
   overflow: hidden;
@@ -1023,6 +1026,156 @@ footer > .copyright > p > a {
 #news-component .news > .content > .new-item > a.imgbox > img {
   transition: 0.3s;
   width: 100%;
+}
+
+#new-detail-component .banner {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-image: url("/images/contact.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#new-detail-component .banner > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#new-detail-component .banner > .text {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+}
+#new-detail-component .banner > .text > h2 {
+  font-weight: 600;
+  font-size: 36px;
+}
+#new-detail-component .banner > .text > p {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FDC632;
+}
+#new-detail-component > .content {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 75px 0;
+}
+#new-detail-component > .content > .detail {
+  width: 100%;
+  padding-right: 50px;
+}
+#new-detail-component > .content > .detail > h1 {
+  color: #333;
+  font-size: 22px;
+  font-weight: 600;
+}
+#new-detail-component > .content > .detail > a.category {
+  font-size: 14px;
+  color: #999;
+  transition: 0.3s;
+}
+#new-detail-component > .content > .detail > a.category:hover {
+  color: #333;
+}
+#new-detail-component > .content > .detail > .tags {
+  color: #002347;
+  font-style: italic;
+  font-size: 15px;
+  margin-top: 12px;
+}
+#new-detail-component > .content > .detail > img.cover-img {
+  width: 100%;
+  margin-top: 20px;
+}
+#new-detail-component > .content > .detail article {
+  margin-top: 20px;
+  color: #333;
+  line-height: 1.5;
+}
+#new-detail-component > .content > .detail > form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 0;
+}
+#new-detail-component > .content > .detail > form > h3 {
+  color: #555;
+  font-size: 18px;
+  text-align: center;
+  border: 1px #FDC632 solid;
+  border-radius: 40px;
+  padding: 15px 0;
+}
+#new-detail-component > .content > .detail > form > label {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 100%;
+}
+#new-detail-component > .content > .detail > form > label span {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+#new-detail-component > .content > .detail > form > label input, #new-detail-component > .content > .detail > form > label textarea {
+  width: 100%;
+  border: 1px solid #eee;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  border-radius: 6px 6px 6px 6px;
+  background: #F8F8F8;
+  transition: 0.3s;
+  font-size: 14px;
+}
+#new-detail-component > .content > .detail > form > label input:focus, #new-detail-component > .content > .detail > form > label textarea:focus {
+  box-shadow: none;
+  outline: none;
+  border: 1px #FDC632 solid;
+}
+#new-detail-component > .content > .detail > form > label textarea {
+  height: 150px;
+}
+#new-detail-component > .content > .detail > form > label > button {
+  background: #FDC632;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  height: 50px;
+  letter-spacing: 2px;
+  line-height: 50px;
+  margin: 0 auto;
+  outline: none;
+  position: relative;
+  width: 252px;
+}
+#new-detail-component > .content > .detail > form > label > button.loading {
+  cursor: default;
+  background-color: #ccc;
+}
+#new-detail-component > .content > .detail > form > label div.chaptcha {
+  display: flex;
+  align-items: center;
+}
+#new-detail-component > .content > .detail > form > label div.chaptcha > button {
+  color: #fff;
+  background-color: rgb(255, 79, 79);
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  margin-left: 6px;
 }
 
 #course-component .banner {
@@ -1634,4 +1787,231 @@ footer > .copyright > p > a {
 }
 #contact-component > .errorDiv span, #contact-component .successDiv span {
   font-size: 14px;
+}
+
+#teacher-component .banner {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-image: url("/images/contact.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#teacher-component .banner > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#teacher-component .banner > .text {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+}
+#teacher-component .banner > .text > h2 {
+  font-weight: 600;
+  font-size: 36px;
+}
+#teacher-component .banner > .text > p {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FDC632;
+}
+#teacher-component > .teachers {
+  width: 100%;
+  padding: 50px 0;
+  max-width: 1200px;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(3, calc(33% - 50px));
+  grid-row-gap: 30px;
+  grid-column-gap: 50px;
+  justify-content: center;
+}
+#teacher-component > .teachers > .teacher {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 3px 5px rgba(204, 204, 204, 0.5);
+}
+#teacher-component > .teachers > .teacher:hover > .text {
+  opacity: 1;
+  animation: open-text 0.1s linear;
+}
+#teacher-component > .teachers > .teacher > .text {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #FDC632;
+  color: #333;
+  padding: 20px;
+  overflow-y: scroll;
+  cursor: default;
+  opacity: 0;
+}
+#teacher-component > .teachers > .teacher > .text::-webkit-scrollbar {
+  width: 7px;
+}
+#teacher-component > .teachers > .teacher > .text::-webkit-scrollbar-button {
+  background: transparent;
+  border-radius: 4px;
+}
+#teacher-component > .teachers > .teacher > .text::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+#teacher-component > .teachers > .teacher > .text::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid slategrey;
+}
+#teacher-component > .teachers > .teacher > .text::-webkit-scrollbar-track {
+  box-shadow: transparent;
+}
+#teacher-component > .teachers > .teacher > .text > h3 {
+  border-left: 3px #002347 solid;
+  padding: 0 8px;
+  font-size: 17px;
+  font-weight: 600;
+}
+#teacher-component > .teachers > .teacher > .text > p {
+  color: #555;
+  margin: 10px 0;
+  font-size: 13px;
+}
+#teacher-component > .teachers > .teacher > .imgbox {
+  width: 100%;
+  height: 300px;
+}
+#teacher-component > .teachers > .teacher > .imgbox > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#teacher-component > .teachers > .teacher > .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background-color: #D5C7A4;
+  color: #fff;
+}
+#teacher-component > .teachers > .teacher > .content > h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+#teacher-component > .teachers > .teacher > .content > p {
+  font-size: 14px;
+}
+@keyframes open-text {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#student-component .banner {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-image: url("/images/contact.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#student-component .banner > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#student-component .banner > .text {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  margin-top: 100px;
+}
+#student-component .banner > .text > h2 {
+  font-weight: 600;
+  font-size: 36px;
+}
+#student-component .banner > .text > p {
+  margin-top: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  color: #FDC632;
+}
+#student-component .students {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 50px 0;
+}
+#student-component .students > .student {
+  display: flex;
+  margin-bottom: 30px;
+  border-bottom: 1px #ddd solid;
+  padding: 30px 0;
+}
+#student-component .students > .student:nth-child(odd) {
+  flex-direction: row;
+}
+#student-component .students > .student:nth-child(even) {
+  flex-direction: row-reverse;
+}
+#student-component .students > .student:nth-child(even) > .content {
+  align-items: flex-end;
+}
+#student-component .students > .student img {
+  width: 250px;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 1px #ddd solid;
+}
+#student-component .students > .student .content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+#student-component .students > .student .content h2 {
+  color: #222;
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+#student-component .students > .student .content > article {
+  font-size: 14px;
+  color: #555;
+}
+#student-component .students > .student .content > article > iframe {
+  width: 100%;
+  margin-top: 25px;
 }

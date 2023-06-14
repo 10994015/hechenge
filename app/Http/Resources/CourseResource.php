@@ -25,6 +25,8 @@ class CourseResource extends JsonResource
             'focus'=>$this->focus ? true : false,
             'grade'=>$this->grade,
             'watched'=>$this->watched,
+            'visitor'=>$this->visitor,
+            'is_full'=>$this->is_full ? true : false,
             'category_id'=>$this->category_id,
             'tags'=> json_decode($this->tags) ,
             'created_at'=>(new \DateTime($this->created_at))->format('Y-m-d H:i:s'),

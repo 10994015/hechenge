@@ -9,16 +9,18 @@ use PHPMailer\PHPMailer\Exception;
 class ContactComponent extends Component
 {
     public $name;
-    public $email;
-    public $subject;
+    public $phone;
+    public $school;
+    public $grade;
     public $content;
     public $captcha;
     public $loading;
     public $course=  "英文課";
     public function clearVar(){
         $this->name = "";
-        $this->email = "";
-        $this->subject = "";
+        $this->phone = "";
+        $this->school = "";
+        $this->grade = "";
         $this->content = "";
         $this->captcha = "";
         $this->loading = "";
@@ -28,14 +30,16 @@ class ContactComponent extends Component
     public function onSubmit(){
         $this->validate([
             'name' => 'required',
-            'email' => 'required',
-            'subject' => 'required',
+            'phone' => 'required',
+            'school' => 'required',
+            'grade' => 'required',
             'content' => 'required',
             'captcha' => 'required|captcha',
         ], [
             'name.required'=>'請輸入姓名',
-            'email.required'=>'請輸入Email',
-            'subject.required'=>'請輸入主旨',
+            'phone.required'=>'請輸入連絡電話',
+            'school.required'=>'請輸入就讀學校',
+            'grade.required'=>'請輸入年級',
             'content.required'=>'請輸入內容',
             'captcha.required'=>'請輸入驗證碼',
             'captcha.captcha'=>'驗證碼輸入錯誤',
@@ -56,9 +60,11 @@ class ContactComponent extends Component
             $mail->addAddress('a0938599191@gmail.com');
   
             $mail->isHTML(true);
-            $mail->Subject = $this->subject;
-            $mail->Body = '寄信人信箱:' . $this->email .'<br />';
+            $mail->Subject = "赫成教育補習班詢問信件";
+            $mail->Body = '寄信人聯絡電話:' . $this->phone .'<br />';
             $mail->Body .= '寄信人姓名:' . $this->name .'<br />';
+            $mail->Body .= '寄信人年級:' . $this->grade .'<br />';
+            $mail->Body .= '寄信人就讀學校:' . $this->school .'<br />';
             $mail->Body .= '詢問課程:' . $this->course .'<br />';
             $mail->Body .= '內容:' . $this->content;
             $mail->send();

@@ -22,7 +22,8 @@
     @include('livewire.components.footer')
     @livewireScripts
     <script src='/js/app.js'></script>
-    <script src="/js/header.js"></script>
+    <script>var isHome = false;</script>
     @stack('scripts')
+    <script src="/js/header.js"></script>
 </body>
 </html>
