@@ -138,7 +138,7 @@
     
         </section>
     </div>
-    @if($focusCourses)
+    @if($focusCourses->count() > 0)
     <div class="featured" >
         <section class="featured-content" id="home-featured">
             <h2 class="title"><img src="/images/feature.png" /> 最近主打</h2>
