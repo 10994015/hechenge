@@ -77,7 +77,7 @@
             <a href="/">關於赫成</a>
         </div>
     </section>
-    @if($hotCourses->count() > )0
+    @if($hotCourses->count() > 0)
     <div class="course-div" id="home-courses" >
         <section class="course"  x-data="{
             length:{{$hotCourses->count()}},
