@@ -77,6 +77,7 @@
             <a href="/">關於赫成</a>
         </div>
     </section>
+    @if($hotCourses->count() > )0
     <div class="course-div" id="home-courses" >
         <section class="course"  x-data="{
             length:{{$hotCourses->count()}},
@@ -138,6 +139,7 @@
     
         </section>
     </div>
+    @endif
     @if($focusCourses->count() > 0)
     <div class="featured" >
         <section class="featured-content" id="home-featured">
@@ -180,6 +182,7 @@
         </section>
     </div>
     @endif
+    @if($articles->count() > 0)
     <section class="news" id="home-news" >
         <h2 class="title"><img src="/images/news.png" />最新消息</h2>
         <div class="readmore">
@@ -204,6 +207,7 @@
             @endforeach
         </div>
     </section>
+    @endif
     <div class="icon-links">
         <a href="" class="mb-3"><img src="/images/line.png" alt=""></a>
         <a href="" class="mb-3"><img src="/images/ig.png" alt=""></a>
