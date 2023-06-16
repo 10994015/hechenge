@@ -12,7 +12,9 @@
             <img src="{{$course->image}}" class="cover-img" alt="{{$course->title}}" />
             <div class="tags">
                 @foreach($tags as $tag)
-                <span>#{{DB::table('course_tags')->where('id', $tag)->first()->name}}</span> 
+                    @if($tag != "" || $tag != null)
+                    <span>#{{DB::table('course_tags')->where('id', $tag)->first()->name}}</span> 
+                    @endif
                 @endforeach
             </div>
             <article>
@@ -83,7 +85,6 @@
                     @foreach($courses as $c)
                     <a href="/course-detail/{{$c->slug}}">{{$c->title}}</a>
                     @endforeach
-                   
                 </ul>
             </div>
             <div class="hot-course mt-10">

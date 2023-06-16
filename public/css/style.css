@@ -1103,7 +1103,7 @@ footer > .copyright > p > a {
   max-width: 1200px;
   margin: 0 auto;
   opacity: 0;
-  padding: 50px 0;
+  padding: 50px 20px;
 }
 #news-component .news.fade-out {
   animation: fade-out 0.3s linear;
@@ -1126,6 +1126,11 @@ footer > .copyright > p > a {
   transition: 0.3s;
   outline: none;
   color: #333;
+}
+@media screen and (max-width: 300px) {
+  #news-component .news > .searchBar .search-container input[type=text] {
+    width: 100%;
+  }
 }
 #news-component .news > .searchBar .search-container input[type=text]:focus {
   border-color: #FDC632;
@@ -1197,6 +1202,11 @@ footer > .copyright > p > a {
   border-left: 1px #ddd solid;
   width: 60%;
 }
+@media screen and (max-width: 1000px) {
+  #news-component .news > .content > .new-item > .text {
+    width: 50%;
+  }
+}
 #news-component .news > .content > .new-item > .text > a.new-title {
   font-size: 21px;
   color: #002347;
@@ -1225,6 +1235,11 @@ footer > .copyright > p > a {
 #news-component .news > .content > .new-item > a.imgbox {
   width: 20%;
   overflow: hidden;
+}
+@media screen and (max-width: 1000px) {
+  #news-component .news > .content > .new-item > a.imgbox {
+    width: 30%;
+  }
 }
 #news-component .news > .content > .new-item > a.imgbox:hover > img {
   transform: scale(1.05);
@@ -1280,7 +1295,11 @@ footer > .copyright > p > a {
 }
 #new-detail-component > .content > .detail {
   width: 100%;
-  padding-right: 50px;
+}
+@media screen and (max-width: 1200px) {
+  #new-detail-component > .content > .detail {
+    padding: 0 30px;
+  }
 }
 #new-detail-component > .content > .detail > h1 {
   color: #333;
@@ -1425,6 +1444,8 @@ footer > .copyright > p > a {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 25px;
+  box-sizing: border-box;
 }
 #course-component > .courses > .nav {
   width: 100%;
@@ -1439,10 +1460,33 @@ footer > .copyright > p > a {
   color: #999;
   font-size: 14px;
 }
-#course-component > .courses > .nav label {
+@media screen and (max-width: 420px) {
+  #course-component > .courses > .nav > span {
+    display: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  #course-component > .courses > .nav > .searchBar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+@media screen and (max-width: 420px) {
+  #course-component > .courses > .nav > .searchBar {
+    display: block;
+  }
+}
+#course-component > .courses > .nav > .searchBar label {
   margin: 0 8px;
 }
-#course-component > .courses > .nav label select {
+@media screen and (max-width: 700px) {
+  #course-component > .courses > .nav > .searchBar label {
+    margin: 0px;
+    margin-bottom: 8px;
+  }
+}
+#course-component > .courses > .nav > .searchBar label select {
   height: 35px;
   border: 1px #ccc solid;
   font-size: 14px;
@@ -1453,18 +1497,29 @@ footer > .copyright > p > a {
   width: 150px;
   padding: 0 10px;
 }
-#course-component > .courses > .nav label select:focus {
+@media screen and (max-width: 420px) {
+  #course-component > .courses > .nav > .searchBar label select {
+    width: 100%;
+  }
+}
+#course-component > .courses > .nav > .searchBar label select:focus {
   border-color: #FDC632;
   box-shadow: none;
 }
-#course-component > .courses > .nav label select:focus-visible {
+#course-component > .courses > .nav > .searchBar label select:focus-visible {
   box-shadow: none;
 }
-#course-component > .courses > .nav label.search-container {
+#course-component > .courses > .nav > .searchBar label.search-container {
   position: relative;
   display: inline-block;
 }
-#course-component > .courses > .nav label.search-container input[type=text] {
+@media screen and (max-width: 420px) {
+  #course-component > .courses > .nav > .searchBar label.search-container {
+    width: 100%;
+    margin-top: 12px;
+  }
+}
+#course-component > .courses > .nav > .searchBar label.search-container input[type=text] {
   padding-right: 80px; /* 根据按钮的宽度调整此值 */
   height: 35px;
   border: 1px #ccc solid;
@@ -1473,14 +1528,24 @@ footer > .copyright > p > a {
   outline: none;
   color: #999;
 }
-#course-component > .courses > .nav label.search-container input[type=text]:focus {
+@media screen and (max-width: 500px) {
+  #course-component > .courses > .nav > .searchBar label.search-container input[type=text] {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 420px) {
+  #course-component > .courses > .nav > .searchBar label.search-container input[type=text] {
+    width: 100%;
+  }
+}
+#course-component > .courses > .nav > .searchBar label.search-container input[type=text]:focus {
   border-color: #FDC632;
   box-shadow: none;
 }
-#course-component > .courses > .nav label.search-container input[type=text]:focus-visible {
+#course-component > .courses > .nav > .searchBar label.search-container input[type=text]:focus-visible {
   box-shadow: none;
 }
-#course-component > .courses > .nav label.search-container button {
+#course-component > .courses > .nav > .searchBar label.search-container button {
   position: absolute;
   top: 0;
   right: 0;
@@ -1498,6 +1563,18 @@ footer > .copyright > p > a {
   grid-column-gap: 20px;
   grid-row-gap: 5em;
   padding: 100px 0;
+}
+@media screen and (max-width: 1000px) {
+  #course-component > .courses > .course-list {
+    grid-template-columns: repeat(2, calc(50% - 10px));
+    padding: 50px 0 100px;
+  }
+}
+@media screen and (max-width: 700px) {
+  #course-component > .courses > .course-list {
+    grid-template-columns: repeat(1, 100%);
+    grid-column-gap: 0px;
+  }
 }
 #course-component > .courses > .course-list > .course-item {
   border: 1px solid #eee;
@@ -1641,9 +1718,24 @@ footer > .copyright > p > a {
   margin: auto;
   padding: 75px 0;
 }
+@media screen and (max-width: 768px) {
+  #course-detail-component > .content {
+    flex-direction: column;
+  }
+}
 #course-detail-component > .content > .detail {
   width: 70%;
   padding-right: 50px;
+}
+@media screen and (max-width: 1350px) {
+  #course-detail-component > .content > .detail {
+    padding: 0 25px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #course-detail-component > .content > .detail {
+    width: 100%;
+  }
 }
 #course-detail-component > .content > .detail > h1 {
   color: #333;
@@ -1730,6 +1822,11 @@ footer > .copyright > p > a {
   position: relative;
   width: 252px;
 }
+@media screen and (max-width: 768px) {
+  #course-detail-component > .content > .detail > form > label > button {
+    width: 100%;
+  }
+}
 #course-detail-component > .content > .detail > form > label > button.loading {
   cursor: default;
   background-color: #ccc;
@@ -1748,6 +1845,16 @@ footer > .copyright > p > a {
 }
 #course-detail-component > .content > .sildebar {
   width: 30%;
+}
+@media screen and (max-width: 1350px) {
+  #course-detail-component > .content > .sildebar {
+    padding: 0 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #course-detail-component > .content > .sildebar {
+    width: 100%;
+  }
 }
 #course-detail-component > .content > .sildebar .title {
   border-left: 3px #FDC632 solid;
@@ -1779,17 +1886,51 @@ footer > .copyright > p > a {
   display: flex;
   flex-direction: column;
 }
+@media screen and (max-width: 768px) {
+  #course-detail-component > .content > .sildebar > .hot-course ul, #course-detail-component > .content > .sildebar .like-course ul {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-column-gap: 15px;
+  }
+}
+@media screen and (max-width: 576px) {
+  #course-detail-component > .content > .sildebar > .hot-course ul, #course-detail-component > .content > .sildebar .like-course ul {
+    grid-template-columns: repeat(1, 100%);
+    grid-column-gap: 0;
+  }
+}
 #course-detail-component > .content > .sildebar > .hot-course ul a, #course-detail-component > .content > .sildebar .like-course ul a {
   display: flex;
   margin: 10px 0;
   font-size: 15px;
   color: #555;
 }
+@media screen and (max-width: 352px) {
+  #course-detail-component > .content > .sildebar > .hot-course ul a, #course-detail-component > .content > .sildebar .like-course ul a {
+    flex-direction: column;
+  }
+}
 #course-detail-component > .content > .sildebar > .hot-course ul a > img, #course-detail-component > .content > .sildebar .like-course ul a > img {
   width: 100px;
   -o-object-fit: cover;
      object-fit: cover;
   margin-right: 5px;
+}
+@media screen and (max-width: 768px) {
+  #course-detail-component > .content > .sildebar > .hot-course ul a > img, #course-detail-component > .content > .sildebar .like-course ul a > img {
+    width: 130px;
+  }
+}
+@media screen and (max-width: 382px) {
+  #course-detail-component > .content > .sildebar > .hot-course ul a > img, #course-detail-component > .content > .sildebar .like-course ul a > img {
+    width: 100px;
+  }
+}
+@media screen and (max-width: 352px) {
+  #course-detail-component > .content > .sildebar > .hot-course ul a > img, #course-detail-component > .content > .sildebar .like-course ul a > img {
+    width: 100%;
+    margin-bottom: 12px;
+  }
 }
 #course-detail-component > .content > .sildebar > .hot-course ul a > .content, #course-detail-component > .content > .sildebar .like-course ul a > .content {
   display: flex;
@@ -1804,6 +1945,11 @@ footer > .copyright > p > a {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+@media screen and (max-width: 352px) {
+  #course-detail-component > .content > .sildebar > .hot-course ul a > .content h4, #course-detail-component > .content > .sildebar .like-course ul a > .content h4 {
+    font-size: 24px;
+  }
+}
 #course-detail-component > .content > .sildebar > .hot-course ul a > .content > ol, #course-detail-component > .content > .sildebar .like-course ul a > .content > ol {
   display: flex;
   align-items: center;
@@ -1813,6 +1959,17 @@ footer > .copyright > p > a {
 #course-detail-component > .content > .sildebar > .advertise {
   width: 100%;
   margin-top: 20px;
+}
+@media screen and (max-width: 768px) {
+  #course-detail-component > .content > .sildebar > .advertise {
+    width: 70%;
+    margin: 20px auto 0;
+  }
+}
+@media screen and (max-width: 414px) {
+  #course-detail-component > .content > .sildebar > .advertise {
+    width: 100%;
+  }
 }
 #course-detail-component > .content > .sildebar > .advertise img {
   width: 100%;
@@ -1860,6 +2017,11 @@ footer > .copyright > p > a {
   justify-content: center;
   padding: 100px 0;
 }
+@media screen and (max-width: 768px) {
+  #contact-component > .information {
+    flex-direction: column;
+  }
+}
 #contact-component > .information > .item {
   width: 350px;
   height: 290px;
@@ -1876,6 +2038,16 @@ footer > .copyright > p > a {
   align-items: center;
   justify-content: center;
   transition: 0.3s;
+}
+@media screen and (max-width: 1200px) {
+  #contact-component > .information > .item {
+    margin: 0 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  #contact-component > .information > .item {
+    width: 100%;
+  }
 }
 #contact-component > .information > .item.item1:hover {
   border-bottom: 4px #518bf7 solid;
@@ -1917,6 +2089,11 @@ footer > .copyright > p > a {
   display: flex;
   flex-direction: column;
   padding: 0 0 0 0;
+}
+@media screen and (max-width: 768px) {
+  #contact-component form {
+    padding: 0 20px;
+  }
 }
 #contact-component form > h3 {
   color: #111;
@@ -2050,6 +2227,12 @@ footer > .copyright > p > a {
   grid-row-gap: 30px;
   grid-column-gap: 50px;
   justify-content: center;
+}
+@media screen and (max-width: 1200px) {
+  #teacher-component > .teachers {
+    grid-template-columns: repeat(2, calc(50% - 50px));
+    grid-template-columns: repeat(1, calc(100% - 50px));
+  }
 }
 #teacher-component > .teachers > .teacher {
   position: relative;
@@ -2196,11 +2379,26 @@ footer > .copyright > p > a {
 #student-component .students > .student:nth-child(odd) {
   flex-direction: row;
 }
+@media screen and (max-width: 768px) {
+  #student-component .students > .student:nth-child(odd) {
+    flex-direction: column;
+  }
+}
 #student-component .students > .student:nth-child(even) {
   flex-direction: row-reverse;
 }
+@media screen and (max-width: 768px) {
+  #student-component .students > .student:nth-child(even) {
+    flex-direction: column;
+  }
+}
 #student-component .students > .student:nth-child(even) > .content {
   align-items: flex-end;
+}
+@media screen and (max-width: 768px) {
+  #student-component .students > .student:nth-child(even) > .content {
+    flex-direction: column;
+  }
 }
 #student-component .students > .student img {
   width: 250px;

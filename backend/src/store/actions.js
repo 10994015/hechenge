@@ -211,7 +211,7 @@ export function getCourses({commit}, {url = null, search = '', perPage = 10, sor
     return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction}}).then(res=>{
         commit('setCourses', [false, res.data]);
     }).catch(err=>{
-        commit('setCourses', [false]);s
+        commit('setCourses', [false]);
     })
 }
 export function getCourse({commit}, id){

@@ -1063,7 +1063,7 @@ footer{
         max-width: 1200px;
         margin:0 auto;
         opacity: 0;
-        padding: 50px 0;
+        padding: 50px 20px;
             &.fade-out{
                 animation:fade-out .3s linear ;
                 opacity: 1;
@@ -1085,6 +1085,9 @@ footer{
                 transition: .3s;
                 outline: none;
                 color:#333;
+                @media screen and (max-width:300px){
+                    width: 100%;
+                }
                 &:focus{
                     border-color: $mainColor;
                     box-shadow: none;
@@ -1155,6 +1158,9 @@ footer{
                     padding: 0 20px;
                     border-left: 1px #ddd solid;
                     width: 60%;
+                    @media screen and (max-width:1000px){
+                        width: 50%;
+                    }
                     >a.new-title{
                         font-size: 21px;
                         color:$secondColor;
@@ -1184,6 +1190,9 @@ footer{
                 >a.imgbox{
                     width: 20%;
                     overflow: hidden;
+                    @media screen and (max-width:1000px){
+                        width: 30%;
+                    }
                     &:hover>img{
                         transform: scale(1.05);
                     }
@@ -1242,7 +1251,9 @@ footer{
         padding: 75px 0;
         >.detail{
             width: 100%;
-            padding-right: 50px;
+            @media screen and (max-width:1200px){
+                padding: 0 30px;
+            }
             >h1{
                 color:#333;
                 font-size: 22px;
@@ -1389,6 +1400,8 @@ footer{
         width: 100%;
         max-width: 1200px;
         margin:0 auto;
+        padding: 0 25px;
+        box-sizing: border-box;
         >.nav{
             width: 100%;
             background-color: #F5F5F5;
@@ -1400,62 +1413,93 @@ footer{
             >span{
                 color:#999;
                 font-size: 14px;
+                @media screen and (max-width:420px){
+                    display: none;
+                }
             }
-            label{
-                margin: 0 8px;
-                select{
-                    height: 35px;
-                    border: 1px #ccc solid;
-                    font-size: 14px;
-                    transition: .3s;
-                    outline: none;
-                    color:#999;
-                    padding: 0;
-                    width: 150px;
-                    padding: 0 10px;
-                    &:focus{
-                        border-color: $mainColor;
-                        box-shadow: none;
-                    }
-                    &:focus-visible{
-                        box-shadow: none;
-                    }
-                }
-                &.search-container {
-                    position: relative;
-                    display: inline-block;
-                  }
-                  
-                  &.search-container input[type="text"] {
-                    padding-right: 80px; /* 根据按钮的宽度调整此值 */
-                    height: 35px;
-                    border: 1px #ccc solid;
-                    font-size: 14px;
-                    transition: .3s;
-                    outline: none;
-                    color:#999;
-                    &:focus{
-                        border-color: $mainColor;
-                        box-shadow: none;
-                    }
-                    &:focus-visible{
-                        box-shadow: none;
-                    }
-                }
-                  
-                &.search-container button {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    height: 100%;
-                    width: 35px;
-                    height: 35px;
-                    text-align: center;
+            >.searchBar{
+                @media screen and (max-width:700px){
                     display: flex;
-                    justify-content: center;
-                    align-items: center;
-                  }
+                    flex-direction: column;
+                    align-items: flex-end;
+                }
+                @media screen and (max-width:420px){
+                    display: block;
+                }
+                label{
+                    margin: 0 8px;
+                    @media screen and (max-width:700px){
+                        margin: 0px;
+                        margin-bottom: 8px;
+                    }
+                    select{
+                        height: 35px;
+                        border: 1px #ccc solid;
+                        font-size: 14px;
+                        transition: .3s;
+                        outline: none;
+                        color:#999;
+                        padding: 0;
+                        width: 150px;
+                        padding: 0 10px;
+                        @media screen and (max-width:420px){
+                            width: 100%;
+                        }
+                        &:focus{
+                            border-color: $mainColor;
+                            box-shadow: none;
+                        }
+                        &:focus-visible{
+                            box-shadow: none;
+                        }
+                    }
+                    &.search-container {
+                        position: relative;
+                        display: inline-block;
+                        @media screen and (max-width:420px){
+                            width: 100%;
+                            margin-top: 12px;
+                        }
+                      }
+                      
+                      &.search-container input[type="text"] {
+                        padding-right: 80px; /* 根据按钮的宽度调整此值 */
+                        height: 35px;
+                        border: 1px #ccc solid;
+                        font-size: 14px;
+                        transition: .3s;
+                        outline: none;
+                        color:#999;
+                        @media screen and (max-width:500px){
+                            width: 150px;
+                        }
+                        @media screen and (max-width:420px){
+                            width: 100%;
+                        }
+                        &:focus{
+                            border-color: $mainColor;
+                            box-shadow: none;
+                        }
+                        &:focus-visible{
+                            box-shadow: none;
+                        }
+                    }
+                      
+                    &.search-container button {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        height: 100%;
+                        width: 35px;
+                        height: 35px;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      }
+                }
             }
+            
             
         }
         >.course-list{
@@ -1464,6 +1508,14 @@ footer{
             grid-column-gap: 20px;
             grid-row-gap: 5em;
             padding: 100px 0;
+            @media screen and (max-width:1000px){
+                grid-template-columns: repeat(2, calc(50% - 10px));
+                padding: 50px 0 100px;
+            }
+            @media screen and (max-width:700px){
+                grid-template-columns: repeat(1, calc(100%));
+                grid-column-gap: 0px;
+            }
             >.course-item{
                 border: 1px solid #eee;
                 overflow: hidden;
@@ -1609,9 +1661,18 @@ footer{
         max-width: 1250px;
         margin:auto;
         padding: 75px 0;
+        @media screen and (max-width:768px){
+            flex-direction: column;
+        }
         >.detail{
             width: 70%;
             padding-right: 50px;
+            @media screen and (max-width:1350px){
+                padding: 0  25px;
+            }
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
             >h1{
                 color:#333;
                 font-size: 22px;
@@ -1694,6 +1755,9 @@ footer{
                         outline: none;
                         position: relative;
                         width: 252px;
+                        @media screen and (max-width:768px){
+                            width: 100%;
+                        }
                         &.loading{
                             cursor: default;
                             background-color: #ccc;
@@ -1716,6 +1780,12 @@ footer{
         }
         >.sildebar{
             width: 30%;
+            @media screen and (max-width:1350px){
+                padding: 0  15px;
+            }
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
             .title{
                 border-left: 3px $mainColor solid;
                 padding: 10px;
@@ -1746,15 +1816,37 @@ footer{
                     padding: 10px;
                     display: flex;
                     flex-direction: column;
+                    @media screen and (max-width:768px){
+                        display: grid;
+                        grid-template-columns: repeat(2, 50%);
+                        grid-column-gap: 15px;
+                    }
+                    @media screen and (max-width:576px){
+                        grid-template-columns: repeat(1, 100%);
+                        grid-column-gap: 0;
+                    }
                     a{
                         display: flex;
                         margin:10px 0;
                         font-size: 15px;
                         color:#555;
+                        @media screen and (max-width:352px){
+                            flex-direction: column;
+                        }
                         >img{
                             width: 100px;
                             object-fit: cover;
                             margin-right: 5px;
+                            @media screen and (max-width:768px){
+                                width: 130px;
+                            }
+                            @media screen and (max-width:382px){
+                                width: 100px;
+                            }
+                            @media screen and (max-width:352px){
+                                width: 100%;
+                                margin-bottom:12px;
+                            }
                         }
                         >.content{
                             display: flex;
@@ -1767,6 +1859,9 @@ footer{
                                 -webkit-box-orient: vertical;
                                 -webkit-line-clamp: 2;
                                 overflow: hidden;
+                                @media screen and (max-width:352px){
+                                    font-size: 24px;
+                                }
                             }
                             >ol{
                                 display: flex;
@@ -1782,6 +1877,13 @@ footer{
             >.advertise{
                 width: 100%;
                 margin-top: 20px;
+                @media screen and (max-width:768px){
+                    width: 70%;
+                    margin:20px auto 0;
+                }
+                @media screen and (max-width:414px){
+                    width: 100%;
+                }
                 img{
                     width: 100%;
                 }
@@ -1832,6 +1934,9 @@ footer{
         display: flex;
         justify-content: center;
         padding: 100px 0;
+        @media screen and (max-width:768px){
+            flex-direction: column;
+        }
         >.item{
             width: 350px;
             height: 290px;
@@ -1848,6 +1953,12 @@ footer{
             align-items: center;
             justify-content: center;
             transition: .3s;
+            @media screen and (max-width:1200px){
+                margin: 0 10px;
+            }
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
             &.item1:hover{
                 border-bottom: 4px #518bf7 solid;
             }
@@ -1891,6 +2002,9 @@ footer{
         display: flex;
         flex-direction: column;
         padding: 0 0 0 0;
+        @media screen and (max-width:768px){
+            padding: 0 20px;
+        }
         >h3{
             color:#111;
             font-size: 18px;
@@ -2025,6 +2139,12 @@ footer{
         grid-row-gap: 30px;
         grid-column-gap: 50px;
         justify-content: center;
+        @media screen and (max-width:1200px){
+            grid-template-columns: repeat(2, calc(50% - 50px));
+        }
+        @media screen and (max-width:1200px){
+            grid-template-columns: repeat(1, calc(100% - 50px));
+        }
         >.teacher{
             position: relative;
             border-radius: 5px;
@@ -2181,13 +2301,23 @@ footer{
             margin-bottom: 30px;
             border-bottom: 1px #ddd solid;
             padding: 30px 0;
+            
             &:nth-child(odd){
                 flex-direction: row;
+                @media screen and (max-width:768px){
+                    flex-direction: column;
+                }
             }
             &:nth-child(even){
                 flex-direction: row-reverse;
+                @media screen and (max-width:768px){
+                    flex-direction: column;
+                }
                 >.content{
                     align-items: flex-end;
+                    @media screen and (max-width:768px){
+                        flex-direction: column;
+                    }
                 }
             }
             img{

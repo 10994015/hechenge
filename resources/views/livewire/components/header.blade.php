@@ -83,6 +83,10 @@
 <div class="search-full" id="search-full" x-data="{
     searchValue:'',
     searchFn(){
+        if(this.searchValue === '' || this.searchValue === null){
+            alert('請輸入內容');
+            return;
+        }
         window.location.href='/course-search/' + this.searchValue
     }
 }">

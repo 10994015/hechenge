@@ -37,6 +37,9 @@ const isCreate = ref(false);
 const successMsgSetNull = ()=>{
   successMsg.value = null;
 }
+watch(()=>course.value.tags, (val)=>{
+  console.log(val);
+})
 onMounted(() => {
   const courseId = route.params.id;
   getTags();
@@ -158,7 +161,6 @@ const onSubmit = () => {
       });
   }
 };
-
 const editor = ref(ClassicEditor);
 
 </script>
