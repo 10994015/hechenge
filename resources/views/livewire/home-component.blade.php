@@ -30,8 +30,8 @@
             </div>
         </div>
     </div>
-    <section class="about" id="home-about">
-        <div class="icon-list">
+    <section class="about" id="home-about" style="height: 845px">
+        {{-- <div class="icon-list">
             <div class="icons">
                 <div class="item">
                     <img src="/images/icon1.png" alt="" />
@@ -75,7 +75,7 @@
                 考慮建立自己的觀察站是令人興奮的。在任何有抱負的天文學家的生活中，是時候購買第一台望遠鏡了，令人興奮的是首先購買它。
             </p>
             <a href="/">關於赫成</a>
-        </div>
+        </div> --}}
     </section>
     @if($hotCourses->count() > 0)
     <div class="course-div" id="home-courses" >

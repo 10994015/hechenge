@@ -1,0 +1,130 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+.frame {
+  border-radius: 2px;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: none;
+}
+@media screen and (max-width: 950px) {
+  .frame {
+    display: block;
+  }
+}
+
+.menu-icon {
+  cursor: pointer;
+  z-index: 10;
+}
+.menu-icon .line1,
+.menu-icon .line2,
+.menu-icon .line3 {
+  background: #333;
+  height: 2px;
+  width: 25px;
+  border-radius: 1px;
+}
+.menu-icon .line2 {
+  width: 18px;
+}
+.menu-icon .line1 {
+  animation: animate-line1-rev 0.5s ease-in-out;
+}
+.menu-icon .line2 {
+  margin: 6px 0;
+  animation: animate-line2-rev 0.5s ease-in-out;
+}
+.menu-icon .line3 {
+  animation: animate-line3-rev 0.5s ease-in-out;
+}
+.menu-icon:hover .line1,
+.menu-icon:hover .line2,
+.menu-icon:hover .line3 {
+  background: #1a1a1a;
+}
+.menu-icon.active .line1,
+.menu-icon.active .line2,
+.menu-icon.active .line3 {
+  background: black;
+}
+.menu-icon.active .line1 {
+  animation: animate-line1 0.5s cubic-bezier(0.3, 1, 0.3, 1) forwards;
+}
+.menu-icon.active .line2 {
+  animation: animate-line2 0.5s cubic-bezier(0.3, 1, 0.3, 1) forwards;
+}
+.menu-icon.active .line3 {
+  animation: animate-line3 0.5s cubic-bezier(0.3, 1, 0.3, 1) forwards;
+}
+
+.no-animation {
+  animation: none !important;
+}
+
+@keyframes animate-line1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, 8px, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(0, 8px, 0) rotate(45deg);
+  }
+}
+@keyframes animate-line2 {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+@keyframes animate-line3 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(0deg);
+  }
+  90% {
+    transform: translate3d(0, -8px, 0) rotate(145deg);
+  }
+  100% {
+    transform: translate3d(0, -8px, 0) rotate(135deg);
+  }
+}
+@keyframes animate-line1-rev {
+  0% {
+    transform: translate3d(0, 8px, 0) rotate(45deg);
+  }
+  50% {
+    transform: translate3d(0, 8px, 0) rotate(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+@keyframes animate-line2-rev {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes animate-line3-rev {
+  0% {
+    transform: translate3d(0, -8px, 0) rotate(135deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+}

@@ -37,12 +37,26 @@ header{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        @media screen and (max-width:1600px){
+            padding:8px 100px ;
+        }
+        @media screen and (max-width:900px){
+            padding:8px 30px ;
+        }
         .left{
             display: flex;
             align-items: center;
             >span{
                 display: flex;
                 align-items: center;
+                @media screen and (max-width:768px){
+                    margin-right: 8px;
+                }
+                small{
+                    @media screen and (max-width:768px){
+                        display: none;
+                    }
+                }
             }
         }
         .right{
@@ -72,14 +86,22 @@ header{
         margin-top: 15px;
         border-radius: 50px;
         box-shadow: rgba(0,0,0,0.1) 0 5px 12px;
+        @media screen and (max-width:1200px){
+            width: 100%;
+            border-radius: 0;
+            margin-top: 0;
+        }
+        
         &.active{
-            background-color: #fff;
             width: 100%;
             transition:.3s;
             margin-top: 0;
             border-radius: 0;
             padding: 15px 100px;
-            box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1)
+            box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.1);
+            @media screen and (max-width:1200px){
+                padding: 15px 30px;
+            }
         }
         >a.logo{
             font-size: 24px;
@@ -91,6 +113,9 @@ header{
         >.nav-bar{
             display: flex;
             flex-direction: column;
+            @media screen and (max-width:950px){
+                display: none;
+            }
             >nav{
                 display: flex;
                 align-items: center;
@@ -243,8 +268,29 @@ footer{
         color:#aaa;
         display: grid;
         grid-template-columns: 34% 22% 22% 22%;
+        grid-row-gap: 3em;
         align-items: flex-start;
         border-bottom: 1px #013263 solid;
+        @media screen and (max-width:1500px){
+            padding: 50px 0 50px 100px;
+        }
+        @media screen and (max-width:1000px){
+            padding: 50px 0 50px 50px;
+        }
+        @media screen and (max-width:876px){
+            grid-template-columns: repeat(2, 50%);
+            justify-content: center;
+            margin:0 auto;
+            padding: 50px 0 50px 120px;
+        }
+        @media screen and (max-width:686px){
+            padding: 50px 20px 50px 50px;
+        }
+        @media screen and (max-width:521px){
+            grid-template-columns: repeat(1, 75%);
+            padding: 50px 0;
+            margin:0 auto;
+        }
         >div{
             width: 100%;
             >h5{
@@ -255,6 +301,17 @@ footer{
             }
             &.info{
                 margin-right: 200px;
+                @media screen and (max-width:1200px){
+                    margin-right: 100px;
+                }
+                @media screen and (max-width:521px){
+                    margin-right:0;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                }
+                
                 .logo{
                     margin-bottom: 20px;
                     display: block;
@@ -271,6 +328,10 @@ footer{
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                @media screen and (max-width:521px){
+                    align-items: center;
+                    text-align: center;
+                }
                 >.item{
                     margin-top: 5px;
                     font-size: 15px;
@@ -279,10 +340,17 @@ footer{
                     font-size: 15px;
                     color:#aaa;
                     margin-top: 10px;
+                    
                 }
             }
             &.course{
                 padding-left: 50px;
+                @media screen and (max-width:521px){
+                    padding-left: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
                 >.item{
                     margin-top: 10px;
                     color:#aaa;
@@ -298,6 +366,9 @@ footer{
             &.link{
                 display: flex;
                 flex-direction: column;
+                @media screen and (max-width:521px){
+                    align-items: center;
+                }
                 img{
                     border-radius: 6px;
                 }
@@ -335,6 +406,14 @@ footer{
     position: fixed;
     bottom:160px;
     right:60px;
+    @media screen and (max-width:1200px){
+        bottom:100px;
+        right:40px;
+    }
+    @media screen and (max-width:700px){
+        bottom:25px;
+        right:15px;
+    }
     >a {
         transition: .3s;
         &:hover{
@@ -342,6 +421,12 @@ footer{
         }
         > img{
             width: 70px;
+            @media screen and (max-width:1200px){
+                width: 60px;
+            }
+            @media screen and (max-width:576px){
+                width: 50px;
+            }
         }
     }
 }
@@ -356,6 +441,14 @@ footer{
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            @media screen and (max-width:1400px){
+                bottom:30px;
+            }
+            @media screen and (max-width:700px){
+                display: none;
+            }
             >.item{
                 width: 380px;
                 height: 134px;
@@ -367,6 +460,11 @@ footer{
                 justify-content: flex-start;
                 padding: 15px 40px;
                 transition: .3s;
+                @media screen and (max-width:1400px){
+                    width: 300px;
+                    height: 110px;
+                    margin-bottom: 15px;
+                }
                 &:hover{
                     background-color: #000;
                 }
@@ -374,6 +472,10 @@ footer{
                     width: 80px;
                     height: 80px;
                     margin-right: 25px;
+                    @media screen and (max-width:1400px){
+                        width: 60px;
+                        height: 60px;
+                    }
                 }
                 >.text{
                     display: flex;
@@ -453,7 +555,6 @@ footer{
         }
     }
     .course{
-        
         >.btns{
             display: flex;
             float: right;
@@ -486,6 +587,18 @@ footer{
                 min-width: 300px;
                 width: 25%;
                 transition: .3s;
+                @media screen and (max-width:1300px){
+                    width: 33%;
+                    min-width: 33%;
+                }
+                @media screen and (max-width:950px){
+                    width: 50%;
+                    min-width: 50%;
+                }
+                @media screen and (max-width:576px){
+                    width: 100%;
+                    min-width: 100%;
+                }
                 >.course{
                     width: 100%;
                     border:1px #eee solid;
@@ -545,7 +658,6 @@ footer{
                             font-weight: 600;
                             transition: .3s;
                             color:#666;
-                            padding: 0 20px;
                             display: block;
                             &:hover{
                                 color:$mainColor;
@@ -694,15 +806,32 @@ footer{
                 grid-template-columns: repeat(2, 50%);
                 grid-column-gap: 20px;
                 grid-row-gap: 10em;
+                margin:0 auto;
                 margin-top: 50px;
+                justify-content: center;
+                max-width: 1100px;
+                @media screen and (max-width:1200px){
+                    max-width: 900px;
+                    grid-column-gap: 50px;
+                }
+                @media screen and (max-width:1000px){
+                    padding: 0 35px;
+                    grid-template-columns: repeat(1, 100%);
+                    grid-row-gap: 3em;
+                }
                 >.feature{
                     max-width: 550px;
                     width: 100%;
                     height: 400px;
                     position: relative;
+                    transition: .3s;
+                    @media screen and (max-width:1000px){
+                        max-width: 1000px;
+                    }
                     >img{
                         width: 100%;
                         height: 100%;
+                        object-fit: cover;
                     }
                     >.text{
                         position: absolute;
@@ -787,6 +916,10 @@ footer{
     }
     .news{
         opacity: 0;
+        @media screen and (max-width:1000px){
+            padding-left:20px ;
+            padding-right:20px ;
+        }
             &.fade-out{
                 animation:fade-out .3s linear ;
                 opacity: 1;
@@ -814,6 +947,7 @@ footer{
             display: flex;
             flex-direction: column;
             margin-top:100px;
+            
             >.new-item{
                 border-top:1px #ddd solid;
                 padding: 60px 0;
@@ -838,6 +972,9 @@ footer{
                     padding: 0 20px;
                     border-left: 1px #ddd solid;
                     width: 60%;
+                    @media screen and (max-width:1000px){
+                        width: 50%;
+                    }
                     >a.new-title{
                         font-size: 21px;
                         color:$secondColor;
@@ -867,6 +1004,9 @@ footer{
                 >a.imgbox{
                     width: 20%;
                     overflow: hidden;
+                    @media screen and (max-width:1000px){
+                        width: 30%;
+                    }
                     &:hover>img{
                         transform: scale(1.05);
                     }

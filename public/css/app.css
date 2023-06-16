@@ -1143,6 +1143,9 @@ select {
 .mt-\[100px\] {
   margin-top: 100px;
 }
+.ml-5 {
+  margin-left: 1.25rem;
+}
 .block {
   display: block;
 }

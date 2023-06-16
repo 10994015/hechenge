@@ -1,18 +1,18 @@
 <header class="" id="header" >
     <div class="toolbar">
         <div class="left">
-            <span class="mr-8">赫成教育集團</span>
+            <span class="mr-8"><small>赫成教育集團</small></span>
             <span class="mr-8">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                 </svg>
-                03-4225500
+                <small>03-4225500</small>
             </span>
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
-                hc4225500@gmail.com
+                <small>hc4225500@gmail.com</small>
             </span>
         </div>
         <div class="right">
@@ -68,6 +68,15 @@
             <div>
                 <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
             </div>
+            <div class="frame ml-5" id="menuBtn">
+                <div class="center">
+                    <div class="menu-icon">
+                        <div class="line1 no-animation"></div>
+                        <div class="line2 no-animation"></div>
+                        <div class="line3 no-animation"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </header>
@@ -88,3 +97,24 @@
 
 
 
+<script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menuIcon = document.querySelector(".menu-icon");
+    const lines = document.querySelectorAll(".no-animation");
+    let isOpenMenu = false;
+    menuBtn.addEventListener('click', clickMenu);
+    function clickMenu(){
+        isOpenMenu = !isOpenMenu;
+        lines.forEach((line) => {
+            line.classList.remove("no-animation");
+        });
+        menuIcon.classList.toggle("active");
+        if(isOpenMenu){
+            menu.style.display = 'flex';
+            header.classList.add('transparent');
+        }else{
+            menu.style.display = 'none';
+            header.classList.remove('transparent');
+        }
+    }
+</script>
