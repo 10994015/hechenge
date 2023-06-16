@@ -18,7 +18,7 @@
                 <img src="/images/course.png" alt="">
                 <div class="text">
                     <h4>課程介紹</h4>
-                    <a href="">查看更多<i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="/courses">查看更多<i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
             <div class="item">

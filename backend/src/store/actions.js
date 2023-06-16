@@ -373,3 +373,113 @@ export function deleteTeacher({commit}, id){
 export function deleteTeacherItems({commit}, ids){
     return axiosClient.post(`/teacherItems`, {'ids':ids});
 }
+
+//student
+export function getStudents({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction, category}){
+    commit('setStudents', [true]);
+    url = url || '/students';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction, category}}).then(res=>{
+        commit('setStudents', [false, res.data]);
+    }).catch(err=>{
+        commit('setStudents', [false]);
+    })
+}
+export function getStudent({commit}, id){
+    return axiosClient.get(`/students/${id}`);
+}
+export function createStudent({commit}, student){
+    const hidden = (student.hidden) ? 1 :0;
+    if(student.image instanceof File){
+        const form = new FormData();
+        form.append('name', student.name);
+        form.append('image', student.image);
+        form.append('url', student.url);
+        form.append('content', student.content);
+        form.append('hidden', hidden);
+        student = form;
+    }
+    return axiosClient.post('/students', student);
+}
+export function isExistStudent({commit}, id){
+    return axiosClient.post(`/isExistStudent`, {id: id}).then(res=>{
+        return res;
+    });
+}
+export function updateStudent({commit}, student){
+    const id = student.id;
+    const hidden = (student.hidden) ? 1 :0;
+    if(student.image instanceof File){
+        const form = new FormData();
+        form.append('id', student.id);
+        form.append('name', student.name);
+        form.append('image', student.image);
+        form.append('url', student.url);
+        form.append('content', student.content);
+        form.append('hidden', hidden);
+        form.append('_method', 'PUT');
+        student = form;
+    }else{
+        student._method = 'PUT'
+    }
+    return axiosClient.post(`/students/${id}`, student);
+}
+
+export function deleteStudent({commit}, id){
+    return axiosClient.delete(`/students/${id}`);
+}
+export function deleteStudentItems({commit}, ids){
+    return axiosClient.post(`/studentItems`, {'ids':ids});
+}
+
+//faqs
+export function getFaqs({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction, category}){
+    commit('setFaqs', [true]);
+    url = url || '/faqs';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction, category}}).then(res=>{
+        commit('setFaqs', [false, res.data]);
+    }).catch(err=>{
+        commit('setFaqs', [false]);
+    })
+}
+export function getFaq({commit}, id){
+    return axiosClient.get(`/faqs/${id}`);
+}
+export function createFaq({commit}, faq){
+    const hidden = (faq.hidden) ? 1 :0;
+    if(faq.image instanceof File){
+        const form = new FormData();
+        form.append('question', faq.question);
+        form.append('content', faq.content);
+        form.append('hidden', hidden);
+        faq = form;
+    }
+    return axiosClient.post('/faqs', faq);
+}
+export function isExistFaq({commit}, id){
+    return axiosClient.post(`/isExistFaq`, {id: id}).then(res=>{
+        return res;
+    });
+}
+export function updateFaq({commit}, faq){
+    const id = faq.id;
+    const hidden = (faq.hidden) ? 1 :0;
+    if(faq.image instanceof File){
+        const form = new FormData();
+        form.append('id', faq.id);
+        form.append('question', faq.question);
+        form.append('content', faq.content);
+        form.append('hidden', hidden);
+        form.append('_method', 'PUT');
+        faq = form;
+    }else{
+        faq._method = 'PUT'
+    }
+    return axiosClient.post(`/faqs/${id}`, faq);
+}
+
+export function deleteFaq({commit}, id){
+    return axiosClient.delete(`/faqs/${id}`);
+}
+export function deleteFaqItems({commit}, ids){
+    return axiosClient.post(`/faqItems`, {'ids':ids});
+}

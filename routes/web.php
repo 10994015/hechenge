@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CaptchaController;
 use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\CourseAllComponent;
 use App\Http\Livewire\CourseComponent;
 use App\Http\Livewire\CourseDetailComponent;
+use App\Http\Livewire\FaqComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\NewDetailComponent;
 use App\Http\Livewire\NewsComponent;
@@ -29,10 +31,12 @@ Route::get('/news', NewsComponent::class);
 Route::get('/new-detail/{slug}', NewDetailComponent::class);
 // Route::get('/courses', CourseComponent::class);
 Route::get('/courses/{category}', CourseComponent::class);
+Route::get('/courses', CourseAllComponent::class);
 Route::get('/course-detail/{slug}', CourseDetailComponent::class);
 Route::get('/course-search/{value}', SearchCoursesComponent::class);
 Route::get('/teachers', TeacherComponent::class);
 Route::get('/students', StudentComponent::class);
+Route::get('/faq', FaqComponent::class);
 
 
 

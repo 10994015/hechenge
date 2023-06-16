@@ -7,6 +7,8 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CourseCategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseTagController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherCategoryController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Http\Request;
@@ -67,6 +69,14 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function(){
     Route::apiResource('teachers', TeacherController::class);
     Route::post('/isExistTeacher', [TeacherController::class, 'isExistTeacher']);
     Route::post('/teacherItems', [TeacherController::class, 'deleteItems']);
+    //students
+    Route::apiResource('students', StudentController::class);
+    Route::post('/isExistStudent', [StudentController::class, 'isExistStudent']);
+    Route::post('/studentItems', [StudentController::class, 'deleteItems']);
+    //faqs
+    Route::apiResource('faqs', FaqController::class);
+    Route::post('/isExistFaq', [FaqController::class, 'isExistFaq']);
+    Route::post('/faqItems', [FaqController::class, 'deleteItems']);
 });
 
 Route::post('/login', [AuthController::class, 'login']);
