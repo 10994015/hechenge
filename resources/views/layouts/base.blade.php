@@ -18,6 +18,12 @@
     @livewireStyles
 </head>
 <body>
+    <div id="loading">
+        <div class="logo">
+            <div class="border"></div>
+            <img src="/images/logo.png" alt="赫成教育" />
+        </div>
+    </div>
     @include('livewire.components.header')
     <main>{{ $slot }}</main>
     @include('livewire.components.footer')
@@ -26,5 +32,10 @@
     <script>var isHome = false;</script>
     @stack('scripts')
     <script src="/js/header.js"></script>
+    <script>
+        window.onload = ()=>{
+            loading.style.display = "none"
+        }
+    </script>
 </body>
 </html>

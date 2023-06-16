@@ -1,4 +1,20 @@
-<header class="" id="header" >
+<header class="" id="header" x-data="{
+    navOpen:false,
+
+}">
+    <div x-bind:class="['md-nav-bar',  navOpen ? 'open' : '']" x-cloak >
+        <a href="/">首頁</a>
+        <a href="/news">最新消息</a>
+        @foreach(DB::table('course_categories')->where([['grade', 0], ['deleted_at', null]])->get() as $category)
+        <a href="/courses/{{$category->id}}">{{$category->name}}</a>
+        @endforeach
+        @foreach(DB::table('course_categories')->where([['grade', 1], ['deleted_at', null]])->get() as $category)
+        <a href="/courses/{{$category->id}}">{{$category->name}}</a>
+        @endforeach
+        <a href="/teachers">師資介紹</a>
+        <a href="/students">學生回饋</a>
+        <a href="/contact">聯絡我們</a>
+    </div>
     <div class="toolbar">
         <div class="left">
             <span class="mr-8"><small>赫成教育集團</small></span>
@@ -68,7 +84,7 @@
             <div>
                 <i class="fa-solid fa-magnifying-glass" id="search-btn"></i>
             </div>
-            <div class="frame ml-5" id="menuBtn">
+            <div class="frame ml-5" id="menuBtn" x-on:click="navOpen = !navOpen; console.log(navOpen)">
                 <div class="center">
                     <div class="menu-icon">
                         <div class="line1 no-animation"></div>
@@ -96,29 +112,3 @@
         <button x-on:click='searchFn'><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
 </div>
-
-
-
-
-
-<script>
-    const menuBtn = document.getElementById('menuBtn');
-    const menuIcon = document.querySelector(".menu-icon");
-    const lines = document.querySelectorAll(".no-animation");
-    let isOpenMenu = false;
-    menuBtn.addEventListener('click', clickMenu);
-    function clickMenu(){
-        isOpenMenu = !isOpenMenu;
-        lines.forEach((line) => {
-            line.classList.remove("no-animation");
-        });
-        menuIcon.classList.toggle("active");
-        if(isOpenMenu){
-            menu.style.display = 'flex';
-            header.classList.add('transparent');
-        }else{
-            menu.style.display = 'none';
-            header.classList.remove('transparent');
-        }
-    }
-</script>

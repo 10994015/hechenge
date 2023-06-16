@@ -12,6 +12,9 @@ var homeAbout = document.getElementById('home-about');
 var homeCourses = document.getElementById('home-courses');
 var homeFeatured = document.getElementById('home-featured');
 var homeNews = document.getElementById('home-news');
+var menuBtn = document.getElementById('menuBtn');
+var menuIcon = document.querySelector(".menu-icon");
+var lines = document.querySelectorAll(".no-animation");
 if (window.scrollY > 0) {
   headerNav.classList.add('active');
 }
@@ -53,5 +56,12 @@ searchBtn.addEventListener('click', function () {
 back.addEventListener('click', function () {
   searchFull.style.display = 'none';
 });
+menuBtn.addEventListener('click', clickMenu);
+function clickMenu() {
+  lines.forEach(function (line) {
+    line.classList.remove("no-animation");
+  });
+  menuIcon.classList.toggle("active");
+}
 /******/ })()
 ;

@@ -7,6 +7,9 @@ const homeAbout = document.getElementById('home-about')
 const homeCourses = document.getElementById('home-courses')
 const homeFeatured = document.getElementById('home-featured')
 const homeNews = document.getElementById('home-news')
+const menuBtn = document.getElementById('menuBtn');
+    const menuIcon = document.querySelector(".menu-icon");
+    const lines = document.querySelectorAll(".no-animation");
 if(window.scrollY > 0){
     headerNav.classList.add('active')
 }
@@ -51,3 +54,11 @@ searchBtn.addEventListener('click', ()=>{
 back.addEventListener('click', ()=>{
   searchFull.style.display = 'none'
 })
+
+menuBtn.addEventListener('click', clickMenu);
+    function clickMenu(){
+        lines.forEach((line) => {
+            line.classList.remove("no-animation");
+        });
+        menuIcon.classList.toggle("active");
+    }
