@@ -15,7 +15,7 @@
         <a href="/students">學生回饋</a>
         <a href="/contact">聯絡我們</a>
     </div>
-    <div class="toolbar">
+    {{-- <div class="toolbar">
         <div class="left">
             <span class="mr-8"><small>赫成教育集團</small></span>
             <span class="mr-8">
@@ -46,7 +46,7 @@
                 聯絡我們
             </a>
         </div>
-    </div>
+    </div> --}}
     <div class="header" id="header-nav">
         <a href="/" class="logo">
             <img src="/images/logo.png" alt="赫成教育" />
