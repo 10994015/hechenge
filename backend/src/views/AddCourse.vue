@@ -681,7 +681,7 @@ div.group{
         transition: .2s;
         &:checked ~ label::before{
             transition: .2s;
-            background-image: linear-gradient(to right, #FFB896 , #FE8A96);
+            background-image: linear-gradient(to right, #34C38F , #21a574);
         }
         &:checked ~ label > svg{
             opacity: 1;

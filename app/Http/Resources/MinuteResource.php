@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Course;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CourseListResource extends JsonResource
+class MinuteResource extends JsonResource
 {
     public static $wrap = false;
     /**
@@ -17,16 +18,10 @@ class CourseListResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'title'=>$this->title,
-            'image_url'=>$this->image ?? '',
-            'hidden'=>$this->hidden,
-            'focus'=>$this->focus,
-            'tags'=>$this->tags ?? '',
-            'grade'=>$this->grade,
-            'watched'=>$this->watched,
-            'visitor'=>$this->visitor,
-            'category_id'=>$this->category_id,
+            'course'=>Course::find($this->course_id)->title,
+            'date_at'=>$this->date_at,
+            'minutes'=>$this->minutes,
             'updated_at'=>(new \DateTime($this->updated_at))->format('Y-m-d H:i:s'),
-        ];
+        ];    
     }
 }

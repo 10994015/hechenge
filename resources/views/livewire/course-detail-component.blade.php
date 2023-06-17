@@ -145,6 +145,7 @@
 </div>
 
 @push('scripts')
+    <script src="/js/calcTime.js"></script>
     <script>
         const captcha_img = document.getElementById('captcha_img')
         const reloadCaptcha = document.getElementById('reloadCaptcha')

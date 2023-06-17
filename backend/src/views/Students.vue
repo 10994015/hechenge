@@ -147,7 +147,7 @@ const deleteCheckedItems = () => {
                 :class="['w-[40px]', 'cursor-pointer', { active: sortField === 'id' }]"
               >
                 <div class="flex items-center">
-                  <div>Id</div>
+                  <div>ID</div>
                   <div class="ml-2" v-if="sortField === 'id'">
                     <svg
                       v-if="sortDirection === 'desc'"
@@ -546,14 +546,14 @@ const deleteCheckedItems = () => {
         width: 100%;
         font-size: 14px;
         > thead {
-          background-color: #f9f9f9;
+          background-color: #f1f1f1;
           > tr {
             > th {
               text-align: left;
               padding: 15px;
               color:#333;
               &.active {
-                background-color: #f1f1f1;
+                background-color: #e1e1e1;
               }
               >div{
                 color: #333;

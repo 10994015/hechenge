@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
 .js('resources/js/header.js', 'public/js')
+.js('resources/js/calcTime.js', 'public/js')
 .sass('resources/scss/style.scss', 'public/css')
 .sass('resources/scss/menu.scss', 'public/css')
     .postCss('resources/css/app.css', 'public/css', [

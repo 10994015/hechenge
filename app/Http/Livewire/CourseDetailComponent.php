@@ -3,6 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Course;
+use App\Models\Minute;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -18,8 +22,12 @@ class CourseDetailComponent extends Component
     public $loading;
     public $courseName = "英文課";
     public $slug;
+    public $course_id;
+    protected $listeners = ['addTime'=>'addTime', 'addVisitorCount'=>'addVisitorCount', 'addCount'=>'addCount'];
     public function mount($slug){
         $this->slug = $slug;
+        $this->course_id = Course::where('slug', $slug)->first()->id;
+        log::info($this->course_id);
     }
     public function clearVar(){
         $this->name = "";
@@ -30,6 +38,63 @@ class CourseDetailComponent extends Component
         $this->captcha = "";
         $this->loading = "";
         $this->courseName = "";
+    }
+    public function addTime(){
+        DB::beginTransaction();
+        try{
+            if(Minute::where([['date_at', date('Y-m-d')], ['course_id', $this->course_id]])->orderby('id', 'desc')->count() > 0 ){
+                $minute = Minute::where([['date_at', date('Y-m-d')], ['course_id', $this->course_id]])->orderby('id', 'desc')->first();
+                
+                $minute->timestamps  = false;
+                $minute->minutes = (float)$minute->minutes + 0.5;
+                $minute->save();
+                $minute->timestamps = true;
+            }else{
+                $minute = new Minute();
+                $minute->date_at = date("Y-m-d");
+                $minute->course_id = $this->course_id;
+                $minute->minutes = 0.5;
+                $minute->save();
+            }
+            DB::commit();
+        }catch(\Exception $e){
+            log::info($e);
+            DB::rollback();
+        }
+        
+    }
+    public function addCount(){
+        DB::beginTransaction();
+        try{
+            $watched = Course::find($this->course_id)->watched;
+            $course = Course::find($this->course_id);
+            $course->timestamps = false;
+            $course->watched = $watched + 1;
+            $course->save();
+            DB::commit();
+            $course->timestamps = true;
+        }catch(\Exception $e){
+            log::info($e);
+            DB::rollback();
+        }
+    }
+    public function addVisitorCount(){
+        DB::beginTransaction();
+        try{
+            if(!Session::has("visitor_".$this->course_id."_id")){
+                $visitorId = uniqid();
+                Session::put('visitor_id', $visitorId);
+                $visitor = (int)Course::find($this->course_id)->visitor;
+                Course::find($this->course_id)->update([
+                    'visitor'=> $visitor + 1
+                ]);
+            }
+            DB::commit();
+        }catch(\Exception $e){
+            log::info($e);
+            DB::rollback();
+        }
+        
     }
     public function onSubmit(){
         $this->validate([

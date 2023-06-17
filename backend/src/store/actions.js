@@ -483,3 +483,14 @@ export function deleteFaq({commit}, id){
 export function deleteFaqItems({commit}, ids){
     return axiosClient.post(`/faqItems`, {'ids':ids});
 }
+
+//minutes
+export function getMinutes({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction}){
+    commit('setMinutes', [true]);
+    url = url || '/minutes';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction}}).then(res=>{
+        commit('setMinutes', [false, res.data]);
+    }).catch(err=>{
+        commit('setMinutes', [false]);
+    })
+}
