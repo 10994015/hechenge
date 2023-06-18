@@ -10,7 +10,6 @@ onMounted(() => {
   store.dispatch("getUser");
 });
 const currentUser = computed(() => store.state.user.data);
-
 const toggleSideBar = () => {
   sideBarOpen.value = !sideBarOpen.value;
 };
@@ -21,7 +20,7 @@ const openSideBar = () => {
 
 <template>
   <div class="app" v-if="currentUser.id">
-    <Header @openSideBar="toggleSideBar" :userName="currentUser.name" :sideBarOpen="sideBarOpen" />
+    <Header @openSideBar="toggleSideBar" :userName="currentUser.name" :sideBarOpen="sideBarOpen" :image="currentUser.image_url" />
     <div class="main">
         <Sidebar v-model="sideBarOpen" @openSideBar="openSideBar" />
         <main>

@@ -3,20 +3,22 @@
 namespace App\Http\Livewire;
 
 use App\Models\Course;
+use App\Models\Letter;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+use Illuminate\Validation\Validator;
 class ContactComponent extends Component
 {
     public $name;
     public $phone;
     public $school;
-    public $grade;
+    public $grade = "高中一年級";
     public $content;
     public $captcha;
     public $loading;
-    public $course=  "英文課";
+    public $course;
     public function clearVar(){
         $this->name = "";
         $this->phone = "";
@@ -27,9 +29,13 @@ class ContactComponent extends Component
         $this->loading = "";
         $this->course = "";
     }
-    
     public function onSubmit(){
-        $this->validate([
+        $this->withValidator(function (Validator $validator) {
+            $validator->after(function ($validator) {
+                $this->dispatchBrowserEvent('reloadCaptcha');
+                $this->captcha = '';
+            });
+        })->validate([
             'name' => 'required',
             'phone' => 'required',
             'school' => 'required',
@@ -46,7 +52,7 @@ class ContactComponent extends Component
             'captcha.captcha'=>'驗證碼輸入錯誤',
         ]);
         $mail = new PHPMailer(true);
-        
+        $mail->CharSet = "UTF-8";
         try{
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
@@ -67,17 +73,31 @@ class ContactComponent extends Component
             $mail->Body .= '寄信人年級:' . $this->grade .'<br />';
             $mail->Body .= '寄信人就讀學校:' . $this->school .'<br />';
             $mail->Body .= '詢問課程:' . $this->course .'<br />';
-            $mail->Body .= '內容:' . $this->content;
+            $mail->Body .= '詢問內容:<br />' . $this->content;
             $mail->send();
 
             session()->flash('success', "發送成功！");
-
+            $this->dispatchBrowserEvent('reloadCaptcha');
             $this->loading = false;
+            $this->storeMail();
+            
             $this->clearVar();
+            
         }catch (Exception $e) {
+            Log::info("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
             session()->flash('error', "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+    }
+    public function storeMail(){
+        $letter = Letter::create([
+            'name'=> $this->name,
+            'phone'=> $this->phone, 
+            'grade'=> $this->grade,
+            'school'=> $this->school,
+            'content'=>$this->content,
+        ]);
+        return $letter;
     }
     public function render()
     {

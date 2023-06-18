@@ -1,14 +1,16 @@
 <script setup>
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
-import { computed } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import store from "../store";
 import CloseText from "./Shared/CloseText.vue";
-
 const props = defineProps({
   userName: String,
+  image: String,
   sideBarOpen:Boolean,
 });
+const image_url = computed(() => props.image);
+console.log(image_url);
 const userName = computed(() => props.userName);
 const sideBarOpen = computed(()=>props.sideBarOpen)
 const router = useRouter();
@@ -19,6 +21,7 @@ const logout = () => {
     router.push({ name: "login" });
   });
 };
+
 
 </script>
 
@@ -49,7 +52,7 @@ const logout = () => {
     <Menu as="div" class="relative inline-block text-left">
       <div class="mt-2">
         <MenuButton class="flex items-center">
-          <img src="@/assets/images/hea.jpg" class="rounded-full w-10 mr-2" />
+          <img :src="image_url" class="rounded-full w-10 mr-2 h-10 object-cover" />
           <p class="text-sm">{{ userName }}</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"

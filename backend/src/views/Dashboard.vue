@@ -5,12 +5,14 @@ import BarChart from "../components/Shared/Bar.vue"
 import { ref, onMounted, computed, toRefs } from "vue";
 import store from "../store";
 const courses = computed(() => store.state.courses);
+const letters = computed(() => store.state.letters);
 const courseLoading = ref(true);
 const minuteLoading = ref(true)
+const letterLoading = ref(true)
 const minuteSearch = ref(1);
 onMounted(()=>{
     getCourses();
-    
+    getLetters();
 })
 const toggleDate = (n)=>{
     minuteLoading.value = true
@@ -19,6 +21,15 @@ const toggleDate = (n)=>{
 const barFinish = ()=>{
     minuteLoading.value = false
 }
+
+const openUL = (ev)=>{
+    if(ev.target.previousSibling.classList.contains('open')){
+        ev.target.previousSibling.classList.remove('open')
+    }else{
+        ev.target.previousSibling.classList.add('open')
+    }
+}
+
 const getCourses = (url = null) => {
   store.dispatch("getCourses", {
     url,
@@ -26,11 +37,17 @@ const getCourses = (url = null) => {
     courseLoading.value = false
   });
 };
-
+const getLetters = (url = null) => {
+    store.dispatch("getLetters", {
+        url,
+    }).then(()=>{
+        letterLoading.value = false
+    });
+};
 </script>
 
 <template>
-    <div class="dashboard">
+    <div class="dashboard" >
         <h1>Dashboard</h1>
         <div class="cards" v-if="!courseLoading">
             <div class="card" v-for="course in courses.data" :key="course.id">
@@ -40,11 +57,11 @@ const getCourses = (url = null) => {
                 <div class="numbers">
                     <div class="mr-5">
                         <span class="visitor">訪客人數</span>
-                        <p>{{course.visitor}}</p>
+                        <p v-run>{{course.visitor}}</p>
                     </div>
                     <div class="mr-5">
                         <span class="watched">點擊次數</span>
-                        <p>{{course.watched}}</p>
+                        <p v-run>{{course.watched}}</p>
                     </div>
                     <div>
                         <DoughnutChart :visitor="course.visitor" :watched="course.watched" />
@@ -116,7 +133,7 @@ const getCourses = (url = null) => {
                 <div class="title">
                     <router-link to="/">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-500">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                         </svg>
                     </router-link>
                     <select name="" id="">
@@ -125,120 +142,45 @@ const getCourses = (url = null) => {
                         <option value="">全部</option>
                     </select>
                 </div>
-                <div class="content">
-                    <div class="item">
-                        <div class="date">06/18</div>
+                <div class="content" v-if="!letterLoading">
+                    <div class="item" v-for="letter in letters.data" :key="letter.id">
                         <div class="names">
-                            <h3>章勳凱</h3>
-                            <span>ggininder@gmail.com</span>
+                            <h3>{{letter.name}}</h3>
+                            <span>{{letter.phone}}</span>
+                            <p class="ago">{{letter.ago}}</p>
                         </div>
                         <div class="dot">
-                            <ul>
+                            <ul class="isOpenUl" ref="dotUl" >
                                 <router-link to="/">查看</router-link>
                                 <router-link to="/">刪除</router-link>
                             </ul>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <svg @click="openUL($event)"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                             </svg>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="date">06/18</div>
-                        <div class="names">
-                            <h3>章勳凱</h3>
-                            <span>ggininder@gmail.com</span>
-                        </div>
-                        <div class="dot">
-                            <ul>
-                                <router-link to="/">查看</router-link>
-                                <router-link to="/">刪除</router-link>
-                            </ul>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="date">06/18</div>
-                        <div class="names">
-                            <h3>章勳凱</h3>
-                            <span>ggininder@gmail.com</span>
-                        </div>
-                        <div class="dot">
-                            <ul>
-                                <router-link to="/">查看</router-link>
-                                <router-link to="/">刪除</router-link>
-                            </ul>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="date">06/18</div>
-                        <div class="names">
-                            <h3>章勳凱</h3>
-                            <span>ggininder@gmail.com</span>
-                        </div>
-                        <div class="dot">
-                            <ul>
-                                <router-link to="/">查看</router-link>
-                                <router-link to="/">刪除</router-link>
-                            </ul>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="date">06/18</div>
-                        <div class="names">
-                            <h3>章勳凱</h3>
-                            <span>ggininder@gmail.com</span>
-                        </div>
-                        <div class="dot">
-                            <ul>
-                                <router-link to="/">查看</router-link>
-                                <router-link to="/">刪除</router-link>
-                            </ul>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="date">06/18</div>
-                        <div class="names">
-                            <h3>章勳凱</h3>
-                            <span>ggininder@gmail.com</span>
-                        </div>
-                        <div class="dot">
-                            <ul>
-                                <router-link to="/">查看</router-link>
-                                <router-link to="/">刪除</router-link>
-                            </ul>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="date">06/18</div>
-                        <div class="names">
-                            <h3>章勳凱</h3>
-                            <span>ggininder@gmail.com</span>
-                        </div>
-                        <div class="dot">
-                            <ul>
-                                <router-link to="/">查看</router-link>
-                                <router-link to="/">刪除</router-link>
-                            </ul>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-                        </div>
-                    </div>
+                </div>
+                <div v-else class="letter-loading">
+                    <svg
+                        class="animate-spin h-5 w-5 text-gray-500"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        >
+                        <circle
+                            class="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="4"
+                        ></circle>
+                        <path
+                            class="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                        </svg>
                 </div>
             </div>
         </div>
@@ -381,7 +323,7 @@ const getCourses = (url = null) => {
                 >.title{
                     display: flex;
                     justify-content: space-between;
-                    padding: 10px 10px 10px 0;
+                    padding: 10px;
                     border-bottom: 1px #ddd solid;
                     >h2{
                         color:#555;
@@ -424,27 +366,34 @@ const getCourses = (url = null) => {
                     >.item{
                         width: 100%;
                         display: grid;
-                        grid-template-columns: 25% 65% 10%;
+                        grid-template-columns: 90% 10%;
                         align-items: center;
                         grid-column-gap: 5px;
-                        padding:10px 15px ;
+                        padding:10px 10px ;
                         border-bottom: 1px #ddd solid;
                         box-sizing: border-box;
                         >.names{
                             display: flex;
                             flex-direction: column;
+                            padding-right: 10px;
                             h3{
                                 font-size: 13px;
-                                color:#777;
+                                color:#555;
                             }
                             span{
                                 font-size: 14px;
                                 color:#111;
                                 font-weight: 600;
                             }
+                            p.ago{
+                                float: right;
+                                font-size: 12px;
+                                color:#777;
+                                margin-left: auto;
+                            }
                         }
-                        >.date{
-                            font-size: 14px ;
+                        >.ago{
+                            font-size: 12px ;
                             color:#666;
                         }
                         >.dot{
@@ -452,16 +401,19 @@ const getCourses = (url = null) => {
                             ul{
                                 position: absolute;
                                 width: 70px;
-                                display: flex;
                                 flex-direction: column;
                                 top: 20px;
-                                left:0;
+                                left:-55px;
                                 background-color: #fff;
                                 z-index: 10;
                                 border: 1px #ddd solid;
                                 font-size: 13px;
                                 color:#777;
                                 display: none;
+                                z-index: 1111;
+                                &.open{
+                                    display: flex;
+                                }
                                 >a{
                                     padding: 5px 10px ;
                                     border-bottom: 1px #f1f1f1 solid;
@@ -485,6 +437,13 @@ const getCourses = (url = null) => {
                             }
                         }
                     }
+                }
+                >.letter-loading{
+                    width: 100%;
+                    height: 250px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
         }

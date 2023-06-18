@@ -169,3 +169,17 @@ export function setMinutes(state, [loading, res=null]){
     }
     state.minutes.loading = loading;
 }
+export function setLetters(state, [loading, res=null]){
+    if(res){
+        state.letters = {
+            data: res.data,
+            links: res.meta.links,
+            total: res.meta.total,
+            limit: res.meta.per_page,
+            from: res.meta.from,
+            to: res.meta.to,
+            page: res.meta.current_page,
+        }
+    }
+    state.letters.loading = loading;
+}

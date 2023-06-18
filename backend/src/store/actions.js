@@ -494,3 +494,27 @@ export function getMinutes({commit}, {url = null, search = '', perPage = 10, sor
         commit('setMinutes', [false]);
     })
 }
+//letters
+export function getLetters({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction}){
+    commit('setLetters', [true]);
+    url = url || '/letters';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction}}).then(res=>{
+        commit('setLetters', [false, res.data]);
+    }).catch(err=>{
+        commit('setLetters', [false]);
+    })
+}
+export function getLetter({commit}, id){
+    return axiosClient.get(`/letters/${id}`);
+}
+export function isExistLetter({commit}, id){
+    return axiosClient.post(`/isExistLetter`, {id: id}).then(res=>{
+        return res;
+    });
+}
+export function deleteLetter({commit}, id){
+    return axiosClient.delete(`/letters/${id}`);
+}
+export function deleteLetterItems({commit}, ids){
+    return axiosClient.post(`/letterItems`, {'ids':ids});
+}

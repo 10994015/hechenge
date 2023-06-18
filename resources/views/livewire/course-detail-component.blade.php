@@ -41,7 +41,7 @@
                 </label>
                 <label for="">
                     <span>就讀年級</span>
-                    <select wore:model="grade" >
+                    <select wire:model="grade" >
                         <option value="高中一年級">高中一年級</option>
                         <option value="高中二年級">高中二年級</option>
                         <option value="高中三年級">高中三年級</option>
@@ -75,8 +75,16 @@
                     {{ session('success') }}
                 </div>
             </div>
-                
             @endif
+            <div class="errorDiv">
+                @if(session('error')) {{session('error')}} @endif
+                @error('name') <span class="text-danger">{{$message}}</span> @enderror
+                @error('email') <span class="text-danger">{{$message}}</span> @enderror
+                @error('school') <span class="text-danger">{{$message}}</span> @enderror
+                @error('grade') <span class="text-danger">{{$message}}</span> @enderror
+                @error('content') <span class="text-danger">{{$message}}</span> @enderror
+                @error('captcha') <span class="text-danger">{{$message}}</span> @enderror
+            </div>
         </div>
         <div class="sildebar" id="scrollSildebar">
             <div class="all-course">
@@ -155,6 +163,11 @@
             axios.get('/reload-captcha').then(res=>{
                 captcha_img.innerHTML = res.data.captcha;
             })
-        })
+        });
+        window.addEventListener('reloadCaptcha', e=>{
+            axios.get('/reload-captcha').then(res=>{
+                captcha_img.innerHTML = res.data.captcha;
+            })
+        });
     </script>
 @endpush

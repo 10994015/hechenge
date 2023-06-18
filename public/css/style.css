@@ -1949,6 +1949,17 @@ footer > .copyright > p > a {
   height: 40px;
   margin-left: 6px;
 }
+#course-detail-component > .content > .detail > .errorDiv, #course-detail-component > .content > .detail .successDiv {
+  margin: 3px auto;
+  max-width: 690px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: rgb(247, 118, 118);
+}
+#course-detail-component > .content > .detail > .errorDiv span, #course-detail-component > .content > .detail .successDiv span {
+  font-size: 14px;
+}
 #course-detail-component > .content > .sildebar {
   width: 30%;
 }
@@ -2275,7 +2286,7 @@ footer > .copyright > p > a {
   margin-top: 100px;
 }
 #contact-component > .errorDiv, #contact-component .successDiv {
-  margin: 0 auto;
+  margin: 3px auto;
   max-width: 690px;
   width: 100%;
   display: flex;

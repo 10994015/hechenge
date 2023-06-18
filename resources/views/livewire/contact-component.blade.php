@@ -39,8 +39,9 @@
         <label for=""> 
             <span>詢問課程*</span>
             <select wire:model="course">
+                <option value="" selected>請選擇課程</option>
                 @foreach($courses as $course)
-                <option value="{{$course->tilte}}">{{$course->title}}</option>
+                <option value="{{$course->title}}">{{$course->title}}</option>
                 @endforeach
             </select>
         </label>
@@ -58,7 +59,7 @@
         </label>
         <label for="">
             <span>就讀年級 *</span>
-            <select wore:model="grade" >
+            <select wire:model="grade" >
                 <option value="高中一年級">高中一年級</option>
                 <option value="高中二年級">高中二年級</option>
                 <option value="高中三年級">高中三年級</option>
@@ -98,7 +99,8 @@
         @if(session('error')) {{session('error')}} @endif
         @error('name') <span class="text-danger">{{$message}}</span> @enderror
         @error('email') <span class="text-danger">{{$message}}</span> @enderror
-        @error('subject') <span class="text-danger">{{$message}}</span> @enderror
+        @error('school') <span class="text-danger">{{$message}}</span> @enderror
+        @error('grade') <span class="text-danger">{{$message}}</span> @enderror
         @error('content') <span class="text-danger">{{$message}}</span> @enderror
         @error('captcha') <span class="text-danger">{{$message}}</span> @enderror
     </div>
@@ -116,5 +118,10 @@
                 captcha_img.innerHTML = res.data.captcha;
             })
         })
+        window.addEventListener('reloadCaptcha', e=>{
+            axios.get('/reload-captcha').then(res=>{
+                captcha_img.innerHTML = res.data.captcha;
+            })
+        });
     </script>
 @endpush

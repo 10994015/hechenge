@@ -3,10 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\Course;
+use App\Models\Letter;
 use App\Models\Minute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Validator;
 use Livewire\Component;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -16,11 +18,11 @@ class CourseDetailComponent extends Component
     public $name;
     public $phone;
     public $school;
-    public $grade;
+    public $grade = "高中一年級";
     public $content;
     public $captcha;
     public $loading;
-    public $courseName = "英文課";
+    public $courseName;
     public $slug;
     public $course_id;
     protected $listeners = ['addTime'=>'addTime', 'addVisitorCount'=>'addVisitorCount', 'addCount'=>'addCount'];
@@ -99,7 +101,12 @@ class CourseDetailComponent extends Component
         
     }
     public function onSubmit(){
-        $this->validate([
+        $this->withValidator(function (Validator $validator) {
+            $validator->after(function ($validator) {
+                $this->dispatchBrowserEvent('reloadCaptcha');
+                $this->captcha = '';
+            });
+        })->validate([
             'name' => 'required',
             'phone' => 'required',
             'school' => 'required',
@@ -116,7 +123,7 @@ class CourseDetailComponent extends Component
             'captcha.captcha'=>'驗證碼輸入錯誤',
         ]);
         $mail = new PHPMailer(true);
-        
+        $mail->CharSet = "UTF-8";
         try{
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
@@ -138,19 +145,30 @@ class CourseDetailComponent extends Component
             $mail->Body .= '寄信人年級:' . $this->grade .'<br />';
             $mail->Body .= '寄信人就讀學校:' . $this->school .'<br />';
             $mail->Body .= '詢問課程:' . $this->courseName .'<br />';
-            $mail->Body .= '內容:' . $this->content;
+            $mail->Body .= '詢問內容:<br />' . $this->content;
             $mail->send();
   
             $mail->send();
 
             session()->flash('success', "發送成功！");
-
+            $this->dispatchBrowserEvent('reloadCaptcha');
             $this->loading = false;
+            $this->storeMail();
             $this->clearVar();
         }catch (Exception $e) {
             session()->flash('error', "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
+    }
+    public function storeMail(){
+        $letter = Letter::create([
+            'name'=> $this->name,
+            'phone'=> $this->phone, 
+            'grade'=> $this->grade,
+            'school'=> $this->school,
+            'content'=>$this->content,
+        ]);
+        return $letter;
     }
     public function render()
     {

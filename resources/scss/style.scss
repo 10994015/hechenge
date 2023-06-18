@@ -1877,6 +1877,17 @@ footer{
                     }
                 }
             }
+            >.errorDiv, .successDiv{
+                margin:3px auto;
+                max-width: 690px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                color:rgb(247, 118, 118);
+                span{
+                    font-size: 14px;
+                }
+            }
         }
         >.sildebar{
             width: 30%;
@@ -2180,7 +2191,7 @@ footer{
         margin-top: 100px;
     }
     >.errorDiv, .successDiv{
-        margin:0 auto;
+        margin:3px auto;
         max-width: 690px;
         width: 100%;
         display: flex;

@@ -23,6 +23,10 @@ import AddStudent from "../views/AddStudent.vue"
 import Faqs from "../views/Faqs.vue"
 import AddFaq from "../views/AddFaq.vue"
 import NotFound from "../views/NotFound.vue"
+import Inbox from "../views/Inbox.vue"
+import ReadMail from "../views/ReadMail.vue"
+import Manager from "../views/profile/Manager.vue"
+import ActivityLog from "../views/profile/ActivityLog.vue"
 import AppLayout from "../components/AppLayout.vue"
 import store from "../store"
 const routes = [
@@ -42,7 +46,19 @@ const routes = [
             {
                 path:'profile',
                 name:'app.profile',
-                component: Profile
+                component: Profile,
+                children:[
+                    {
+                        path:'',
+                        name:'app.profile.manager',
+                        component: Manager,
+                    },
+                    {
+                        path:'log',
+                        name:'app.profile.activity-log',
+                        component: ActivityLog,
+                    }
+                ]
             },
             {
                 path:'articles',
@@ -143,6 +159,16 @@ const routes = [
                 path:'add-faq/:id',
                 name:'app.add-faq',
                 component:AddFaq,
+            },
+            {
+                path:'/inbox',
+                name:'app.inbox',
+                component: Inbox
+            },
+            {
+                path:'readmail/:id',
+                name:'app.readmail',
+                component:ReadMail,
             },
         ]
     },
