@@ -114,7 +114,11 @@ const getCourses = (url = null) => {
             </div>
             <div class="mails ">
                 <div class="title">
-                    <h2>Mail</h2>
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                    </h2>
                     <select name="" id="">
                         <option value="">本日</option>
                         <option value="">本周</option>
@@ -124,7 +128,104 @@ const getCourses = (url = null) => {
                 </div>
                 <div class="content">
                     <div class="item">
-                        <div class="date">2023/06/18</div>
+                        <div class="date">06/18</div>
+                        <div class="names">
+                            <h3>章勳凱</h3>
+                            <span>ggininder@gmail.com</span>
+                        </div>
+                        <div class="dot">
+                            <ul>
+                                <router-link to="/">查看</router-link>
+                                <router-link to="/">刪除</router-link>
+                            </ul>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="date">06/18</div>
+                        <div class="names">
+                            <h3>章勳凱</h3>
+                            <span>ggininder@gmail.com</span>
+                        </div>
+                        <div class="dot">
+                            <ul>
+                                <router-link to="/">查看</router-link>
+                                <router-link to="/">刪除</router-link>
+                            </ul>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="date">06/18</div>
+                        <div class="names">
+                            <h3>章勳凱</h3>
+                            <span>ggininder@gmail.com</span>
+                        </div>
+                        <div class="dot">
+                            <ul>
+                                <router-link to="/">查看</router-link>
+                                <router-link to="/">刪除</router-link>
+                            </ul>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="date">06/18</div>
+                        <div class="names">
+                            <h3>章勳凱</h3>
+                            <span>ggininder@gmail.com</span>
+                        </div>
+                        <div class="dot">
+                            <ul>
+                                <router-link to="/">查看</router-link>
+                                <router-link to="/">刪除</router-link>
+                            </ul>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="date">06/18</div>
+                        <div class="names">
+                            <h3>章勳凱</h3>
+                            <span>ggininder@gmail.com</span>
+                        </div>
+                        <div class="dot">
+                            <ul>
+                                <router-link to="/">查看</router-link>
+                                <router-link to="/">刪除</router-link>
+                            </ul>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="date">06/18</div>
+                        <div class="names">
+                            <h3>章勳凱</h3>
+                            <span>ggininder@gmail.com</span>
+                        </div>
+                        <div class="dot">
+                            <ul>
+                                <router-link to="/">查看</router-link>
+                                <router-link to="/">刪除</router-link>
+                            </ul>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="date">06/18</div>
                         <div class="names">
                             <h3>章勳凱</h3>
                             <span>ggininder@gmail.com</span>
@@ -297,18 +398,39 @@ const getCourses = (url = null) => {
                     }
                 }
                 >.content{
-                    display: flex;
-                    flex-direction: column;
                     width: 100%;
+                    height: 250px;
+                    overflow-y: scroll;
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+                    &::-webkit-scrollbar-button {
+                        background: transparent;
+                        border-radius: 4px;
+                    }
+
+                    &::-webkit-scrollbar-track-piece {
+                        background: #ddd;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        border-radius: 4px;
+                        background-color: rgba(0, 0, 0, 0.4);
+                        border: 1px solid slategrey;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        box-shadow: transparent;
+                    }
                     >.item{
                         width: 100%;
                         display: grid;
                         grid-template-columns: 25% 65% 10%;
                         align-items: center;
                         grid-column-gap: 5px;
-                        padding: 15px 0;
+                        padding:10px 15px ;
                         border-bottom: 1px #ddd solid;
-                        
+                        box-sizing: border-box;
                         >.names{
                             display: flex;
                             flex-direction: column;
