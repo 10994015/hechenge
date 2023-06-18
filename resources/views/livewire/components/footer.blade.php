@@ -39,6 +39,7 @@
             @foreach(DB::table('course_categories')->where('deleted_at', null)->get() as $c)
             <div class="item"><a href="/courses/{{$c->id}}">{{$c->name}}</a></div>
             @endforeach
+            <div class="item"><a href="/faq">常見問答</a></div>
         </div>
         <div class="link">
             <h5>關注我們</h5>

@@ -11,7 +11,7 @@
                 <img src="/images/teacher.png" alt="">
                 <div class="text">
                     <h4>師資介紹</h4>
-                    <a href="">查看更多<i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="/teachers">查看更多<i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
             <div class="item">
@@ -24,8 +24,8 @@
             <div class="item">
                 <img src="/images/about.png" alt="">
                 <div class="text">
-                    <h4>關於我們</h4>
-                    <a href="">查看更多<i class="fa-solid fa-chevron-right"></i></a>
+                    <h4>聯絡我們</h4>
+                    <a href="/contact">查看更多<i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
@@ -109,12 +109,12 @@
                 
                 <div class="card" :style="'transform: translateX(' + (idx*-100)  + '%)'">
                     <div class="course" >
-                        <a href="/" class="imgbox">
+                        <a href="/course-detail/{{$course->slug}}" class="imgbox">
                             <img src="{{$course->image}}" alt="{{$course->title}}">
                             <div class="view">查看課程</div>
                         </a>
                         <div class="content">
-                            <a href="/">{{$course->title}}</a>
+                            <a href="/course-detail/{{$course->slug}}">{{$course->title}}</a>
                         </div>
                         <div class="footer">
                             <div class="watched">
@@ -174,7 +174,7 @@
                         <article class="description">
                             @php echo $course->content @endphp 
                         </article>
-                        <a href="" class="view-more">瀏覽更多</a>
+                        <a href="/course-detail/{{$course->slug}}" class="view-more">瀏覽更多</a>
                     </div>
                 </div>
                 @endforeach
@@ -186,7 +186,7 @@
     <section class="news" id="home-news" >
         <h2 class="title"><img src="/images/news.png" />最新消息</h2>
         <div class="readmore">
-            <a href="">瀏覽更多</a>
+            <a href="/news">瀏覽更多</a>
         </div>
         <div class="content">
             @foreach($articles as $article)

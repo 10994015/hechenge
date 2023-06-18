@@ -83,11 +83,13 @@ class CourseDetailComponent extends Component
         try{
             if(!Session::has("visitor_".$this->course_id."_id")){
                 $visitorId = uniqid();
-                Session::put('visitor_id', $visitorId);
+                Session::put("visitor_".$this->course_id."_id", $visitorId);
                 $visitor = (int)Course::find($this->course_id)->visitor;
-                Course::find($this->course_id)->update([
-                    'visitor'=> $visitor + 1
-                ]);
+                $course = Course::find($this->course_id);
+                $course->timestamps  = false;
+                $course->visitor = $visitor + 1;
+                $course->save();
+                $course->timestamps  = true;
             }
             DB::commit();
         }catch(\Exception $e){
