@@ -6,6 +6,8 @@ use App\Models\TeacherCategory;
 use App\Http\Requests\TeacherCategoryRequest;
 use App\Http\Resources\TeacherCategoryResource;
 use Illuminate\Http\Request;
+use App\Models\Log as ModelsLog;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherCategoryController extends Controller
 {
@@ -36,7 +38,15 @@ class TeacherCategoryController extends Controller
         $data['updated_by'] = $request->user()->id;
 
         $category = TeacherCategory::create($data);
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'新增師資分類',
+            'to'=>'teacher-category',
+            'to_id'=>null,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new TeacherCategoryResource($category);
     }
 
@@ -72,13 +82,29 @@ class TeacherCategoryController extends Controller
     public function destroy($id)
     {
         $category = TeacherCategory::find($id)->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除師資分類',
+            'to'=>'teacher-category',
+            'to_id'=>$id,
+            'content'=> "刪除$category->name",
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent(); //回應204
     }
     public function deleteItems(TeacherCategory $category, Request $req){
         $ids = $req->ids;
         $category->whereIn('id', $ids)->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除多個師資分類',
+            'to'=>'teacher-category',
+            'to_id'=>0,
+            'content'=> "刪除".json_encode($ids),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent();
     }
 }

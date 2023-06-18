@@ -6,6 +6,8 @@ use App\Models\CourseTag;
 use App\Http\Requests\CourseTagRequest;
 use App\Http\Resources\CourseTagResource;
 use Illuminate\Http\Request;
+use App\Models\Log as ModelsLog;
+use Illuminate\Support\Facades\Auth;
 
 class CourseTagController extends Controller
 {
@@ -36,7 +38,15 @@ class CourseTagController extends Controller
         $data['updated_by'] = $request->user()->id;
 
         $category = CourseTag::create($data);
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'新增課程標籤',
+            'to'=>'course-tag',
+            'to_id'=>null,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new CourseTagResource($category);
     }
 
@@ -71,15 +81,31 @@ class CourseTagController extends Controller
      */
     public function destroy($id)
     {
-        $category = CourseTag::find($id)->delete();
+        $tag = CourseTag::find($id)->delete();
         // $category->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除課程標籤',
+            'to'=>'course-tag',
+            'to_id'=>$id,
+            'content'=> "刪除$tag->name",
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent(); //回應204
     }
     public function deleteItems(CourseTag $category, Request $req){
         $ids = $req->ids;
         $category->whereIn('id', $ids)->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除多個課程標籤',
+            'to'=>'course-tag',
+            'to_id'=>0,
+            'content'=> "刪除".json_encode($ids),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent();
     }
 }

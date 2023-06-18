@@ -518,3 +518,13 @@ export function deleteLetter({commit}, id){
 export function deleteLetterItems({commit}, ids){
     return axiosClient.post(`/letterItems`, {'ids':ids});
 }
+//logs
+export function getLogs({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction}){
+    commit('setLogs', [true]);
+    url = url || '/logs';
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction}}).then(res=>{
+        commit('setLogs', [false, res.data]);
+    }).catch(err=>{
+        commit('setLogs', [false]);
+    })
+}

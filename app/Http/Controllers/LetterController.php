@@ -6,6 +6,8 @@ use App\Models\Letter;
 use App\Http\Requests\LetterRequest;
 use App\Http\Resources\LetterResource;
 use Illuminate\Http\Request;
+use App\Models\Log as ModelsLog;
+use Illuminate\Support\Facades\Auth;
 
 class LetterController extends Controller
 {
@@ -75,7 +77,15 @@ class LetterController extends Controller
     public function deleteItems(Letter $letter, Request $req){
         $ids = $req->ids;
         $letter->whereIn('id', $ids)->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除信件',
+            'to'=>'letter',
+            'to_id'=>0,
+            'content'=> "刪除".json_encode($ids),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent();
     }
 }

@@ -6,10 +6,12 @@ use App\Models\Student;
 use App\Http\Requests\StudentRequest;
 use App\Http\Resources\StudentListResource;
 use App\Http\Resources\StudentResource;
+use App\Models\Log as ModelsLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -53,7 +55,15 @@ class StudentController extends Controller
         }
 
         $student = Student::create($data);
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'新增學生回饋',
+            'to'=>'student',
+            'to_id'=>null,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new StudentResource($student);
     }
 
@@ -94,6 +104,15 @@ class StudentController extends Controller
             }
         }
         $student->update($data);
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'更新學生回饋',
+            'to'=>'student',
+            'to_id'=>$student->id,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new StudentResource($student);
     }
 
@@ -106,7 +125,15 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除學生回饋',
+            'to'=>'student',
+            'to_id'=>$student->id,
+            'content'=> "刪除$student->name",
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent(); //回應204
     }
 
@@ -129,7 +156,15 @@ class StudentController extends Controller
     public function deleteItems(Student $student, Request $req){
         $ids = $req->ids;
         $student->whereIn('id', $ids)->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除多篇學生回饋',
+            'to'=>'student',
+            'to_id'=>0,
+            'content'=> "刪除".json_encode($ids),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent();
     }
 }

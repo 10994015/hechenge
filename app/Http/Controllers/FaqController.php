@@ -6,10 +6,12 @@ use App\Models\Faq;
 use App\Http\Requests\FaqRequest;
 use App\Http\Resources\FaqListResource;
 use App\Http\Resources\FaqResource;
+use App\Models\Log as ModelsLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -45,7 +47,15 @@ class FaqController extends Controller
 
         
         $faq = Faq::create($data);
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'新增常見問答',
+            'to'=>'faq',
+            'to_id'=>null,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new FaqResource($faq);
     }
 
@@ -73,6 +83,16 @@ class FaqController extends Controller
         $data['updated_by'] = $request->user()->id;
       
         $faq->update($data);
+
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'更新常見問答',
+            'to'=>'faq',
+            'to_id'=>$faq->id,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new FaqResource($faq);
     }
 
@@ -85,7 +105,15 @@ class FaqController extends Controller
     public function destroy(Faq $faq)
     {
         $faq->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除常見問答',
+            'to'=>'faq',
+            'to_id'=>$faq->id,
+            'content'=> "刪除$faq->question",
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent(); //回應204
     }
     public function saveImage(UploadedFile $image){
@@ -107,7 +135,15 @@ class FaqController extends Controller
     public function deleteItems(Faq $faq, Request $req){
         $ids = $req->ids;
         $faq->whereIn('id', $ids)->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除多個常見問答',
+            'to'=>'faq',
+            'to_id'=>0,
+            'content'=> "刪除".json_encode($ids),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent();
     }
 }

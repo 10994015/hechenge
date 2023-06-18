@@ -6,10 +6,12 @@ use App\Models\Banner;
 use App\Http\Requests\BannerRequest;
 use App\Http\Resources\BannerListResource;
 use App\Http\Resources\BannerResource;
+use App\Models\Log as ModelsLog;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -54,6 +56,16 @@ class BannerController extends Controller
 
         $banner = Banner::create($data);
 
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'新增輪播圖',
+            'to'=>'banner',
+            'to_id'=>null,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
+
         return new BannerResource($banner);
     }
 
@@ -94,6 +106,16 @@ class BannerController extends Controller
             }
         }
         $banner->update($data);
+
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'更新輪播圖',
+            'to'=>'banner',
+            'to_id'=>$banner->id,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new BannerResource($banner);
     }
 
@@ -106,6 +128,16 @@ class BannerController extends Controller
     public function destroy(Banner $banner)
     {
         $banner->delete();
+
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除輪播圖',
+            'to'=>'banner',
+            'to_id'=>$banner->id,
+            'content'=> "刪除$banner->image",
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
 
         return response()->noContent(); //回應204
     }
@@ -127,7 +159,15 @@ class BannerController extends Controller
     public function deleteItems(Banner $banner, Request $req){
         $ids = $req->ids;
         $banner->whereIn('id', $ids)->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除多張輪播圖',
+            'to'=>'banner',
+            'to_id'=>0,
+            'content'=> "刪除".json_encode($ids),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent();
     }
 }

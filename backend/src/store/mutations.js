@@ -183,3 +183,17 @@ export function setLetters(state, [loading, res=null]){
     }
     state.letters.loading = loading;
 }
+export function setLogs(state, [loading, res=null]){
+    if(res){
+        state.logs = {
+            data: res.data,
+            links: res.meta.links,
+            total: res.meta.total,
+            limit: res.meta.per_page,
+            from: res.meta.from,
+            to: res.meta.to,
+            page: res.meta.current_page,
+        }
+    }
+    state.logs.loading = loading;
+}

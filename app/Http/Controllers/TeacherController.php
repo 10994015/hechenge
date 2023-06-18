@@ -6,11 +6,13 @@ use App\Models\Teacher;
 use App\Http\Requests\TeacherRequest;
 use App\Http\Resources\TeacherListResource;
 use App\Http\Resources\TeacherResource;
+use App\Models\Log as ModelsLog;
 use App\Models\TeacherCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -55,7 +57,15 @@ class TeacherController extends Controller
         }
 
         $teacher = Teacher::create($data);
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'新增師資',
+            'to'=>'teacher',
+            'to_id'=>null,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new TeacherResource($teacher);
     }
 
@@ -96,6 +106,15 @@ class TeacherController extends Controller
             }
         }
         $teacher->update($data);
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'更新師資',
+            'to'=>'teacher',
+            'to_id'=>$teacher->id,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return new TeacherResource($teacher);
     }
 
@@ -108,7 +127,15 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         $teacher->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除師資',
+            'to'=>'teacher',
+            'to_id'=>$teacher->id,
+            'content'=> "刪除$teacher->name",
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent(); //回應204
     }
     public function saveImage(UploadedFile $image){
@@ -129,7 +156,15 @@ class TeacherController extends Controller
     public function deleteItems(Teacher $teacher, Request $req){
         $ids = $req->ids;
         $teacher->whereIn('id', $ids)->delete();
-
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除多篇師資',
+            'to'=>'teacher',
+            'to_id'=>0,
+            'content'=> "刪除".json_encode($ids),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
         return response()->noContent();
     }
     public function getCategories(Request $req)

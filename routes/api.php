@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseTagController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\LetterController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\MinuteController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherCategoryController;
@@ -85,6 +86,9 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function(){
     Route::apiResource('letters', LetterController::class);
     Route::post('/isExistLetter', [LetterController::class, 'isExistLetter']);
     Route::post('/letterItems', [LetterController::class, 'deleteItems']);
+
+    //logs
+    Route::get('/logs', [LogController::class, 'index']);
 
 });
 

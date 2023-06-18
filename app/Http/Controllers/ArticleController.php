@@ -7,10 +7,12 @@ use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Category;
+use App\Models\Log as ModelsLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -46,7 +48,6 @@ class ArticleController extends Controller
 
         
         $image = $data['image'] ?? NULL;
-        log::info($image);
 
         if($image){
             $relatevePath = $this->saveImage($image);
@@ -57,6 +58,17 @@ class ArticleController extends Controller
         }
 
         $article = Article::create($data);
+
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'新增文章',
+            'to'=>'article',
+            'to_id'=>null,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
+
 
         return new ArticleResource($article);
     }
@@ -98,6 +110,17 @@ class ArticleController extends Controller
             }
         }
         $article->update($data);
+
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'更新文章',
+            'to'=>'article',
+            'to_id'=>$article->id,
+            'content'=> json_encode($data),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
+
         return new ArticleResource($article);
     }
 
@@ -110,6 +133,16 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
+
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除文章',
+            'to'=>'article',
+            'to_id'=>$article->id,
+            'content'=> "刪除$article->title",
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
 
         return response()->noContent(); //回應204
     }
@@ -133,6 +166,16 @@ class ArticleController extends Controller
     public function deleteItems(Article $article, Request $req){
         $ids = $req->ids;
         $article->whereIn('id', $ids)->delete();
+
+        ModelsLog::create([
+            'username'=> Auth::user()->username,
+            'action'=>'刪除多篇文章',
+            'to'=>'article',
+            'to_id'=>0,
+            'content'=> "刪除".json_encode($ids),
+            'created_by'=>Auth::id(),
+            'updated_by'=>Auth::id(),
+        ]);
 
         return response()->noContent();
     }
