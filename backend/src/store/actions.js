@@ -495,10 +495,10 @@ export function getMinutes({commit}, {url = null, search = '', perPage = 10, sor
     })
 }
 //letters
-export function getLetters({commit}, {url = null, search = '', perPage = 10, sort_field, sort_direction}){
+export function getLetters({commit}, {url = null, date=1, search = '', perPage = 10, sort_field, sort_direction}){
     commit('setLetters', [true]);
     url = url || '/letters';
-    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction}}).then(res=>{
+    return axiosClient.get(url, {params:{search, per_page:perPage, sort_field, sort_direction, date}}).then(res=>{
         commit('setLetters', [false, res.data]);
     }).catch(err=>{
         commit('setLetters', [false]);

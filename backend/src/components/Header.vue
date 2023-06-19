@@ -85,7 +85,7 @@ const logout = () => {
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">
               <button
-                @click="router.push({ name: 'app.profile' })"
+                @click="router.push({ name: 'app.profile.manager' })"
                 :class="[
                   active ? 'bg-[#fff]-600 text-[#111]' : 'text-[#111]',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-[#f1f1f1] hover:text-[#333]',

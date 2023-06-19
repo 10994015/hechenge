@@ -375,7 +375,7 @@ const deleteCheckedItems = () => {
               <td class="content" v-if="isJson(log.content)">
                 <div v-for="(idx, item) in JSON.parse(log.content)" :key="item.id">{{ item }}: {{ idx }}</div>
               </td>
-              <td v-else>{{ log.content }}</td>
+              <td v-else class="content">{{ log.content }}</td>
               <td>{{ log.created_at }}</td>
             </tr>
 
@@ -384,7 +384,7 @@ const deleteCheckedItems = () => {
         </table>
       </div>
       <div class="paging" v-if="logs.total > logs.limit">
-        <div class="pageInfo">Showing from {{ logs.from }} to {{ logs.to }}</div>
+        <div class="pageInfo text-xs text-gray-500">第 {{ logs.from }} 筆 至 第 {{ logs.to }}筆</div>
         <div class="pageBtn">
           <nav>
             <a
@@ -569,7 +569,7 @@ const deleteCheckedItems = () => {
           justify-content: center;
           align-items: center;
           a {
-            color: #fff;
+            color: #aaa;
             border-radius: 30px !important;
             margin: 0 3px !important;
             border: none;
@@ -581,12 +581,13 @@ const deleteCheckedItems = () => {
             font-size: 12px;
             transition: 0.3s;
             &:hover {
-              color: #1c84ee;
+              color: #fff;
               background-color: #282f36;
             }
             &.active {
               background-color: #1c84ee;
               border-color: #1c84ee;
+              color:#fff;
               &:hover {
                 color: #fff;
                 background-color: #1c84ee;

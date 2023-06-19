@@ -10,6 +10,7 @@ const courseLoading = ref(true);
 const minuteLoading = ref(true)
 const letterLoading = ref(true)
 const minuteSearch = ref(1);
+const date = ref(1)
 onMounted(()=>{
     getCourses();
     getLetters();
@@ -29,7 +30,13 @@ const openUL = (ev)=>{
         ev.target.previousSibling.classList.add('open')
     }
 }
-
+const deleteLetter = (letter) => {
+  if (!confirm(`確定要刪除 ${letter.name}(${letter.phone}) 嗎？`)) return;
+  store.dispatch("deleteLetter", letter.id).then((res) => {
+    alert("刪除成功！");
+    getLetters();
+  });
+};
 const getCourses = (url = null) => {
   store.dispatch("getCourses", {
     url,
@@ -38,8 +45,10 @@ const getCourses = (url = null) => {
   });
 };
 const getLetters = (url = null) => {
+    letterLoading.value = true
     store.dispatch("getLetters", {
         url,
+        date: date.value,
     }).then(()=>{
         letterLoading.value = false
     });
@@ -131,15 +140,15 @@ const getLetters = (url = null) => {
             </div>
             <div class="mails ">
                 <div class="title">
-                    <router-link to="/">
+                    <router-link :to="{name: 'app.inbox'}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-500">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                         </svg>
                     </router-link>
-                    <select name="" id="">
-                        <option value="">本周</option>
-                        <option value="">本月</option>
-                        <option value="">全部</option>
+                    <select @change="getLetters()" v-model="date">
+                        <option value="1">本周</option>
+                        <option value="2">本月</option>
+                        <option value="3">全部</option>
                     </select>
                 </div>
                 <div class="content" v-if="!letterLoading">
@@ -151,8 +160,8 @@ const getLetters = (url = null) => {
                         </div>
                         <div class="dot">
                             <ul class="isOpenUl" ref="dotUl" >
-                                <router-link to="/">查看</router-link>
-                                <router-link to="/">刪除</router-link>
+                                <router-link :to="{name: 'app.readmail', params:{id: letter.id}}">查看</router-link>
+                                <button @click="deleteLetter(letter)">刪除</button>
                             </ul>
                             <svg @click="openUL($event)"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
@@ -414,11 +423,12 @@ const getLetters = (url = null) => {
                                 &.open{
                                     display: flex;
                                 }
-                                >a{
+                                >a, button{
                                     padding: 5px 10px ;
                                     border-bottom: 1px #f1f1f1 solid;
                                     transition: .3s;
                                     animation: show .1s linear;
+                                    text-align: left;
                                     @keyframes show {
                                         0%{
                                             opacity: 0;
