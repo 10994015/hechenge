@@ -7,6 +7,11 @@
         </div>
     </div>
     <div class="students">
+        @if($students->count() <= 0)
+            <div class="flex justify-center items-center">
+                <span class="py-10 text-center text-xs text-gray-500">暫無資料。</span>
+            </div>
+        @endif
         @foreach($students as $student)
         <div class="student">
             <div class="title">

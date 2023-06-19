@@ -6,7 +6,13 @@
             <p>Teachers</p>
         </div>
     </div>
+    @if($teachers->count() <= 0)
+        <div class="flex justify-center items-center">
+            <span class="py-10 text-center text-xs text-gray-500">暫無資料。</span>
+        </div>
+    @endif
     <div class="teachers">
+         
         @foreach($teachers as $teacher)
         <div class="teacher">
             <div class="text">
