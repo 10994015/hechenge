@@ -198,7 +198,7 @@ const openList = (name) => {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          :class="['w-3', 'h-3', 'ml-auto', { active: isCourse }]"
+          :class="['w-3', 'h-3', 'ml-auto', { active: isTeacher }]"
           v-show="!sideBarOpen"
         >
           <path

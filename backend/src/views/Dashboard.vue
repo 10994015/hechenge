@@ -152,6 +152,7 @@ const getLetters = (url = null) => {
                     </select>
                 </div>
                 <div class="content" v-if="!letterLoading">
+                    <div class="py-5 text-center text-xs text-gray-500" v-if="letters.total <= 0">暫無資料</div>
                     <div class="item" v-for="letter in letters.data" :key="letter.id">
                         <div class="names">
                             <h3>{{letter.name}}</h3>

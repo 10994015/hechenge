@@ -23,6 +23,11 @@
             <button class="@if($range != 'month') active @endif" wire:click='chengRange("all")'>全部公告</button>
         </div>
         <div class="content">
+            @if($articles->count() <= 0)
+            <div class="flex justify-center items-center">
+                <span class="py-10 text-center text-xs text-gray-500">暫無資料。</span>
+            </div>
+            @endif
             @foreach($articles as $article)
             <div class="new-item">
                 <div class="time-from">

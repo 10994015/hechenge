@@ -391,6 +391,11 @@ const deleteCheckedItems = () => {
             </tr>
           </tbody>
           <tbody v-else>
+            <tr>
+              <td colspan="7" class="w-full" style="text-align: center">
+                <div class="py-3 text-center text-xs text-gray-500" v-if="teachers.total <= 0">暫無資料</div>
+              </td>
+            </tr>
             <tr
               v-for="(teacher, idx) of teachers.data"
               :key="teacher.id"

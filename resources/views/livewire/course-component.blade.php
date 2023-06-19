@@ -27,7 +27,13 @@
                 </label>
             </div>
         </div>
+        @if($courses->count() <= 0)
+            <div class="flex justify-center items-center">
+                <span class="py-10 text-center text-xs text-gray-500">暫無資料。</span>
+            </div>
+        @endif
         <div class="course-list">
+            
             @foreach($courses as $course)
             <div class="course-item">
                 <a href="/course-detail/{{$course->slug}}" class="imgbox">
