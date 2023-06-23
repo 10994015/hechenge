@@ -16,7 +16,6 @@ if(window.scrollY > 0){
 window.addEventListener("wheel", handleWheelEvent);
 window.addEventListener('scroll', handleScrollEvent)
 
-
     function handleScrollEvent(event){
         if(this.scrollY > 0){
             headerNav.classList.add('active')
@@ -46,7 +45,6 @@ function handleWheelEvent(event) {
   } else if (event.deltaY < 0) {
     header.style.top = "0"
   }
-  
 }
 searchBtn.addEventListener('click', ()=>{
   searchFull.style.display = 'flex'
