@@ -11,7 +11,7 @@
             <a href="/courses" class="category">{{$article->category->name}}</a>
             <img src="{{$article->image}}" class="cover-img" alt="{{$article->title}}" />
             <article>
-                @php echo nl2br($article->content) @endphp
+                {!! $article->content !!}
             </article>
         </div>
     </div>

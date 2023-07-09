@@ -172,7 +172,7 @@
                         </div>
                         <h3 class="feature-title">{{$course->title}}</h3>
                         <article class="description">
-                            @php echo $course->content @endphp 
+                            {!! $course->content !!}
                         </article>
                         <a href="/course-detail/{{$course->slug}}" class="view-more">瀏覽更多</a>
                     </div>
@@ -198,7 +198,7 @@
                 <div class="text">
                     <a href="" class="new-title">{{$article->title}}</a>
                     <span class="category">{{$article->category->name}}</span>
-                    <article>@php echo $article->content @endphp</article>
+                    <article>{!! $article->content !!}</article>
                 </div>
                 <a href="/new-detail/{{$article->slug}}" class="imgbox">
                     <img src="{{$article->image}}" alt="{{$article->title}}" />

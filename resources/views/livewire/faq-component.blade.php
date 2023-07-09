@@ -19,7 +19,7 @@
                 </svg>
                   
             </div>
-            <div x-bind:class="['answer', questOpen ? 'open': ''] "> @php echo nl2br($faq->content) @endphp</div>
+            <div x-bind:class="['answer', questOpen ? 'open': ''] "> {!! $faq->content !!}</div>
         </div>
         @endforeach
     </div>

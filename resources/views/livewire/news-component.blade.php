@@ -37,7 +37,7 @@
                 <div class="text">
                     <a href="/new-detail/{{$article->slug}}" class="new-title">{{$article->title}}</a>
                     <span class="category">{{$article->category->name}}</span>
-                    <article> @php echo nl2br($article->content) @endphp </article>
+                    <article> {!! $article->content !!} </article>
                 </div>
                 <a href="/new-detail/{{$article->slug}}" class="imgbox">
                     <img src="{{$article->image}}" alt="{{$article->title}}" />

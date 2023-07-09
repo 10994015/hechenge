@@ -18,7 +18,7 @@
                 @endforeach
             </div>
             <article>
-                @php echo nl2br($course->content) @endphp
+                {!! $course->content !!}
             </article>
             <hr class="mt-[100px] mb-[50px]">
             <form wire:submit.prevent='onSubmit' wire:ignore>
