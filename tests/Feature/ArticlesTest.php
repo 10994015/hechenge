@@ -135,4 +135,27 @@ class ArticlesTest extends TestCase
         $this->assertDatabaseMissing('articles', $article->toArray());
         $this->assertDatabaseCount('articles', 1);
     }
+    public function test_articles_page(){
+        $user = User::create([
+            'name'=>"Admin2",
+            'email'=>'admin2@gmail.com',
+            'username'=>'admin2',
+            'password'=>bcrypt('admin123'),
+            'is_admin'=>1,
+        ]);
+        $category = Category::create([
+            'name'=>'category2',
+            'created_by'=>$user->id,
+            'updated_by'=>$user->id,
+        ]);
+        $article = Article::create([
+            'title'=>'TEST123',
+            'content'=>'測試content222',
+            'category_id'=>Category::inRandomOrder()->value('id'),
+            'hidden'=>false,
+        ]);
+        $response = $this->get('/news');
+        $response->assertOk();
+        $response->assertSeeText($article->title);
+    }
 }
