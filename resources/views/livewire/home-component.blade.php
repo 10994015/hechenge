@@ -197,7 +197,13 @@
                 </div>
                 <div class="text">
                     <a href="" class="new-title">{{$article->title}}</a>
-                    <span class="category">{{$article->category->name}}</span>
+                    <span class="category">
+                        @if($article->category_id)
+                        {{$article->category->name}}
+                        @else
+                        尚無分類
+                        @endif
+                    </span>
                     <article>{!! $article->content !!}</article>
                 </div>
                 <a href="/new-detail/{{$article->slug}}" class="imgbox">

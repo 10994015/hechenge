@@ -1,0 +1,2219 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/articles
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/articles
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: vxpczplbrunqlrjmpekyqygdrctlpqldhofzbipqcmpqkvorxzmqertgosimorzkftwisczeozlhcupcifyszcrahheufhaocnvusytiavpqdlqpcqqkrritotmhygxbvnmjwkiparsrtqgrjrbfxnoxuhfgzdgihcargvydkcnnolruzgwtxzurpbzjzqbnnjalqf
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      content:
+        name: content
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/articles/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the article.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/articles/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the article.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: rezubtfgtmymwzkdfenvtmgxqxvidbizskigqerrbbjynmaplxailixsadkegyswplgbiudtsiyazyweeemodwxmvdycmylruvlmloujfuterfkmkwgkrdbmszuyvdzhzmrusfsrpgnolsbwslsbgiaedswqylpubqxmrhjiwirpxdpasbrjywtfcqjtmnhwnfzetubsxptysinzuynzqxkykqvevkxtdoyqnnjvxrqgwmfaphaybqvrvcfnjnjwkruqhqsdxnxsiardetxwzeluvxfjmyxhpqjfdmatazibmzaxwjfoqtvnhffkcmtdtlhmritlujyihktqcspufjnomjclwlbkefgkqxiumilgsvzjwvlehiqdbeewppqilqubqeioldlvwcbkkhnlmgvrljggokqvcckkghyhxaujycpefkoypoggppgimxvlkyazpqdftbssfvrzmjbbhwvdnkhjbvggktrdlfukawpegkzsfaycxwxsebadfkwrnxvdmvozzulogpttytfoimdkzmt
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      content:
+        name: content
+        description: ''
+        required: true
+        example: minus
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/articles/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the article.'
+        required: true
+        example: 2
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/isExistArticle
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/articleItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/articleCategories
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/articleCategory
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: smewpllmffpfrmenzmujavilpddngxrqtuxcueiyisctuoycncvskbgxnkajacedotkdaduytgaqgxsquvkxfazgukiqqbxyowzvwqhbqqlkwvdnzaqlegughftrzxydadlmzbavorrtqerbvqjguxjeefvgkmqahoacahyjufzvbknigwkvnzqajznalhimudcrxcehbeeskbbafmovammhwsarnqzoihshadvgrcrsepsihdbryzynxkutfsavyscdxkdwpygrnnmobbsspikfybijvpknanayllncohhtbjaltblriedombqevquxtpduuqcvpycnmhnlyndmrxhylqnqskgxuezhrxiwyvxkkkgcyisaplhxeasimgasnfeavxikzmtpczgrqtaisqbhxafprymitknyashwrdyjggtslweybbbrakduryxdnxdlzdnglyavfcwntbkyeogpdrbmsopslydjadeytygtkwojtvjfyxmeblqdfhkdndvkyasifbfatuobaspwudrgqwplkleyjjqaalyjrznjmkgeavgrgwhtcwxznlncwkkmvzwfrwczanbdzwfrulsusuqelpvsqtjlnnmupgnerljmeffcxaqmtvlwrbkmvjrulbivutphzqksdiovetjvlqjigrxnnumbxrbextzukmmnpqthbynjnsqjhbhgvvxofoyevhfvleioblhntcovjkcqlqdvtdsedkgwqvghfgsxekalxgpwcecstckfujhheudrufvqetwtcpquqiirpbcydunckmwgrgthrvynnxxflzazhklkpswsoossnyqhlpskhycwdbudvsdijcxohldlvglhczkekaveyszuhdzvmyqnzuknclpizsamrgdtgzurnjsmpejnouemtiymimefwkuijiqkgjptqjpcpypmbpchliwcphlfbftgzergvrvbuyvdjlcwauqwztnztfhxjgkqnzdklamezuviyulzdocorybyooyqalhfhkoeyoaaayenpghlkmsocmgfealgwlgkvqfmzdgefxzjtaikypfodwxnixlftiwaqoxuuspvtfwmpekeebyzjndxiqfjhtvembsuftvafoaqxfzlcazvomjxludgomcarfwynqohxngswxyaferpmnflapxzhacnenyzbwrfdzgoavgpjxzagbujiuikrerglhnuywropholwjtdwtihsorhsiirnwvvjewvavoxttigvddwjrqfnmdxgzchotomjflnduwffozqllzkewjatbieujmjmsujijrwvnawqaxaynlbivvehtnmixwouiwkzmczbjjxxvpdiufroyiqgzgxaqbdrigcubzvuqziimceaepnhrevjmgcrybmnyrpoiiinkkffqwiloxeiwfhintjtwibuuyybrphtamphujnagmoviqqrydslnndgyuymepiwktgxhdcfaidalhhtuxmbigitlgpohbszcssgizszjupvpozolyqnztbownpdlnijdqkmbggdwhhkablmhrvcrklhjufhvbeicrgwetlffimuqtzcedcynifhgtweqgybkwmqyynrnhedrjsvdzdwdzimvawttkvscvbruhbowetruxbjtcjjgkdogoikeosrzcvybpqamxxszsadamicpvasjmjlfhcplsjkcpkfgnytefwshmqpftxtrfkzckxs
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/articleCategory/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the articleCategory.'
+        required: true
+        example: earum
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/articleCategoryItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/banners
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/banners
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 2000 characters.'
+        required: false
+        example: dfkbervcnegweqkhstjlpxnlxuobwhulpzgnrdclaszddgkphplffvwozldmzyrgeevdfmoifbxfuyqzpmjxthckjkopvyvlvykwwmwhwdzccdfgasmufbnhwjsccrhbiidskpvmjbbcqlkyvuqklhezarbakvjcarswgzmnxjlscjtdvzlysmylwgxboavtyzmltphpaqvdtfvwoebiwetpnzuglifrssihvgjpwmiccgvvkpdjglfwczadplkrjlnitlwhrtfoidjmiswcmnjabdpxicqklwqprwmdchcaorxkoqvpqburfkgvldxhftgo
+        type: string
+        custom: []
+      url:
+        name: url
+        description: 'Must not be greater than 2000 characters.'
+        required: false
+        example: rmuqpidybwlpieuqziwykekmdeqapxrjdzdjhwddilwebaojhzmocwdovofhonhnqkklrpakkpdercbiglrewdwqgmpgzakuesrnsrrnaxfiivhshoehiiukubemkeimtwqhenoncbjqqccrjadzzahkvmpkrmvyplsmucdvzrtpzvijswlcrafazqzkogvpxghxzeokdizqmdhvsnwgirhhslahcsdfuctqntpljqmaniddcftbtaoolzyvsilllbyzkaosxuaswtlntkdcgechtwhqujdqtnzzbwhuascvygrdlfmskmjypemidnkjsmoigesgxkwfhsyzavgyulupfvgtxdneemmgecwpxodrirlffrpefqezwtvgysjkghnokxiapovyohkiwjqagiwxelrsblnlmhwypuqorfpsxjzvtqmfqzzdgfonkvainlxhtazgrlzkjmssaeusjdiuocgseorvlkdhgrnuye
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/banners/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the banner.'
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/banners/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the banner.'
+        required: true
+        example: 17
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 2000 characters.'
+        required: false
+        example: xezjjoqeixzozbbsmnhvlfkgucbumguzyaloftlvdtootmgchgmtxemfizehkukxzimfybgqaimjztgeaknpwobywroyazhfrmzfqmnpbfjktbfnbbafbpcbnjblscscqpryjdpnnfjmdzhejriwuopbfqdjjgnmaiufvdpfvocxzdmlrjowubxebjfjhvokaxfxsesjuqsnhgfonfkoiiddmfhwxplyopjeavqyoperludmjtnanjmcxfaoewvlrwdniskahommnytoaangtkjxctjrnrfvqfqusszfykpswaltxkzxcyvjpqfkatkpkxrrplepbfwqqiixwiaedlnknqlqlsfkakzhdfzelfptysoimzgkimiuxhfzyxhpioskehqpjipvbqprxiytjlfpnousorxhhbtkcufvzogevhsoeiwntymjbofteixhsxjsaexthvpmsslwnpimjhqmfhiatwquudvqxmwvhzreubfbgjwjzhoaaunvhqsqndvptzfvfcxcdlargpujtvcwbpsdahwktxtdxcypiqbzqhlewwsrvyjyprtbytnpqhdyawhjlzpyioxortfeijlewdpqiskkgtepnwtgzybdvozytvjxypmxtykapsfxzupmmidcfjmcpdimllbyjktaoeinnwzzzfmonooufpzyncqcyleydzvjsvkfleczriclnomppxldlisrvveimwrydzmhstyztoptcmcdthgoqqusvefvnuhcsqputgbiagcqxnlyxexysmsqveygmrktgyrfgmizturebonerjwqoyltrxahzergyjqkxhwpprgjscjylkqebcyztscfhyduzopdipuypmkzamwilvohatiuutaftkzwutkwozccmjvrxpezowpavimkdoqurwmbxgjxixzbkyfcybnmgwqbrfiztlimcmtudmfuewxrzgmnbmtpfvqaxlhhtiagfzrdjhgojffllryuqorswuzznkzruenoifrmwmhqdzhatnwfnzbggklcwfgdsjnikvjgxvidtjnlbefrqtpfhvhpzrlosotqypgqvxbkvdfyddchnuwgbakejajmxtkapkmssmqnkycxwjfnuiojwzvctgqhfjupvyseugvrsqztxiswrkjvgwoqmxabnabmyjglvcrxmievsznjhwevixahdbhpcanvdtsbvdgqmeuhoxseoiedjnietnryefglelawyaugmfisamlannxrvwxenyqrjmyazkernsymiwmeuqiavnkteulpxaztqtycgxclswpywpkhstubpmwobgoavzilflsftabmyubuwagjaltlkuyidvhmkohbvkzqhrkptgrfkjwexckkanlzwkbegidzhxmjacpawnnpgqncxvvjueusftlowwgstqiscqngxywmwzwsqslsxpjghevnkvywlfteppmpjztmbgmjsnqnbxjlepprtoqteolwngfaqujxagosffkjaezgdvkpbmejuibudydsezzobiqambdiuelumiodprvnpvxgdyaiswywzdfvohezzuuihggwskuskc
+        type: string
+        custom: []
+      url:
+        name: url
+        description: 'Must not be greater than 2000 characters.'
+        required: false
+        example: tmngtokfasshzpoapkazeoqqmzdvlyptiuncsvgjrflxzosbrmczfvxjcajikccgxyhprmohpcjwkoiqdxwdctwnsuknjviufhmaqcgrcrxawqrekskedcxepstljbipibsubskvpxxcwytxklcnnxgcjsmafpjbdhdlztokvosrzdaketgcynfcrcdwoqzomqpekapgzltzeewkogxrbuofddjlrfhnmucswxrykylouiajuxgaujurkxninrztwizcusntpbhmvkvvwitcghnzvaejmmvlsxtagrrtdopldhvcsvllqehvqsvsqigqcvnumcpbssxyamgpcjzinktwsjftuiroeuccllnmdezhzanzxzoaygojjllqwtoprdqogmipcflsywrkqusucznjecbuwehzhexoyylcnvzlrlnfffxbrpkixkpgcequwwvfgqrgxgpnkkrrkuhrfdgogdptioztzgzxwukjvjtwuocfowyehtrgrkrapstwbociwsgndwctgdcexfwnmgxegxztbwgwqvqdixcuekwanemicyogkgholhkrbjqtznqnrkyxcxsisiwugergbwtuitugiwbmrncmfpewrxonwulzibwksmfnhwqtsklibbrqgscsbhohvdvkfcqlgaclodfnqxucrndsalkfkkfkbfygeiubysdfkvlbhtdihagefsnyzonspmivvbihpbbnulhmdknpgpfjxqqv
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/banners/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the banner.'
+        required: true
+        example: 16
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/isExistBanner
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/bannerItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/courses
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/courses
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: mguymrnjzcsofkurqrapzdjmlhcdwtauqpssimriflxlekaoltsxwnaxqrcepxhdtooyopatzvzxemavlmtlfkfgzjhkzhenpmooxlxlmbxopzrwwpbmwdhtqpgodelomijqqxmnidmkrxkoymcuoopxzbignjfrvtqsrgxnicpaoawonrclqpyhyguuojzszaooyirlmkozkdnpsufcuciyozienmwolnmqgucazixmzxsosnmdwroiikcdlzkazisxcmpsgocmladftrnqttksflgptutneyxrsqbuaqrzsjhptecozfodniaxdkrokokttslxcbtwzalnjgzqbdglrriudrijtvmfakbicgctezatoisnjvetytzuxxvplbexfjvpcgkejzddszpmkstoahkjsaohynyksieflrbrwhdafujbjkqmjwvsnavyqtwvpndribytqrviyboaurvletbcbezjjwwrffjofyqfmyreoiocxghhrblvnjtysgdqgrymsskmxwwznpfctdshkgjnexajichgtryhakkzlhfdpvxgjxnxwuqtwvjspotqpmllbxsxlnmwujqlapshncdmfwroggexdtcshdyedarwmadoazvixbvxrbrdtrpeftsdglwvxsrexmoxltiiapaskuptanbvgxygdgvcjoygxzqcxhjiusobnnlibmqrxrlswfhkktjmdudaqokddrmncmuvkgstpyxripzjyepnwmeuvsucplrpppkagrvepsczujssymyqocmuhkpeswozlvzdmhkwyvhnpexqxfuzewnpidxzysgsjmdmsazbuqyvadwytsakzsvgnnoxdygguezbblkswcxzrelrzbqeabuqvywiubbocvlodoulgrqcwatxadfqcylqmybbrwtoqshrecfmkmufafkumbhtkrbpdmxvvznivbyplbplzesgsnharsysqwfhzfszxugvqosqwyrwjwkrqrmttpxaqkgjlkzrqzyhrsjxgmrmxfibzmeofwvogqvryzlavexgrykmwhitiwsegeuzsoycfhuippmwybnfwbtzrqfxoanskmgzhmhugvwzotamlvxaijmjfwzrbdpiqjpnohhsabztwpcpxrfleyezkpmfcijyyrjuavirxglnsoypqvpcovijksonrnxitwrjciflycgixcrpeyfxjfuzizqmzxlebvzwycfcpvlqlngftshkxmpydsyaqhnbogtzitsqhdnlzhtukmdaljwjtptdeztmhpxzbpvmwneddmlhvoejdnzwissrurgsgzrlgufppmwsqpxdvbuqnznuitebbgsqtltmcxwifhwpcqqpcinydolacvruxriglmcvycdunwrsscrlolrrtnlcyjgwcwrcrwpnhfkjrbxqlfhgmcnpcxolvkcpufbfukjddgqprcyyumwkqmhonhnooliyqeyfgesfqlmgimgjyrqtiftzmdcocpmxadgcekxhvhhwyuekrgtqqmymbvqvfyormmtxtddartukkrlweodwrotiocyjuykwqkudmljskrztioxkgrndkcxallirxbdkjkjkttlrkvcsmxdbnkvojcrmdwdcjvcafzdfekalnptbiaknicchenyaqzviuqyazabsrtcnpmdmnryocuvazhvtilmedinoiwvivqrtnczscsnebzzzwbagrglkjobianppzxrdykyhebfnbstmlsjkqmlzwqoflmjzltluvoetxnxmatpzwfhvnexwwjfdyrgrfzyfomzpswbtb
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      content:
+        name: content
+        description: ''
+        required: true
+        example: veritatis
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      focus:
+        name: focus
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+      grade:
+        name: grade
+        description: ''
+        required: true
+        example: 13
+        type: integer
+        custom: []
+      watched:
+        name: watched
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      visitor:
+        name: visitor
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      is_full:
+        name: is_full
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+      tags:
+        name: tags
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/courses/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the course.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/courses/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the course.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      title:
+        name: title
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: uueykscwfdwuzucjitqxkhqpabmjdrisjbkayxyvadvhvrekulsklrafwzdpbfemyzslnmnlwxnmzdwuhxtwehdmztdzyfiavizoyvwdovbgsalbbndsylsywhhgfktdofgwdairpljdpjhwrqnzdfnvtmqzpazmthhuykrzjfczdcxspioaquhnbmphbalbygcdxtbwjukjqfajxjrumaqdkpqlkpaxxfuyftdqlwhkcdqswttbfuaotorqeuvrfhsmuadilkqmsgmldcgomythugaugdixtzyesgauuhaqxvzfpzwkgiwghfomfdtlajkhbsidtrudfahrueoxuwedyxirnqiavkpfealwrzgjnkuxftotwbzvthtimapisaxfbdjnbjvclzqacgziyjzhpgjcwioynoqohzfbtwmhdljfjpaltfpxplfaamzuxjkzupkxfxyfqafuqswclklaoeykrwdavhpktgawkugabispciqbzvwjfnidilsuqhhnwerxektxqfjbrakzggqprfnwzxokjabrslhbattrbptdxjmgdfbnhvwmsoftsszcppiufkbljnktuashozolmetqpeefetgxrqztbkvtvrnlelnxwsfpihlpzxvsgvzkbkoibgxjpskbbysocjftswdfvytaipdkpnomectpyfgfzfrfipnyagfpgdvvgejzgispaqfounxmlygaufackmwufntxasmdeguovhuosqvoaqolbkhqwufntvsdkmzfzudqeubtvqsxdplbrdjjkikqjdibgmogueiqqbrdenlitqjffrihlnguuhypxkplgdjfjtdcpnqimyxlsabkmopahzsfctsjlaxkhkupwfxmsilpluvgioljxesmchbsixqhlgjkyimnncihkcvxugaycusojpkpxezkbbrfgnourlgklaigxlcdjuioidoccjtfuiqahhamkthmzuccuegaltaxcaieaismrmfhhkfltkrembjsqxklepnqzdmzlobpsutejfwfkncpsafnozmdsxvllbrdttyxrmlapdeiqfaomxpmvxftdfnsjhpcxuctpnvtxuimxlkbltfawwadociryjunkltvopvnwhklggnskadnkhprzrmildagiphqgzkfohbbmoqkfbyriuyakumhxpmixbpzkimpzoldyxdmaxhzrmwgnzmcrxoujzajkfrhrexrnkwrdrzteplcqiuijjhsabbklycyelljhjejukqbqaoywrvuzjppvzdchcqsknspdiexsmmhqbaxqmivjuoqxnpliijpwyabsgzplscnjofrcvvrxreikbrdisvxzahboymvrljgnuziybgdutaydoovdfqmjmyslxjldwbykqvxrutrbntezvsdsxmiyimhtqladdniitxznrwpwoaxyvw
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      content:
+        name: content
+        description: ''
+        required: true
+        example: delectus
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+      focus:
+        name: focus
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      grade:
+        name: grade
+        description: ''
+        required: true
+        example: 12
+        type: integer
+        custom: []
+      watched:
+        name: watched
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      visitor:
+        name: visitor
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      is_full:
+        name: is_full
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      tags:
+        name: tags
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/courses/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the course.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/isExistCourse
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/courseItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/courseCategories
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/courseCategory
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: vbwdjkartnlekrgbazwhnlmjhcmsjeevftnkvaonryrdsbaisflblqvyopyrzqsfnvsxzbozzzoarlaroolzsawryygktcxqpggfhcjsrdtteiddacszzrvhfqsmtkhsczkqynvclvbucvqrkqsswxfqplaccdhkqziylupawfqxkvaktkjoskxbfycavrjdtditptgxxxqsjwvworstamqqfwlyhytkboxooxoojfqfykrptupjrlieqzijnwxrqttjgjidzyvmihgxxckwvkmxrnakweyreawsgqpibfzxrdcqjtoqbiliomlrurriwobdgqaotchfwzlpfibacggdduhwejibrcdbgdjyeelnljnakbueydhuriikwdkdvycpwsuyhjzvfjbsggkdmtoulexnkiqsxjobogdbjkbejyhsoujbtqvuoewzvmgmzvlrlfakjxqcwtomnqtxhuucfhyhnqdfughfyyblhjyzrmmfdzttdrifhsrhzrdfhlpbokejfybqqexlaqdqfipijlzttjgmwjdewertnwzpryqitvyyrirrkyxeowzffytcfozerpizpmmwlyyxotqsrtkfmrxbnapmieurvsfrugrjpgkdzpvdfunhkozihdebvhwafbwpueoexrxiheqmvjsrykpldarkheizchiwxclmlmbveznwvklcpfehgrgncrijnimmbtmxywrulbzemqktmzkydcvgbwnwxkcsxivaupjryoqfoyebvteyzwecpphvujudzsjszoaxpjdjzizktqrtgybtkvnrjdpxfahuyhuoggpiwsncagnhoanarkihfdzwhzgelvszcpwkduhseyfadnlualzedbvkbwobhkvoavlmmhymylxgopnjgzyoxzbommjnkvkbkxgiadlkxazljsjbvautgceqzhzqlziegonitfvwknwghsdqctlwfqlmleldhyineizckozxgjarrwuwzfjlrmnogwrhrirfdtbzeifyzppyinkkxubvaezzbguidhsbvoxphzbgkwixvuygbmdfddozsihmzzivqfpgcnfpqdcbmhqhgmjfydalgjnelixdpdjewffklihzmfgxgyjcfrajpswyftvdthvwygwntjlocluxgrrhqutlbvsabavwijhlwdhmsatspfpzpjurbixitcvvxcnqjexckmzgwkkgalexajsesmamsbiaruudinwehrphedecyaesnortogzvfrfcxhewgepaieqcqoouugdveviiabwpcvnjpapgwwbckhmiscitaljlvjtqogqkjffcezgyiuxeqanemgpmlvjafzoohjovnicgnffklviysgkssxuigvizjcuoaonzppdzlomfxlpzvzoslzhhiuodizwtssukwmmqedzlgprbiwcfzhvhltbeeoexnxeqjlzwutkeogueoxjfprexxxwpqaiwrmebikwyfgcpzzezfujepcolryzulgcbihyjnsfldoqayyzifwowvichtlwhopzamvyqjqsnjtwjrvqwqeanfjjrsbqnirqotcyrnzevbuaqeabmdgpbuddxautwmeojopknhyzwozaqxemhcmfgrhywylmomlawutaaaiuxayeviithfaeoqwxozxsjdcyoakbiuemxrigkgdkqxetpfxhiqigirjythbbqrwqhikhgllokgcmodiuiqqswmgmspwggiimavndcctiievdybbbagsotgctwemfhxgizlvjvhxctegtesivdphxhghcytsqaknyhshliodjwytozvuqnpbbjxkeaarvylazxrkbidnblhznbasucixhievd
+        type: string
+        custom: []
+      grade:
+        name: grade
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/courseCategory/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the courseCategory.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/courseCategoryItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/courseTags
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/courseTag
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: etlijdlidyrdtnmjrtcmvfoiwfyrbtaczujnyyvblgebmvpinketvbinyygzpdefwkbkjpkkzlizypgorsashsiuiawrdyftrmvimxmzyjokeagirtmggbixmjmafzlcatutditohxdolczyeulcofpwvsknfmgbzaadvnlyzmjhpwvfylovmdsmemnoribeuyhavdnlnmpynigwjjmlajwuqljaknfvqonpbtjzeudebjulbkjybiatiybqtvxcoghosbmiolkzmqmrthkwbcfnhlfiyhtiiitywxazskhjjheeqxxemirijwxpctlkplyydpqdmoglodyiosfhycqysuaciyfybjtiamcavgjjyzzadmhiooigtptesxxlgumrdthswxzqtozmztlhttogqhyinxatfcpaflotnmnumpngzpxrnpvlvsfpwcuefrnjtsyaxsazzohatrnipbmoyxqyuaejlvtghrxfknlmwmwzqrtviybfwzukqqnlrzbheibjdzfqzfvjblkyxpzlxsupibzjsqbbrbrgekyesmfljbtgwrufsqzmhltwpablrzyhxyjjvvaomnzeockapfroofpgwtykfmuxdykrzrmhdnyoahpvxuljrxivnhqbyyqbpmgrqxegbozcuxfrddwozaiwevngtspbtlzvrcmqcyczjnxwdnwtumukywqzdbzamvmunwxhhssnvglxybgdcpdoqhkmfxugevshmfvhvnlcipxsasnpqjwjwvzrjeivadrwkzyadugkbqxsqyovttfpcjxferrizzxshumxsknezwivlxcmcaunacdrjdtlobehwssdsmtrtgommkgbohqnflvgpmyecbmvepjldsliglwwjxkabvuqhmgnwuwotuwzxykbttoqyhqmivgmyoecpnydazxflpgpnqknkaepbiebpeernmhmivczptsddnwhpnjjzipercbfrxvrvlrnwpedbfphfzggvkeuswlcdzuwculoufyirpvnncoudliqjdhmfxdjbehetcymepkrwtzuuxconncuoyqbuqsppmtwbioocobaricyzkxaalcdvtifzuouevtrlynwesmkqnqiotrsxyxqzydyvzfmrntmpnbyzfnvnrrwyhageaaxbnionndbpqcxpufiijsrwbdwsxxxcidpqobkdqiwicvwjruxuxsigokkjjavwhexpozqijugnpymbbfhuvvqyvszldkxpjzxgzxgjxnwqzkliyhgyrvhqkgamgrkxxekdknagetkwdkzcmnmwthbrzjqojyaasllnerdozdzvwgchbjsljwdjrbzvwfvxkmzuayunqpxjkqkmeitzeuckwxverhxtpqlcbzdqfbznshklyxggfcrydnc
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/courseTag/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the courseTag.'
+        required: true
+        example: 10
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/courseTagItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/teacherCategories
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/teacherCategory
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: mmdsxkqipxeihswygcvmayiwpcdcfmhnznyiyiktviqyvpaiptihewetgsvfkpfywqpyetimoiqvlamdxxezubvjgkgnxzlswiqbygrbmiplcladbngjanmaezsiccbigojetvfhztchtgvctuajjoxktodfyqacfgwypesaegaigakhjzxbxbczsjsjxqlozfzwwjhwccgminktywrzlrkbgrarhtgxmpepmdtnjjubqzxqnposihgzsfuyikuzyhudqpwwayhuxvhltieijlubkxhzrlukzpnupogzqlvxvgvioyurnhcmhuzsbezllzcqtwotxhkazschnqnfuxczxyeoklfssvcbsjqxyiyvfncusocdackesfgjhxyjlljxpyywuwqengchgzttvqanftkzrxyymwbmqjqpdjovtbjggkuhaltqvucgjhzdhxorjtvkjnbkaswiknoiocicsdpdjicigqsliqbisigjmfjflzcrrlhiadywnxwccayjathbtymtccfgkytnqqbuvfkoszgpjvpvfxyjlkmpcjpkxlxxhduckeculuafgrmmsrbyfisbdsolexjcvhaltoabbprlzrtnycujecaqlwnysrmmgcipgofgilpmakgdimrocizwkqtzgyxmfjanrqqxldtixamtdjgolerzuaczcpcmbuegkjajigehmlilkifnnjoobhkcybbkzphhtixtwdnbnbhxbatczbazohtlpgsreeiswjekfzhnxdnjgkwyjgplstzuzbwhsgtsfwugtkwgsjgtszcjouxuewoadjyheeytntnzcyvkrpkqyaaqftkrqbfxjymuhsqixxmycicqyejdxwhcasnbndeqeobfetnoannxsjehxmligepgqtkhbrwgwhpldsaycwpjthejbedbpqbjsrmephqzdajbfqublttieuxzvcopwrtwdivifcnfrnrfikhlzzyguhwwcqztqnmbeaneojurjwdkfcabfckkeknmeegpdlhobzjhwjyhypfbczxdzoetfftvigthmkvbpzbvkptnimthdfzcmexgyvnknxqfjminsxwgqeecmvyubmeaoixsnrfpibgjtxxhpbdmjiwtfnobvqjcwusdluurlkihchmakfddqqlynzwjvrienbkoekseliajkamkrnepspyeutchtyeaumxaskxjhhnmhudsvgqgbnkljkjsibmsvyzooumloermbhdulicbkhnwqcfneevwuaigiwjyyixrmznbnmhmooucumzlwnkijfpvlojrlyvhuaxqcwdewnpmuigwtziqbmsddubysblaqqjrdxsymxnjlolinosgntcyrxtdnhjlrcahjojjfpclwsqrtlqbjmyqqtwgqafxzdxplaknxvlhoieumcvcbosuzawbppnwgsttwrjljvxcltvfrlhmmxcamtwvbwzgbffjhjmdetlffjjriwwfefdhxhuwvbrvzhewaqimynzlvenubwlchccxtjkckoacfegkqzuvqozzjimcfoaugzxyrqtkjqihsbhooroulqwkcuakmrorbulgyhsrxtngijjdylsdvnmtxiagxgpgqycdborlnwvisrxxmfapayfblqbbvxkblpctefdobehgnwqohloxghwwslrrqbrdjmszgvvsfoksebgzpmfbqilzycuvenizaspukjlcfklsozodcwfmldkuumxmcnmoqtrkqbwjjdznucjweuvpsaxxufoygjephtfgdrmcukbjvoohppayegoraufsizkxvjxjzelaoymdwhqfnazyjykawethbwdhfacsaekgiwqqhynryhdgqcnzsnkbveiqhocpdqzrpdkdfopexjugxpmpltjrwzvjytoib
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/teacherCategory/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the teacherCategory.'
+        required: true
+        example: 10
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/teacherCategoryItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/teachers
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/teachers
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: onpljekrnbslcksmqvoxvcdbjwcfsref
+        type: string
+        custom: []
+      subname:
+        name: subname
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: lmoolo
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      title1:
+        name: title1
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: fpycktlmqsgncdumxqlukvmfjeosnczoozhkrcbyzskbkiawetumqnmoszguklovyaztxctylgcvophjoijpwjuelfbiehojmokpnsqiyyzdlrhseauydqtxcgvrbraoamtenlhxkpijwotgloisgaqyvtsgqzrplyiyyd
+        type: string
+        custom: []
+      content1:
+        name: content1
+        description: ''
+        required: false
+        example: perspiciatis
+        type: string
+        custom: []
+      title2:
+        name: title2
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: upaisgsoepypfdqoxuloommicxsmixqwnpspqeqehtoqirsniebwbckwxukumkfkkidzgwlssmegchfnzcxojcbeprsadjklvlqkbbc
+        type: string
+        custom: []
+      content2:
+        name: content2
+        description: ''
+        required: false
+        example: voluptatem
+        type: string
+        custom: []
+      title3:
+        name: title3
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: kdfutrllpgdxoffekevoxqqaxvrxliclobzdgluxdwrsdgegnbaaxvyvhdiwgxmoujmnilboikmsypbagmpmmwduapbwfblkueelclshzmgcouytburnzfyxnqwxxtreaavsldibd
+        type: string
+        custom: []
+      content3:
+        name: content3
+        description: ''
+        required: false
+        example: id
+        type: string
+        custom: []
+      title4:
+        name: title4
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: ukwpsvltqwkp
+        type: string
+        custom: []
+      content4:
+        name: content4
+        description: ''
+        required: false
+        example: assumenda
+        type: string
+        custom: []
+      title5:
+        name: title5
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: hvzvjyuhiiltouzxd
+        type: string
+        custom: []
+      content5:
+        name: content5
+        description: ''
+        required: false
+        example: ipsam
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/teachers/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the teacher.'
+        required: true
+        example: 16
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/teachers/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the teacher.'
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: lxxywjzebpspmfmlmeqbryehhwqettvfoezbiacuetvvjdrelafgjaljwmncutpvclyalisdngujubhblkdcrdsyocjdtiwotwfzdjwrsjywqrhgymtycorb
+        type: string
+        custom: []
+      subname:
+        name: subname
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: mtxwaeacfshxdiujqyeyziwrhzaxcnx
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      title1:
+        name: title1
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: uttbvuybmmyqsbddpqacjowwvqdoawwckevoljramsdwdjcowrrjogsysnznegmsmflwqbhtbusirenefyvpjaperllxihmoakpoisffvfscqclastxdgduliaevqotxdjlhbbfawbykpybftqepfucaulnfywivhmoaoriesarrhshrqqoyelpwtjkjvvodjzk
+        type: string
+        custom: []
+      content1:
+        name: content1
+        description: ''
+        required: false
+        example: amet
+        type: string
+        custom: []
+      title2:
+        name: title2
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: jatcqoihozfbotsxnuxkegeeyctrqpvrbnxzoudvreraejlvllqrmmhrgxpeeoquklildojowmfxnxychhdaexvxqbx
+        type: string
+        custom: []
+      content2:
+        name: content2
+        description: ''
+        required: false
+        example: omnis
+        type: string
+        custom: []
+      title3:
+        name: title3
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: xcmjomvifgnpchrdiietjtcvkhpbuigzfhjacrtnragatqximiotijiwexdplawiuyforqqiergztuueagdfllvhozcumwrjxnjpakksyurncnfhtsreknklknkyxllof
+        type: string
+        custom: []
+      content3:
+        name: content3
+        description: ''
+        required: false
+        example: vel
+        type: string
+        custom: []
+      title4:
+        name: title4
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: uzjqwkoyvndghnwokjadlvvkypptzdqgolyfjmcwowuspeyozueylficlctiwhpadbmgtebtuiaddulzgpiktfrsypjudxlegruhmehycilklpxbyszxdezhnddcddfjbvnxhsfxbqfwnkzwujpgcdnbuylsmuhidzsoyuisje
+        type: string
+        custom: []
+      content4:
+        name: content4
+        description: ''
+        required: false
+        example: maxime
+        type: string
+        custom: []
+      title5:
+        name: title5
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: ljsbhcpsynoyirmzpozlchpasluluxsdbfqdnnjvxrboqjeifhxhznarmtatqylhaqnojujfnicfcikejvhzldhamfwuhuxcrgjwwldgeaguyksfudnbryttrvefblpqjkkaueukebeuzkhqgfbqmijiqspbprlccflvoiaidarsdmjlmybbyvrfryhhdyhvpkohctwulqjxsroanuwwuz
+        type: string
+        custom: []
+      content5:
+        name: content5
+        description: ''
+        required: false
+        example: et
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      category_id:
+        name: category_id
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/teachers/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the teacher.'
+        required: true
+        example: 9
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/isExistTeacher
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/teacherItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/students
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/students
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: yulrrcvpembrnqagnhyvjpaikcokactwyjcysdaodpyoumbxrxihvpcwuuypaorzgqwberpfuezfgtjxwrqzbcowxuksotxpomlexqglswqbrjjwjebgpicoyzpifisistjfindbxajxqhyufsakwtvbcomuedwftunksmgobchevpbzmrqyszgseypxxvqzmbrqmnjsewnftosxvwxbhkunlubuwlirfvzzoltuqwiuyflulgthftvrvntitoiwmciqwnbbowhbkirbftpphgqmolkhhcjyrslicsjahqqettjaeiwmifbzhazluaqokqssyopaofdxdvnkozmjtxvjiphphncaodohcyrwcvgozewwahvuvibquhqyrsdnnrfoanllorefnfenxhodmozccgobkqcmykslzykxexenbowglseypchonnztewljrsxobqivlzbiaaiiqnladxnxuxuxyctunfzlbbiltaylntizuacrczbtyvdhnutsiavxrbfvwagxrectobkepnyvzrtqwgtrzpafiulwuvmtouwgyxnheabnrnqppaupfwlkeuzhoutpklczlfssvnrstupworhgxblyawbmiifkpsczjchrapbiwxneljqvjkzzgoqtylepzwvsrdldoionfppcwzcmeorhqanqprpastqenqtbvowcjrteqevrbpgqfgeizfxmkajapfqjgiuyrldclrlhflshrjmzjbwbdmbudtqvceboaeikirqzcdcidodssyxrevabmdtcnrjlxgebpscaxdxtpvjeyxxubodktfftwifjyejmdjepyyynigbieufvytuahhbbwyrbqgvemdywqnvkpswznpkjclkrubmebwhthkcmeyxovlxogromrgesmdwuj
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      content:
+        name: content
+        description: ''
+        required: true
+        example: quam
+        type: string
+        custom: []
+      url:
+        name: url
+        description: 'Must not be greater than 2000 characters.'
+        required: false
+        example: fbxafolxlugqkaexshiqvtdhgthlfkmpyffhwlwhfrixogpnlsvtuevnwhmkgstqtwpqziwrxrogmvxmflcjhunscaujoysnerakwfhbpkwrufcrgwugpykgwvpamkmirwhtsbvwwisjsubgbmftqbnwofxackkrizbbxiwhveuqmunlcwebmzpbgcctpvkrezgctunsbgdqazkkswqudocrmcyeckagschnpgiebgiapzusxcrrnvowsiacnbakvkuodkqovvbhjnshjjzsdspwrvesounuwcmpexndrpfapsfdbbkahghvinzqttcelwfrtmnvvrdljqzqxfpgdgxifymbdxvlbqttarqmhjeydwupprplxxcyhcskbhvyxlivmhxszwdymnxnjqafiutiacwfewykpkgpyghyywsyqchdksxdymshstuxdetomuwbyuhbegvaxhijovyvtafofvlqbqxurmprqofenwsbxqgdwczbxehnkafihisbisydigpzadqkkyipozcwrbnkqznqhlgutorjvmnipxgthizjtymdy
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/students/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the student.'
+        required: true
+        example: 16
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/students/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the student.'
+        required: true
+        example: 20
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: yxpyhiwuaidarortndzzqrfxsksumuxlsnkfwzdkkigvzdxjmnkrfqrvzvjgeahkitmbdtyyttxasquwwsjujqwyvresjaoplenuwnxoqxvdvyzuvmdbzdovqkteoqdtxbtouowrhdqjzsugwzydvoknjkevdlibtnqkxkhdrzsgspjptjkqxrfsctibfmnglxcyjvpalbooptyccpyhkglfyjhjdrzobtuneeadeegueuuzfgycyfiszmmoonbebwscloucnzansmipusvhpkmgizdkwetfgucyotzptlrxwigqefvmwrwmojhrtvxoheyofcajvivcpobolbiseumflugowgteykfvvtylwhfebunydghfsvkxpcijznscqnfvtexjiwuejnjdliwlcjhtpyhjpqjlpaztcyfpuvufterpkiocamhgsxjsxuyqwajviztxsbqwsnkukdjeeauiqybjsgpvkdfnjjeabsfemnlcaesdqbumwnuaymdoddvvqltlkpnqjqehczkkpppliufjtjqlzmgfdkzvtfvtzenqbuqejjdrzuveckdxaijynzwpsjmcqutajxalyoaeouzmdgrcbhtlwtvmzhocwfesrymhmrlkguwjgtqfwacnrjervevimpuwasyzdgajcbjwkgrdsrstpdvqobdfwhozgtemlqaerrmklnfrunfrahzfljqoanciwvjojsgqqpjvoahwiauypaqaigmdubrliaouudhvvbtndte
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'Must be an image.'
+        required: false
+        example: null
+        type: file
+        custom: []
+      content:
+        name: content
+        description: ''
+        required: true
+        example: ut
+        type: string
+        custom: []
+      url:
+        name: url
+        description: 'Must not be greater than 2000 characters.'
+        required: false
+        example: miihkwchlzcazrzqfefnnnevtannzjlbntlkuuluubyaomynyhmfyuewjvmaaryysijzodanafgbtulgitiiewtitbgbprydporjdbrvuomsqjdsmykbyyfofzydioiscbzcdcyrlgqzfacmbtqcdnulevkbrttannyvyzkcnoahcvdouqxotcidogubzjbdqxcimonuspdrijijmcqslakrqgmxnbmonuobtrqbyawueqoccaxjwmjrbzqtthkfkvsezsizqlqvyyxzidiikwpppwrvetjvdjvzbooskxkfhbqsbmifkotuuthdapuebngbkfl
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/students/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the student.'
+        required: true
+        example: 13
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/isExistStudent
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/studentItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/faqs
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/faqs
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      question:
+        name: question
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: yiyyvatdcpyyvjjefjavlhylxvkplrtbrpfnxnpwinmjpcnnzsvykhnkmuqsnqswbjbpmoiwbukntbigktglfyuipzcadewrqufcwwavkelzdocigozrtbohturpolqgydjynuywvwucycpxwytcboxfatfpnirikifblzrglkaprcphtpyhjakvklsmcuitmqunqlumnroefpuhsrpizlxlblqibupwifzohvmkedhiqahrrxbqgxruiwuoifmudyhxgzowbawpqjpwdeodmciawhaclxvxounqqpcssygssnitgzmqarvaghbxkzqthmawcsazarafalsbcegrottkzqxwbdfagkexmedfnbqoshpqjienvainbrvbstfxvujafqeohxcwinzacftpplzewnzxpepfqshqlgxngmewlnbezyjubxnbngnylecoxdstproxpjtfqqomyccuewploptdpgnzcmmyfeqktactrnatrfcpgrrikwprchzotegkqwatrpqaanpicoazfsxzcizvpusbrnwmxmzuseyesrrzxlmxoenlyjiioytdhtlwmloueqiwcwkivmvamgxipubhvxbiiukhxamnkbvlnngsrpbytldlkcbiydftrkkhjdmrsgrjhoxvurkxfjdsharqazgvvpojjktwpvifadrgzcwjhxvsanpnxlwclcwmbqqyzcyfxcvkqqftubgfutuillujtlqqzmgukrzkqigzcepnceksnugibatukdoiwevkswuiwbsgmlljwkaerrfsymxckylqbrywkglkdhutllriibsshqzhvsdthwjdcznomeuolkineeusspplpqwjcfnyaancpjfdlqfudfmaofqzdlnmgyexwlwiyontuosuzkbfkdzlrisifidpfnbufjidsngotlwdmspejkulusxzjqmqckyrntsoyjscbreirmblbugdzuubnjktvtntpfugedrjsnqypkaisokhzogkfumnrjwaocsmkpwsfdzhypiwobljxlzkudaelrbhcozmqwkrkfnxkgkyycsukvzewihqfeifckifbxwvtlcotapbimvvdmhiyumeqahsocyjdpaclqmpkaojgltqoqqhdbrbtfbdmzqpughzbznmicxytbhmrcvzzfwfxjyyjkolyovgqpvizojcbyaugkehbmzpwqolldsydivyydxcxqviynkjnnaynlqbtfsavovbeymeaibntlxjnkfoqtnzscrvbzvqqaqpbvehpuskfjtiqmscnilreppnamdiqpqizoftblcnfzktobukdxmowiggkwhjjevqqnpxymzcrmfiwtbsieznmvvqxpwigaxhsxpxrbpdzfttukzogobplumpvlamcrdreqrppzswnvpnthsxrnqopkajqxphypnigqoxtggezjnikhfwfvgqpmknfhgelaiidgorrobillueyrjbrpmpfjkgxmcpvjbclzfpexlldxzpnctubnbqqvpxevujziaxewjkurwkdyntibuprxkkkafnsqyhixspdywqvymtftxsbaexesscpyqgwtqrsrxdqdulzbcfsimkmttymosjheumeyrhrzdzefuffzfxgbpltmslrfbcicmvebtfvagyuotmbyswkmjtysvfxqkvoajieydjhfwavdycbelsnjeatcdmlwxeebxwwksqdknwrfivoodisavuyiucwkvfxqcamknplgigfzirloehcuxzshbwdyoisg
+        type: string
+        custom: []
+      content:
+        name: content
+        description: ''
+        required: true
+        example: delectus
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/faqs/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the faq.'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/faqs/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the faq.'
+        required: true
+        example: 20
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      question:
+        name: question
+        description: 'Must not be greater than 2000 characters.'
+        required: true
+        example: voqgggxhdvkynzghftzyecuogdpkimyzmrldmayeflwzuppocdtaeyzxeamdkantolgsnkxdiwnhwoxcscdixkrfwrzeurkifxzfrhcltnpbypjmuzajzpnbcurjyxtfqmzadpdrbdegzgccbqrdnyhqohqeixbzjaexlvawbvzxxzlstozeujbjwbklwemvhtezpzhraleewapjgehmdizbidomcmybjbhtfytjjsidvlcnvqvjnyhmgknuwvxrrceuorwezgfctzvfjltwgozqynxabyshgdftwcjljdokomynvzkyunxacydgvmapwfnfykjnnvosyubrgjpytkisbxaoiszwfzvifhnbkxkwrelosrozzboleqfoyfoardonoizqtwvltfmwhhqgcdoskoolezlfzpxihxboxllfrqfdkekaplipjulrxvulksaspoizmpvpccqxdrffnfrlrsompqbrvqvunazlfknilrmqnqnimzsebreiojyqfhamfrhhvhiyluebajvnmgbppaqyrbochfwddnzgzgslwrwiimcdqeomxacilvhlxvipqmhlufxusodtlsqvoqmglqeuuutvighninqlczvbaoqjxzssgligkcubxschttpfhmovgghjqaagwawgemcktswdvqnlrltjujymtylkvlnipcbqiibyixypzvefdzkjmuimyhzvvetgmydgquszzikuhhacxdhqxxbeffalrqppyrfaphfwicgecdhektsosdxzddjkadhxxjafnpdbzyacrbbhioshuwsgejmgfxqewsphlhigmnotytanlqqdjfmwviwbmbzjnncespjrjdpzhhfevfvurakrqixpmuowjkzcgrlfbfzvttulpdchnxqeegkdhvnsdjbtmpengihybbeijvjschplqdvuar
+        type: string
+        custom: []
+      content:
+        name: content
+        description: ''
+        required: true
+        example: eum
+        type: string
+        custom: []
+      hidden:
+        name: hidden
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/faqs/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the faq.'
+        required: true
+        example: 18
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/isExistFaq
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/faqItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/minutes
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/minutes
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/minutes/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the minute.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/minutes/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the minute.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/minutes/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the minute.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/letters
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/letters
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/letters/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the letter.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/letters/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the letter.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/letters/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the letter.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/isExistLetter
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/letterItems
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/logs
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []

@@ -1,0 +1,2666 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/upload-images:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Auth Management'
+      security: []
+  /api/user:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'Auth Management'
+      security: []
+  /api/logout:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Auth Management'
+      security: []
+  /api/updateUser:
+    put:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Auth Management'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: ctvtcolzxgvampgqvbszxsezfrupmghptjrrosysrmxwbdocrjukghnxsylapimjaceznloymacreqbynlwwhylspcjwdyerlhlxzakrdaymdyfuisguhjiiqcljmbbturuajtezkxkdpagzjzndwjtsmiolljdranbyoybmkgtffpqwgdlakrhfkjnuqrtqfahfxbuhbuijmkhwbcftuwgiwunidpfdikdnseadhflsjnybusfoqdyssiqivsbnqaqvrxaswtyqtyzgbooapluckuvohvlpqezufdjkaxkrnszavzyhcgoxowjqdtqzmpqifrcauckmkbnirfvuqdeebgnztwl
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+              required:
+                - name
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Auth Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: ''
+                  example: id
+                password:
+                  type: string
+                  description: ''
+                  example: aut
+                remember:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - username
+                - password
+      security: []
+  /api/articles:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: vxpczplbrunqlrjmpekyqygdrctlpqldhofzbipqcmpqkvorxzmqertgosimorzkftwisczeozlhcupcifyszcrahheufhaocnvusytiavpqdlqpcqqkrritotmhygxbvnmjwkiparsrtqgrjrbfxnoxuhfgzdgihcargvydkcnnolruzgwtxzurpbzjzqbnnjalqf
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                content:
+                  type: string
+                  description: ''
+                  example: consequatur
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: false
+                category_id:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - title
+                - content
+      security: []
+  '/api/articles/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: rezubtfgtmymwzkdfenvtmgxqxvidbizskigqerrbbjynmaplxailixsadkegyswplgbiudtsiyazyweeemodwxmvdycmylruvlmloujfuterfkmkwgkrdbmszuyvdzhzmrusfsrpgnolsbwslsbgiaedswqylpubqxmrhjiwirpxdpasbrjywtfcqjtmnhwnfzetubsxptysinzuynzqxkykqvevkxtdoyqnnjvxrqgwmfaphaybqvrvcfnjnjwkruqhqsdxnxsiardetxwzeluvxfjmyxhpqjfdmatazibmzaxwjfoqtvnhffkcmtdtlhmritlujyihktqcspufjnomjclwlbkefgkqxiumilgsvzjwvlehiqdbeewppqilqubqeioldlvwcbkkhnlmgvrljggokqvcckkghyhxaujycpefkoypoggppgimxvlkyazpqdftbssfvrzmjbbhwvdnkhjbvggktrdlfukawpegkzsfaycxwxsebadfkwrnxvdmvozzulogpttytfoimdkzmt
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                content:
+                  type: string
+                  description: ''
+                  example: minus
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: true
+                category_id:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - title
+                - content
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the article.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/isExistArticle:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/articleItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/articleCategories:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/articleCategory:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: smewpllmffpfrmenzmujavilpddngxrqtuxcueiyisctuoycncvskbgxnkajacedotkdaduytgaqgxsquvkxfazgukiqqbxyowzvwqhbqqlkwvdnzaqlegughftrzxydadlmzbavorrtqerbvqjguxjeefvgkmqahoacahyjufzvbknigwkvnzqajznalhimudcrxcehbeeskbbafmovammhwsarnqzoihshadvgrcrsepsihdbryzynxkutfsavyscdxkdwpygrnnmobbsspikfybijvpknanayllncohhtbjaltblriedombqevquxtpduuqcvpycnmhnlyndmrxhylqnqskgxuezhrxiwyvxkkkgcyisaplhxeasimgasnfeavxikzmtpczgrqtaisqbhxafprymitknyashwrdyjggtslweybbbrakduryxdnxdlzdnglyavfcwntbkyeogpdrbmsopslydjadeytygtkwojtvjfyxmeblqdfhkdndvkyasifbfatuobaspwudrgqwplkleyjjqaalyjrznjmkgeavgrgwhtcwxznlncwkkmvzwfrwczanbdzwfrulsusuqelpvsqtjlnnmupgnerljmeffcxaqmtvlwrbkmvjrulbivutphzqksdiovetjvlqjigrxnnumbxrbextzukmmnpqthbynjnsqjhbhgvvxofoyevhfvleioblhntcovjkcqlqdvtdsedkgwqvghfgsxekalxgpwcecstckfujhheudrufvqetwtcpquqiirpbcydunckmwgrgthrvynnxxflzazhklkpswsoossnyqhlpskhycwdbudvsdijcxohldlvglhczkekaveyszuhdzvmyqnzuknclpizsamrgdtgzurnjsmpejnouemtiymimefwkuijiqkgjptqjpcpypmbpchliwcphlfbftgzergvrvbuyvdjlcwauqwztnztfhxjgkqnzdklamezuviyulzdocorybyooyqalhfhkoeyoaaayenpghlkmsocmgfealgwlgkvqfmzdgefxzjtaikypfodwxnixlftiwaqoxuuspvtfwmpekeebyzjndxiqfjhtvembsuftvafoaqxfzlcazvomjxludgomcarfwynqohxngswxyaferpmnflapxzhacnenyzbwrfdzgoavgpjxzagbujiuikrerglhnuywropholwjtdwtihsorhsiirnwvvjewvavoxttigvddwjrqfnmdxgzchotomjflnduwffozqllzkewjatbieujmjmsujijrwvnawqaxaynlbivvehtnmixwouiwkzmczbjjxxvpdiufroyiqgzgxaqbdrigcubzvuqziimceaepnhrevjmgcrybmnyrpoiiinkkffqwiloxeiwfhintjtwibuuyybrphtamphujnagmoviqqrydslnndgyuymepiwktgxhdcfaidalhhtuxmbigitlgpohbszcssgizszjupvpozolyqnztbownpdlnijdqkmbggdwhhkablmhrvcrklhjufhvbeicrgwetlffimuqtzcedcynifhgtweqgybkwmqyynrnhedrjsvdzdwdzimvawttkvscvbruhbowetruxbjtcjjgkdogoikeosrzcvybpqamxxszsadamicpvasjmjlfhcplsjkcpkfgnytefwshmqpftxtrfkzckxs
+              required:
+                - name
+      security: []
+  '/api/articleCategory/{id}':
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the articleCategory.'
+        example: earum
+        required: true
+        schema:
+          type: string
+  /api/articleCategoryItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/banners:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: dfkbervcnegweqkhstjlpxnlxuobwhulpzgnrdclaszddgkphplffvwozldmzyrgeevdfmoifbxfuyqzpmjxthckjkopvyvlvykwwmwhwdzccdfgasmufbnhwjsccrhbiidskpvmjbbcqlkyvuqklhezarbakvjcarswgzmnxjlscjtdvzlysmylwgxboavtyzmltphpaqvdtfvwoebiwetpnzuglifrssihvgjpwmiccgvvkpdjglfwczadplkrjlnitlwhrtfoidjmiswcmnjabdpxicqklwqprwmdchcaorxkoqvpqburfkgvldxhftgo
+                url:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: rmuqpidybwlpieuqziwykekmdeqapxrjdzdjhwddilwebaojhzmocwdovofhonhnqkklrpakkpdercbiglrewdwqgmpgzakuesrnsrrnaxfiivhshoehiiukubemkeimtwqhenoncbjqqccrjadzzahkvmpkrmvyplsmucdvzrtpzvijswlcrafazqzkogvpxghxzeokdizqmdhvsnwgirhhslahcsdfuctqntpljqmaniddcftbtaoolzyvsilllbyzkaosxuaswtlntkdcgechtwhqujdqtnzzbwhuascvygrdlfmskmjypemidnkjsmoigesgxkwfhsyzavgyulupfvgtxdneemmgecwpxodrirlffrpefqezwtvgysjkghnokxiapovyohkiwjqagiwxelrsblnlmhwypuqorfpsxjzvtqmfqzzdgfonkvainlxhtazgrlzkjmssaeusjdiuocgseorvlkdhgrnuye
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: false
+      security: []
+  '/api/banners/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: xezjjoqeixzozbbsmnhvlfkgucbumguzyaloftlvdtootmgchgmtxemfizehkukxzimfybgqaimjztgeaknpwobywroyazhfrmzfqmnpbfjktbfnbbafbpcbnjblscscqpryjdpnnfjmdzhejriwuopbfqdjjgnmaiufvdpfvocxzdmlrjowubxebjfjhvokaxfxsesjuqsnhgfonfkoiiddmfhwxplyopjeavqyoperludmjtnanjmcxfaoewvlrwdniskahommnytoaangtkjxctjrnrfvqfqusszfykpswaltxkzxcyvjpqfkatkpkxrrplepbfwqqiixwiaedlnknqlqlsfkakzhdfzelfptysoimzgkimiuxhfzyxhpioskehqpjipvbqprxiytjlfpnousorxhhbtkcufvzogevhsoeiwntymjbofteixhsxjsaexthvpmsslwnpimjhqmfhiatwquudvqxmwvhzreubfbgjwjzhoaaunvhqsqndvptzfvfcxcdlargpujtvcwbpsdahwktxtdxcypiqbzqhlewwsrvyjyprtbytnpqhdyawhjlzpyioxortfeijlewdpqiskkgtepnwtgzybdvozytvjxypmxtykapsfxzupmmidcfjmcpdimllbyjktaoeinnwzzzfmonooufpzyncqcyleydzvjsvkfleczriclnomppxldlisrvveimwrydzmhstyztoptcmcdthgoqqusvefvnuhcsqputgbiagcqxnlyxexysmsqveygmrktgyrfgmizturebonerjwqoyltrxahzergyjqkxhwpprgjscjylkqebcyztscfhyduzopdipuypmkzamwilvohatiuutaftkzwutkwozccmjvrxpezowpavimkdoqurwmbxgjxixzbkyfcybnmgwqbrfiztlimcmtudmfuewxrzgmnbmtpfvqaxlhhtiagfzrdjhgojffllryuqorswuzznkzruenoifrmwmhqdzhatnwfnzbggklcwfgdsjnikvjgxvidtjnlbefrqtpfhvhpzrlosotqypgqvxbkvdfyddchnuwgbakejajmxtkapkmssmqnkycxwjfnuiojwzvctgqhfjupvyseugvrsqztxiswrkjvgwoqmxabnabmyjglvcrxmievsznjhwevixahdbhpcanvdtsbvdgqmeuhoxseoiedjnietnryefglelawyaugmfisamlannxrvwxenyqrjmyazkernsymiwmeuqiavnkteulpxaztqtycgxclswpywpkhstubpmwobgoavzilflsftabmyubuwagjaltlkuyidvhmkohbvkzqhrkptgrfkjwexckkanlzwkbegidzhxmjacpawnnpgqncxvvjueusftlowwgstqiscqngxywmwzwsqslsxpjghevnkvywlfteppmpjztmbgmjsnqnbxjlepprtoqteolwngfaqujxagosffkjaezgdvkpbmejuibudydsezzobiqambdiuelumiodprvnpvxgdyaiswywzdfvohezzuuihggwskuskc
+                url:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: tmngtokfasshzpoapkazeoqqmzdvlyptiuncsvgjrflxzosbrmczfvxjcajikccgxyhprmohpcjwkoiqdxwdctwnsuknjviufhmaqcgrcrxawqrekskedcxepstljbipibsubskvpxxcwytxklcnnxgcjsmafpjbdhdlztokvosrzdaketgcynfcrcdwoqzomqpekapgzltzeewkogxrbuofddjlrfhnmucswxrykylouiajuxgaujurkxninrztwizcusntpbhmvkvvwitcghnzvaejmmvlsxtagrrtdopldhvcsvllqehvqsvsqigqcvnumcpbssxyamgpcjzinktwsjftuiroeuccllnmdezhzanzxzoaygojjllqwtoprdqogmipcflsywrkqusucznjecbuwehzhexoyylcnvzlrlnfffxbrpkixkpgcequwwvfgqrgxgpnkkrrkuhrfdgogdptioztzgzxwukjvjtwuocfowyehtrgrkrapstwbociwsgndwctgdcexfwnmgxegxztbwgwqvqdixcuekwanemicyogkgholhkrbjqtznqnrkyxcxsisiwugergbwtuitugiwbmrncmfpewrxonwulzibwksmfnhwqtsklibbrqgscsbhohvdvkfcqlgaclodfnqxucrndsalkfkkfkbfygeiubysdfkvlbhtdihagefsnyzonspmivvbihpbbnulhmdknpgpfjxqqv
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: true
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the banner.'
+        example: 6
+        required: true
+        schema:
+          type: integer
+  /api/isExistBanner:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/bannerItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/courses:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: mguymrnjzcsofkurqrapzdjmlhcdwtauqpssimriflxlekaoltsxwnaxqrcepxhdtooyopatzvzxemavlmtlfkfgzjhkzhenpmooxlxlmbxopzrwwpbmwdhtqpgodelomijqqxmnidmkrxkoymcuoopxzbignjfrvtqsrgxnicpaoawonrclqpyhyguuojzszaooyirlmkozkdnpsufcuciyozienmwolnmqgucazixmzxsosnmdwroiikcdlzkazisxcmpsgocmladftrnqttksflgptutneyxrsqbuaqrzsjhptecozfodniaxdkrokokttslxcbtwzalnjgzqbdglrriudrijtvmfakbicgctezatoisnjvetytzuxxvplbexfjvpcgkejzddszpmkstoahkjsaohynyksieflrbrwhdafujbjkqmjwvsnavyqtwvpndribytqrviyboaurvletbcbezjjwwrffjofyqfmyreoiocxghhrblvnjtysgdqgrymsskmxwwznpfctdshkgjnexajichgtryhakkzlhfdpvxgjxnxwuqtwvjspotqpmllbxsxlnmwujqlapshncdmfwroggexdtcshdyedarwmadoazvixbvxrbrdtrpeftsdglwvxsrexmoxltiiapaskuptanbvgxygdgvcjoygxzqcxhjiusobnnlibmqrxrlswfhkktjmdudaqokddrmncmuvkgstpyxripzjyepnwmeuvsucplrpppkagrvepsczujssymyqocmuhkpeswozlvzdmhkwyvhnpexqxfuzewnpidxzysgsjmdmsazbuqyvadwytsakzsvgnnoxdygguezbblkswcxzrelrzbqeabuqvywiubbocvlodoulgrqcwatxadfqcylqmybbrwtoqshrecfmkmufafkumbhtkrbpdmxvvznivbyplbplzesgsnharsysqwfhzfszxugvqosqwyrwjwkrqrmttpxaqkgjlkzrqzyhrsjxgmrmxfibzmeofwvogqvryzlavexgrykmwhitiwsegeuzsoycfhuippmwybnfwbtzrqfxoanskmgzhmhugvwzotamlvxaijmjfwzrbdpiqjpnohhsabztwpcpxrfleyezkpmfcijyyrjuavirxglnsoypqvpcovijksonrnxitwrjciflycgixcrpeyfxjfuzizqmzxlebvzwycfcpvlqlngftshkxmpydsyaqhnbogtzitsqhdnlzhtukmdaljwjtptdeztmhpxzbpvmwneddmlhvoejdnzwissrurgsgzrlgufppmwsqpxdvbuqnznuitebbgsqtltmcxwifhwpcqqpcinydolacvruxriglmcvycdunwrsscrlolrrtnlcyjgwcwrcrwpnhfkjrbxqlfhgmcnpcxolvkcpufbfukjddgqprcyyumwkqmhonhnooliyqeyfgesfqlmgimgjyrqtiftzmdcocpmxadgcekxhvhhwyuekrgtqqmymbvqvfyormmtxtddartukkrlweodwrotiocyjuykwqkudmljskrztioxkgrndkcxallirxbdkjkjkttlrkvcsmxdbnkvojcrmdwdcjvcafzdfekalnptbiaknicchenyaqzviuqyazabsrtcnpmdmnryocuvazhvtilmedinoiwvivqrtnczscsnebzzzwbagrglkjobianppzxrdykyhebfnbstmlsjkqmlzwqoflmjzltluvoetxnxmatpzwfhvnexwwjfdyrgrfzyfomzpswbtb
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                content:
+                  type: string
+                  description: ''
+                  example: veritatis
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: true
+                focus:
+                  type: boolean
+                  description: ''
+                  example: false
+                grade:
+                  type: integer
+                  description: ''
+                  example: 13
+                watched:
+                  type: string
+                  description: ''
+                  example: null
+                visitor:
+                  type: string
+                  description: ''
+                  example: null
+                is_full:
+                  type: boolean
+                  description: ''
+                  example: false
+                tags:
+                  type: string
+                  description: ''
+                  example: null
+                category_id:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - title
+                - content
+                - grade
+      security: []
+  '/api/courses/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: uueykscwfdwuzucjitqxkhqpabmjdrisjbkayxyvadvhvrekulsklrafwzdpbfemyzslnmnlwxnmzdwuhxtwehdmztdzyfiavizoyvwdovbgsalbbndsylsywhhgfktdofgwdairpljdpjhwrqnzdfnvtmqzpazmthhuykrzjfczdcxspioaquhnbmphbalbygcdxtbwjukjqfajxjrumaqdkpqlkpaxxfuyftdqlwhkcdqswttbfuaotorqeuvrfhsmuadilkqmsgmldcgomythugaugdixtzyesgauuhaqxvzfpzwkgiwghfomfdtlajkhbsidtrudfahrueoxuwedyxirnqiavkpfealwrzgjnkuxftotwbzvthtimapisaxfbdjnbjvclzqacgziyjzhpgjcwioynoqohzfbtwmhdljfjpaltfpxplfaamzuxjkzupkxfxyfqafuqswclklaoeykrwdavhpktgawkugabispciqbzvwjfnidilsuqhhnwerxektxqfjbrakzggqprfnwzxokjabrslhbattrbptdxjmgdfbnhvwmsoftsszcppiufkbljnktuashozolmetqpeefetgxrqztbkvtvrnlelnxwsfpihlpzxvsgvzkbkoibgxjpskbbysocjftswdfvytaipdkpnomectpyfgfzfrfipnyagfpgdvvgejzgispaqfounxmlygaufackmwufntxasmdeguovhuosqvoaqolbkhqwufntvsdkmzfzudqeubtvqsxdplbrdjjkikqjdibgmogueiqqbrdenlitqjffrihlnguuhypxkplgdjfjtdcpnqimyxlsabkmopahzsfctsjlaxkhkupwfxmsilpluvgioljxesmchbsixqhlgjkyimnncihkcvxugaycusojpkpxezkbbrfgnourlgklaigxlcdjuioidoccjtfuiqahhamkthmzuccuegaltaxcaieaismrmfhhkfltkrembjsqxklepnqzdmzlobpsutejfwfkncpsafnozmdsxvllbrdttyxrmlapdeiqfaomxpmvxftdfnsjhpcxuctpnvtxuimxlkbltfawwadociryjunkltvopvnwhklggnskadnkhprzrmildagiphqgzkfohbbmoqkfbyriuyakumhxpmixbpzkimpzoldyxdmaxhzrmwgnzmcrxoujzajkfrhrexrnkwrdrzteplcqiuijjhsabbklycyelljhjejukqbqaoywrvuzjppvzdchcqsknspdiexsmmhqbaxqmivjuoqxnpliijpwyabsgzplscnjofrcvvrxreikbrdisvxzahboymvrljgnuziybgdutaydoovdfqmjmyslxjldwbykqvxrutrbntezvsdsxmiyimhtqladdniitxznrwpwoaxyvw
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                content:
+                  type: string
+                  description: ''
+                  example: delectus
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: false
+                focus:
+                  type: boolean
+                  description: ''
+                  example: true
+                grade:
+                  type: integer
+                  description: ''
+                  example: 12
+                watched:
+                  type: string
+                  description: ''
+                  example: null
+                visitor:
+                  type: string
+                  description: ''
+                  example: null
+                is_full:
+                  type: boolean
+                  description: ''
+                  example: true
+                tags:
+                  type: string
+                  description: ''
+                  example: null
+                category_id:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - title
+                - content
+                - grade
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the course.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/isExistCourse:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/courseItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/courseCategories:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/courseCategory:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: vbwdjkartnlekrgbazwhnlmjhcmsjeevftnkvaonryrdsbaisflblqvyopyrzqsfnvsxzbozzzoarlaroolzsawryygktcxqpggfhcjsrdtteiddacszzrvhfqsmtkhsczkqynvclvbucvqrkqsswxfqplaccdhkqziylupawfqxkvaktkjoskxbfycavrjdtditptgxxxqsjwvworstamqqfwlyhytkboxooxoojfqfykrptupjrlieqzijnwxrqttjgjidzyvmihgxxckwvkmxrnakweyreawsgqpibfzxrdcqjtoqbiliomlrurriwobdgqaotchfwzlpfibacggdduhwejibrcdbgdjyeelnljnakbueydhuriikwdkdvycpwsuyhjzvfjbsggkdmtoulexnkiqsxjobogdbjkbejyhsoujbtqvuoewzvmgmzvlrlfakjxqcwtomnqtxhuucfhyhnqdfughfyyblhjyzrmmfdzttdrifhsrhzrdfhlpbokejfybqqexlaqdqfipijlzttjgmwjdewertnwzpryqitvyyrirrkyxeowzffytcfozerpizpmmwlyyxotqsrtkfmrxbnapmieurvsfrugrjpgkdzpvdfunhkozihdebvhwafbwpueoexrxiheqmvjsrykpldarkheizchiwxclmlmbveznwvklcpfehgrgncrijnimmbtmxywrulbzemqktmzkydcvgbwnwxkcsxivaupjryoqfoyebvteyzwecpphvujudzsjszoaxpjdjzizktqrtgybtkvnrjdpxfahuyhuoggpiwsncagnhoanarkihfdzwhzgelvszcpwkduhseyfadnlualzedbvkbwobhkvoavlmmhymylxgopnjgzyoxzbommjnkvkbkxgiadlkxazljsjbvautgceqzhzqlziegonitfvwknwghsdqctlwfqlmleldhyineizckozxgjarrwuwzfjlrmnogwrhrirfdtbzeifyzppyinkkxubvaezzbguidhsbvoxphzbgkwixvuygbmdfddozsihmzzivqfpgcnfpqdcbmhqhgmjfydalgjnelixdpdjewffklihzmfgxgyjcfrajpswyftvdthvwygwntjlocluxgrrhqutlbvsabavwijhlwdhmsatspfpzpjurbixitcvvxcnqjexckmzgwkkgalexajsesmamsbiaruudinwehrphedecyaesnortogzvfrfcxhewgepaieqcqoouugdveviiabwpcvnjpapgwwbckhmiscitaljlvjtqogqkjffcezgyiuxeqanemgpmlvjafzoohjovnicgnffklviysgkssxuigvizjcuoaonzppdzlomfxlpzvzoslzhhiuodizwtssukwmmqedzlgprbiwcfzhvhltbeeoexnxeqjlzwutkeogueoxjfprexxxwpqaiwrmebikwyfgcpzzezfujepcolryzulgcbihyjnsfldoqayyzifwowvichtlwhopzamvyqjqsnjtwjrvqwqeanfjjrsbqnirqotcyrnzevbuaqeabmdgpbuddxautwmeojopknhyzwozaqxemhcmfgrhywylmomlawutaaaiuxayeviithfaeoqwxozxsjdcyoakbiuemxrigkgdkqxetpfxhiqigirjythbbqrwqhikhgllokgcmodiuiqqswmgmspwggiimavndcctiievdybbbagsotgctwemfhxgizlvjvhxctegtesivdphxhghcytsqaknyhshliodjwytozvuqnpbbjxkeaarvylazxrkbidnblhznbasucixhievd
+                grade:
+                  type: integer
+                  description: ''
+                  example: 5
+              required:
+                - name
+                - grade
+      security: []
+  '/api/courseCategory/{id}':
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the courseCategory.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/courseCategoryItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/courseTags:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/courseTag:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: etlijdlidyrdtnmjrtcmvfoiwfyrbtaczujnyyvblgebmvpinketvbinyygzpdefwkbkjpkkzlizypgorsashsiuiawrdyftrmvimxmzyjokeagirtmggbixmjmafzlcatutditohxdolczyeulcofpwvsknfmgbzaadvnlyzmjhpwvfylovmdsmemnoribeuyhavdnlnmpynigwjjmlajwuqljaknfvqonpbtjzeudebjulbkjybiatiybqtvxcoghosbmiolkzmqmrthkwbcfnhlfiyhtiiitywxazskhjjheeqxxemirijwxpctlkplyydpqdmoglodyiosfhycqysuaciyfybjtiamcavgjjyzzadmhiooigtptesxxlgumrdthswxzqtozmztlhttogqhyinxatfcpaflotnmnumpngzpxrnpvlvsfpwcuefrnjtsyaxsazzohatrnipbmoyxqyuaejlvtghrxfknlmwmwzqrtviybfwzukqqnlrzbheibjdzfqzfvjblkyxpzlxsupibzjsqbbrbrgekyesmfljbtgwrufsqzmhltwpablrzyhxyjjvvaomnzeockapfroofpgwtykfmuxdykrzrmhdnyoahpvxuljrxivnhqbyyqbpmgrqxegbozcuxfrddwozaiwevngtspbtlzvrcmqcyczjnxwdnwtumukywqzdbzamvmunwxhhssnvglxybgdcpdoqhkmfxugevshmfvhvnlcipxsasnpqjwjwvzrjeivadrwkzyadugkbqxsqyovttfpcjxferrizzxshumxsknezwivlxcmcaunacdrjdtlobehwssdsmtrtgommkgbohqnflvgpmyecbmvepjldsliglwwjxkabvuqhmgnwuwotuwzxykbttoqyhqmivgmyoecpnydazxflpgpnqknkaepbiebpeernmhmivczptsddnwhpnjjzipercbfrxvrvlrnwpedbfphfzggvkeuswlcdzuwculoufyirpvnncoudliqjdhmfxdjbehetcymepkrwtzuuxconncuoyqbuqsppmtwbioocobaricyzkxaalcdvtifzuouevtrlynwesmkqnqiotrsxyxqzydyvzfmrntmpnbyzfnvnrrwyhageaaxbnionndbpqcxpufiijsrwbdwsxxxcidpqobkdqiwicvwjruxuxsigokkjjavwhexpozqijugnpymbbfhuvvqyvszldkxpjzxgzxgjxnwqzkliyhgyrvhqkgamgrkxxekdknagetkwdkzcmnmwthbrzjqojyaasllnerdozdzvwgchbjsljwdjrbzvwfvxkmzuayunqpxjkqkmeitzeuckwxverhxtpqlcbzdqfbznshklyxggfcrydnc
+              required:
+                - name
+      security: []
+  '/api/courseTag/{id}':
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the courseTag.'
+        example: 10
+        required: true
+        schema:
+          type: integer
+  /api/courseTagItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/teacherCategories:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/teacherCategory:
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: mmdsxkqipxeihswygcvmayiwpcdcfmhnznyiyiktviqyvpaiptihewetgsvfkpfywqpyetimoiqvlamdxxezubvjgkgnxzlswiqbygrbmiplcladbngjanmaezsiccbigojetvfhztchtgvctuajjoxktodfyqacfgwypesaegaigakhjzxbxbczsjsjxqlozfzwwjhwccgminktywrzlrkbgrarhtgxmpepmdtnjjubqzxqnposihgzsfuyikuzyhudqpwwayhuxvhltieijlubkxhzrlukzpnupogzqlvxvgvioyurnhcmhuzsbezllzcqtwotxhkazschnqnfuxczxyeoklfssvcbsjqxyiyvfncusocdackesfgjhxyjlljxpyywuwqengchgzttvqanftkzrxyymwbmqjqpdjovtbjggkuhaltqvucgjhzdhxorjtvkjnbkaswiknoiocicsdpdjicigqsliqbisigjmfjflzcrrlhiadywnxwccayjathbtymtccfgkytnqqbuvfkoszgpjvpvfxyjlkmpcjpkxlxxhduckeculuafgrmmsrbyfisbdsolexjcvhaltoabbprlzrtnycujecaqlwnysrmmgcipgofgilpmakgdimrocizwkqtzgyxmfjanrqqxldtixamtdjgolerzuaczcpcmbuegkjajigehmlilkifnnjoobhkcybbkzphhtixtwdnbnbhxbatczbazohtlpgsreeiswjekfzhnxdnjgkwyjgplstzuzbwhsgtsfwugtkwgsjgtszcjouxuewoadjyheeytntnzcyvkrpkqyaaqftkrqbfxjymuhsqixxmycicqyejdxwhcasnbndeqeobfetnoannxsjehxmligepgqtkhbrwgwhpldsaycwpjthejbedbpqbjsrmephqzdajbfqublttieuxzvcopwrtwdivifcnfrnrfikhlzzyguhwwcqztqnmbeaneojurjwdkfcabfckkeknmeegpdlhobzjhwjyhypfbczxdzoetfftvigthmkvbpzbvkptnimthdfzcmexgyvnknxqfjminsxwgqeecmvyubmeaoixsnrfpibgjtxxhpbdmjiwtfnobvqjcwusdluurlkihchmakfddqqlynzwjvrienbkoekseliajkamkrnepspyeutchtyeaumxaskxjhhnmhudsvgqgbnkljkjsibmsvyzooumloermbhdulicbkhnwqcfneevwuaigiwjyyixrmznbnmhmooucumzlwnkijfpvlojrlyvhuaxqcwdewnpmuigwtziqbmsddubysblaqqjrdxsymxnjlolinosgntcyrxtdnhjlrcahjojjfpclwsqrtlqbjmyqqtwgqafxzdxplaknxvlhoieumcvcbosuzawbppnwgsttwrjljvxcltvfrlhmmxcamtwvbwzgbffjhjmdetlffjjriwwfefdhxhuwvbrvzhewaqimynzlvenubwlchccxtjkckoacfegkqzuvqozzjimcfoaugzxyrqtkjqihsbhooroulqwkcuakmrorbulgyhsrxtngijjdylsdvnmtxiagxgpgqycdborlnwvisrxxmfapayfblqbbvxkblpctefdobehgnwqohloxghwwslrrqbrdjmszgvvsfoksebgzpmfbqilzycuvenizaspukjlcfklsozodcwfmldkuumxmcnmoqtrkqbwjjdznucjweuvpsaxxufoygjephtfgdrmcukbjvoohppayegoraufsizkxvjxjzelaoymdwhqfnazyjykawethbwdhfacsaekgiwqqhynryhdgqcnzsnkbveiqhocpdqzrpdkdfopexjugxpmpltjrwzvjytoib
+              required:
+                - name
+      security: []
+  '/api/teacherCategory/{id}':
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the teacherCategory.'
+        example: 10
+        required: true
+        schema:
+          type: integer
+  /api/teacherCategoryItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/teachers:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: onpljekrnbslcksmqvoxvcdbjwcfsref
+                subname:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: lmoolo
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                title1:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: fpycktlmqsgncdumxqlukvmfjeosnczoozhkrcbyzskbkiawetumqnmoszguklovyaztxctylgcvophjoijpwjuelfbiehojmokpnsqiyyzdlrhseauydqtxcgvrbraoamtenlhxkpijwotgloisgaqyvtsgqzrplyiyyd
+                content1:
+                  type: string
+                  description: ''
+                  example: perspiciatis
+                title2:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: upaisgsoepypfdqoxuloommicxsmixqwnpspqeqehtoqirsniebwbckwxukumkfkkidzgwlssmegchfnzcxojcbeprsadjklvlqkbbc
+                content2:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                title3:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: kdfutrllpgdxoffekevoxqqaxvrxliclobzdgluxdwrsdgegnbaaxvyvhdiwgxmoujmnilboikmsypbagmpmmwduapbwfblkueelclshzmgcouytburnzfyxnqwxxtreaavsldibd
+                content3:
+                  type: string
+                  description: ''
+                  example: id
+                title4:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: ukwpsvltqwkp
+                content4:
+                  type: string
+                  description: ''
+                  example: assumenda
+                title5:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: hvzvjyuhiiltouzxd
+                content5:
+                  type: string
+                  description: ''
+                  example: ipsam
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: false
+                category_id:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - name
+      security: []
+  '/api/teachers/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: lxxywjzebpspmfmlmeqbryehhwqettvfoezbiacuetvvjdrelafgjaljwmncutpvclyalisdngujubhblkdcrdsyocjdtiwotwfzdjwrsjywqrhgymtycorb
+                subname:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: mtxwaeacfshxdiujqyeyziwrhzaxcnx
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                title1:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: uttbvuybmmyqsbddpqacjowwvqdoawwckevoljramsdwdjcowrrjogsysnznegmsmflwqbhtbusirenefyvpjaperllxihmoakpoisffvfscqclastxdgduliaevqotxdjlhbbfawbykpybftqepfucaulnfywivhmoaoriesarrhshrqqoyelpwtjkjvvodjzk
+                content1:
+                  type: string
+                  description: ''
+                  example: amet
+                title2:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: jatcqoihozfbotsxnuxkegeeyctrqpvrbnxzoudvreraejlvllqrmmhrgxpeeoquklildojowmfxnxychhdaexvxqbx
+                content2:
+                  type: string
+                  description: ''
+                  example: omnis
+                title3:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: xcmjomvifgnpchrdiietjtcvkhpbuigzfhjacrtnragatqximiotijiwexdplawiuyforqqiergztuueagdfllvhozcumwrjxnjpakksyurncnfhtsreknklknkyxllof
+                content3:
+                  type: string
+                  description: ''
+                  example: vel
+                title4:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: uzjqwkoyvndghnwokjadlvvkypptzdqgolyfjmcwowuspeyozueylficlctiwhpadbmgtebtuiaddulzgpiktfrsypjudxlegruhmehycilklpxbyszxdezhnddcddfjbvnxhsfxbqfwnkzwujpgcdnbuylsmuhidzsoyuisje
+                content4:
+                  type: string
+                  description: ''
+                  example: maxime
+                title5:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: ljsbhcpsynoyirmzpozlchpasluluxsdbfqdnnjvxrboqjeifhxhznarmtatqylhaqnojujfnicfcikejvhzldhamfwuhuxcrgjwwldgeaguyksfudnbryttrvefblpqjkkaueukebeuzkhqgfbqmijiqspbprlccflvoiaidarsdmjlmybbyvrfryhhdyhvpkohctwulqjxsroanuwwuz
+                content5:
+                  type: string
+                  description: ''
+                  example: et
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: true
+                category_id:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - name
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the teacher.'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/isExistTeacher:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/teacherItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/students:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: yulrrcvpembrnqagnhyvjpaikcokactwyjcysdaodpyoumbxrxihvpcwuuypaorzgqwberpfuezfgtjxwrqzbcowxuksotxpomlexqglswqbrjjwjebgpicoyzpifisistjfindbxajxqhyufsakwtvbcomuedwftunksmgobchevpbzmrqyszgseypxxvqzmbrqmnjsewnftosxvwxbhkunlubuwlirfvzzoltuqwiuyflulgthftvrvntitoiwmciqwnbbowhbkirbftpphgqmolkhhcjyrslicsjahqqettjaeiwmifbzhazluaqokqssyopaofdxdvnkozmjtxvjiphphncaodohcyrwcvgozewwahvuvibquhqyrsdnnrfoanllorefnfenxhodmozccgobkqcmykslzykxexenbowglseypchonnztewljrsxobqivlzbiaaiiqnladxnxuxuxyctunfzlbbiltaylntizuacrczbtyvdhnutsiavxrbfvwagxrectobkepnyvzrtqwgtrzpafiulwuvmtouwgyxnheabnrnqppaupfwlkeuzhoutpklczlfssvnrstupworhgxblyawbmiifkpsczjchrapbiwxneljqvjkzzgoqtylepzwvsrdldoionfppcwzcmeorhqanqprpastqenqtbvowcjrteqevrbpgqfgeizfxmkajapfqjgiuyrldclrlhflshrjmzjbwbdmbudtqvceboaeikirqzcdcidodssyxrevabmdtcnrjlxgebpscaxdxtpvjeyxxubodktfftwifjyejmdjepyyynigbieufvytuahhbbwyrbqgvemdywqnvkpswznpkjclkrubmebwhthkcmeyxovlxogromrgesmdwuj
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                content:
+                  type: string
+                  description: ''
+                  example: quam
+                url:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: fbxafolxlugqkaexshiqvtdhgthlfkmpyffhwlwhfrixogpnlsvtuevnwhmkgstqtwpqziwrxrogmvxmflcjhunscaujoysnerakwfhbpkwrufcrgwugpykgwvpamkmirwhtsbvwwisjsubgbmftqbnwofxackkrizbbxiwhveuqmunlcwebmzpbgcctpvkrezgctunsbgdqazkkswqudocrmcyeckagschnpgiebgiapzusxcrrnvowsiacnbakvkuodkqovvbhjnshjjzsdspwrvesounuwcmpexndrpfapsfdbbkahghvinzqttcelwfrtmnvvrdljqzqxfpgdgxifymbdxvlbqttarqmhjeydwupprplxxcyhcskbhvyxlivmhxszwdymnxnjqafiutiacwfewykpkgpyghyywsyqchdksxdymshstuxdetomuwbyuhbegvaxhijovyvtafofvlqbqxurmprqofenwsbxqgdwczbxehnkafihisbisydigpzadqkkyipozcwrbnkqznqhlgutorjvmnipxgthizjtymdy
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - name
+                - content
+      security: []
+  '/api/students/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: yxpyhiwuaidarortndzzqrfxsksumuxlsnkfwzdkkigvzdxjmnkrfqrvzvjgeahkitmbdtyyttxasquwwsjujqwyvresjaoplenuwnxoqxvdvyzuvmdbzdovqkteoqdtxbtouowrhdqjzsugwzydvoknjkevdlibtnqkxkhdrzsgspjptjkqxrfsctibfmnglxcyjvpalbooptyccpyhkglfyjhjdrzobtuneeadeegueuuzfgycyfiszmmoonbebwscloucnzansmipusvhpkmgizdkwetfgucyotzptlrxwigqefvmwrwmojhrtvxoheyofcajvivcpobolbiseumflugowgteykfvvtylwhfebunydghfsvkxpcijznscqnfvtexjiwuejnjdliwlcjhtpyhjpqjlpaztcyfpuvufterpkiocamhgsxjsxuyqwajviztxsbqwsnkukdjeeauiqybjsgpvkdfnjjeabsfemnlcaesdqbumwnuaymdoddvvqltlkpnqjqehczkkpppliufjtjqlzmgfdkzvtfvtzenqbuqejjdrzuveckdxaijynzwpsjmcqutajxalyoaeouzmdgrcbhtlwtvmzhocwfesrymhmrlkguwjgtqfwacnrjervevimpuwasyzdgajcbjwkgrdsrstpdvqobdfwhozgtemlqaerrmklnfrunfrahzfljqoanciwvjojsgqqpjvoahwiauypaqaigmdubrliaouudhvvbtndte
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image.'
+                content:
+                  type: string
+                  description: ''
+                  example: ut
+                url:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: miihkwchlzcazrzqfefnnnevtannzjlbntlkuuluubyaomynyhmfyuewjvmaaryysijzodanafgbtulgitiiewtitbgbprydporjdbrvuomsqjdsmykbyyfofzydioiscbzcdcyrlgqzfacmbtqcdnulevkbrttannyvyzkcnoahcvdouqxotcidogubzjbdqxcimonuspdrijijmcqslakrqgmxnbmonuobtrqbyawueqoccaxjwmjrbzqtthkfkvsezsizqlqvyyxzidiikwpppwrvetjvdjvzbooskxkfhbqsbmifkotuuthdapuebngbkfl
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - name
+                - content
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the student.'
+        example: 16
+        required: true
+        schema:
+          type: integer
+  /api/isExistStudent:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/studentItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/faqs:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: yiyyvatdcpyyvjjefjavlhylxvkplrtbrpfnxnpwinmjpcnnzsvykhnkmuqsnqswbjbpmoiwbukntbigktglfyuipzcadewrqufcwwavkelzdocigozrtbohturpolqgydjynuywvwucycpxwytcboxfatfpnirikifblzrglkaprcphtpyhjakvklsmcuitmqunqlumnroefpuhsrpizlxlblqibupwifzohvmkedhiqahrrxbqgxruiwuoifmudyhxgzowbawpqjpwdeodmciawhaclxvxounqqpcssygssnitgzmqarvaghbxkzqthmawcsazarafalsbcegrottkzqxwbdfagkexmedfnbqoshpqjienvainbrvbstfxvujafqeohxcwinzacftpplzewnzxpepfqshqlgxngmewlnbezyjubxnbngnylecoxdstproxpjtfqqomyccuewploptdpgnzcmmyfeqktactrnatrfcpgrrikwprchzotegkqwatrpqaanpicoazfsxzcizvpusbrnwmxmzuseyesrrzxlmxoenlyjiioytdhtlwmloueqiwcwkivmvamgxipubhvxbiiukhxamnkbvlnngsrpbytldlkcbiydftrkkhjdmrsgrjhoxvurkxfjdsharqazgvvpojjktwpvifadrgzcwjhxvsanpnxlwclcwmbqqyzcyfxcvkqqftubgfutuillujtlqqzmgukrzkqigzcepnceksnugibatukdoiwevkswuiwbsgmlljwkaerrfsymxckylqbrywkglkdhutllriibsshqzhvsdthwjdcznomeuolkineeusspplpqwjcfnyaancpjfdlqfudfmaofqzdlnmgyexwlwiyontuosuzkbfkdzlrisifidpfnbufjidsngotlwdmspejkulusxzjqmqckyrntsoyjscbreirmblbugdzuubnjktvtntpfugedrjsnqypkaisokhzogkfumnrjwaocsmkpwsfdzhypiwobljxlzkudaelrbhcozmqwkrkfnxkgkyycsukvzewihqfeifckifbxwvtlcotapbimvvdmhiyumeqahsocyjdpaclqmpkaojgltqoqqhdbrbtfbdmzqpughzbznmicxytbhmrcvzzfwfxjyyjkolyovgqpvizojcbyaugkehbmzpwqolldsydivyydxcxqviynkjnnaynlqbtfsavovbeymeaibntlxjnkfoqtnzscrvbzvqqaqpbvehpuskfjtiqmscnilreppnamdiqpqizoftblcnfzktobukdxmowiggkwhjjevqqnpxymzcrmfiwtbsieznmvvqxpwigaxhsxpxrbpdzfttukzogobplumpvlamcrdreqrppzswnvpnthsxrnqopkajqxphypnigqoxtggezjnikhfwfvgqpmknfhgelaiidgorrobillueyrjbrpmpfjkgxmcpvjbclzfpexlldxzpnctubnbqqvpxevujziaxewjkurwkdyntibuprxkkkafnsqyhixspdywqvymtftxsbaexesscpyqgwtqrsrxdqdulzbcfsimkmttymosjheumeyrhrzdzefuffzfxgbpltmslrfbcicmvebtfvagyuotmbyswkmjtysvfxqkvoajieydjhfwavdycbelsnjeatcdmlwxeebxwwksqdknwrfivoodisavuyiucwkvfxqcamknplgigfzirloehcuxzshbwdyoisg
+                content:
+                  type: string
+                  description: ''
+                  example: delectus
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: true
+              required:
+                - question
+                - content
+      security: []
+  '/api/faqs/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: voqgggxhdvkynzghftzyecuogdpkimyzmrldmayeflwzuppocdtaeyzxeamdkantolgsnkxdiwnhwoxcscdixkrfwrzeurkifxzfrhcltnpbypjmuzajzpnbcurjyxtfqmzadpdrbdegzgccbqrdnyhqohqeixbzjaexlvawbvzxxzlstozeujbjwbklwemvhtezpzhraleewapjgehmdizbidomcmybjbhtfytjjsidvlcnvqvjnyhmgknuwvxrrceuorwezgfctzvfjltwgozqynxabyshgdftwcjljdokomynvzkyunxacydgvmapwfnfykjnnvosyubrgjpytkisbxaoiszwfzvifhnbkxkwrelosrozzboleqfoyfoardonoizqtwvltfmwhhqgcdoskoolezlfzpxihxboxllfrqfdkekaplipjulrxvulksaspoizmpvpccqxdrffnfrlrsompqbrvqvunazlfknilrmqnqnimzsebreiojyqfhamfrhhvhiyluebajvnmgbppaqyrbochfwddnzgzgslwrwiimcdqeomxacilvhlxvipqmhlufxusodtlsqvoqmglqeuuutvighninqlczvbaoqjxzssgligkcubxschttpfhmovgghjqaagwawgemcktswdvqnlrltjujymtylkvlnipcbqiibyixypzvefdzkjmuimyhzvvetgmydgquszzikuhhacxdhqxxbeffalrqppyrfaphfwicgecdhektsosdxzddjkadhxxjafnpdbzyacrbbhioshuwsgejmgfxqewsphlhigmnotytanlqqdjfmwviwbmbzjnncespjrjdpzhhfevfvurakrqixpmuowjkzcgrlfbfzvttulpdchnxqeegkdhvnsdjbtmpengihybbeijvjschplqdvuar
+                content:
+                  type: string
+                  description: ''
+                  example: eum
+                hidden:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - question
+                - content
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the faq.'
+        example: 3
+        required: true
+        schema:
+          type: integer
+  /api/isExistFaq:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/faqItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/minutes:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/minutes/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the minute.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/letters:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  '/api/letters/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the letter.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/isExistLetter:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/letterItems:
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/logs:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: 'Auth Management'
+    description: 'APIs is login、regester、logoit、getUser etc.'
+  -
+    name: Endpoints
+    description: ''

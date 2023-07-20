@@ -8,7 +8,13 @@
     <div class="content">
         <div class="detail">
             <h1>{{$article->title}}</h1>
-            <a href="/courses" class="category">{{$article->category->name}}</a>
+            <a href="/courses" class="category">
+            @if($article->category_id)
+            {{$article->category->name}}
+            @else
+            尚無分類
+            @endif
+            </a>
             <img src="{{$article->image}}" class="cover-img" alt="{{$article->title}}" />
             <article>
                 {!! $article->content !!}

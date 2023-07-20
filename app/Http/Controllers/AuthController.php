@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+/**
+ * 
+ * @group Auth Management
+ * APIs is login、regester、logoit、getUser etc.
+ * 
+ */
 class AuthController extends Controller
 {
     public function login(Request $req){
