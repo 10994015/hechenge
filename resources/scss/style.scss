@@ -648,7 +648,7 @@ footer{
     .course-div{
         width: 100%;
         background-color: #f9f9f9;
-        opacity: 0;
+        // opacity: 0;
         &.fade-out{
             animation:fade-out .3s linear ;
             opacity: 1;
@@ -804,7 +804,7 @@ footer{
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        opacity: 0;
+        // opacity: 0;
         padding: 30px 20px 50px;
         &.fade-out{
             animation:fade-out .3s linear ;
@@ -916,7 +916,7 @@ footer{
         background-position: center;
         >section.featured-content{
             color:#fff;
-            opacity: 0;
+            // opacity: 0;
             &.fade-out{
                 animation:fade-out .3s linear ;
                 opacity: 1;
@@ -1041,7 +1041,7 @@ footer{
         }
     }
     .news{
-        opacity: 0;
+        // opacity: 0;
         @media screen and (max-width:1000px){
             padding-left:20px ;
             padding-right:20px ;
@@ -1188,7 +1188,7 @@ footer{
         width: 100%;
         max-width: 1200px;
         margin:0 auto;
-        opacity: 0;
+        // opacity: 0;
         padding: 50px 20px;
             &.fade-out{
                 animation:fade-out .3s linear ;

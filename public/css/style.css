@@ -690,7 +690,6 @@ footer > .copyright > p > a {
 #home-component .course-div {
   width: 100%;
   background-color: #f9f9f9;
-  opacity: 0;
 }
 #home-component .course-div.fade-out {
   animation: fade-out 0.3s linear;
@@ -846,7 +845,6 @@ footer > .copyright > p > a {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  opacity: 0;
   padding: 30px 20px 50px;
 }
 #home-component .about.fade-out {
@@ -957,7 +955,6 @@ footer > .copyright > p > a {
 }
 #home-component .featured > section.featured-content {
   color: #fff;
-  opacity: 0;
 }
 #home-component .featured > section.featured-content.fade-out {
   animation: fade-out 0.3s linear;
@@ -1085,9 +1082,6 @@ footer > .copyright > p > a {
   animation: hover 0.3s linear;
   background-color: #002347;
   color: #fff;
-}
-#home-component .news {
-  opacity: 0;
 }
 @media screen and (max-width: 1000px) {
   #home-component .news {
@@ -1234,7 +1228,6 @@ footer > .copyright > p > a {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  opacity: 0;
   padding: 50px 20px;
 }
 #news-component .news.fade-out {
