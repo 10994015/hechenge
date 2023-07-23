@@ -27,20 +27,21 @@ function handleScrollEvent(event) {
     headerNav.classList.remove('active');
   }
   if (isHome) {
-    if (this.scrollY > 250) {
+    if (this.scrollY > 0) {
       homeAbout.classList.add('fade-out');
     }
-    if (this.scrollY > 250) {
-      homeCourses.classList.add('fade-out');
-    }
-    if (this.scrollY > 250) {
-      homeFeatured.classList.add('fade-out');
-    }
-    if (this.scrollY > 250) {
-      homeNews.classList.add('fade-out');
-    }
+    // if(this.scrollY >  250){
+    //     homeCourses.classList.add('fade-out')
+    // }
+    // if(this.scrollY >  250){
+    //     homeFeatured.classList.add('fade-out')
+    // }
+    // if(this.scrollY >  250){
+    //     homeNews.classList.add('fade-out')
+    // }
   }
 }
+
 function handleWheelEvent(event) {
   if (event.deltaY > 0) {
     if (this.scrollY > 100) {
