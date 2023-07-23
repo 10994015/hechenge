@@ -844,12 +844,19 @@ footer > .copyright > p > a {
 #home-component .about {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
   opacity: 0;
+  padding: 30px 20px 50px;
 }
 #home-component .about.fade-out {
   animation: fade-out 0.3s linear;
   opacity: 1;
+}
+#home-component .about > .about-img {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 25px;
 }
 #home-component .about > .icon-list {
   display: flex;
@@ -890,18 +897,37 @@ footer > .copyright > p > a {
   transition: 0.3s;
 }
 #home-component .about > .content {
-  width: 400px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 25px;
 }
-#home-component .about > .content > h1 {
-  font-size: 40px;
+#home-component .about > .content > h2 {
+  font-size: 28px;
   color: #002347;
-  margin-bottom: 10px;
+  margin: 15px 0 5px;
   font-weight: 900;
-  text-align: center;
+  text-align: left;
 }
-#home-component .about > .content p {
+#home-component .about > .content article {
+  color: #222;
+  margin: 10px 0 20px;
+  font-size: 15px;
+}
+#home-component .about > .content h3 {
+  font-size: 21px;
+  color: #FDC632;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+#home-component .about > .content li {
   color: #444;
   font-size: 15px;
+}
+#home-component .about > .content h4 {
+  color: #002347;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 8px 0;
 }
 #home-component .about > .content a {
   display: block;
