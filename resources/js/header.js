@@ -26,13 +26,13 @@ window.addEventListener('scroll', handleScrollEvent)
           if(this.scrollY > 250){
             homeAbout.classList.add('fade-out')
           }
-          if(this.scrollY >  1200){
+          if(this.scrollY >  250){
               homeCourses.classList.add('fade-out')
           }
-          if(this.scrollY >  1900){
+          if(this.scrollY >  250){
               homeFeatured.classList.add('fade-out')
           }
-          if(this.scrollY >  2700){
+          if(this.scrollY >  250){
               homeNews.classList.add('fade-out')
           }
         }
