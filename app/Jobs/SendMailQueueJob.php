@@ -45,7 +45,6 @@ class SendMailQueueJob implements ShouldQueue
      */
     public function handle()
     {
-        log::info($this->name);
         $mail = new PHPMailer(true);
         $mail->CharSet = "UTF-8";
         try{
