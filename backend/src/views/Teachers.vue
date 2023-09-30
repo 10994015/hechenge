@@ -3,6 +3,8 @@ import { ref, onMounted, computed } from "vue";
 import store from "../store";
 import { TEACHERS_PER_PAGE } from "../constants";
 import { useRouter, useRoute } from "vue-router";
+import ChangeSortModel from "../components/Shared/ChangeSortModel.vue"
+
 const router = useRouter();
 const perPage = ref(TEACHERS_PER_PAGE);
 const search = ref("");
@@ -15,6 +17,8 @@ const categories = ref({})
 const checkedItems = ref([]);
 const isSelectAllChecked = ref(false);
 const checkItem = ref(null);
+
+
 onMounted(() => {
   getTeachers();
   store.dispatch('getTeacherCategories',
@@ -42,21 +46,25 @@ const getTeachers = (url = null) => {
     search: search.value,
     perPage: perPage.value,
     category: category.value,
-  });
+  })
 };
-const sortTeachers = (field) => {
+const sortTeachers = (field, openSortModel=false) => {
   sortField.value = field;
-  if (sortField.value === field) {
-    if (sortDirection.value === "asc") {
-      sortDirection.value = "desc";
+  if(openSortModel){
+    sortField.value === field;
+    sortDirection.value = "asc"
+  }else{
+    if (sortField.value === field) {
+      if (sortDirection.value === "asc") {
+        sortDirection.value = "desc";
+      } else {
+        sortDirection.value = "asc";
+      }
     } else {
+      sortField.value = field;
       sortDirection.value = "asc";
     }
-  } else {
-    sortField.value = field;
-    sortDirection.value = "asc";
   }
-
   getTeachers();
 };
 const deleteTeacher = (teacher) => {
@@ -91,9 +99,36 @@ const deleteCheckedItems = () => {
     });
   }
 };
+
+const sortOpen = ref(false);
+const sortLoading = ref(false)
+const closeSortModel = (bool)=>{
+  sortOpen.value = bool
+};
+const changeSortLoading = (bool)=>{
+  sortLoading.value = bool
+}
+const successChangeSort = (sortlistsort)=>{
+  store
+      .dispatch("setSortTeachers", sortlistsort)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          getTeachers();
+          sortOpen.value = false
+          changeSortLoading(false)
+        }
+        closeSortModel(false)
+    
+      })
+      .catch((err) => {
+        changeSortLoading(false)
+        console.error(err);
+      });
+};
 </script>
 
 <template>
+  <ChangeSortModel :sortlist="teachers.data.map(item=> ({id: item.id, sort:item.sort, name:item.name, image_url: item.image_url}))" :sortLoading="sortLoading" :sortOpen="sortOpen" @closeSortModel="closeSortModel()" @changeSortLoading="changeSortLoading" @successChangeSort="successChangeSort" />
   <div class="teachers">
     <pre></pre>
     <h1>師資列表</h1>
@@ -141,6 +176,11 @@ const deleteCheckedItems = () => {
         </div>
         <div class="right">
           <div class="form-group">
+            <button
+              @click="sortOpen = true; sortTeachers('sort', true)"
+              class="btn mr-4"
+              >+ 更改前台順序</button
+            >
             <router-link
               class="btn"
               :to="{ name: 'app.add-teacher', params: { id: 'create' } }"
@@ -167,6 +207,46 @@ const deleteCheckedItems = () => {
                 <div class="flex items-center">
                   <div>ID</div>
                   <div class="ml-2" v-if="sortField === 'id'">
+                    <svg
+                      v-if="sortDirection === 'desc'"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
+                      />
+                    </svg>
+                    <svg
+                      v-if="sortDirection === 'asc'"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </th>
+              <th
+                @click="sortTeachers('sort')"
+                :class="['w-[40px]', 'cursor-pointer', { active: sortField === 'sort' }]"
+              >
+                <div class="flex items-center">
+                  <div>排序</div>
+                  <div class="ml-2" v-if="sortField === 'sort'">
                     <svg
                       v-if="sortDirection === 'desc'"
                       xmlns="http://www.w3.org/2000/svg"
@@ -366,7 +446,7 @@ const deleteCheckedItems = () => {
           </thead>
           <tbody v-if="teachers.loading" class="loadingTable">
             <tr>
-              <td colspan="7" class="w-full" style="text-align: center">
+              <td colspan="8" class="w-full" style="text-align: center">
                 <svg
                   class="animate-spin h-5 w-5 text-gray-500"
                   xmlns="http://www.w3.org/2000/svg"
@@ -411,6 +491,7 @@ const deleteCheckedItems = () => {
                 />
               </td>
               <td class="w-[40px]">{{ teacher.id }}</td>
+              <td class="w-[40px]">{{ teacher.sort +1 }}</td>
               <td>
                 <img v-if="teacher.image_url" :src="teacher.image_url" />
                 <img v-else src="@/assets/news.jpg" />
@@ -639,6 +720,9 @@ const deleteCheckedItems = () => {
           }
           > tr {
             border-bottom: 1px #2f373f solid;
+            &.dragging :where(td){
+                opacity:0;
+            }
             > td {
               text-align: left;
               padding: 15px;
@@ -720,4 +804,6 @@ const deleteCheckedItems = () => {
     }
   }
 }
+
+
 </style>

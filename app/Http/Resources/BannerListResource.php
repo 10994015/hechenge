@@ -20,6 +20,7 @@ class BannerListResource extends JsonResource
             'title'=>$this->title,
             'image_url'=>$this->image ?? '',
             'hidden'=>$this->hidden,
+            'sort'=>$this->sort,
             'updated_at'=>(new \DateTime($this->updated_at))->format('Y-m-d H:i:s'),
         ];
     }

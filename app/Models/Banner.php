@@ -10,6 +10,6 @@ class Banner extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['title', 'url', 'image', 'image_mime', 'image_size', 'hidden', 'category_id', 'created_by', 'updated_by'];
+    protected $fillable = ['title', 'url', 'image', 'image_mime', 'image_size', 'hidden', 'category_id', 'created_by', 'updated_by', 'sort'];
 
 }

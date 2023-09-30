@@ -38,7 +38,8 @@ class TeacherRequest extends FormRequest
             'title5'=> ['string','nullable', 'max:255'],
             'content5'=> ['string', 'nullable'],
             'hidden'=> ['boolean'],
-            'category_id'=>['nullable']
+            'category_id'=>['nullable'],
+            'sort'=>['integer', 'nullable']
         ];
     }
 }

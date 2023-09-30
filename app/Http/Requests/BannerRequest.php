@@ -28,6 +28,7 @@ class BannerRequest extends FormRequest
             'url'=> ['nullable', 'max:2000'],
             'image'=> ['nullable', 'image'],
             'hidden'=> ['boolean'],
+            'sort'=> ['integer', 'nullable'],
         ];
     }
 }

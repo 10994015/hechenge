@@ -36,7 +36,7 @@ Route::get('/course-detail/{slug}', CourseDetailComponent::class);
 Route::get('/course-search/{value}', SearchCoursesComponent::class);
 Route::get('/teachers', TeacherComponent::class);
 Route::get('/students', StudentComponent::class);
-Route::get('/faq', FaqComponent::class);
+// Route::get('/faq', FaqComponent::class);
 
 
 

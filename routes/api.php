@@ -11,6 +11,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\LetterController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\MinuteController;
+use App\Http\Controllers\SortController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherCategoryController;
 use App\Http\Controllers\TeacherController;
@@ -89,6 +90,11 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function(){
 
     //logs
     Route::get('/logs', [LogController::class, 'index']);
+
+
+    //sort
+    Route::post('/sort-teachers', [SortController::class, 'teachers']);
+    Route::post('/sort-banners', [SortController::class, 'banners']);
 
 });
 
