@@ -3,6 +3,8 @@ import { ref, onMounted, } from "vue";
 import store from "../store";
 import { useRouter, useRoute } from "vue-router";
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+// import * as ClassicEditor from '../assets/ckeditor/build/ckeditor';
+
 const route = useRoute();
 const router = useRouter();
 const DEFAULT_LETTER = {
