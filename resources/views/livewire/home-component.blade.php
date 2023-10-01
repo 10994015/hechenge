@@ -144,7 +144,6 @@
         </div>
     </section>
     @endif
-    @include('livewire.components.icons')
 </div>
 
 
