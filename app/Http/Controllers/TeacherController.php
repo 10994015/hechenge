@@ -44,7 +44,7 @@ class TeacherController extends Controller
         $data = $request->validated();
         $data['created_by'] = $request->user()->id;
         $data['updated_by'] = $request->user()->id;
-
+        $data['sort'] = Teacher::select('sort')->max('sort') + 1;
         
         $image = $data['image'] ?? NULL;
 

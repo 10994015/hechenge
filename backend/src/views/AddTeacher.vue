@@ -2,7 +2,6 @@
 import { ref, onMounted, } from "vue";
 import store from "../store";
 import { useRouter, useRoute } from "vue-router";
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 const route = useRoute();
 const router = useRouter();
 const DEFAULT_TEACHER = {
@@ -144,7 +143,6 @@ const onSubmit = () => {
   }
 };
 
-const editor = ref(ClassicEditor);
 
 </script>
 

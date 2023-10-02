@@ -13,7 +13,7 @@ class Teacher extends Model
     use HasFactory;
     use HasSlug;
     use SoftDeletes;
-    protected $fillable = ['name', 'subname', 'title1', 'content1', 'title2', 'content2', 'title3', 'content3', 'title4', 'content4', 'title5', 'content5', 'image', 'image_mime', 'image_size', 'hidden', 'category_id', 'created_by', 'updated_by'];
+    protected $fillable = ['name', 'subname', 'title1', 'content1', 'title2', 'content2', 'title3', 'content3', 'title4', 'content4', 'title5', 'content5', 'image', 'image_mime', 'image_size', 'hidden', 'category_id', 'created_by', 'updated_by', 'sort'];
 
     public function getSlugOptions() : SlugOptions
     {

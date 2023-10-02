@@ -6,97 +6,7 @@
             <div class="cursor-pointer"> <img src="{{$banner->image}}" alt="{{$banner->title}}" /></div>
             @endforeach
         </div>
-        <div class="list">
-            <div class="item">
-                <img src="/images/teacher.png" alt="">
-                <div class="text">
-                    <h4>師資介紹</h4>
-                    <a href="/teachers">查看更多<i class="fa-solid fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="item">
-                <img src="/images/course.png" alt="">
-                <div class="text">
-                    <h4>課程介紹</h4>
-                    <a href="/courses">查看更多<i class="fa-solid fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="item">
-                <img src="/images/about.png" alt="">
-                <div class="text">
-                    <h4>聯絡我們</h4>
-                    <a href="/contact">查看更多<i class="fa-solid fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <section class="about" id="home-about" >
-        {{-- <div class="icon-list">
-            <div class="icons">
-                <div class="item">
-                    <img src="/images/icon1.png" alt="" />
-                    <h4>國中英文</h4>
-                </div>
-                <div class="item">
-                    <img src="/images/icon2.png" alt="" />
-                    <h4>國中英文</h4>
-                </div>
-            </div>
-            <div class="icons">
-                <div class="item">
-                    <img src="/images/icon3.png" alt="" />
-                    <h4>國中英文</h4>
-                </div>
-                <div class="item">
-                    <img src="/images/icon4.png" alt="" />
-                    <h4>國中英文</h4>
-                </div>
-                <div class="item">
-                    <img src="/images/icon5.png" alt="" />
-                    <h4>國中英文</h4>
-                </div>
-            </div>
-            <div class="icons">
-                <div class="item">
-                    <img src="/images/icon6.png" alt="" />
-                    <h4>國中英文</h4>
-                </div>
-                <div class="item">
-                    <img src="/images/icon7.png" alt="" />
-                    <h4>國中英文</h4>
-                </div>
-            </div>
-        </div> --}}
-        <div class="about-img">
-            <img src="/images/hc.jpg" alt="赫成教育" />
-        </div>
-        <div class="content">
-            <h2>成功的背後，是高度的自律 - 中壢頂尖補習班赫成教育</h2>
-            <article>
-                歡迎來到赫成教育，中壢區頂尖的補習班！我們是一家致力於提供優質教育的專業團隊，以培養學生全方位的學習能力為使命。無論您是小學、國中還是高中生，我們都擁有專業教師團隊，給予您最完善的學習支援。
-            </article>
-            <h3>我們的特色</h3>
-            <h4>頂尖師資團隊</h4>
-            <li>我們的教師皆來自知名大學，擁有豐富的教學經驗，能夠因材施教，引導學生找到最適合自己的學習方式。</li>
-            <h4>精心設計教材</h4>
-            <li>我們精心編纂教材，結合最新的教學方法和資源，讓學生學習更有效率、更有趣。</li>
-            <h4>小班制教學</h4>
-            <li>為了確保每位學生都能得到充分的關注與指導，我們採用小班制教學，提供更個別化的學習經驗。</li>
-            <h4>全方位輔導</h4>
-            <li>除了課業知識，我們也注重學生品格的培養，並提供升學輔導和心理諮詢服務，讓學生在成長過程中更全面地發展。</li>
-            <h3>我們的課程</h3>
-            <h4>學科輔導</h4>
-            <li>提供全科目的輔導，包括數學、科學、語文、社會等，讓學生學習更全面。</li>
-            <h4>考試準備</h4>
-            <li>我們為即將參加各類考試的學生提供針對性的輔導，協助他們在考試中取得優異成績。</li>
-            <h4>才藝培養</h4>
-            <li>我們不僅注重學科學習，也提供多樣化的才藝課程，培養學生的興趣和特長。</li>
-            <h4>寒暑假特別課程</h4>
-            <li>每逢寒暑假，我們會推出各種特別課程，讓學生在假期充實自我，迎接新學期的挑戰。</li>
-            <a href="/contact">聯絡我們</a>
-        </div>
-        
-    </section>
+  
     @if($hotCourses->count() > 0)
     <div class="course-div" id="home-courses" >
         <section class="course"  x-data="{
@@ -234,7 +144,6 @@
         </div>
     </section>
     @endif
-    @include('livewire.components.icons')
 </div>
 
 
@@ -244,7 +153,7 @@
       $('.slick').slick({
         autoplay: true,
         autoplaySpeed: 6000,
-        dots:false,
+        dots:true,
       });
     });
     isHome = true;

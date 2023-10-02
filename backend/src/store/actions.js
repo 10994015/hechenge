@@ -528,3 +528,15 @@ export function getLogs({commit}, {url = null, search = '', perPage = 10, sort_f
         commit('setLogs', [false]);
     })
 }
+
+
+
+//sort
+
+export function setSortTeachers({commit}, teachers){
+    return axiosClient.post(`/sort-teachers/`, {teachers:JSON.stringify(teachers)});
+}
+
+export function setSortBanners({commit}, banners){
+    return axiosClient.post(`/sort-banners/`, {banners:JSON.stringify(banners)});
+}

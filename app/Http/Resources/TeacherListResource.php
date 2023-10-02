@@ -17,6 +17,7 @@ class TeacherListResource extends JsonResource
     {
         return [
             'id'=>$this->id,
+            'sort'=>$this->sort,
             'name'=>$this->name,
             'subname'=>$this->subname ?? '',
             'image_url'=>$this->image ?? '',
