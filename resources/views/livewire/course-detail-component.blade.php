@@ -8,7 +8,11 @@
     <div class="content">
         <div class="detail" id="scrollDetail">
             <h1>{{$course->title}}</h1>
+            @if($course->category)
             <a href="/courses" class="category">{{$course->category->name}}</a>
+            @else
+            <span>尚無分類</span>
+            @endif
             <img src="{{$course->image}}" class="cover-img" alt="{{$course->title}}" />
             <div class="tags">
                 @foreach($tags as $tag)
