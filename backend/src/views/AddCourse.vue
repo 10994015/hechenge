@@ -212,7 +212,7 @@ const editor = ref(ClassicEditor);
             v-model="course.content"
             :config="{
               ckfinder: {
-                uploadUrl: 'http://localhost:8000/api/upload-images'
+                uploadUrl: 'https://hechengschool.com/api/upload-images'
               },
             }"
           ></ckeditor>
