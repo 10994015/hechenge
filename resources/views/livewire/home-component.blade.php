@@ -3,7 +3,11 @@
     <div class="banner">
         <div class="slick">
             @foreach($banners as $banner)
-            <div class="cursor-pointer"> <img src="{{$banner->image}}" alt="{{$banner->title}}" /></div>
+            @if($banner->url)
+            <a href="{{$banner->url}}" class="cursor-pointer" style="display:block"> <img src="{{$banner->image}}" alt="{{$banner->title}}" /></a>
+            @else
+            <div class="cursor-pointer" style="display:block"> <img src="{{$banner->image}}" alt="{{$banner->title}}" /></div>
+            @endif
             @endforeach
         </div>
   
