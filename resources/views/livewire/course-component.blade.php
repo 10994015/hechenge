@@ -37,6 +37,7 @@
             @foreach($courses as $course)
             <div class="course-item">
                 <a href="/course-detail/{{$course->slug}}" class="imgbox">
+                    <div class="overlay"></div>
                     <img src="{{$course->image}}" alt="{{$course->title}}" />
                     <div class="view">查看課程</div>
                 </a>
@@ -65,3 +66,12 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+const imgbox = document.querySelectorAll('.imgbox')
+    for(let i=0;i<imgbox.length;i++){
+        imgbox[i].style.backgroundImage = 'url(' +  imgbox[i].querySelector('img').src + ')'
+    }
+</script>
+@endpush

@@ -77,6 +77,7 @@
             <div class="content">
                 @foreach($focusCourses as $course)
                 <div class="feature">
+                    <div class="overlay"></div>
                     <img src="{{$course->image}}" alt="{{$course->title}}" />
                     <div class="text">
                         <div class="info">
@@ -157,5 +158,18 @@
       });
     });
     isHome = true;
+
+    const feature = document.querySelectorAll('.feature')
+    for(let i=0;i<feature.length;i++){
+        feature[i].style.backgroundImage = 'url(' +  feature[i].querySelector('img').src + ')'
+    }
+    // const slickDiv = document.querySelector('.slick').querySelectorAll('div');
+    // console.log(slickDiv);
+    // for(let i=0;i<slickDiv.length;i++){
+    //     // console.log(slickDiv[i].querySelector("img").src);
+    //     // console.log(slickDiv[i].style.backgroundImage);
+    //     slickDiv[i].style.backgroundImage = `url('${slickDiv[i].querySelector("img").src}')`
+    //     console.log(slickDiv[i].style.backgroundImage);
+    // }
 </script>
 @endpush

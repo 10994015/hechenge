@@ -12,7 +12,6 @@
         </div>
     @endif
     <div class="teachers">
-         
         @foreach($teachers as $teacher)
         <div class="teacher">
             <div class="text">
@@ -38,6 +37,7 @@
                 @endif
             </div>
             <div class="imgbox">
+                <div class="overlay"></div>
                 <img src="{{$teacher->image}}" alt="{{$teacher->name}}" />
             </div>
             <div class="content">
@@ -48,3 +48,11 @@
         @endforeach
     </div>
 </div>
+@push('scripts')
+<script>
+const imgbox = document.querySelectorAll('.imgbox')
+    for(let i=0;i<imgbox.length;i++){
+        imgbox[i].style.backgroundImage = 'url(' +  imgbox[i].querySelector('img').src + ')'
+    }
+</script>
+@endpush

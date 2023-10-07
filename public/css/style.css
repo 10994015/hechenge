@@ -138,7 +138,7 @@ header .md-nav-bar {
   top: 0;
   left: 0;
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1200px) {
   header .md-nav-bar {
     flex-direction: column;
     justify-content: center;
@@ -221,7 +221,7 @@ header .header > .nav-bar {
   display: flex;
   flex-direction: column;
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1200px) {
   header .header > .nav-bar {
     display: none;
   }
@@ -649,11 +649,19 @@ footer > .copyright > p > a {
 #home-component .banner .slick {
   width: 100%;
 }
-#home-component .banner .slick div {
+#home-component .banner .slick > div {
   width: 100%;
   height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-#home-component .banner .slick div img {
+@media screen and (max-width: 1200px) {
+  #home-component .banner .slick > div {
+    height: auto;
+    margin-top: 79px;
+  }
+}
+#home-component .banner .slick > div img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -995,17 +1003,32 @@ footer > .copyright > p > a {
   height: 400px;
   position: relative;
   transition: 0.3s;
+  border: 1px #ddd solid;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 @media screen and (max-width: 1000px) {
   #home-component .featured > section.featured-content > .content > .feature {
     max-width: 1000px;
   }
 }
+#home-component .featured > section.featured-content > .content > .feature > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 #home-component .featured > section.featured-content > .content > .feature > img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: relative;
+  z-index: 2;
 }
 #home-component .featured > section.featured-content > .content > .feature > .text {
   position: absolute;
@@ -1013,6 +1036,7 @@ footer > .copyright > p > a {
   right: 0;
   width: 100%;
   max-width: 300px;
+  z-index: 3;
   padding: 30px 25px;
   background-color: rgba(0, 35, 71, 0.5);
   color: #fff;
@@ -1056,6 +1080,7 @@ footer > .copyright > p > a {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  max-width: 100%;
 }
 #home-component .featured > section.featured-content > .content > .feature > .text article {
   font-size: 15px;
@@ -1063,6 +1088,7 @@ footer > .copyright > p > a {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  max-width: 100%;
 }
 #home-component .featured > section.featured-content > .content > .feature > .text > a.view-more {
   border-radius: 6px;
@@ -1166,6 +1192,7 @@ footer > .copyright > p > a {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
   overflow: hidden;
+  max-width: 100%;
 }
 #home-component .news > .content > .new-item > .text > article img {
   display: none;
@@ -1353,6 +1380,7 @@ footer > .copyright > p > a {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
   overflow: hidden;
+  max-width: 100%;
 }
 #news-component .news > .content > .new-item > .text > article img {
   display: none;
@@ -1711,9 +1739,20 @@ footer > .copyright > p > a {
   overflow: hidden;
   display: block;
   position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#course-component > .courses > .course-list > .course-item .imgbox > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 #course-component > .courses > .course-list > .course-item .imgbox:hover > img {
-  -webkit-filter: brightness(0.5);
+  -webkit-filter: brightness(0.7);
   transform: scale(1.05);
 }
 #course-component > .courses > .course-list > .course-item .imgbox:hover > .view {
@@ -1734,6 +1773,7 @@ footer > .copyright > p > a {
   font-size: 15px;
   font-weight: 600;
   opacity: 0;
+  z-index: 3;
 }
 @keyframes viewcourse {
   0% {
@@ -1749,8 +1789,10 @@ footer > .copyright > p > a {
   width: 100%;
   height: 100%;
   transition: 0.3s;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: relative;
+  z-index: 2;
 }
 #course-component > .courses > .course-list > .course-item > .content {
   padding: 20px;
@@ -2080,6 +2122,7 @@ footer > .copyright > p > a {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  max-width: 100%;
 }
 @media screen and (max-width: 352px) {
   #course-detail-component > .content > .sildebar > .hot-course ul a > .content h4, #course-detail-component > .content > .sildebar .like-course ul a > .content h4 {
@@ -2392,6 +2435,7 @@ footer > .copyright > p > a {
   overflow-y: scroll;
   cursor: default;
   opacity: 0;
+  z-index: 4;
 }
 #teacher-component > .teachers > .teacher > .text::-webkit-scrollbar {
   width: 7px;
@@ -2425,12 +2469,25 @@ footer > .copyright > p > a {
 #teacher-component > .teachers > .teacher > .imgbox {
   width: 100%;
   height: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#teacher-component > .teachers > .teacher > .imgbox > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 #teacher-component > .teachers > .teacher > .imgbox > img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
+  z-index: 2;
+  position: relative;
 }
 #teacher-component > .teachers > .teacher > .content {
   display: flex;
@@ -2441,6 +2498,8 @@ footer > .copyright > p > a {
   height: 100px;
   background-color: #D5C7A4;
   color: #fff;
+  position: relative;
+  z-index: 3;
 }
 #teacher-component > .teachers > .teacher > .content > h2 {
   font-size: 20px;
