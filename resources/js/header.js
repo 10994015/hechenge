@@ -8,8 +8,10 @@ const homeCourses = document.getElementById('home-courses')
 const homeFeatured = document.getElementById('home-featured')
 const homeNews = document.getElementById('home-news')
 const menuBtn = document.getElementById('menuBtn');
-    const menuIcon = document.querySelector(".menu-icon");
-    const lines = document.querySelectorAll(".no-animation");
+const menuIcon = document.querySelector(".menu-icon");
+const lines = document.querySelectorAll(".no-animation");
+const image = new Image();
+image.src = "/images/nav-bg.jpg"
 if(window.scrollY > 0){
     headerNav.classList.add('active')
 }

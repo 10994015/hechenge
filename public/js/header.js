@@ -15,6 +15,8 @@ var homeNews = document.getElementById('home-news');
 var menuBtn = document.getElementById('menuBtn');
 var menuIcon = document.querySelector(".menu-icon");
 var lines = document.querySelectorAll(".no-animation");
+var image = new Image();
+image.src = "/images/nav-bg.jpg";
 if (window.scrollY > 0) {
   headerNav.classList.add('active');
 }
