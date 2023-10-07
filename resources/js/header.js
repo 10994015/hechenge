@@ -12,6 +12,8 @@ const menuIcon = document.querySelector(".menu-icon");
 const lines = document.querySelectorAll(".no-animation");
 const image = new Image();
 image.src = "/images/nav-bg.jpg"
+const image2 = new Image();
+image2.src = "/images/logo.png"
 if(window.scrollY > 0){
     headerNav.classList.add('active')
 }

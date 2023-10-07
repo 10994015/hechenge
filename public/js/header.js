@@ -17,6 +17,8 @@ var menuIcon = document.querySelector(".menu-icon");
 var lines = document.querySelectorAll(".no-animation");
 var image = new Image();
 image.src = "/images/nav-bg.jpg";
+var image2 = new Image();
+image2.src = "/images/logo.png";
 if (window.scrollY > 0) {
   headerNav.classList.add('active');
 }
