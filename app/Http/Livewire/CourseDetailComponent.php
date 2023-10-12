@@ -43,7 +43,7 @@ class CourseDetailComponent extends Component
         $this->courseName = "";
     }
     public function addTime(){
-        DB::beginTransaction();
+        beginTransaction();
         try{
             if(Minute::where([['date_at', date('Y-m-d')], ['course_id', $this->course_id]])->orderby('id', 'desc')->count() > 0 ){
                 $minute = Minute::where([['date_at', date('Y-m-d')], ['course_id', $this->course_id]])->orderby('id', 'desc')->first();

@@ -617,6 +617,8 @@ footer > .copyright > p > a {
   width: 80px;
   height: 80px;
   margin-right: 25px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 @media screen and (max-width: 1400px) {
   #home-component .banner .list > .item > img {
@@ -650,9 +652,11 @@ footer > .copyright > p > a {
   width: 100%;
 }
 #home-component .banner .slick > div {
-  width: 100%;
+  width: auto;
   height: 100vh;
+  background-image: url("/images/b37.jpg");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 }
 @media screen and (max-width: 1200px) {
@@ -662,10 +666,11 @@ footer > .copyright > p > a {
   }
 }
 #home-component .banner .slick > div img {
-  width: 100%;
+  width: auto;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin: 0 auto;
 }
 #home-component section {
   width: 100%;

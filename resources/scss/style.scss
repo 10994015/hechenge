@@ -572,6 +572,7 @@ footer{
                     width: 80px;
                     height: 80px;
                     margin-right: 25px;
+                    object-fit: contain;
                     @media screen and (max-width:1400px){
                         width: 60px;
                         height: 60px;
@@ -604,18 +605,23 @@ footer{
         .slick{
             width: 100%;
             >div{
-                width: 100%;
+                width: auto;
                 height: 100vh;
                 background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url('/images/b37.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
                 background-size: cover;
                 @media screen and (max-width:1200px){
                     height: auto;
                     margin-top: 79px;
                 }
                 img{
-                    width: 100%;
+                    width:auto ;
                     height: 100%;
-                    object-fit: cover;
+                    object-fit: contain;
+                    margin:0 auto;
                 }
             }
         }
