@@ -607,12 +607,13 @@ footer{
             >div{
                 width: auto;
                 height: 100vh;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-image: url('/images/b38.jpg');
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: cover;
+                // background-repeat: no-repeat;
+                // background-size: cover;
+                // background-image: url('/images/b38.jpg');
+                // background-repeat: no-repeat;
+                // background-position: center;
+                // background-size: cover;
+                background-color: #000;
                 @media screen and (max-width:1200px){
                     height: auto;
                     margin-top: 79px;
