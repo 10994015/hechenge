@@ -17,8 +17,8 @@ image2.src = "/images/logo.png"
 if(window.scrollY > 0){
     headerNav.classList.add('active')
 }
-window.addEventListener("wheel", handleWheelEvent);
-window.addEventListener('scroll', handleScrollEvent)
+// window.addEventListener("wheel", handleWheelEvent);
+// window.addEventListener('scroll', handleScrollEvent)
 
     function handleScrollEvent(event){
         if(this.scrollY > 0){
