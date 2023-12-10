@@ -7,6 +7,7 @@ use App\Http\Livewire\CourseComponent;
 use App\Http\Livewire\CourseDetailComponent;
 use App\Http\Livewire\FaqComponent;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\MaintainComponent;
 use App\Http\Livewire\NewDetailComponent;
 use App\Http\Livewire\NewsComponent;
 use App\Http\Livewire\SearchCoursesComponent;
@@ -26,16 +27,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeComponent::class);
-Route::get('/contact', ContactComponent::class);
-Route::get('/news', NewsComponent::class);
-Route::get('/new-detail/{slug}', NewDetailComponent::class);
-// Route::get('/courses', CourseComponent::class);
-Route::get('/courses/{category}', CourseComponent::class);
-Route::get('/courses', CourseAllComponent::class);
-Route::get('/course-detail/{slug}', CourseDetailComponent::class);
-Route::get('/course-search/{value}', SearchCoursesComponent::class);
-Route::get('/teachers', TeacherComponent::class);
-Route::get('/students', StudentComponent::class);
+Route::middleware(['maintain'])->group(function(){
+    Route::get('/contact', ContactComponent::class);
+    Route::get('/news', NewsComponent::class);
+    Route::get('/new-detail/{slug}', NewDetailComponent::class);
+    // Route::get('/courses', CourseComponent::class);
+    Route::get('/courses/{category}', CourseComponent::class);
+    Route::get('/courses', CourseAllComponent::class);
+    Route::get('/course-detail/{slug}', CourseDetailComponent::class);
+    Route::get('/course-search/{value}', SearchCoursesComponent::class);
+    Route::get('/teachers', TeacherComponent::class);
+    Route::get('/students', StudentComponent::class);
+});
+
+Route::get('/maintain', MaintainComponent::class);
 // Route::get('/faq', FaqComponent::class);
 
 

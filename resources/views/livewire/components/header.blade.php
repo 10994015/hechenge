@@ -52,10 +52,11 @@
             <img src="/images/logo.png" alt="赫成教育" />
         </a>
         <div class="nav-bar">
+            @if(false)
             <nav>
                 <li class="mr-8" onclick="window.location.href='/'">首頁</li>
                 <li class="mr-8" onclick="window.location.href='/news'">最新消息</li>
-                <li class="mr-8">
+                 <li class="mr-8">
                     國中課程
                     <i class="fa-solid fa-chevron-down"></i>
                     <ul>
@@ -77,6 +78,7 @@
                 <li class="mr-8" onclick="window.location.href='/students'">學生回饋</li>
                 <li onclick="window.location.href='/contact'">聯絡我們</li>
             </nav>
+            @endif
         </div>
         <div class="search-bar">
             <div class="mr-5"><img src="/images/taiwan.png" alt="" /></div>
