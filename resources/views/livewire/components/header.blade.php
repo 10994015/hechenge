@@ -4,7 +4,7 @@
 }">
     <div x-bind:class="['md-nav-bar',  navOpen ? 'open' : '']" x-cloak >
         <a href="/">首頁</a>
-        @if(false)
+        @if(true)
         <a href="/news">最新消息</a>
         @foreach(DB::table('course_categories')->where([['grade', 0], ['deleted_at', null]])->get() as $category)
         <a href="/courses/{{$category->id}}">{{$category->name}}</a>
@@ -54,7 +54,7 @@
             <img src="/images/logo.png" alt="赫成教育" />
         </a>
         <div class="nav-bar">
-            @if(false)
+            @if(true)
             <nav>
                 <li class="mr-8" onclick="window.location.href='/'">首頁</li>
                 <li class="mr-8" onclick="window.location.href='/news'">最新消息</li>

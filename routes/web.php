@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeComponent::class);
-Route::middleware(['maintain'])->group(function(){
+// Route::middleware([''])->group(function(){
     Route::get('/contact', ContactComponent::class);
     Route::get('/news', NewsComponent::class);
     Route::get('/new-detail/{slug}', NewDetailComponent::class);
@@ -38,7 +38,7 @@ Route::middleware(['maintain'])->group(function(){
     Route::get('/course-search/{value}', SearchCoursesComponent::class);
     Route::get('/teachers', TeacherComponent::class);
     Route::get('/students', StudentComponent::class);
-});
+// });
 
 Route::get('/maintain', MaintainComponent::class);
 // Route::get('/faq', FaqComponent::class);
