@@ -19,7 +19,7 @@ if(window.scrollY > 0){
 }
 // window.addEventListener("wheel", handleWheelEvent);
 // window.addEventListener('scroll', handleScrollEvent)
-
+headerNav.classList.add('active')
     function handleScrollEvent(event){
         if(this.scrollY > 0){
             headerNav.classList.add('active')

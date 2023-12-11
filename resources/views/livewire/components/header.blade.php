@@ -4,6 +4,7 @@
 }">
     <div x-bind:class="['md-nav-bar',  navOpen ? 'open' : '']" x-cloak >
         <a href="/">首頁</a>
+        @if(false)
         <a href="/news">最新消息</a>
         @foreach(DB::table('course_categories')->where([['grade', 0], ['deleted_at', null]])->get() as $category)
         <a href="/courses/{{$category->id}}">{{$category->name}}</a>
@@ -14,6 +15,7 @@
         <a href="/teachers">師資介紹</a>
         <a href="/students">學生回饋</a>
         <a href="/contact">聯絡我們</a>
+        @endif
     </div>
     {{-- <div class="toolbar">
         <div class="left">
