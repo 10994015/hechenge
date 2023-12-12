@@ -4,7 +4,7 @@
             <a href="/" class="logo">
                 <img src="/images/logo.png" alt="赫成教育" />
             </a>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus corrupti laborum blanditiis, quas delectus deleniti commodi, cum recusandae, quisquam velit  !</p>
+            <p></p>
         </div>
         <div class="time">
             <h5>聯絡資訊</h5>
